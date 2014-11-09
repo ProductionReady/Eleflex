@@ -1,0 +1,538 @@
+﻿@{
+    ViewBag.Title = "ELEFLEX Installed Components";
+}
+<h1>ELEFLEX<sup>&reg;</sup> Installed Components</h1>
+<p>
+    The ELEFLEX<sup>&reg;</sup> platform utilizes <a href="http://NuGet.org">NuGet</a> to integrate open source components. 
+    The following components have been installed to assist design and architecture goals of the system and also provide an integrated platform to develop solutions.
+</p>
+<h3>Infrastructure Components</h3>
+<p>
+    The following components provide the infrastructure for the ELEFLEX<sup>&reg;</sup> platform. 
+    The architecture utilizes bootstrapper to provide an entrypoint for startup tasks that are used to configure the system at startup.
+    Structuremap is used for dependency injection and inversion of control (IOC) capabilities to promote loose coupling and good development practices.
+    AutoMapper is used for object to object mapping between storage, domain and service layers.
+    Common Logging is used to provide a generic logging mechanism for all components in the system.
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Bootstrapper v2.0.3.13</div>
+            <div class="panel-body">
+                bootstrapper.codeplex.com uses a convention over configuration approach to initialize your IOC container, create automapper maps and run any other startup tasks that your application might need.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Bootstrapper/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Common.Logging v2.2.0</div>
+            <div class="panel-body">
+                Common.Logging library introduces a simple abstraction to allow you to select a specific logging implementation at runtime.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Common.Logging/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">AutoMapper v3.2.1</div>
+            <div class="panel-body">
+                A convention-based object-object mapper. AutoMapper uses a fluent configuration API to define an object-object mapping strategy.
+                AutoMapper uses a convention-based matching algorithm to match up source to destination values.
+                Currently, AutoMapper is geared towards model projection scenarios to flatten complex object models to DTOs and other simple objects, whose design is better suited for serialization, communication, messaging, or simply an anti-corruption layer between the domain and application layer.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/automapper/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>            
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Structuremap v3.1.4.143</div>
+            <div class="panel-body">
+                StructureMap is a Dependency Injection / Inversion of Control tool for .Net that can be used to improve the architectural qualities of an object oriented system by reducing the mechanical costs of good design techniques.
+                StructureMap can enable looser coupling between classes and their dependencies, improve the testability of a class structure, and provide generic flexibility mechanisms.
+                Used judiciously, StructureMap can greatly enhance the opportunities for code reuse by minimizing direct coupling between classes and configuration mechanisms.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/structuremap/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>            
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Bootstrapper.AutoMapper v2.0.3.14</div>
+            <div class="panel-body">
+                Automapper extension for Bootstrapper.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Bootstrapper.AutoMapper/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Bootstrapper.StructureMap v2.0.3.13</div>
+            <div class="panel-body">
+                StructureMap extension for Bootstrapper.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Bootstrapper.StructureMap/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<h3>Data Access Components</h3>
+<p>
+    The following components provide data access infrastructure for the ELEFLEX<sup>&reg;</sup> platform.
+    Entity Framework is used to provide database access to Microsoft SQL Server and Microsoft Azure platforms. 
+    LinqKit is an Entity Framework addition that provides dynamic building of LINQ statements to query data.
+    The ELEFLEX<sup>&reg;</sup> platform contains a custom database provider that will allow integration with
+    MySQL, Oracle and other ANSI SQL Compliant engines.
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">EntityFramework v6.1.1</div>
+            <div class="panel-body">
+                Entity Framework is Microsoft's recommended data access technology for new applications.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/EntityFramework/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">LINQKit v1.1.1</div>
+            <div class="panel-body">
+                LINQKit is a free set of extensions for LINQ to SQL and Entity Framework power users.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/LINQKit/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<h3>Service Components</h3>
+<p>
+    The following components provide the service interaction to support the service-oriented architecture (SOA).
+    A single WCF service is used that encapsulates all service messaages exposed by system modules.
+    Common Service Locator is used to inject concrete service providers to interfaces throughout the system, with the unofficial adapter providing integration with Structuremap.
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">CommonServiceLocator v1.3</div>
+            <div class="panel-body">
+                The Common Service Locator library contains a shared interface for service location which application and framework developers can reference.
+                The library provides an abstraction over IoC containers and service locators. Using the library allows an application to indirectly access the capabilities without relying on hard references.
+                The hope is that using this library, third-party applications and frameworks can begin to leverage IoC/Service Location without tying themselves down to a specific implementation.
+                This library contains a portable class library that targets .NET Framework 4, Windows 8, Windows Phone Silverlight 8, Windows Phone 8.1, and Silverlight 5.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/CommonServiceLocator/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>            
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">CommonServiceLocator.StructureMapAdapter.Unofficial v3.0.4.125</div>
+            <div class="panel-body">
+                An unofficial StructureMap Adapter for the Common Service Locator.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/CommonServiceLocator.StructureMapAdapter.Unofficial/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<h3>Web Infrastructure Components</h3>
+<p>
+    The following components provide infrastructure to the web application.
+    Microsoft MVC 4 provides the Model/View/Controller pattern to display web page content utilizing the Razor engine.
+    MvcCodeRouting is used to provide namespace-based routing, rather than using "Areas" for containing controllers and views. 
+    Additionally, ELEFLEX<sup>&reg;</sup> Modules utilize MvcCodeRouting to deploy self-contained NuGet packages for easy integration in the platform.
+    The WebactivatorEx component allows the platform to register startup and shutdown methods with the web application host without having to modify Global.asax.
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.AspNet.Mvc v5.2.2</div>
+            <div class="panel-body">
+                This package contains the runtime assemblies for ASP.NET MVC. ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that enables a clean separation of concerns and that gives you full control over markup.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.Mvc/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.AspNet.Razor v3.2.2</div>
+            <div class="panel-body">
+                This package contains the runtime assemblies for ASP.NET Web Pages. ASP.NET Web Pages and the new Razor syntax provide a fast, terse, clean and lightweight way to combine server code with HTML to create dynamic web content.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.Razor/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">MvcCodeRouting v1.3.0</div>
+            <div class="panel-body">
+                Namespace-based Modularity for ASP.NET MVC and Web API. Convention over configuration Automatic Routing.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/MvcCodeRouting/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">WebActivatorEx v2.0.5</div>
+            <div class="panel-body">
+                A package that allows other packages to execute some startup code in web apps. This package should be used over the older WebActivator, which was not strong named.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/WebActivatorEx/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<h3>Web User Interface Components</h3>
+<p>
+    The following components provide the user interface infrastructure to the web application.
+    Bootsrap is used to provide a common CSS foundation from which all views use.
+    Font Awesome is used to display icons in the web application.
+    JQuery and JQuery related components are used to provide a scripting framework for integrated components.
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Bootstrap v3.2.0</div>
+            <div class="panel-body">
+                Bootstrap is a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development. It provides a standardized CSS
+                foundation for building web pages.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/bootstrap/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://getbootstrap.com/css/">CSS Reference Online </a> @Html.ActionLink("(local copy)", "BootstrapCss")</td>
+                        <td>CSS foundation reference for the grid system, containers, tables, forms, images and more.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://getbootstrap.com/components/">Component Reference Online </a> @Html.ActionLink("(local copy)", "BootstrapComponents")</td>
+                        <td>Component reference providing examples on how to use Bootstrap including glyphicons, buttons, labels, groups, paging, alerts, panels and more.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://getbootstrap.com/javascript/">Javascript Reference Online </a> @Html.ActionLink("(local copy)", "BootstrapJavascript")</td>
+                        <td>Javascript API reference for modal forms, transitions, alerts, carousels and more.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Font Awesome v4.2.0</div>
+            <div class="panel-body">
+                Font Awesome is an iconic font designed for use with Twitter Bootstrap. This component provides hundreds of icons
+                in varying sizes for use with web user interface design.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/FontAwesome/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/">Cheat Sheet Online </a> @Html.ActionLink("(local copy)", "FontAwesomeCheatSheet")</td>
+                        <td>Reference page for every icon, css and unicode code included with the font awesome distribution.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://fortawesome.github.io/Font-Awesome/examples/">Examples Online </a> @Html.ActionLink("(local copy)", "FontAwesomeExamples")</td>
+                        <td>Examples on how to use font awesome along with select examples for Bootstrap.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">jQuery v2.1.1</div>
+            <div class="panel-body">
+                jQuery is a new kind of JavaScript Library.
+                jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript.
+                NOTE: This package is maintained on behalf of the library owners by the NuGet Community Packages project at http://nugetpackages.codeplex.com/
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/jQuery/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">jquery.datatables v1.10.3</div>
+            <div class="panel-body">
+                DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, based upon the foundations of progressive enhancement, which will add advanced interaction controls to any HTML table.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/jquery.datatables/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">jQuery.UI.Combined v1.11.1</div>
+            <div class="panel-body">
+                jQuery UI is an open source library of interface components — interactions, full-featured widgets, and animation effects — based on the stellar jQuery javascript library . Each component is built according to jQuery's event-driven architecture (find something, manipulate it) and is themeable, making it easy for developers of any skill level to integrate and extend into their own code.
+                NOTE: This package is maintained on behalf of the library owners by the NuGet Community Packages project at http://nugetpackages.codeplex.com/
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/jQuery.UI.Combined/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">jQuery.Validation v1.13.0</div>
+            <div class="panel-body">
+                This jQuery plugin makes simple clientside form validation trivial, while offering lots of option for customization. That makes a good choice if you’re building something new from scratch, but also when you’re trying to integrate it into an existing application with lots of existing markup. The plugin comes bundled with a useful set of validation methods, including URL and email validation, while providing an API to write your own methods. All bundled methods come with default error messages in english and translations into 32 languages.
+                NOTE: This package is maintained on behalf of the library owners by the NuGet Community Packages project at http://nugetpackages.codeplex.com/
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/jQuery.Validation/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

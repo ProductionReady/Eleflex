@@ -1,0 +1,83 @@
+﻿@model Eleflex.Security.Web.Security.Users.ListModel
+@{
+    ViewBag.Title = "Users List";
+}
+<h1>Users List</h1>
+<fieldset>
+    <legend class="sr-only sr-only-focusable">Filter Users</legend>
+@using (Html.BeginForm("List", "Users", FormMethod.Post, new { id = "AdminSecurityUserListForm", @class = "form-inline" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, "Email:")
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Username, "Username:")
+        @Html.TextBoxFor(model => model.Username, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Username)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Inactive, "Inactive:")
+        @Html.DropDownListFor(model => model.Inactive, Model.InactiveSelectItems, new { @class = "form-control chosen-select-deselect", data_placeholder = "Select an Item..." })
+        @Html.ValidationMessageFor(model => model.Inactive)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaxRecords, "Max Records:")
+        @Html.TextBoxFor(model => model.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
+        @Html.ValidationMessageFor(model => model.MaxRecords)
+    </div>
+    <br />
+    <button class="btn btn-primary active" type="submit">Submit</button>
+    <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminSecurityUserListForm');">Clear</button>
+    <button class="btn btn-primary active" type="button" onclick="window.location.href('@Url.Action("Create","Users")')">New User</button>
+}
+</fieldset>
+<hr/>
+<table class="datatable">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Last Login Date</th>
+            <th>Locked Out?</th>
+            <th>Locked Out Reinstate Date</th>
+            <th>Comment</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Items != null)
+        {
+            for (int i = 0; i < Model.Items.Count; i++)
+            {
+                <tr>
+                    <td>@Model.Items[i].Username</td>
+                    <td>@Model.Items[i].FirstName</td>
+                    <td>@Model.Items[i].LastName</td>
+                    <td>@Model.Items[i].Email</td>
+                    <td>
+                        @if (Model.Items[i].LastLoginDate.HasValue)
+                        { @Model.Items[i].LastLoginDate.Value.Date }
+                        else
+                        { <text>N/A</text>}
+                </td>
+                <td>@Model.Items[i].IsLockedOut</td>
+                <td>@Model.Items[i].LockoutReinstateDate</td>
+                <td>@Model.Items[i].Comment</td>
+                <td></td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        //Load table
+        //$("#UserTable").DataTable({ "order": [[0, "asc"]] });
+
+    });
+</script>

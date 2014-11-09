@@ -1,0 +1,69 @@
+﻿@model Eleflex.Logging.Web.Controllers.ListModel
+@{
+    ViewBag.Title = "Log List";
+}
+<h1>Log List</h1>
+<fieldset>
+    <legend class="sr-only sr-only-focusable">Filter List</legend>
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "AdminLoggingListForm", @class = "form-inline" }))
+{
+    <div id="CreateDateFromGroup" class="form-group date">
+        @Html.LabelFor(x => x.DateFrom, "Date From:")
+        @Html.TextBoxFor(x => x.DateFrom, new { @class = "form-control datepicker" })
+        @Html.ValidationMessageFor(model => model.DateFrom)
+    </div>
+    <div id="CreateDateToGroup" class="form-group date">
+        @Html.LabelFor(x => x.DateTo, "Date To:")
+        @Html.TextBoxFor(x => x.DateTo, new { @class = "form-control datepicker" })
+        @Html.ValidationMessageFor(model => model.DateTo)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Severity, "Severity:")
+        @Html.ListBoxFor(model => model.Severity, Model.SeveritySelectItems, new { @class = "form-control chosen-select", data_placeholder = "Select Items...", multiple = "multiple", Style = "width: 150px;" })
+        @Html.ValidationMessageFor(model => model.Severity)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Message, "Message:")
+        @Html.TextBoxFor(model => model.Message, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Message)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaxRecords, "Max Records:")
+        @Html.TextBoxFor(model => model.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
+        @Html.ValidationMessageFor(model => model.MaxRecords)
+    </div>    
+    <br />
+    <button class="btn btn-primary active" type="submit">Submit</button>
+    <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminLoggingListForm');">Clear</button>
+}
+</fieldset>
+<hr/>
+<table id="LogTable">
+    <thead>
+        <tr>
+            <th>Create Date</th>
+            <th>Server</th>
+            <th>Application</th>
+            <th>Severity</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Items.Count; i++)
+        {
+            <tr>
+                <td>@Model.Items[i].CreateDate.DateTime</td>
+                <td>@Model.Items[i].Server</td>
+                <td>@Model.Items[i].Application</td>
+                <td>@Model.Items[i].Severity</td>
+                <td>@Model.Items[i].Message</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {        
+        //Load table
+        $("#LogTable").DataTable({ "order": [[0, "desc"]] });    
+});
+</script>

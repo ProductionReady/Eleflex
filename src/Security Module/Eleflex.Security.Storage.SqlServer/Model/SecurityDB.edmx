@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SecurityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionKey" />
+          </Key>
+          <Property Name="PermissionKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModuleKey" Type="uniqueidentifier" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ExtraData" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleKey" />
+          </Key>
+          <Property Name="RoleKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ExtraData" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RolePermission">
+          <Key>
+            <PropertyRef Name="RolePermissionKey" />
+          </Key>
+          <Property Name="RolePermissionKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PermissionKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+          <Property Name="StartDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="EndDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ExtraData" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RoleRole">
+          <Key>
+            <PropertyRef Name="RoleRoleKey" />
+          </Key>
+          <Property Name="RoleRoleKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentRoleKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChildRoleKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+          <Property Name="StartDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="EndDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ExtraData" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserKey" />
+          </Key>
+          <Property Name="UserKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PasswordLastChangeDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LoginFailedAttempts" Type="int" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="LockoutReinstateDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ExtraData" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserPermission">
+          <Key>
+            <PropertyRef Name="UserPermissionKey" />
+          </Key>
+          <Property Name="UserPermissionKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PermissionKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+          <Property Name="StartDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="EndDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ExtraData" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleKey" />
+          </Key>
+          <Property Name="UserRoleKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+          <Property Name="StartDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="EndDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ExtraData" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="SecurityModelStoreContainer">
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="Eleflex" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="Eleflex" store:Type="Tables" />
+          <EntitySet Name="RolePermission" EntityType="Self.RolePermission" Schema="Eleflex" store:Type="Tables" />
+          <EntitySet Name="RoleRole" EntityType="Self.RoleRole" Schema="Eleflex" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="Eleflex" store:Type="Tables" />
+          <EntitySet Name="UserPermission" EntityType="Self.UserPermission" Schema="Eleflex" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="Eleflex" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SecurityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionKey" />
+          </Key>
+          <Property Name="PermissionKey" Type="Guid" Nullable="false" />
+          <Property Name="ModuleKey" Type="Guid" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleKey" />
+          </Key>
+          <Property Name="RoleKey" Type="Guid" Nullable="false" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RolePermission">
+          <Key>
+            <PropertyRef Name="RolePermissionKey" />
+          </Key>
+          <Property Name="RolePermissionKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleKey" Type="Guid" Nullable="false" />
+          <Property Name="PermissionKey" Type="Guid" Nullable="false" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+          <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RoleRole">
+          <Key>
+            <PropertyRef Name="RoleRoleKey" />
+          </Key>
+          <Property Name="RoleRoleKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentRoleKey" Type="Guid" Nullable="false" />
+          <Property Name="ChildRoleKey" Type="Guid" Nullable="false" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+          <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserKey" />
+          </Key>
+          <Property Name="UserKey" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordLastChangeDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="LoginFailedAttempts" Type="Int32" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="LastLoginDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="LockoutReinstateDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserPermission">
+          <Key>
+            <PropertyRef Name="UserPermissionKey" />
+          </Key>
+          <Property Name="UserPermissionKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserKey" Type="Guid" Nullable="false" />
+          <Property Name="PermissionKey" Type="Guid" Nullable="false" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+          <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleKey" />
+          </Key>
+          <Property Name="UserRoleKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserKey" Type="Guid" Nullable="false" />
+          <Property Name="RoleKey" Type="Guid" Nullable="false" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+          <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SecurityDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Permissions" EntityType="Self.Permission" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="RolePermissions" EntityType="Self.RolePermission" />
+          <EntitySet Name="RoleRoles" EntityType="Self.RoleRole" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserPermissions" EntityType="Self.UserPermission" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SecurityModelStoreContainer" CdmEntityContainer="SecurityDB">
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="SecurityModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="PermissionKey" ColumnName="PermissionKey" />
+                <ScalarProperty Name="ModuleKey" ColumnName="ModuleKey" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExtraData" ColumnName="ExtraData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="SecurityModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleKey" ColumnName="RoleKey" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExtraData" ColumnName="ExtraData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolePermissions">
+            <EntityTypeMapping TypeName="SecurityModel.RolePermission">
+              <MappingFragment StoreEntitySet="RolePermission">
+                <ScalarProperty Name="RolePermissionKey" ColumnName="RolePermissionKey" />
+                <ScalarProperty Name="RoleKey" ColumnName="RoleKey" />
+                <ScalarProperty Name="PermissionKey" ColumnName="PermissionKey" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ExtraData" ColumnName="ExtraData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleRoles">
+            <EntityTypeMapping TypeName="SecurityModel.RoleRole">
+              <MappingFragment StoreEntitySet="RoleRole">
+                <ScalarProperty Name="RoleRoleKey" ColumnName="RoleRoleKey" />
+                <ScalarProperty Name="ParentRoleKey" ColumnName="ParentRoleKey" />
+                <ScalarProperty Name="ChildRoleKey" ColumnName="ChildRoleKey" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ExtraData" ColumnName="ExtraData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SecurityModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserKey" ColumnName="UserKey" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordLastChangeDate" ColumnName="PasswordLastChangeDate" />
+                <ScalarProperty Name="LoginFailedAttempts" ColumnName="LoginFailedAttempts" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LockoutReinstateDate" ColumnName="LockoutReinstateDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ExtraData" ColumnName="ExtraData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPermissions">
+            <EntityTypeMapping TypeName="SecurityModel.UserPermission">
+              <MappingFragment StoreEntitySet="UserPermission">
+                <ScalarProperty Name="UserPermissionKey" ColumnName="UserPermissionKey" />
+                <ScalarProperty Name="UserKey" ColumnName="UserKey" />
+                <ScalarProperty Name="PermissionKey" ColumnName="PermissionKey" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ExtraData" ColumnName="ExtraData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="SecurityModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="UserRoleKey" ColumnName="UserRoleKey" />
+                <ScalarProperty Name="UserKey" ColumnName="UserKey" />
+                <ScalarProperty Name="RoleKey" ColumnName="RoleKey" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ExtraData" ColumnName="ExtraData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

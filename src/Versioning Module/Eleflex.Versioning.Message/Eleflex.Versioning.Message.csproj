@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{252597EA-4DA8-4864-963E-64A143A5F2EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eleflex.Versioning.Message</RootNamespace>
+    <AssemblyName>Eleflex.Versioning.Message</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging, Version=2.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Common.Logging.2.3.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=3.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4">
+      <HintPath>..\..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\IVersioningRequestDispatcher.cs" />
+    <Compile Include="Model\IModuleVersionServiceClient.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionQueryAggregateRequest.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionQueryAggregateResponse.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionQueryRequest.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionQueryResponse.cs" />
+    <Compile Include="Model\VersioningRequestDispatcher.cs" />
+    <Compile Include="Model\ModuleVersion.cs" />
+    <Compile Include="Model\ModuleVersionServiceClient.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionCreateRequest.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionCreateResponse.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionDeleteRequest.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionDeleteResponse.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionGetRequest.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionGetResponse.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionUpdateRequest.cs" />
+    <Compile Include="ModuleVersionCommand\ModuleVersionUpdateResponse.cs" />
+    <Compile Include="Model\Version.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework Module\Eleflex\Eleflex.csproj">
+      <Project>{d57f1ba1-1554-4c4f-a084-c03b8617f595}</Project>
+      <Name>Eleflex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Security Module\Eleflex.Security\Eleflex.Security.csproj">
+      <Project>{eaab1c06-966c-431a-aa8b-b0265e53d84c}</Project>
+      <Name>Eleflex.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services Module\Eleflex.Services.Client\Eleflex.Services.Client.csproj">
+      <Project>{476aef02-7624-4a7f-8dd5-ceb7cc91f69a}</Project>
+      <Name>Eleflex.Services.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services Module\Eleflex.Services\Eleflex.Services.csproj">
+      <Project>{201a991b-eae3-40d9-b161-c0f5f4dc7512}</Project>
+      <Name>Eleflex.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Storage Module\Eleflex.Storage\Eleflex.Storage.csproj">
+      <Project>{18bb79dc-ae56-49d8-9972-2d30038c9603}</Project>
+      <Name>Eleflex.Storage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MvcCodeRouting.Web.Http</id>
+    <version>1.1.0</version>
+    <authors>Max Toro Q.</authors>
+    <owners>Max Toro Q.</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>http://mvccoderouting.codeplex.com/</projectUrl>
+    <iconUrl>http://maxtoroq.github.io/MvcCodeRouting/nuget/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>ASP.NET Web API support for MvcCodeRouting. For System.Web hosting install the MvcCodeRouting.Web.Http.WebHost package.</description>
+    <releaseNotes>Please see the CHANGES file in the source code repository for a complete list of all changes.</releaseNotes>
+    <copyright>© 2012-2014 Max Toro Q.</copyright>
+    <tags>aspnet webapi aspnetwebapi routing</tags>
+    <dependencies>
+      <dependency id="MvcCodeRouting" version="[1.3, 1.4)" />
+    </dependencies>
+  </metadata>
+</package>

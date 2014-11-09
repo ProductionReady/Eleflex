@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B4CE044-A852-4E04-904E-500FFF1ABD56}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eleflex.Storage.Database</RootNamespace>
+    <AssemblyName>Eleflex.Storage.Database</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\EBOProperty.cs" />
+    <Compile Include="Model\EleflexBusinessObject.cs" />
+    <Compile Include="Model\EleflexConstants.cs" />
+    <Compile Include="Model\EleflexContext.cs" />
+    <Compile Include="Model\EleflexDataTypeConstant.cs" />
+    <Compile Include="Model\EleflexDataTypeEnum.cs" />
+    <Compile Include="Model\EleflexDataTypeFactory.cs" />
+    <Compile Include="Model\EleflexKeyValue.cs" />
+    <Compile Include="Model\EleflexMessage.cs" />
+    <Compile Include="Model\EleflexObject.cs" />
+    <Compile Include="Model\EleflexProperty.cs" />
+    <Compile Include="Model\EleflexSecurityObject.cs" />
+    <Compile Include="Model\ESOProperty.cs" />
+    <Compile Include="Model\IEBOProperty.cs" />
+    <Compile Include="Model\IEBOPropertyChange.cs" />
+    <Compile Include="Model\IEleflexBusinessObject.cs" />
+    <Compile Include="Model\IEleflexContext.cs" />
+    <Compile Include="Model\IEleflexDataKey.cs" />
+    <Compile Include="Model\IEleflexDataType.cs" />
+    <Compile Include="Model\IEleflexMessage.cs" />
+    <Compile Include="Model\IEleflexObject.cs" />
+    <Compile Include="Model\IEleflexProperty.cs" />
+    <Compile Include="Model\IEleflexSecurityObject.cs" />
+    <Compile Include="Model\IESOProperty.cs" />
+    <Compile Include="Model\IMappingContext.cs" />
+    <Compile Include="Model\InterfaceCache.cs" />
+    <Compile Include="Model\IPersistenceFilter.cs" />
+    <Compile Include="Model\IPersistenceFilterBuilder.cs" />
+    <Compile Include="Model\IPersistenceProvider.cs" />
+    <Compile Include="Model\ISecurityAuthentication.cs" />
+    <Compile Include="Model\ISecurityContext.cs" />
+    <Compile Include="Model\ISecurityCredentials.cs" />
+    <Compile Include="Model\ISecurityMessage.cs" />
+    <Compile Include="Model\ISecurityRequest.cs" />
+    <Compile Include="Model\ISecurityRequestContext.cs" />
+    <Compile Include="Model\ISecurityRequestItem.cs" />
+    <Compile Include="Model\ISecurityRequestItems.cs" />
+    <Compile Include="Model\ISecurityResponse.cs" />
+    <Compile Include="Model\ISecurityResponseItem.cs" />
+    <Compile Include="Model\ISecurityResponseItems.cs" />
+    <Compile Include="Model\ISecurityUserID.cs" />
+    <Compile Include="Model\MappingConstants.cs" />
+    <Compile Include="Model\MappingContext.cs" />
+    <Compile Include="Model\PersistenceRequest.cs" />
+    <Compile Include="Model\PersistenceResponse.cs" />
+    <Compile Include="Model\PersistenceResponseItem.cs" />
+    <Compile Include="Model\PersistenceResponseItems.cs" />
+    <Compile Include="Model\PropertyValidator.cs" />
+    <Compile Include="Model\SecurityConstants.cs" />
+    <Compile Include="Model\SecurityContext.cs" />
+    <Compile Include="Model\SecurityCredentials.cs" />
+    <Compile Include="Model\SecurityMessage.cs" />
+    <Compile Include="Model\SecurityRequest.cs" />
+    <Compile Include="Model\SecurityRequestItem.cs" />
+    <Compile Include="Model\SecurityRequestItems.cs" />
+    <Compile Include="Model\SecurityResponse.cs" />
+    <Compile Include="Model\SecurityResponseItem.cs" />
+    <Compile Include="Model\SecurityResponseItems.cs" />
+    <Compile Include="Filters\Aggregate.cs" />
+    <Compile Include="Filters\AggregateEnum.cs" />
+    <Compile Include="Filters\Between.cs" />
+    <Compile Include="Filters\Compare.cs" />
+    <Compile Include="Filters\ComparisonEnum.cs" />
+    <Compile Include="Filters\Distinct.cs" />
+    <Compile Include="Filters\Expression.cs" />
+    <Compile Include="Filters\ExpressionEnum.cs" />
+    <Compile Include="Filters\FilterAggregate.cs" />
+    <Compile Include="Filters\FilterBase.cs" />
+    <Compile Include="Filters\FilterBetween.cs" />
+    <Compile Include="Filters\FilterBuilder.cs" />
+    <Compile Include="Filters\FilterCompare.cs" />
+    <Compile Include="Filters\FilterDistinct.cs" />
+    <Compile Include="Filters\FilterEnum.cs" />
+    <Compile Include="Filters\FilterExpression.cs" />
+    <Compile Include="Filters\FilterLike.cs" />
+    <Compile Include="Filters\FilterNull.cs" />
+    <Compile Include="Filters\FilterPropertyCompare.cs" />
+    <Compile Include="Filters\FilterRelation.cs" />
+    <Compile Include="Filters\FilterSelect.cs" />
+    <Compile Include="Filters\FilterSet.cs" />
+    <Compile Include="Filters\FilterSort.cs" />
+    <Compile Include="Filters\FilterUpdate.cs" />
+    <Compile Include="Filters\Like.cs" />
+    <Compile Include="Filters\Null.cs" />
+    <Compile Include="Filters\PropertyCompare.cs" />
+    <Compile Include="Filters\Relation.cs" />
+    <Compile Include="Filters\Select.cs" />
+    <Compile Include="Filters\Set.cs" />
+    <Compile Include="Filters\Sort.cs" />
+    <Compile Include="Filters\Update.cs" />
+    <Compile Include="Model\DataAccess.cs" />
+    <Compile Include="Model\DatabaseCatalog.cs" />
+    <Compile Include="Model\DatabaseColumnDirection.cs" />
+    <Compile Include="Model\DatabaseCommand.cs" />
+    <Compile Include="Model\DatabaseCommandParameter.cs" />
+    <Compile Include="Model\DatabaseConstants.cs" />
+    <Compile Include="Model\DatabaseConstraint.cs" />
+    <Compile Include="Model\DatabaseForeignKey.cs" />
+    <Compile Include="Model\DatabaseForeignKeyAction.cs" />
+    <Compile Include="Model\DatabaseIndex.cs" />
+    <Compile Include="Model\DatabaseObjectType.cs" />
+    <Compile Include="Model\DatabaseProviderBase.cs" />
+    <Compile Include="Model\DatabaseSchema.cs" />
+    <Compile Include="Model\DatabaseSQLResponse.cs" />
+    <Compile Include="Model\DatabaseTransaction.cs" />
+    <Compile Include="Model\EDOInheritance.cs" />
+    <Compile Include="Model\EDOProperty.cs" />
+    <Compile Include="Model\EleflexDatabaseObject.cs" />
+    <Compile Include="Model\EleflexPersistenceObject.cs" />
+    <Compile Include="Model\EPOProperty.cs" />
+    <Compile Include="Model\IDatabaseCatalog.cs" />
+    <Compile Include="Model\IDatabaseCatalogGenerator.cs" />
+    <Compile Include="Model\IDatabaseCommandParameter.cs" />
+    <Compile Include="Model\IDatabaseConstraint.cs" />
+    <Compile Include="Model\IDatabaseFilter.cs" />
+    <Compile Include="Model\IDatabaseFilterToSQLGenerator.cs" />
+    <Compile Include="Model\IDatabaseForeignKey.cs" />
+    <Compile Include="Model\IDatabaseIndex.cs" />
+    <Compile Include="Model\IDatabaseProvider.cs" />
+    <Compile Include="Model\IDatabaseSchema.cs" />
+    <Compile Include="Model\IDatabaseSQLResponse.cs" />
+    <Compile Include="Model\IEDOProperty.cs" />
+    <Compile Include="Model\IEleflexDatabaseObject.cs" />
+    <Compile Include="Model\IEleflexPersistenceObject.cs" />
+    <Compile Include="Model\IEPOProperty.cs" />
+    <Compile Include="Model\IEPOTrigger.cs" />
+    <Compile Include="Model\IPersistenceRelation.cs" />
+    <Compile Include="Model\IPersistenceTransaction.cs" />
+    <Compile Include="Model\ODBCDatabaseProvider.cs" />
+    <Compile Include="Model\OLEDatabaseProvider.cs" />
+    <Compile Include="Model\PersistenceConstants.cs" />
+    <Compile Include="Model\PersistenceException.cs" />
+    <Compile Include="Model\PersistenceProviderBase.cs" />
+    <Compile Include="Model\PersistenceRelation.cs" />
+    <Compile Include="Model\PersistenceTransaction.cs" />
+    <Compile Include="Model\TSQLDatabaseFilterGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\EleflexRequest.cs" />
+    <Compile Include="Model\EleflexRequestItem.cs" />
+    <Compile Include="Model\EleflexRequestItems.cs" />
+    <Compile Include="Model\EleflexResponse.cs" />
+    <Compile Include="Model\EleflexResponseItem.cs" />
+    <Compile Include="Model\EleflexResponseItems.cs" />
+    <Compile Include="Model\IEleflexRequest.cs" />
+    <Compile Include="Model\IEleflexRequestContext.cs" />
+    <Compile Include="Model\IEleflexRequestItem.cs" />
+    <Compile Include="Model\IEleflexRequestItems.cs" />
+    <Compile Include="Model\IEleflexResponse.cs" />
+    <Compile Include="Model\IEleflexResponseItem.cs" />
+    <Compile Include="Model\IEleflexResponseItems.cs" />
+    <Compile Include="Model\IEleflexValue.cs" />
+    <Compile Include="Model\IPersistenceRequest.cs" />
+    <Compile Include="Model\IPersistenceResponse.cs" />
+    <Compile Include="Model\IPersistenceResponseItem.cs" />
+    <Compile Include="Model\IPersistenceResponseItems.cs" />
+    <Compile Include="Values\ValueBase.cs" />
+    <Compile Include="Values\ValueBoolean.cs" />
+    <Compile Include="Values\ValueBooleanNull.cs" />
+    <Compile Include="Values\ValueByte.cs" />
+    <Compile Include="Values\ValueByteArray.cs" />
+    <Compile Include="Values\ValueByteArrayNull.cs" />
+    <Compile Include="Values\ValueByteNull.cs" />
+    <Compile Include="Values\ValueChar.cs" />
+    <Compile Include="Values\ValueCharNull.cs" />
+    <Compile Include="Values\ValueCustom.cs" />
+    <Compile Include="Values\ValueDateTime.cs" />
+    <Compile Include="Values\ValueDateTimeNull.cs" />
+    <Compile Include="Values\ValueDecimal.cs" />
+    <Compile Include="Values\ValueDecimalNull.cs" />
+    <Compile Include="Values\ValueDouble.cs" />
+    <Compile Include="Values\ValueDoubleNull.cs" />
+    <Compile Include="Values\ValueGuid.cs" />
+    <Compile Include="Values\ValueGuidNull.cs" />
+    <Compile Include="Values\ValueInt16.cs" />
+    <Compile Include="Values\ValueInt16Null.cs" />
+    <Compile Include="Values\ValueInt32.cs" />
+    <Compile Include="Values\ValueInt32Null.cs" />
+    <Compile Include="Values\ValueInt64.cs" />
+    <Compile Include="Values\ValueInt64Null.cs" />
+    <Compile Include="Values\ValueObject.cs" />
+    <Compile Include="Values\ValueObjectNull.cs" />
+    <Compile Include="Values\ValueSByte.cs" />
+    <Compile Include="Values\ValueSByteNull.cs" />
+    <Compile Include="Values\ValueSingle.cs" />
+    <Compile Include="Values\ValueSingleNull.cs" />
+    <Compile Include="Values\ValueString.cs" />
+    <Compile Include="Values\ValueStringNull.cs" />
+    <Compile Include="Values\ValueTimeSpan.cs" />
+    <Compile Include="Values\ValueTimeSpanNull.cs" />
+    <Compile Include="Values\ValueUInt16.cs" />
+    <Compile Include="Values\ValueUInt16Null.cs" />
+    <Compile Include="Values\ValueUInt32.cs" />
+    <Compile Include="Values\ValueUInt32Null.cs" />
+    <Compile Include="Values\ValueUInt64.cs" />
+    <Compile Include="Values\ValueUInt64Null.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework Module\Eleflex\Eleflex.csproj">
+      <Project>{d57f1ba1-1554-4c4f-a084-c03b8617f595}</Project>
+      <Name>Eleflex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Eleflex.Storage\Eleflex.Storage.csproj">
+      <Project>{18bb79dc-ae56-49d8-9972-2d30038c9603}</Project>
+      <Name>Eleflex.Storage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
