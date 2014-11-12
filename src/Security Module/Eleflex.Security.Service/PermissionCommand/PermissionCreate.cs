@@ -29,6 +29,7 @@ namespace Eleflex.Security.Service.PermissionCommand
     /// <summary>
     /// Service command to create a Permission.
     /// </summary>
+    [ServiceCommandHandlerAttribute(typeof(PermissionCreateRequest))]
     public class PermissionCreate : ServiceCommandHandler<PermissionCreateRequest, PermissionCreateResponse>
     {
         private readonly IPermissionRepository _permissionRepository;

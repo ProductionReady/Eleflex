@@ -1,12 +1,13 @@
 ﻿@model Eleflex.Logging.Web.Controllers.ListModel
 @{
-    ViewBag.Title = "Log List";
+    ViewBag.Title = "System Log";
 }
-<h1>Log List</h1>
+<h1>System Log</h1>
 <fieldset>
-    <legend class="sr-only sr-only-focusable">Filter List</legend>
-@using (Html.BeginForm("", "", FormMethod.Post, new { id = "AdminLoggingListForm", @class = "form-inline" }))
+    <legend class="sr-only sr-only-focusable">Search Logs</legend>
+@using (Html.BeginForm("List", "Admin", FormMethod.Post, new { id = "AdminLoggingListForm", @class = "form-inline" }))
 {
+    @Html.AntiForgeryToken()
     <div id="CreateDateFromGroup" class="form-group date">
         @Html.LabelFor(x => x.DateFrom, "Date From:")
         @Html.TextBoxFor(x => x.DateFrom, new { @class = "form-control datepicker" })
@@ -31,10 +32,11 @@
         @Html.LabelFor(model => model.MaxRecords, "Max Records:")
         @Html.TextBoxFor(model => model.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
         @Html.ValidationMessageFor(model => model.MaxRecords)
-    </div>    
-    <br />
-    <button class="btn btn-primary active" type="submit">Submit</button>
-    <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminLoggingListForm');">Clear</button>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary active" type="submit">Search</button>
+        <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminLoggingListForm');">Clear</button>
+    </div>
 }
 </fieldset>
 <hr/>

@@ -30,6 +30,7 @@ namespace Eleflex.Security.Service.PermissionCommand
     /// <summary>
     /// Service command to query Permissions.
     /// </summary>
+    [ServiceCommandHandlerAttribute(typeof(PermissionQueryRequest))]
     public class PermissionQuery : ServiceCommandHandler<PermissionQueryRequest, PermissionQueryResponse>
     {
         private readonly IPermissionRepository _permissionRepository;

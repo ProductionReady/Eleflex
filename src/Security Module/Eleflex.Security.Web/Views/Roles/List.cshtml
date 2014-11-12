@@ -1,0 +1,68 @@
+﻿@model Eleflex.Security.Web.Security.Roles.ListModel
+@{
+    ViewBag.Title = "System Roles";
+}
+<h1>System Roles</h1>
+<fieldset>
+    <legend class="sr-only sr-only-focusable">Search Users</legend>
+@using (Html.BeginForm("List", "Roles", FormMethod.Post, new { id = "AdminSecurityRolesListForm", @class = "form-inline" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, "Name:")
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, "Description:")
+        @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Description)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Inactive, "Inactive:")
+        @Html.DropDownListFor(model => model.Inactive, Model.InactiveSelectItems, new { @class = "form-control chosen-single-select", data_placeholder = "Select an Item..." })
+        @Html.ValidationMessageFor(model => model.Inactive)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaxRecords, "Max Records:")
+        @Html.TextBoxFor(model => model.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
+        @Html.ValidationMessageFor(model => model.MaxRecords)
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary active" type="submit">Search</button>
+        <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminSecurityRolesListForm');">Clear</button>
+        <button class="btn btn-primary active" type="button" onclick="window.location.href('@Url.Action("Create","Roles")')">New Role</button>
+    </div>
+}
+</fieldset>
+<hr/>
+<table class="datatable">
+    <thead>
+        <tr>
+            <th>Identifier</th>
+            <th>Name</th>
+            <th>Inactive</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Items != null)
+        {
+            for (int i = 0; i < Model.Items.Count; i++)
+            {
+        <tr>
+            <td>@Model.Items[i].RoleKey.ToString()</td>
+            <td>@Model.Items[i].Name</td>
+            <td>@Model.Items[i].Inactive</td>
+            <td>@Model.Items[i].Description</td>
+            <td></td>
+        </tr>
+            }
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {        
+
+    });
+</script>

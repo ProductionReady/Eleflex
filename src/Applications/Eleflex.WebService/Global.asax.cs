@@ -17,23 +17,6 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-using Bootstrap;
-using Bootstrap.AutoMapper;
-using Bootstrap.Extensions.StartupTasks;
-using Bootstrap.StructureMap;
-using CommonServiceLocator.StructureMapAdapter.Unofficial;
-using Eleflex.Versioning;
-using Microsoft.Practices.ServiceLocation;
-using StructureMap;
-using StructureMap.Web;
-using StructureMap.Web.Pipeline;
 
 namespace Eleflex.WebService
 {
@@ -63,7 +46,6 @@ namespace Eleflex.WebService
         /// <param name="e"></param>
         protected void Application_EndRequest(object sender, EventArgs e)
         {
-            //StructureMap.Web.Pipeline.HttpContextLifecycle.DisposeAndClearAll();
         }
     }
 }

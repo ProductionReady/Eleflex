@@ -30,6 +30,7 @@ namespace Eleflex.Security.Service.PermissionCommand
     /// <summary>
     /// Service command to query Permissions for aggregate.
     /// </summary>
+    [ServiceCommandHandlerAttribute(typeof(PermissionQueryAggregateRequest))]
     public class PermissionQueryAggregate : ServiceCommandHandler<PermissionQueryAggregateRequest, PermissionQueryAggregateResponse>
     {
         private readonly IPermissionRepository _permissionRepository;

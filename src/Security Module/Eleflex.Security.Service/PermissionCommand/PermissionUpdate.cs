@@ -29,6 +29,7 @@ namespace Eleflex.Security.Service.PermissionCommand
     /// <summary>
     /// Service command to update a Permission.
     /// </summary>
+    [ServiceCommandHandlerAttribute(typeof(PermissionUpdateRequest))]
     public class PermissionUpdate : ServiceCommandHandler<PermissionUpdateRequest, PermissionUpdateResponse>
     {
         private readonly IPermissionRepository _permissionRepository;

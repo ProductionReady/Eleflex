@@ -31,12 +31,7 @@ namespace Eleflex.Security.Web.Security
     /// </summary>
     public class SecurityController : Controller
     {
-
-        public SecurityController()
-        {
-            
-        }
-
+        
         /// <summary>
         /// Index.
         /// </summary>

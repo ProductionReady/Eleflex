@@ -140,6 +140,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\AccountController.cs" />
+    <Compile Include="Security\Permissions\ListModel.cs" />
+    <Compile Include="Security\Roles\ListModel.cs" />
     <Compile Include="Security\SecurityController.cs" />
     <Compile Include="Security\Permissions\PermissionsController.cs" />
     <Compile Include="Security\Roles\RolesController.cs" />
@@ -204,10 +206,13 @@
     <EmbeddedResource Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\_ViewStart.cshtml" />
+    <EmbeddedResource Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Users\Index.cshtml" />
+    <EmbeddedResource Include="Views\Roles\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Permissions\List.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

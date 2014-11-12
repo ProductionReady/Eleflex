@@ -55,11 +55,15 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
 
             //JQuery Chosen Scripts (select choosers)
             bundles.Add(new ScriptBundle("~/bundles/chosenjsEleflex").Include(
-            "~/Scripts/chosen.jquery.js"));            
+            "~/Scripts/chosen.jquery.js"));
 
             //Bootstrap Scripts
             bundles.Add(new ScriptBundle("~/bundles/bootstrapEleflex").Include(
             "~/Scripts/bootstrap.js"));
+
+            //Knockout Scripts
+            bundles.Add(new ScriptBundle("~/bundles/knockoutjsEleflex").Include(
+            "~/Scripts/knockout-{version}.js"));
 
             //Moment Scripts (req by datetimepicker)
             bundles.Add(new ScriptBundle("~/bundles/momentjsEleflex").Include(
@@ -92,9 +96,13 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
-            //Chosen select pickers CSS
-            bundles.Add(new StyleBundle("~/Content/chosenEleflex").Include(
-                "~/Content/chosen.css"));
+            //Chosen select pickers CSS (Default css removed for bootstrap.chosen alternate style)
+            //bundles.Add(new StyleBundle("~/Content/chosenEleflex").Include(
+            //    "~/Content/chosen.css"));
+
+            //Bootstrap Chosen select pickers CSS
+            bundles.Add(new StyleBundle("~/Content/bootstrapchosenEleflex").Include(
+                "~/Content/bootstrap-chosen.css"));
 
             //Font awesome CSS
             bundles.Add(new StyleBundle("~/Content/fontawesomeEleflex").Include(

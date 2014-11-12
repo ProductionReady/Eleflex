@@ -29,6 +29,7 @@ namespace Eleflex.Security.Service.PermissionCommand
     /// <summary>
     /// Service command to delete a Permission.
     /// </summary>
+    [ServiceCommandHandlerAttribute(typeof(PermissionDeleteRequest))]
     public class PermissionDelete : ServiceCommandHandler<PermissionDeleteRequest, PermissionDeleteResponse>
     {
         private readonly IPermissionRepository _permissionRepository;
