@@ -21,22 +21,22 @@ using System;
 namespace Eleflex.Security
 {
     /// <summary>
-    /// Constants for use with the logging module.
+    /// Constants for use with the security module.
     /// </summary>
     public class SecurityConstants
     {
         /// <summary>
-        /// The name used to distinguish the logging storage provider from others.
+        /// The name used to distinguish the security storage provider from others.
         /// </summary>
         public const string STORAGE_PROVIDER_NAME = "EleflexSecurityStorageProvider";
 
         /// <summary>
-        /// The module key for logging.
+        /// The module key for versioning.
         /// </summary>
         public static Guid MODULE_KEY = Guid.Parse("72E85BF1-8903-45C2-8DD7-CA25F76DC08F");
 
         /// <summary>
-        /// The module name for logging.
+        /// The module name for versioning.
         /// </summary>
         public const string MODULE_NAME = "Eleflex Security Module";
 
