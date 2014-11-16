@@ -303,8 +303,8 @@ namespace Eleflex.Logging
         /// <param name="message"></param>
         public virtual bool ProcessMessage(Eleflex.Logging.Log message)
         {
-            //We want to process logging on a different thread from the current request thread as to not slow down processing for persisting log messages
-            //additionally messages created on the context of the request thread would be rolledback should the unit of work be rolledback/disposed.
+            //We want to process logging on a different thread from the current request thread as to not slow down processing for persisting log messages.
+            //Additionally messages created on the context of the request thread would be rolledback should the unit of work be rolledback/disposed.
             try
             {
                 ILogRepository logRepository = ServiceLocator.Current.GetInstance<ILogRepository>();
@@ -315,7 +315,7 @@ namespace Eleflex.Logging
             catch (Exception ex)
             {
                 ServiceLocator.Current.GetInstance<Eleflex.IUnitOfWork>().Rollback();
-                Common.Logging.LogManager.GetLogger("CommonLoggingRepositoryLog:InsertLogProcess").Error(ex);
+                Common.Logging.LogManager.GetLogger("CommonLoggingAsyncFactoryAdapter:ProcessMessage").Error(ex);
                 return false;
             }
             //Don't call dispose on the unit of work as this is a long running thread. Calling Commit or Rollback on the unit of work 

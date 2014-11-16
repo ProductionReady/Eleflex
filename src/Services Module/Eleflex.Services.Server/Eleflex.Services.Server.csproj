@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HealthCommand\IsServerOnline.cs" />
-    <Compile Include="IServiceCommandHandlerAttribute.cs" />
+    <Compile Include="Model\IServiceCommandHandlerRequestType.cs" />
     <Compile Include="Model\IServiceCommandHandlerProvider.cs" />
     <Compile Include="Model\ServiceCommandHandlerAttribute.cs" />
     <Compile Include="Model\ServiceCommandHandlerProvider.cs" />

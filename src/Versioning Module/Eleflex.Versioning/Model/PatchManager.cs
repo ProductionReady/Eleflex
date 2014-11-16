@@ -34,7 +34,7 @@ namespace Eleflex.Versioning
         protected static List<Assembly> _allAssemblies = null;
         protected static object _lockAllAssemblies = new object();
         protected bool? _isApplicationUpToDate = false;
-        protected const string SOURCE = "Eleflex.Versioning.Model.PatchManager";
+        protected const string SOURCE = "Eleflex.Versioning.PatchManager";
 
         /// <summary>
         /// Get a system summary.
@@ -67,26 +67,30 @@ namespace Eleflex.Versioning
 
                 //Find modules to update
                 List<IModulePatch> modulesToUpdate = new List<IModulePatch>();
-                foreach (var embeddedModule in summary.EmbeddedModules)
+                foreach (Guid moduleKey in summary.ModulePatches.Keys)
                 {
+                    List<IModulePatch> patches = summary.ModulePatches[moduleKey];
+                    IModulePatch moduleLatest = GetLatestVersionPatch(patches);
+                    if (moduleLatest == null)
+                        continue;
+
                     if (summary.InstalledModules == null)
-                        modulesToUpdate.Add(embeddedModule);
+                        modulesToUpdate.Add(moduleLatest);
                     else
                     {
-                        var installedModule = summary.InstalledModules.Where(x => x.ModuleKey == embeddedModule.ModuleKey).FirstOrDefault();
+                        var installedModule = summary.InstalledModules.Where(x => x.ModuleKey == moduleLatest.ModuleKey).FirstOrDefault();
                         if (installedModule == null)
-                            modulesToUpdate.Add(embeddedModule);
+                            modulesToUpdate.Add(moduleLatest);
                         else
                         {
-                            if (IsCompareVersionHigher(installedModule.Version, embeddedModule.Version))
-                                modulesToUpdate.Add(embeddedModule);
+                            if (IsCompareVersionHigher(installedModule.Version, moduleLatest.Version))
+                                modulesToUpdate.Add(moduleLatest);
                         }
                     }
                 }
 
-                //Order modules for update
-                List<IModulePatch> orderedModuleUpdateList = new List<IModulePatch>();
-                //Get modules with no dependencies            
+                //Order modules for update. Get modules with no dependencies first
+                List<IModulePatch> orderedModuleUpdateList = new List<IModulePatch>();                
                 for (int i = 0; i < modulesToUpdate.Count; i++)
                 {
                     if (modulesToUpdate[i].DependentModules == null || modulesToUpdate[i].DependentModules.Count == 0)
@@ -97,17 +101,17 @@ namespace Eleflex.Versioning
                         continue;
                     }
                 }
+
                 //Remaining modules check by dependency
                 while (modulesToUpdate.Count > 0)
                     orderedModuleUpdateList.Add(GetNextModuleToPatch(modulesToUpdate));
 
-                //Update patches
+                //Update modules
                 bool success = true;
-                foreach (var patch in orderedModuleUpdateList)
+                foreach (var modToUpdate in orderedModuleUpdateList)
                 {
-
-                    success = UpdateModule(patch.ModuleKey, summary, log);
-                    if (!success) //Stop processing patches if an error (this should hopefully never happen)
+                    success = UpdateModule(modToUpdate.ModuleKey, summary, log);
+                    if (!success) //Stop processing patches if an error as there may be dependencies down the line
                         break;
                 }                
 
@@ -155,6 +159,7 @@ namespace Eleflex.Versioning
                             Common.Logging.LogManager.GetLogger(item.Source).Warn(item.Message, item.Exception);
                             break;
                     }
+                    System.Threading.Thread.Sleep(5); //Make sure messages show up in correct order due to precision of underlying storage providers
                 }
                 log.Clear();
             }
@@ -169,16 +174,10 @@ namespace Eleflex.Versioning
         /// <returns></returns>
         protected bool UpdateModule(Guid updateModuleKey, PatchSystemSummary summary, List<PatchLog> log)
         {
+            //Find a list of patches for this module
             List<IModulePatch> patches = null;
-            foreach (var modulePatch in summary.ModulePatches)
-            {
-                //Found module to update
-                if (modulePatch.Key == updateModuleKey)
-                {
-                    patches = modulePatch.Value;
-                    break;
-                }
-            }
+            if (summary.ModulePatches.ContainsKey(updateModuleKey))
+                patches = summary.ModulePatches[updateModuleKey];
 
             //No patches found to update
             if (patches == null || patches.Count == 0)
@@ -191,7 +190,7 @@ namespace Eleflex.Versioning
             ModuleVersion installedVersion = null;
             if(summary.InstalledModules != null)
                 installedVersion = summary.InstalledModules.Where(x=>x.ModuleKey == updateModuleKey).FirstOrDefault();
-            List<IModulePatch> orderedPatches = GetPatchTree(installedVersion, patches);
+            List<IModulePatch> orderedPatches = GetPatchTree(installedVersion, patches, log);
             if (orderedPatches == null)
             {
                 log.Add(new PatchLog(Common.Logging.LogLevel.Warn, SOURCE, "No patch tree for module: " + updateModuleKey.ToString(), null)); 
@@ -202,7 +201,7 @@ namespace Eleflex.Versioning
             foreach (IModulePatch patch in orderedPatches)
             {
                 string message = "Patch updating Module: " + patch.ModuleKey + " Module Name: " + patch.ModuleName + " Version: " + patch.Version.ToString() + " Result: ";
-                bool success = patch.Patch();                                        
+                bool success = Patch(patch, log);                                        
                 if (success)
                     log.Add(new PatchLog(Common.Logging.LogLevel.Info, SOURCE, message + "success", null));
                 else
@@ -214,41 +213,97 @@ namespace Eleflex.Versioning
         }
 
         /// <summary>
+        /// Patch the system.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual bool Patch(IModulePatch patch, List<PatchLog> log)
+        {
+            IUnitOfWork uow = ServiceLocator.Current.GetInstance<IUnitOfWork>();
+            try
+            {
+                //Update the patch
+                patch.Update();                
+
+                //Get new version information
+                ModuleVersion version = new ModuleVersion();
+                version.ChangeModuleKey(patch.ModuleKey);
+                version.ChangeModuleName(patch.ModuleName);
+                version.ChangeUpdateDate(DateTimeOffset.UtcNow);
+                version.ChangeVersion(patch.Version);
+
+                //Update version information
+                IModuleVersionRepository versionRepository = ServiceLocator.Current.GetInstance<IModuleVersionRepository>();
+                ModuleVersion curVersion = versionRepository.Get(version.ModuleKey);
+                if (curVersion == null)
+                    versionRepository.Insert(version);
+                else
+                    versionRepository.Update(version);
+                
+                //Commit all changes
+                uow.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                log.Add(new PatchLog(Common.Logging.LogLevel.Error, SOURCE, "Failure updating patch " + patch.ToString(), ex));
+                uow.Rollback();
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Get a list of patches to upgrade the system.
         /// </summary>
         /// <param name="installedVersion"></param>
         /// <param name="patches"></param>
         /// <returns></returns>
-        protected virtual List<IModulePatch> GetPatchTree(ModuleVersion installedVersion, List<IModulePatch> patches)
+        protected virtual List<IModulePatch> GetPatchTree(ModuleVersion installedVersion, List<IModulePatch> patches, List<PatchLog> log)
         {
             //Create patch tree            
             List<IModulePatch> orderList = new List<IModulePatch>();
-            IModulePatch root = null;
-            if (installedVersion != null)
+            if (patches == null || patches.Count == 0)
+                return orderList;
+
+            Version currentVersionToStartFrom = null;
+            if (installedVersion == null)
             {
-                root = patches.Where(x =>
-                    x.PriorVersions != null && x.PriorVersions.Any(a =>
-                        a.Version.Major.Equals(installedVersion.Version.Major) &&
-                        a.Version.Minor.Equals(installedVersion.Version.Minor) &&
-                        a.Version.Build.Equals(installedVersion.Version.Build) &&
-                        a.Version.Revision.Equals(installedVersion.Version.Revision))).FirstOrDefault();
+                //New install, find best root version to start from (should really only be one but maybe rollup patches too)
+                List<IModulePatch> availRoots = patches.Where(x => x.PriorVersions == null).ToList();
+                if(availRoots.Count == 0)
+                {
+                    log.Add(new PatchLog(Common.Logging.LogLevel.Warn, SOURCE, "No root version with patches for " + patches[0].ToString(), null));
+                    return orderList;
+                }
+                IModulePatch bestChoice = null;
+                foreach (IModulePatch possibleVersion in availRoots)
+                {
+                    if (bestChoice == null)
+                    {
+                        bestChoice = possibleVersion;
+                        continue;
+                    }
+                    if (IsCompareVersionHigher(bestChoice.Version, possibleVersion.Version))
+                        bestChoice = possibleVersion;
+                }
+                orderList.Add(bestChoice);
+                currentVersionToStartFrom = bestChoice.Version;
             }
             else
-                root = patches.Where(x => x.PriorVersions == null).FirstOrDefault();
+                currentVersionToStartFrom = installedVersion.Version;
 
-            if (root == null)
-                return null;
-
-            orderList.Add(root);
-            IModulePatch previousVersion = root;
+            
             while (true)
             {
                 List<IModulePatch> nextVersions = patches.Where(x =>
                     x.PriorVersions != null && x.PriorVersions.Any(a =>
-                        a.Version.Major.Equals(previousVersion.Version.Major) &&
-                        a.Version.Minor.Equals(previousVersion.Version.Minor) &&
-                        a.Version.Build.Equals(previousVersion.Version.Build) &&
-                        a.Version.Revision.Equals(previousVersion.Version.Revision))).ToList();
+                        a.Version.Major.Equals(currentVersionToStartFrom.Major) &&
+                        a.Version.Minor.Equals(currentVersionToStartFrom.Minor) &&
+                        a.Version.Build.Equals(currentVersionToStartFrom.Build) &&
+                        a.Version.Revision.Equals(currentVersionToStartFrom.Revision))).ToList();
+
+                //No more versions to upgrade to
+                if (nextVersions.Count == 0)
+                    break;
 
                 //Get the patch with the highest version number. This will additionally help if a release has errors
                 //so a new one can be released with a higher version number and it will be selected over the previous release with an error.
@@ -265,8 +320,8 @@ namespace Eleflex.Versioning
                 }
                 if (bestChoice != null)
                 {
-                    previousVersion = bestChoice;
-                    orderList.Add(previousVersion);
+                    orderList.Add(bestChoice);
+                    currentVersionToStartFrom = bestChoice.Version;                    
                 }
                 else
                     break;
@@ -315,7 +370,7 @@ namespace Eleflex.Versioning
             try
             {
                 IModuleVersionRepository repo = ServiceLocator.Current.GetInstance<IModuleVersionRepository>();
-                if (repo.IsInstalled())
+                if (repo.IsInstalled()) //Won't throw error
                     return repo.GetAll();
                 else
                     return null;
@@ -333,16 +388,20 @@ namespace Eleflex.Versioning
         /// <param name="summary"></param>
         protected virtual void LoadSummaryAssembly(Assembly assembly, PatchSystemSummary summary)
         {
+            //Get all patches in assembly
             List<IModulePatch> patches = this.GetPatchesInAssembly(assembly);
             if(patches == null || patches.Count == 0)
                 return;
 
-            IModulePatch latestPatch = patches[patches.Count - 1]; //Latest patch version
-            IModuleVersion curModule = summary.EmbeddedModules.Where(x => x.ModuleKey == latestPatch.ModuleKey).FirstOrDefault();
-            if (curModule != null)
-                return;
-            summary.EmbeddedModules.Add(latestPatch);
-            summary.ModulePatches.Add(new KeyValuePair<Guid, List<IModulePatch>>(latestPatch.ModuleKey, patches));
+            //Patches may be for different modules
+            foreach(IModulePatch patch in patches)
+            {
+                //ModulePatches hold all available patches for a module
+                if (summary.ModulePatches.ContainsKey(patch.ModuleKey))
+                    summary.ModulePatches[patch.ModuleKey].Add(patch);
+                else
+                    summary.ModulePatches.Add(patch.ModuleKey, new List<IModulePatch>() { patch });
+            }
         }
         
         /// <summary>
@@ -416,6 +475,30 @@ namespace Eleflex.Versioning
             if (list.Count == 0)
                 return null;
             return list;
+        }
+
+        /// <summary>
+        /// Get the highest version for this module.
+        /// </summary>
+        /// <param name="patches"></param>
+        /// <returns></returns>
+        protected virtual IModulePatch GetLatestVersionPatch(List<IModulePatch> patches)
+        {
+            if (patches == null || patches.Count == 0)
+                return null;
+
+            IModulePatch highest = null;
+            foreach (IModulePatch patch in patches)
+            {
+                if(highest == null)
+                {
+                    highest = patch;
+                    continue;
+                }
+                if (IsCompareVersionHigher(highest.Version, patch.Version))
+                    highest = patch;
+            }
+            return highest;
         }
 
         /// <summary>

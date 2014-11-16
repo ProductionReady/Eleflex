@@ -36,16 +36,7 @@ namespace Eleflex.WebService
         /// Application end.
         /// </summary>
         protected void Application_End()
-        {
-        }
-
-        /// <summary>
-        /// End request, cleanup resources.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void Application_EndRequest(object sender, EventArgs e)
-        {
+        {            
         }
     }
 }

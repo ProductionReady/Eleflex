@@ -53,6 +53,14 @@ namespace Eleflex.Logging
         /// Message.
         /// </summary>
         public string Message	{get;set;}
+        /// <summary>
+        /// Message.
+        /// </summary>
+        public string Source { get; set; }
+        /// <summary>
+        /// Message.
+        /// </summary>
+        public string Exception { get; set; }
 
         /// <summary>
         /// change key.
@@ -109,6 +117,22 @@ namespace Eleflex.Logging
         public void ChangeMessage(string val)
         {
             Message = val;
+        }
+        /// <summary>
+        /// Change source.
+        /// </summary>
+        /// <param name="val"></param>
+        public void ChangeSource(string val)
+        {
+            Source = val;
+        }
+        /// <summary>
+        /// CHange exception.
+        /// </summary>
+        /// <param name="val"></param>
+        public void ChangeException(string val)
+        {
+            Exception = val;
         }
     }
 }

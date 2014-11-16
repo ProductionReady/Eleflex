@@ -8,24 +8,24 @@
 @using (Html.BeginForm("List", "Users", FormMethod.Post, new { id = "AdminSecurityUsersListForm", @class = "form-inline" }))
 {
     <div class="form-group">
-        @Html.LabelFor(model => model.Email, "Email:")
-        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Email)
+        @Html.LabelFor(x => x.Email, "Email:")
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Email)
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Username, "Username:")
-        @Html.TextBoxFor(model => model.Username, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Username)
+        @Html.LabelFor(x => x.Username, "Username:")
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Username)
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Inactive, "Inactive:")
-        @Html.DropDownListFor(model => model.Inactive, Model.InactiveSelectItems, new { @class = "form-control chosen-single-select", data_placeholder = "Select an Item..." })
-        @Html.ValidationMessageFor(model => model.Inactive)
+        @Html.LabelFor(x => x.Inactive, "Inactive:")
+        @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselect", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+        @Html.ValidationMessageFor(x => x.Inactive)
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.MaxRecords, "Max Records:")
-        @Html.TextBoxFor(model => model.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
-        @Html.ValidationMessageFor(model => model.MaxRecords)
+        @Html.LabelFor(x => x.MaxRecords, "Max Records:")
+        @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
+        @Html.ValidationMessageFor(x => x.MaxRecords)
     </div>
     <div class="form-group">
         <button class="btn btn-primary active" type="submit">Search</button>
@@ -35,7 +35,7 @@
 }
 </fieldset>
 <hr/>
-<table class="datatable">
+<table class="eleflexdatatable">
     <thead>
         <tr>
             <th>Username</th>
@@ -54,22 +54,22 @@
         {
             for (int i = 0; i < Model.Items.Count; i++)
             {
-        <tr>
-            <td>@Model.Items[i].Username</td>
-            <td>@Model.Items[i].FirstName</td>
-            <td>@Model.Items[i].LastName</td>
-            <td>@Model.Items[i].Email</td>
-            <td>
-                @if (Model.Items[i].LastLoginDate.HasValue)
-                { @Model.Items[i].LastLoginDate.Value.Date }
-                else
-                { <text>N/A</text>}
-            </td>
-            <td>@Model.Items[i].IsLockedOut</td>
-            <td>@Model.Items[i].LockoutReinstateDate</td>
-            <td>@Model.Items[i].Comment</td>
-            <td></td>
-        </tr>
+                <tr>
+                    <td>@Model.Items[i].Username</td>
+                    <td>@Model.Items[i].FirstName</td>
+                    <td>@Model.Items[i].LastName</td>
+                    <td>@Model.Items[i].Email</td>
+                    <td>
+                        @if (Model.Items[i].LastLoginDate.HasValue)
+                        { @Model.Items[i].LastLoginDate.Value.Date }
+                        else
+                        { <text>N/A</text>}
+                    </td>
+                    <td>@Model.Items[i].IsLockedOut</td>
+                    <td>@Model.Items[i].LockoutReinstateDate</td>
+                    <td>@Model.Items[i].Comment</td>
+                    <td></td>
+                </tr>
             }
         }
     </tbody>

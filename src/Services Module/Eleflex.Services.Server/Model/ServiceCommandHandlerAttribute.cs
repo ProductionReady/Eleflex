@@ -25,7 +25,7 @@ namespace Eleflex.Services.Server
     /// Defines an attribute for service commands handlers to expose the request type they handle (used for initialization).
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public class ServiceCommandHandlerAttribute : Attribute
+    public class ServiceCommandHandlerAttribute : Attribute, IServiceCommandHandlerRequestType
     {
         /// <summary>
         /// Constructor.

@@ -21,6 +21,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Eleflex.Storage;
+using Eleflex.Lookups.Message;
 
 namespace Eleflex.Lookups.Web
 {
@@ -29,9 +31,83 @@ namespace Eleflex.Lookups.Web
     /// </summary>
     public class AdminController : Controller
     {
+        /// <summary>
+        /// Service client for loojups
+        /// </summary>
+        ILookupsServiceClient _lookupServiceClient = null;
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="lookupServiceClient"></param>
+        public AdminController(ILookupsServiceClient lookupServiceClient)
+        {
+            _lookupServiceClient = lookupServiceClient;
+        }
+
+        /// <summary>
+        /// Index.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("List");
+        }
+
+        /// <summary>
+        /// Index.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Create()
+        {
+            DetailsModel model = new DetailsModel();
+            return View("Details", model);
+        }
+
+        /// <summary>
+        /// Details.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Details(DetailsModel model)
+        {
+            if(ModelState.IsValid)
+            {
+
+            }
+            return View(model);
+        }
+
+        /// <summary>
+        /// List.
+        /// </summary>
+        /// <returns></returns>        
+        public ActionResult List(Eleflex.Lookups.Web.ListModel model = null)
+        {
+            StorageQueryBuilder builder = new StorageQueryBuilder();
+            if (model != null)
+            {
+                if (model.Inactive.HasValue)
+                    builder.IsEqual("Inactive", model.Inactive.Value.ToString());
+
+                if (!string.IsNullOrWhiteSpace(model.Abbreviation))
+                    builder.Contains("Abbreviation", model.Abbreviation);
+
+                if (!string.IsNullOrWhiteSpace(model.Name))
+                    builder.Contains("Name", model.Name);
+
+                if (!string.IsNullOrWhiteSpace(model.Description))
+                    builder.Contains("Description", model.Description);
+
+            }
+
+            if (model != null && model.MaxRecords.HasValue)
+                builder.Paging(1, model.MaxRecords.Value);
+            else
+                builder.Paging(1, Constants.MAX_RETURNED_RECORDS_DEFAULT);
+
+            var response = _lookupServiceClient.Query(builder.GetStorageQuery());
+            model.Items = response.Items;
+            return View(model);
         }
 
     }

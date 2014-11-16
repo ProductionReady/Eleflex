@@ -22,5 +22,7 @@ namespace Eleflex.Logging.Storage.SqlServer.Model
         public string Application { get; set; }
         public string Server { get; set; }
         public string ExtraData { get; set; }
+        public string Source { get; set; }
+        public string Exception { get; set; }
     }
 }

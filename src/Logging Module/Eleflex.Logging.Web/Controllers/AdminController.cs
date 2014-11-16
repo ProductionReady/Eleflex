@@ -60,23 +60,39 @@ namespace Eleflex.Logging.Web.Controllers
         {            
             StorageQueryBuilder builder = new StorageQueryBuilder();
             if (model != null)
-            {
+            {                
                 if (model.Severity != null && model.Severity.Length > 0)
                     builder.IsInSet("Severity", model.Severity);
+
+                if (model.IsError.HasValue)
+                    builder.IsEqual("IsError", model.IsError.Value.ToString());
 
                 if (!string.IsNullOrWhiteSpace(model.Message))
                     builder.Contains("Message", model.Message);
 
+                if (!string.IsNullOrWhiteSpace(model.Source))
+                    builder.Contains("Source", model.Source);
+
+                if (!string.IsNullOrWhiteSpace(model.Exception))
+                    builder.Contains("Exception", model.Exception);
+
                 if (model.DateFrom.HasValue || model.DateTo.HasValue)
                 {
                     if (model.DateFrom.HasValue && model.DateTo.HasValue)
-                        builder.Between("CreateDate", model.DateFrom.Value.Date.ToString(), model.DateTo.Value.Date.ToString());
+                    {
+                        if (model.DateFrom.Value > model.DateTo.Value)
+                        {
+                            ModelState.AddModelError("DateFrom", "DateFrom cannot be after DateTo");
+                            return View(model);
+                        }
+                        builder.Between("CreateDate", model.DateFrom.Value.ToString(), model.DateTo.Value.ToString());
+                    }
                     else
                     {
                         if (model.DateFrom.HasValue)
-                            builder.IsGreaterThanOrEqual("CreateDate", model.DateFrom.Value.Date.ToString());
-                        if(model.DateTo.HasValue)
-                            builder.IsLessThanOrEqual("CreateDate", model.DateTo.Value.Date.ToString());
+                            builder.IsGreaterThanOrEqual("CreateDate", model.DateFrom.Value.ToString());
+                        if (model.DateTo.HasValue)
+                            builder.IsLessThanOrEqual("CreateDate", model.DateTo.Value.ToString());
 
                     }
                 }

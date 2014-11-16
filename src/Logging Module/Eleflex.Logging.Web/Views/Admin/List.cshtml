@@ -10,28 +10,43 @@
     @Html.AntiForgeryToken()
     <div id="CreateDateFromGroup" class="form-group date">
         @Html.LabelFor(x => x.DateFrom, "Date From:")
-        @Html.TextBoxFor(x => x.DateFrom, new { @class = "form-control datepicker" })
-        @Html.ValidationMessageFor(model => model.DateFrom)
+        @Html.TextBoxFor(x => x.DateFrom, new { @class = "form-control eleflexdatetime" })
+        @Html.ValidationMessageFor(x => x.DateFrom)
     </div>
     <div id="CreateDateToGroup" class="form-group date">
         @Html.LabelFor(x => x.DateTo, "Date To:")
-        @Html.TextBoxFor(x => x.DateTo, new { @class = "form-control datepicker" })
-        @Html.ValidationMessageFor(model => model.DateTo)
+        @Html.TextBoxFor(x => x.DateTo, new { @class = "form-control eleflexdatetime" })
+        @Html.ValidationMessageFor(x => x.DateTo)
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Severity, "Severity:")
-        @Html.ListBoxFor(model => model.Severity, Model.SeveritySelectItems, new { @class = "form-control chosen-select", data_placeholder = "Select Items...", multiple = "multiple", Style = "width: 150px;" })
-        @Html.ValidationMessageFor(model => model.Severity)
+        @Html.LabelFor(x => x.IsError, "Error:")
+        @Html.DropDownListFor(x => x.IsError, Model.ErrorSelectItems, new { @class = "form-control eleflexselect", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+        @Html.ValidationMessageFor(x => x.IsError)
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Message, "Message:")
-        @Html.TextBoxFor(model => model.Message, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Message)
+        @Html.LabelFor(x => x.Severity, "Severity:")
+        @Html.ListBoxFor(x => x.Severity, Model.SeveritySelectItems, new { @class = "form-control eleflexselectmulti", data_placeholder = "Select Items...", multiple = "multiple", Style = "width: 150px;" })
+        @Html.ValidationMessageFor(x => x.Severity)
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.MaxRecords, "Max Records:")
-        @Html.TextBoxFor(model => model.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
-        @Html.ValidationMessageFor(model => model.MaxRecords)
+        @Html.LabelFor(x => x.Message, "Message:")
+        @Html.TextBoxFor(x => x.Message, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Message)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Source, "Source:")
+        @Html.TextBoxFor(x => x.Source, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Source)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Exception, "Exception:")
+        @Html.TextBoxFor(x => x.Exception, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Exception)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.MaxRecords, "Max Records:")
+        @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
+        @Html.ValidationMessageFor(x => x.MaxRecords)
     </div>
     <div class="form-group">
         <button class="btn btn-primary active" type="submit">Search</button>
@@ -40,26 +55,35 @@
 }
 </fieldset>
 <hr/>
-<table id="LogTable">
+<table id="LogTable" class="datatable">
     <thead>
         <tr>
             <th>Create Date</th>
             <th>Server</th>
             <th>Application</th>
+            <th>Error</th>
             <th>Severity</th>
             <th>Message</th>
+            <th>Source</th>
+            <th>Exception</th>
         </tr>
     </thead>
-    <tbody>
-        @for (int i = 0; i < Model.Items.Count; i++)
-        {
-            <tr>
-                <td>@Model.Items[i].CreateDate.DateTime</td>
-                <td>@Model.Items[i].Server</td>
-                <td>@Model.Items[i].Application</td>
-                <td>@Model.Items[i].Severity</td>
-                <td>@Model.Items[i].Message</td>
-            </tr>
+    <tbody>        
+        @if(Model.Items != null)
+        { 
+            for (int i = 0; i < Model.Items.Count; i++)
+            {
+        <tr>
+            <td>@Model.Items[i].CreateDate.DateTime.ToLocalTime()</td>
+            <td>@Model.Items[i].Server</td>
+            <td>@Model.Items[i].Application</td>
+            <td>@Model.Items[i].IsError</td>
+            <td>@Model.Items[i].Severity</td>
+            <td>@Model.Items[i].Message</td>
+            <td>@Model.Items[i].Source</td>
+            <td>@Model.Items[i].Exception</td>
+        </tr>
+            }
         }
     </tbody>
 </table>

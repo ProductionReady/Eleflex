@@ -38,6 +38,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
         /// </summary>
         public static void Initialize()
         {
+            //Register the global HTTP module used for all requests
             DynamicModuleUtility.RegisterModule(typeof(GlobalModule));
         }        
     }

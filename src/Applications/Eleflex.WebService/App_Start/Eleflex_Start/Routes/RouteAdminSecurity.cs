@@ -39,7 +39,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
         {
             RouteTable.Routes.MapCodeRoutes(
                baseRoute: "Admin/Security",
-               rootController: typeof(Eleflex.Security.Web.Security.SecurityController),
+               rootController: typeof(Eleflex.Security.Web.Security.AdminController),
                settings: new CodeRoutingSettings
                {
                    EnableEmbeddedViews = true,

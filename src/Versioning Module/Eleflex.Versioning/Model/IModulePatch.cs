@@ -38,15 +38,9 @@ namespace Eleflex.Versioning
         List<Guid> DependentModules { get; }
 
         /// <summary>
-        /// Update the system version information.
-        /// </summary>
-        /// <returns></returns>
-        bool Patch();
-
-        /// <summary>
         /// Custom logic to update the patch.
         /// </summary>
         /// <returns></returns>
-        bool Update();
+        void Update();
     }
 }

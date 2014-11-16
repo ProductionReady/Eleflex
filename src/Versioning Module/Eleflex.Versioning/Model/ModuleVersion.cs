@@ -89,5 +89,17 @@ namespace Eleflex.Versioning
         {
             ExtraData = val;
         }
+
+        /// <summary>
+        /// Return patch name and version information quickly.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            string output = ModuleName + " " + ModuleKey.ToString();
+            if(Version != null)
+                output += " " + Version.ToString();
+            return output;
+        }
     }
 }

@@ -54,5 +54,13 @@ namespace Eleflex.Logging.Message
         /// Message.
         /// </summary>
         public string Message { get; set; }
+        /// <summary>
+        /// Source.
+        /// </summary>
+        public string Source { get; set; }
+        /// <summary>
+        /// Exception.
+        /// </summary>
+        public string Exception { get; set; }
     }
 }

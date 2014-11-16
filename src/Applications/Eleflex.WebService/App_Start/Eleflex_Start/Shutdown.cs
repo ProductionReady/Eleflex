@@ -32,13 +32,11 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
         /// </summary>
         public static void Stop() 
         {
-            //Log a message that the application has stopped
-            Common.Logging.LogManager.GetCurrentClassLogger().Info("Application Ending");
-
+            //Dispose container
             ((IDisposable)Bootstrap.Bootstrapper.Container).Dispose();
 
             //Dispose the logger
-            ((Eleflex.Logging.CommonLoggingAsyncFactoryAdapter)Common.Logging.LogManager.Adapter).Dispose();
+            ((IDisposable)Common.Logging.LogManager.Adapter).Dispose();
         }
     }
 }

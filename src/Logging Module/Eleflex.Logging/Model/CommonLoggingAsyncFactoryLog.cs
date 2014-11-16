@@ -134,13 +134,9 @@ namespace Eleflex.Logging
                 item.IsError = true;
             else
                 item.IsError = false;
-            item.Message = new
-            {
-                Message = message == null ? null : message.ToString(),
-                Source = _source,
-                Exception = exception == null ? null : exception.ToString()
-            }.ToString();
-
+            item.Source = _source;
+            item.Message = message == null ? null : message.ToString();
+            item.Exception = exception == null ? null : exception.ToString();
             item.Server = _server;
             item.Severity = level.ToString();            
 

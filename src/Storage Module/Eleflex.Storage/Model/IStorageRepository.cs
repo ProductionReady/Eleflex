@@ -38,7 +38,7 @@ namespace Eleflex.Storage
         TEntity Insert(TEntity entity);
 
         /// <summary>
-        /// GetStorageProvider an entity by its key.
+        /// Get an entity by its key.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

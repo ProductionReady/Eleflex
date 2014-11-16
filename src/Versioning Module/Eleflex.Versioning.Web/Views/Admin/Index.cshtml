@@ -4,7 +4,7 @@
 }
 <h1>System Version Information</h1>
 
-<table id="mytable" class="table">
+<table class="table">
     <thead>
         <tr>            
             <th>Module</th>
@@ -13,13 +13,16 @@
         </tr>
     </thead>
     <tbody>
-        @for (int i = 0; i < Model.Items.Count; i++)
-        {
-            <tr>
-                <td>@Model.Items[i].ModuleName</td>
-                <td>@Model.Items[i].Version.ToString()</td>
-                <td>@Model.Items[i].UpdateDate.Value.DateTime</td>
-            </tr>
-        }
+@if(Model != null && Model.Items != null)
+{ 
+    for (int i = 0; i < Model.Items.Count; i++)
+    {
+        <tr>
+            <td>@Model.Items[i].ModuleName</td>
+            <td>@Model.Items[i].Version.ToString()</td>
+            <td>@Model.Items[i].UpdateDate.Value.DateTime</td>
+        </tr>
+    }
+}
     </tbody>
 </table>

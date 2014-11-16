@@ -24,7 +24,7 @@ using System.Web;
 namespace Eleflex.WebService.App_Start.Eleflex_Start
 {
     /// <summary>
-    /// Module for global.asax.
+    /// HTTP Module for all requests.
     /// </summary>
     public class GlobalModule : IHttpModule
     {
@@ -35,6 +35,22 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
         public void Init(HttpApplication context)
         {
             context.EndRequest += context_EndRequest;
+            context.Error += context_Error;
+        }
+
+        /// <summary>
+        /// Error.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void context_Error(object sender, EventArgs e)
+        {
+            if (sender is System.Web.HttpApplication)
+            {
+                HttpApplication application = (HttpApplication)sender;
+                Exception exception = application.Server.GetLastError();
+                Common.Logging.LogManager.GetCurrentClassLogger().Error("Web Error", exception);
+            }
         }
 
         /// <summary>

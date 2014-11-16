@@ -28,7 +28,11 @@ namespace Eleflex.Versioning
     /// </summary>
     public abstract class ModulePatch : ModuleVersion, IModulePatch
     {
-
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="moduleKey"></param>
+        /// <param name="moduleName"></param>
         public ModulePatch(Guid moduleKey, string moduleName)
         {
             ModuleKey = moduleKey;
@@ -49,43 +53,18 @@ namespace Eleflex.Versioning
         /// Custom logic to update the patch.
         /// </summary>
         /// <returns></returns>
-        public abstract bool Update();
+        public abstract void Update();
 
         /// <summary>
-        /// Patch the system.
+        /// Return patch name and version information quickly.
         /// </summary>
         /// <returns></returns>
-        public virtual bool Patch()
+        public override string ToString()
         {
-            IUnitOfWork uow = ServiceLocator.Current.GetInstance<IUnitOfWork>();
-            try
-            {
-                bool success = Update();
-                if (success)
-                {
-                    uow.Commit();
-                    IModuleVersionRepository versionRepository = ServiceLocator.Current.GetInstance<IModuleVersionRepository>();
-                    this.UpdateDate = DateTimeOffset.UtcNow;
-                    ModuleVersion curVersion = versionRepository.Get(this.ModuleKey);
-                    if (curVersion == null)
-                        versionRepository.Insert(this);
-                    else
-                        versionRepository.Update(this);
-                    uow.Commit();
-                    return true;
-                }
-                else
-                {
-                    uow.Rollback();
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Common.Logging.LogManager.GetCurrentClassLogger().Error(ex);
-                uow.Rollback();
-                return false;
-            }
+            string output = ModuleName + " " + ModuleKey.ToString();
+            if (Version != null)
+                output += " " + Version.ToString();
+            return output;
         }
 
     }

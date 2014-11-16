@@ -140,6 +140,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminController.cs" />
+    <Compile Include="DetailsModel.cs" />
+    <Compile Include="ListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +165,42 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Admin\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Admin\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework Module\Eleflex\Eleflex.csproj">
+      <Project>{d57f1ba1-1554-4c4f-a084-c03b8617f595}</Project>
+      <Name>Eleflex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Security Module\Eleflex.Security\Eleflex.Security.csproj">
+      <Project>{eaab1c06-966c-431a-aa8b-b0265e53d84c}</Project>
+      <Name>Eleflex.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services Module\Eleflex.Services.Client\Eleflex.Services.Client.csproj">
+      <Project>{476aef02-7624-4a7f-8dd5-ceb7cc91f69a}</Project>
+      <Name>Eleflex.Services.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services Module\Eleflex.Services\Eleflex.Services.csproj">
+      <Project>{201a991b-eae3-40d9-b161-c0f5f4dc7512}</Project>
+      <Name>Eleflex.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Storage Module\Eleflex.Storage\Eleflex.Storage.csproj">
+      <Project>{18bb79dc-ae56-49d8-9972-2d30038c9603}</Project>
+      <Name>Eleflex.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Web Module\Eleflex.Web\Eleflex.Web.csproj">
+      <Project>{928c5285-fd3e-4f8c-bdfa-777e5295a122}</Project>
+      <Name>Eleflex.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Eleflex.Lookups.Message\Eleflex.Lookups.Message.csproj">
+      <Project>{ab4d8779-42c3-4995-b64d-bcab21edebb9}</Project>
+      <Name>Eleflex.Lookups.Message</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Admin\Details.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

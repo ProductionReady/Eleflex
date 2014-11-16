@@ -29,16 +29,31 @@ namespace Eleflex.Logging.Web.Controllers
     /// List model.
     /// </summary>
     public class ListModel
-    {        
+    {
+        /// <summary>
+        /// Search error
+        /// </summary>
+        public bool? IsError { get; set; }
+
         /// <summary>
         /// Search severity.
         /// </summary>
         public string[] Severity { get; set; }
 
         /// <summary>
-        /// Search description.
+        /// Search message.
         /// </summary>
         public string Message { get; set; }
+
+        /// <summary>
+        /// Search source.
+        /// </summary>
+        public string Source { get; set; }
+
+        /// <summary>
+        /// Search Exception.
+        /// </summary>
+        public string Exception { get; set; }
 
         /// <summary>
         /// Search max records.
@@ -57,6 +72,22 @@ namespace Eleflex.Logging.Web.Controllers
 
         /// <summary>
         /// Is error selecton items.
+        /// </summary>
+        public List<SelectListItem> ErrorSelectItems
+        {
+            get
+            {
+                return new List<SelectListItem>()
+                {
+                    new SelectListItem(){Text = "",Value=""},
+                    new SelectListItem(){Text = "True",Value="true"},
+                    new SelectListItem(){Text = "False",Value="false"},                    
+                };
+            }
+        }
+
+        /// <summary>
+        /// Severity selecton items.
         /// </summary>
         public List<SelectListItem> SeveritySelectItems
         {

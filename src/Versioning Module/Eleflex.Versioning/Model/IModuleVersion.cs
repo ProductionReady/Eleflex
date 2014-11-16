@@ -44,6 +44,6 @@ namespace Eleflex.Versioning
         /// <summary>
         /// Version installed.
         /// </summary>
-        Version Version { get; }        
+        Version Version { get; }
     }
 }

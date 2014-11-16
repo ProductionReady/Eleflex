@@ -32,21 +32,16 @@ namespace Eleflex.Versioning
         /// </summary>
         public PatchSystemSummary()
         {
-            EmbeddedModules = new List<IModulePatch>();
-            ModulePatches = new List<KeyValuePair<Guid, List<IModulePatch>>>();
+            ModulePatches = new Dictionary<Guid, List<IModulePatch>>();
         }
 
-        /// <summary>
-        /// Modules in the running applicationdomain and referenced.
-        /// </summary>
-        public virtual List<IModulePatch> EmbeddedModules { get; set; }
         /// <summary>
         /// Modules installed in the system already.
         /// </summary>
         public virtual List<ModuleVersion> InstalledModules { get; set; }
         /// <summary>
-        /// List of patches for modules.
+        /// List of patches for all embedded modules.
         /// </summary>
-        public virtual List<KeyValuePair<Guid, List<IModulePatch>>> ModulePatches { get; set; }
+        public virtual Dictionary<Guid, List<IModulePatch>> ModulePatches { get; set; }
     }
 }

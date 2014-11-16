@@ -81,7 +81,7 @@ namespace Eleflex.Security.Storage.SqlServer
         /// Custom logic to update the patch.
         /// </summary>
         /// <returns></returns>
-        public override bool Update()
+        public override void Update()
         {            
             SqlCommand command = null;
             try
@@ -95,13 +95,8 @@ namespace Eleflex.Security.Storage.SqlServer
                 provider.Sessions.Add(session);
                 command = new SqlCommand(SCRIPT_CREATE, connection, transaction);
                 command.ExecuteNonQuery();
-                return true;
             }
-            catch (Exception ex)
-            {
-                Common.Logging.LogManager.GetCurrentClassLogger().Error(ex);
-                return false;
-            }
+            catch { throw; }
             finally
             {
                 if (command != null)

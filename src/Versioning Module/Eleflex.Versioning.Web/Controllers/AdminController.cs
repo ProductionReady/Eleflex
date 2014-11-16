@@ -49,6 +49,8 @@ namespace Eleflex.Versioning.Web.Controllers
         public ActionResult Index()
         {
             Eleflex.Services.IServiceCommandResponseItems<ModuleVersion> resp = _moduleVersionServiceClient.Query(new StorageQuery());
+            if (resp != null && resp.Items != null)
+                resp.Items = resp.Items.OrderBy(x => x.ModuleName).ToList();
             return View(resp);
         }
 

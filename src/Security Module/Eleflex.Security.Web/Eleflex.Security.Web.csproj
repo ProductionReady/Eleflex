@@ -140,13 +140,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\AccountController.cs" />
-    <Compile Include="Security\Permissions\ListModel.cs" />
-    <Compile Include="Security\Roles\ListModel.cs" />
-    <Compile Include="Security\SecurityController.cs" />
-    <Compile Include="Security\Permissions\PermissionsController.cs" />
-    <Compile Include="Security\Roles\RolesController.cs" />
-    <Compile Include="Security\Users\ListModel.cs" />
-    <Compile Include="Security\Users\UsersController.cs" />
+    <Compile Include="Admin\Permissions\ListModel.cs" />
+    <Compile Include="Admin\Roles\ListModel.cs" />
+    <Compile Include="Admin\AdminController.cs" />
+    <Compile Include="Admin\Permissions\PermissionsController.cs" />
+    <Compile Include="Admin\Roles\RolesController.cs" />
+    <Compile Include="Admin\Users\ListModel.cs" />
+    <Compile Include="Admin\Users\UsersController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -188,7 +188,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Security\Index.cshtml" />
+    <EmbeddedResource Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Account\Index.cshtml" />

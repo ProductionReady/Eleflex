@@ -27,7 +27,7 @@ using Bootstrap.AutoMapper;
 namespace Eleflex.WebService.App_Start.Eleflex_Start
 {
     /// <summary>
-    /// Startup code by ELEFLEX.
+    /// Startup code for ELEFLEX.
     /// </summary>
     public static class Startup 
     {
@@ -44,7 +44,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             patcher.Update();
 
             //Log a message that the application has started
-            Common.Logging.LogManager.GetCurrentClassLogger().Info("Application Starting");
+            Common.Logging.LogManager.GetCurrentClassLogger().Info("Application Start");
         }
     }
 }

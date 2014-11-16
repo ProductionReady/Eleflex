@@ -4,28 +4,28 @@
 }
 <h1>System Permissions</h1>
 <fieldset>
-    <legend class="sr-only sr-only-focusable">Search Users</legend>
+    <legend class="sr-only sr-only-focusable">Search Permissions</legend>
     @using (Html.BeginForm("List", "Permissions", FormMethod.Post, new { id = "AdminSecurityPermissionsListForm", @class = "form-inline" }))
     {
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, "Name:")
-            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Name)
+            @Html.LabelFor(x => x.Name, "Name:")
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Name)
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, "Description:")
-            @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Description)
+            @Html.LabelFor(x => x.Description, "Description:")
+            @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Description)
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Inactive, "Inactive:")
-            @Html.DropDownListFor(model => model.Inactive, Model.InactiveSelectItems, new { @class = "form-control chosen-single-select", data_placeholder = "Select an Item..." })
-            @Html.ValidationMessageFor(model => model.Inactive)
+            @Html.LabelFor(x => x.Inactive, "Inactive:")
+            @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselect", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+            @Html.ValidationMessageFor(x => x.Inactive)
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.MaxRecords, "Max Records:")
-            @Html.TextBoxFor(model => model.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
-            @Html.ValidationMessageFor(model => model.MaxRecords)
+            @Html.LabelFor(x => x.MaxRecords, "Max Records:")
+            @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
+            @Html.ValidationMessageFor(x => x.MaxRecords)
         </div>
         <div class="form-group">
             <button class="btn btn-primary active" type="submit">Search</button>
@@ -35,7 +35,7 @@
     }
 </fieldset>
 <hr />
-<table class="datatable">
+<table class="eleflexdatatable">
     <thead>
         <tr>
             <th>Identifier</th>

@@ -53,8 +53,6 @@ namespace Eleflex.Logging.Service.LogCommand
         {           
             var items = _logRepository.Query(request).ToList();
             response.Items = AutoMapper.Mapper.Map<List<DomainModel.Log>, List<ServiceModel.Log>>(items);
-            IUnitOfWork uow = Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<IUnitOfWork>();
-            Eleflex.Storage.IStorageProviderUnitOfWork spuow = Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
         }
     }
 }

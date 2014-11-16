@@ -53,11 +53,13 @@ namespace Eleflex.Logging.Service.LogCommand
             DomainModel.Log item = _logRepository.Get(request.Item.LogKey);            
             item.ChangeApplication(request.Item.Application);
             item.ChangeCreateDate(request.Item.CreateDate);
+            item.ChangeException(request.Item.Exception);
             item.ChangeIsError(request.Item.IsError);
             item.ChangeLogKey(request.Item.LogKey);
             item.ChangeMessage(request.Item.Message);
             item.ChangeServer(request.Item.Server);
             item.ChangeSeverity(request.Item.Severity);
+            item.ChangeSource(request.Item.Source);
             item = _logRepository.Update(item);
             response.Item = AutoMapper.Mapper.Map<ServiceModel.Log>(item);
         }

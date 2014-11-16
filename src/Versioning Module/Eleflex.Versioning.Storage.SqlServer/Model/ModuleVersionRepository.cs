@@ -239,9 +239,8 @@ namespace Eleflex.Versioning.Storage.SqlServer
                     return Convert.ToBoolean(reader.GetValue(0));
                 return false;
             }
-            catch (Exception ex)
-            {
-                Common.Logging.LogManager.GetCurrentClassLogger().Error(ex);
+            catch
+            {                
                 return false;
             }
             finally
