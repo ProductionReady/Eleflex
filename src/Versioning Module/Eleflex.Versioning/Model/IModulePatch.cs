@@ -30,7 +30,7 @@ namespace Eleflex.Versioning
         /// <summary>
         /// The versions prior to this version for which the patching process can be used.
         /// </summary>
-        List<IModulePatch> PriorVersions { get; }
+        List<Version> PriorVersions { get; }
 
         /// <summary>
         /// Dependent modules that must be executed prior to this version.

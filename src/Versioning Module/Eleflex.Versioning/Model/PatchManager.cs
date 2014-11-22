@@ -296,10 +296,10 @@ namespace Eleflex.Versioning
             {
                 List<IModulePatch> nextVersions = patches.Where(x =>
                     x.PriorVersions != null && x.PriorVersions.Any(a =>
-                        a.Version.Major.Equals(currentVersionToStartFrom.Major) &&
-                        a.Version.Minor.Equals(currentVersionToStartFrom.Minor) &&
-                        a.Version.Build.Equals(currentVersionToStartFrom.Build) &&
-                        a.Version.Revision.Equals(currentVersionToStartFrom.Revision))).ToList();
+                        a.Major.Equals(currentVersionToStartFrom.Major) &&
+                        a.Minor.Equals(currentVersionToStartFrom.Minor) &&
+                        a.Build.Equals(currentVersionToStartFrom.Build) &&
+                        a.Revision.Equals(currentVersionToStartFrom.Revision))).ToList();
 
                 //No more versions to upgrade to
                 if (nextVersions.Count == 0)

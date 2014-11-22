@@ -68,7 +68,9 @@
                     <td>@Model.Items[i].IsLockedOut</td>
                     <td>@Model.Items[i].LockoutReinstateDate</td>
                     <td>@Model.Items[i].Comment</td>
-                    <td></td>
+                    <td>
+                        @Html.ActionLink("Deactivate", "Deactivate", new { key = Model.Items[i].UserKey })
+                    </td>
                 </tr>
             }
         }

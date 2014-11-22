@@ -11,6 +11,7 @@ namespace Eleflex.Security
         public string Name { get; set; }
         public string Description { get; set; }
         public string ExtraData { get; set; }
+        public Guid? ModuleKey { get; set; }
 
         public void ChangeRoleKey (System.Guid val)
         {
@@ -35,6 +36,11 @@ namespace Eleflex.Security
         public void ChangeExtraData (string val)
         {
             ExtraData = val;
+        }
+
+        public void ChangeModuleKey (Guid? val)
+        {
+            ModuleKey = val;
         }
         
     }

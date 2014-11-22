@@ -69,7 +69,7 @@ namespace Eleflex.Security.Storage.SqlServer
         /// <summary>
         /// The versions prior to this version for which the patching process can be used.
         /// </summary>
-        public override List<VersionModel.IModulePatch> PriorVersions
+        public override List<VersionModel.Version> PriorVersions
         {
             get
             {

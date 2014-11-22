@@ -10,5 +10,6 @@ namespace Eleflex.Security.Message
         public string Name { get; set; }
         public string Description { get; set; }
         public string ExtraData { get; set; }
+        public Guid? ModuleKey { get; set; }
     }
 }

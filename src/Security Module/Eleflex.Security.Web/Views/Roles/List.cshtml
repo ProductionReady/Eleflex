@@ -55,7 +55,12 @@
                     <td>@Model.Items[i].Name</td>
                     <td>@Model.Items[i].Inactive</td>
                     <td>@Model.Items[i].Description</td>
-                    <td></td>
+                    <td>
+                        @if (Model.Items[i].ModuleKey == null)
+                        {
+                            @Html.ActionLink("Delete", "Delete", new { key = Model.Items[i].RoleKey })
+                        }
+                    </td>
                 </tr>
             }
         }

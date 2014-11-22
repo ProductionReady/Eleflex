@@ -63,8 +63,8 @@
             <th>Application</th>
             <th>Error</th>
             <th>Severity</th>
-            <th>Message</th>
             <th>Source</th>
+            <th>Message</th>            
             <th>Exception</th>
         </tr>
     </thead>
@@ -79,8 +79,12 @@
             <td>@Model.Items[i].Application</td>
             <td>@Model.Items[i].IsError</td>
             <td>@Model.Items[i].Severity</td>
-            <td>@Model.Items[i].Message</td>
-            <td>@Model.Items[i].Source</td>
+            <td>
+            @{if(!string.IsNullOrEmpty(Model.Items[i].Source)){ //split up so message and exception get more space in list
+                    @(string.Join(". ", Model.Items[i].Source.Split('.')))
+                }}
+            </td>
+            <td>@Model.Items[i].Message</td>            
             <td>@Model.Items[i].Exception</td>
         </tr>
             }

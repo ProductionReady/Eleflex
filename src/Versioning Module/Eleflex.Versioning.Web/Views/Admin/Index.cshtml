@@ -20,7 +20,7 @@
         <tr>
             <td>@Model.Items[i].ModuleName</td>
             <td>@Model.Items[i].Version.ToString()</td>
-            <td>@Model.Items[i].UpdateDate.Value.DateTime</td>
+            <td>@Model.Items[i].UpdateDate.Value.DateTime.ToLocalTime()</td>
         </tr>
     }
 }

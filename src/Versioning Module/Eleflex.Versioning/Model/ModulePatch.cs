@@ -47,7 +47,7 @@ namespace Eleflex.Versioning
         /// <summary>
         /// The versions prior to this version for which the patching process can be used.
         /// </summary>
-        public abstract List<IModulePatch> PriorVersions { get; }
+        public abstract List<Version> PriorVersions { get; }
         
         /// <summary>
         /// Custom logic to update the patch.

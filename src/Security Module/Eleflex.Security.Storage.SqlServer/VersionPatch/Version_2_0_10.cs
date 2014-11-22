@@ -22,23 +22,25 @@ using System.Data.SqlClient;
 using Eleflex;
 using Eleflex.Storage;
 using Eleflex.Storage.EntityFramework;
-using Eleflex.Lookups;
-using Eleflex.Lookups.Storage.SqlServer;
+using Eleflex.Security;
+using Eleflex.Security.Storage.SqlServer.Model;
+using Eleflex.Versioning;
+using SecurityModel = Eleflex.Security;
 using VersionModel = Eleflex.Versioning;
 using Microsoft.Practices.ServiceLocation;
 
-namespace Eleflex.Lookups.Storage.SqlServer
+namespace Eleflex.Security.Storage.SqlServer
 {
     /// <summary>
-    /// The base version patch for 2.0.0.0
+    /// The base version patch for 2.0.10
     /// </summary>
-    public class Version_2_0_0_0 : VersionModel.ModulePatch
+    public class Version_2_0_10 : ModulePatch
     {
         /// <summary>
         /// Constructor.
         /// </summary>
-        public Version_2_0_0_0()
-            : base(LookupsConstants.MODULE_KEY, LookupsConstants.MODULE_NAME)
+        public Version_2_0_10()
+            : base(SecurityModel.SecurityConstants.MODULE_KEY, SecurityModel.SecurityConstants.MODULE_NAME)
         {
         }
 
@@ -60,7 +62,7 @@ namespace Eleflex.Lookups.Storage.SqlServer
         {
             get
             {
-                return new VersionModel.Version(2, 0, 0, 0);
+                return new VersionModel.Version(2, 0, 10, 0);
             }
         }
 
@@ -71,7 +73,10 @@ namespace Eleflex.Lookups.Storage.SqlServer
         {
             get
             {
-                return null;
+                return new List<VersionModel.Version>()
+                {
+                    new VersionModel.Version(2,0,0,0)
+                };
             }
         }
 
@@ -80,11 +85,11 @@ namespace Eleflex.Lookups.Storage.SqlServer
         /// </summary>
         /// <returns></returns>
         public override void Update()
-        {            
+        {
             SqlCommand command = null;
             try
             {
-                LookupsStorageProvider provider = ServiceLocator.Current.GetInstance<ILookupsStorageProvider>() as LookupsStorageProvider;
+                SecurityStorageProvider provider = ServiceLocator.Current.GetInstance<ISecurityStorageProvider>() as SecurityStorageProvider;
                 string connectionString = provider.ConnectionString;
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
@@ -104,35 +109,7 @@ namespace Eleflex.Lookups.Storage.SqlServer
 
 
         private const string SCRIPT_CREATE = @"
-/****** Object:  Schema [Eleflex]    ******/
-IF NOT EXISTS ( SELECT  1 FROM    sys.schemas WHERE   name = N'Eleflex' )
-BEGIN
-	EXEC('CREATE SCHEMA [Eleflex]')
-END
-/****** Object:  Table [Eleflex].[Lookup]    ******/
-SET ANSI_NULLS ON
-SET QUOTED_IDENTIFIER ON
-CREATE TABLE [Eleflex].[Lookup](
-	[LookupKey] [int] IDENTITY(1,1) NOT NULL,
-	[Code] [uniqueidentifier] NOT NULL,
-	[Name] [nvarchar](250) NOT NULL,
-	[CategoryKey] [int] NULL,
-	[Inactive] [bit] NOT NULL,
-	[SortOrder] [int] NULL,
-	[Abbreviation] [nvarchar](50) NULL,
-	[Description] [nvarchar](2000) NULL,
-	[ExtraData] [nvarchar](max) NULL,
- CONSTRAINT [PK_Lookup] PRIMARY KEY CLUSTERED 
-(
-	[LookupKey] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-ALTER TABLE [Eleflex].[Lookup]  WITH CHECK ADD  CONSTRAINT [FK_Lookup_Lookup] FOREIGN KEY([CategoryKey])
-REFERENCES [Eleflex].[Lookup] ([LookupKey])
-
-ALTER TABLE [Eleflex].[Lookup] CHECK CONSTRAINT [FK_Lookup_Lookup]
-
+ALTER TABLE Eleflex.[User] ADD Inactive BIT NOT NULL;
 ";
 
     }

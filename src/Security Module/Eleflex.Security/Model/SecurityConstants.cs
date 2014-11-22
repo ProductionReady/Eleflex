@@ -55,5 +55,15 @@ namespace Eleflex.Security
         /// </summary>
         public static Guid ROLE_ANONYMOUS = new Guid("7D99ADF1-83E6-45E6-9EF0-48E958D82945");
 
+        /// <summary>
+        /// PermissionKey for an administrator.
+        /// </summary>
+        public static Guid PERMISSION_ADMINISTATOR = new Guid("3E820CF7-4E24-4C56-8325-BF19ECB70CD7");
+
+        /// <summary>
+        /// PermissionKey for a user.
+        /// </summary>
+        public static Guid PERMISSION_USER = new Guid("A9C7918B-653C-4BFA-BF36-3C2CE2DC9489");
+
     }
 }
