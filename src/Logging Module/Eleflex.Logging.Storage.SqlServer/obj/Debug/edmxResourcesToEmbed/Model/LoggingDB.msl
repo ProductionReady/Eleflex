@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LoggingDBModelStoreContainer" CdmEntityContainer="LoggingDB">
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="LoggingDBModel.Log">
+        <MappingFragment StoreEntitySet="Log">
+          <ScalarProperty Name="LogKey" ColumnName="LogKey" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="IsError" ColumnName="IsError" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="Application" ColumnName="Application" />
+          <ScalarProperty Name="Server" ColumnName="Server" />
+          <ScalarProperty Name="ExtraData" ColumnName="ExtraData" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Exception" ColumnName="Exception" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

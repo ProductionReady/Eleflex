@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -41,7 +41,7 @@ namespace Eleflex.WebService.Controllers
         /// <summary>
         /// About page.
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns>        
         public ActionResult About()
         {            
             return View();
@@ -52,6 +52,15 @@ namespace Eleflex.WebService.Controllers
         /// </summary>
         /// <returns></returns>
         public ActionResult AGPL()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// AGPL page.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Error()
         {
             return View();
         }

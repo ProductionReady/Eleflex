@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -25,7 +25,7 @@ namespace Eleflex.Storage
     /// <summary>
     /// Maintains the overall state of work being processed over the request lifetime and manages storage providers.
     /// </summary>
-    public interface IStorageProviderUnitOfWork : IUnitOfWork
+    public interface IStorageProviderUnitOfWork : IUnitOfWork, IDisposable
     {
         /// <summary>
         /// GetStorageProvider the list of storage providers managed by this unit of work manager.

@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -30,17 +30,12 @@ namespace Eleflex.Lookups
         /// <summary>
         /// The identifier.
         /// </summary>
-        string Key { get; set; }
+        Guid Key { get; set; }
 
         /// <summary>
         /// Determine if inactive.
         /// </summary>
-        bool Inactive { get; set; }
-
-        /// <summary>
-        /// Code is used to unqiuely identify a lookup value in source code as the Id value may change on storage implementation.
-        /// </summary>
-        Guid Code { get; set; }        
+        bool Inactive { get; set; }        
 
         /// <summary>
         /// Category this lookup belongs to.

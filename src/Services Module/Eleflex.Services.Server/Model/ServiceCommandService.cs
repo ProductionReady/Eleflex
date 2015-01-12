@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -43,7 +43,7 @@ namespace Eleflex.Services.Server
                 return handler.SendServiceCommand(request); //Process request
             else
             {
-                Common.Logging.LogManager.GetCurrentClassLogger().Error("No ServiceCommandHandler defined for: " + request.GetType().ToString());
+                Common.Logging.LogManager.GetLogger<ServiceCommandService>().Error("No ServiceCommandHandler defined for: " + request.GetType().ToString());
                 throw new Exception("No ServiceCommandHandler defined for: " + request.GetType().ToString());
             }
         }

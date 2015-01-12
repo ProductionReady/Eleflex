@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -33,13 +33,13 @@ namespace Eleflex.Lookups.Service.LookupCommand
     [ServiceCommandHandlerAttribute(typeof(LookupCreateRequest))]
     public class LookupCreate : ServiceCommandHandler<LookupCreateRequest, LookupCreateResponse>
     {
-        private readonly ILookupRepository _lookupRepository;
+        private readonly ILookupsRepository _lookupRepository;
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="lookupRepository"></param>
-        public LookupCreate(ILookupRepository lookupRepository)
+        public LookupCreate(ILookupsRepository lookupRepository)
         {
             _lookupRepository = lookupRepository;
         }
@@ -52,13 +52,12 @@ namespace Eleflex.Lookups.Service.LookupCommand
         public override void Execute(LookupCreateRequest request, LookupCreateResponse response)
         {
             DomainModel.Lookup item = new DomainModel.Lookup();            
-            item.ChangeLookupInactive(request.Item.Inactive);
-            item.ChangeLookupCode (request.Item.Code);
-            item.ChangeLookupCategory(AutoMapper.Mapper.Map<DomainModel.Lookup>(request.Item.Category));
-            item.ChangeLookupSort (request.Item.SortOrder);
-            item.ChangeLookupAbbreviation (request.Item.Abbreviation);
-            item.ChangeLookupName (request.Item.Name);
-            item.ChangeLookupDescription(request.Item.Description);
+            item.ChangeInactive(request.Item.Inactive);
+            item.ChangeCategory(AutoMapper.Mapper.Map<DomainModel.Lookup>(request.Item.Category));
+            item.ChangeSort (request.Item.SortOrder);
+            item.ChangeAbbreviation (request.Item.Abbreviation);
+            item.ChangeName (request.Item.Name);
+            item.ChangeDescription(request.Item.Description);
             item = _lookupRepository.Insert(item);
             response.Item = AutoMapper.Mapper.Map<ServiceModel.Lookup>(item);
         }

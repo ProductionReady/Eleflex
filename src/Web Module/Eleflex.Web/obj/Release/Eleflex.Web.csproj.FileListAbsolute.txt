@@ -1,0 +1,2 @@
+C:\GitHub\Eleflex\src\Web Module\Eleflex.Web\bin\Release\Eleflex.Security.Message.dll
+C:\GitHub\Eleflex\src\Web Module\Eleflex.Web\bin\Release\Eleflex.Versioning.pdb

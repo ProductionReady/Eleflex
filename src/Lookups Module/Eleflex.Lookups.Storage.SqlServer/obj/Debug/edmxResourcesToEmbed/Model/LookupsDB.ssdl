@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LookupsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Lookup">
+    <Key>
+      <PropertyRef Name="LookupKey" />
+    </Key>
+    <Property Name="LookupKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="CategoryKey" Type="uniqueidentifier" />
+    <Property Name="Inactive" Type="bit" Nullable="false" />
+    <Property Name="SortOrder" Type="int" />
+    <Property Name="Abbreviation" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+    <Property Name="ExtraData" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_Lookup_Lookup">
+    <End Role="Lookup" Type="Self.Lookup" Multiplicity="0..1" />
+    <End Role="Lookup1" Type="Self.Lookup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lookup">
+        <PropertyRef Name="LookupKey" />
+      </Principal>
+      <Dependent Role="Lookup1">
+        <PropertyRef Name="CategoryKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LookupsModelStoreContainer">
+    <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="Eleflex" store:Type="Tables" />
+    <AssociationSet Name="FK_Lookup_Lookup" Association="Self.FK_Lookup_Lookup">
+      <End Role="Lookup" EntitySet="Lookup" />
+      <End Role="Lookup1" EntitySet="Lookup" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

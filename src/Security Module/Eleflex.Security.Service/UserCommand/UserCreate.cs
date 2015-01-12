@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -50,7 +50,8 @@ namespace Eleflex.Security.Service.UserCommand
         /// <param name="response"></param>
         public override void Execute(UserCreateRequest request, UserCreateResponse response)
         {
-            DomainModel.User item = new DomainModel.User();            
+            DomainModel.User item = new DomainModel.User();
+            item.ChangeUserKey(request.Item.UserKey);
             item.ChangeCreateDate(DateTimeOffset.UtcNow);
             item.ChangeFirstName(request.Item.FirstName);
             item.ChangeLastName(request.Item.LastName);
@@ -60,11 +61,12 @@ namespace Eleflex.Security.Service.UserCommand
             item.ChangePasswordSalt (request.Item.PasswordSalt);
             item.ChangePasswordLastChangeDate (request.Item.PasswordLastChangeDate);
             item.ChangeLoginFailedAttempts (request.Item.LoginFailedAttempts);
-            item.ChangeIsLockedOut (request.Item.IsLockedOut);
+            item.ChangeEnableLockout (request.Item.EnableLockout);
             item.ChangeLastLoginDate (request.Item.LastLoginDate);
             item.ChangeLockoutReinstateDate (request.Item.LockoutReinstateDate);
             item.ChangeComment(request.Item.Comment);
             item.ChangeExtraData(request.Item.ExtraData);
+            item = _userRepository.Insert(item);
             response.Item = AutoMapper.Mapper.Map<ServiceModel.User>(item);
         }
     }

@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -20,6 +20,7 @@ using System;
 using System.Collections.Specialized;
 using Bootstrap.Extensions.StartupTasks;
 using Eleflex.Services;
+using Microsoft.AspNet.Identity;
 
 namespace Eleflex.WebService.App_Start.Eleflex_Start
 {
@@ -43,6 +44,9 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
 
                 x.For<Eleflex.Security.Message.ISecurityRequestDispatcher>().Use<Eleflex.Security.Message.SecurityRequestDispatcher>()
                     .Ctor<string>("endpoint").Is(Eleflex.Services.ServicesConstants.SERVICE_ENDPOINT_NAME_DEFAULT);
+
+                //Setup user store for Identity and claims
+                x.For<IUserStore<Eleflex.Security.User>>().Use<Eleflex.Web.IdentityUserStoreServiceClient<Eleflex.Security.User>>();
             });
         }
 

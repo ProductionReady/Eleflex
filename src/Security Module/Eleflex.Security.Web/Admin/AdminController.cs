@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -27,15 +27,16 @@ using Eleflex.Storage;
 namespace Eleflex.Security.Web.Security
 {
     /// <summary>
-    /// Logging admin controller.
+    /// Security admin controller.
     /// </summary>
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         
         /// <summary>
         /// Index.
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns>        
         public ActionResult Index()
         {            
             return View();

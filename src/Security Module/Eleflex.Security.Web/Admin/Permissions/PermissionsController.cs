@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -30,6 +30,7 @@ namespace Eleflex.Security.Web.Security.Permissions
     /// <summary>
     /// Security Permissions.
     /// </summary>
+    [Authorize(Roles = "Admin")]
     public class PermissionsController : Controller
     {
         /// <summary>
@@ -53,6 +54,29 @@ namespace Eleflex.Security.Web.Security.Permissions
         public ActionResult Index()
         {
             return RedirectToAction("List");
+        }
+
+
+        /// <summary>
+        /// Edit.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Edit(string key)
+        {
+            DetailsViewModel viewModel = new DetailsViewModel();
+            return View("Details", viewModel);
+        }
+
+        /// <summary>
+        /// Details.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Details(DetailsViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            return View(model);
         }
 
         /// <summary>

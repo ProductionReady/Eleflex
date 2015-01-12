@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eleflex.Security.Model
+namespace Eleflex.Security
 {
     /// <summary>
     /// Interace providing the current user's information.

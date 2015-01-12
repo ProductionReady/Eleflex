@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -124,9 +124,9 @@ namespace Eleflex.Storage.EntityFramework
 
                     //Add to last expression based on expression join type
                     if (nextExpressionAnd)
-                        lastExpression = lastExpression.And(expr);
+                        lastExpression = lastExpression.And(expr.Expand());
                     else
-                        lastExpression = lastExpression.Or(expr);
+                        lastExpression = lastExpression.Or(expr.Expand());
                 }                
                 if (lastExpression == null)
                     continue;
@@ -139,9 +139,9 @@ namespace Eleflex.Storage.EntityFramework
                 }
                 //Build on last set with last expression
                 if (nextSetExpressionAnd)
-                    lastSet = lastSet.And(lastExpression);
+                    lastSet = lastSet.And(lastExpression.Expand());
                 else
-                    lastSet = lastSet.Or(lastExpression);
+                    lastSet = lastSet.Or(lastExpression.Expand());
                 lastExpression = null;
             }
             if (lastSet != null)
@@ -309,14 +309,25 @@ namespace Eleflex.Storage.EntityFramework
         {
             if (filter.Columns == null || filter.Columns.Count != 1)
                 throw new EleflexException("Null requires 1 field");
+            
+            PropertyInfo p = null;
+            MemberExpression member = null;
+            Expression[] constant = null;
+            p = GetProperty(props, mappings, filter.Columns[0]);
+            var typeParam = Expression.Parameter(t, "x");
 
-            //Use the comparison expression to build the null expression.
-            StorageQueryBuilder builder = new StorageQueryBuilder();
+            member = Expression.MakeMemberAccess(typeParam, p);
+            var memberHasValue = Expression.PropertyOrField(member, "HasValue");
+            //var memberHasValue = MemberExpression.Property(member, "HasValue");
+            
             if(filter.InclusionType == StorageQueryInclusionType.Include)
-                builder.IsEqual(filter.Columns[0], null);            
+                constant = new Expression[] { Expression.Constant(false) };
             else
-                builder.IsNotEqual(filter.Columns[0], null);
-            return GetCompareExpression<T>(builder.Filters[0], t, props, mappings);            
+                constant = new Expression[] { Expression.Constant(true) };
+
+            var equalsExp = Expression.Equal(memberHasValue, constant[0]);
+            return Expression.Lambda(equalsExp, typeParam) as Expression<Func<T, bool>>;
+
         }
 
         /// <summary>
@@ -415,7 +426,7 @@ namespace Eleflex.Storage.EntityFramework
                     if (filter.Values == null || filter.Values.Count != 1)
                         throw new EleflexException("Equal comparison requires 1 value");
                     member = Expression.MakeMemberAccess(typeParam, p);
-                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p,filter.Values[0]))};
+                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p, filter.Values[0]), p.PropertyType) };
                     var equalsExp = Expression.Equal(member, constant[0]);
                     return Expression.Lambda(equalsExp, typeParam) as Expression<Func<T, bool>>;
                 case StorageQueryComparisonType.GreaterThan:
@@ -425,7 +436,7 @@ namespace Eleflex.Storage.EntityFramework
                     if (filter.Values == null || filter.Values.Count != 1)
                         throw new EleflexException("GreaterThan comparison requires 1 value");
                     member = Expression.MakeMemberAccess(typeParam, p);
-                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p, filter.Values[0])) };
+                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p, filter.Values[0]), p.PropertyType) };
                     var greaterThanExp = Expression.GreaterThan(member, constant[0]);
                     return Expression.Lambda(greaterThanExp, typeParam) as Expression<Func<T, bool>>;
                 case StorageQueryComparisonType.GreaterThanEqual:
@@ -435,7 +446,7 @@ namespace Eleflex.Storage.EntityFramework
                     if (filter.Values == null || filter.Values.Count != 1)
                         throw new EleflexException("GreaterThanEqual comparison requires 1 value");
                     member = Expression.MakeMemberAccess(typeParam, p);
-                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p, filter.Values[0])) };
+                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p, filter.Values[0]), p.PropertyType) };
                     var greaterThanEqualExp = Expression.GreaterThanOrEqual(member, constant[0]);
                     return Expression.Lambda(greaterThanEqualExp, typeParam) as Expression<Func<T, bool>>;
                 case StorageQueryComparisonType.LessThan:
@@ -445,7 +456,7 @@ namespace Eleflex.Storage.EntityFramework
                     if (filter.Values == null || filter.Values.Count != 1)
                         throw new EleflexException("LessThan comparison requires 1 value");
                     member = Expression.MakeMemberAccess(typeParam, p);
-                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p, filter.Values[0])) };
+                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p, filter.Values[0]), p.PropertyType) };
                     var lessThanExp = Expression.LessThan(member, constant[0]);
                     return Expression.Lambda(lessThanExp, typeParam) as Expression<Func<T, bool>>;
                 case StorageQueryComparisonType.LessThanEqual:
@@ -455,7 +466,7 @@ namespace Eleflex.Storage.EntityFramework
                     if (filter.Values == null || filter.Values.Count != 1)
                         throw new EleflexException("LessThanEqual comparison requires 1 value");
                     member = Expression.MakeMemberAccess(typeParam, p);
-                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p, filter.Values[0])) };
+                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p, filter.Values[0]), p.PropertyType) };
                     var lessThanEqualExp = Expression.LessThanOrEqual(member, constant[0]);
                     return Expression.Lambda(lessThanEqualExp, typeParam) as Expression<Func<T, bool>>;
                 case StorageQueryComparisonType.NotEqual:
@@ -465,7 +476,7 @@ namespace Eleflex.Storage.EntityFramework
                     if (filter.Values == null || filter.Values.Count != 1)
                         throw new EleflexException("NotEqual comparison requires 1 value");
                     member = Expression.MakeMemberAccess(typeParam, p);
-                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p, filter.Values[0])) };
+                    constant = new Expression[] { Expression.Constant(GetParsedPropertyType(p, filter.Values[0]), p.PropertyType) };
                     var noteEqualsExp = Expression.NotEqual(member, constant[0]);
                     return Expression.Lambda(noteEqualsExp, typeParam) as Expression<Func<T, bool>>;
             }
@@ -736,40 +747,142 @@ namespace Eleflex.Storage.EntityFramework
         {
             if (prop.PropertyType == typeof(bool))
                 return bool.Parse(value);
+            if (prop.PropertyType == typeof(bool?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new bool?();
+                return new bool?(bool.Parse(value));
+            }
             if (prop.PropertyType == typeof(byte))
                 return byte.Parse(value);
+            if (prop.PropertyType == typeof(byte?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new byte?();
+                return new byte?(byte.Parse(value));
+            }
             if (prop.PropertyType == typeof(char))
                 return char.Parse(value);
+            if (prop.PropertyType == typeof(char?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new char?();
+                return new char?(char.Parse(value));
+            }
             if (prop.PropertyType == typeof(DateTime))
                 return DateTime.Parse(value);
+            if (prop.PropertyType == typeof(DateTime?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new DateTime?();
+                return new DateTime?(DateTime.Parse(value));
+            }
             if (prop.PropertyType == typeof(DateTimeOffset))
                 return DateTimeOffset.Parse(value);
+            if (prop.PropertyType == typeof(DateTimeOffset?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new DateTimeOffset?();
+                return new DateTimeOffset?(DateTimeOffset.Parse(value));
+            }
             if (prop.PropertyType == typeof(decimal))
                 return decimal.Parse(value);
+            if (prop.PropertyType == typeof(decimal?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new decimal?();
+                return new decimal?(decimal.Parse(value));
+            }
             if (prop.PropertyType == typeof(double))
                 return double.Parse(value);
+            if (prop.PropertyType == typeof(double?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new double?();
+                return new double?(double.Parse(value));
+            }
             if (prop.PropertyType == typeof(Guid))
                 return Guid.Parse(value);
+            if (prop.PropertyType == typeof(Guid?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new Guid?();
+                return new Guid?(Guid.Parse(value));
+            }
             if (prop.PropertyType == typeof(short))
                 return short.Parse(value);
+            if (prop.PropertyType == typeof(short?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new short?();
+                return new short?(short.Parse(value));
+            }
             if (prop.PropertyType == typeof(int))
                 return int.Parse(value);
+            if (prop.PropertyType == typeof(int?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new int?();
+                return new int?(int.Parse(value));
+            }
             if (prop.PropertyType == typeof(long))
                 return long.Parse(value);
+            if (prop.PropertyType == typeof(long?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new long?();
+                return new long?(long.Parse(value));
+            }
             if (prop.PropertyType == typeof(sbyte))
                 return sbyte.Parse(value);
+            if (prop.PropertyType == typeof(sbyte?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new sbyte?();
+                return new sbyte?(sbyte.Parse(value));
+            }
             if (prop.PropertyType == typeof(Single))
                 return Single.Parse(value);
+            if (prop.PropertyType == typeof(Single?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new Single?();
+                return new Single?(Single.Parse(value));
+            }
             if (prop.PropertyType == typeof(string))
                 return value;
             if (prop.PropertyType == typeof(TimeSpan))
                 return TimeSpan.Parse(value);
+            if (prop.PropertyType == typeof(TimeSpan?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new TimeSpan?();
+                return new TimeSpan?(TimeSpan.Parse(value));
+            }
             if (prop.PropertyType == typeof(UInt16))
                 return UInt16.Parse(value);
+            if (prop.PropertyType == typeof(UInt16?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new UInt16?();
+                return new UInt16?(UInt16.Parse(value));
+            }
             if (prop.PropertyType == typeof(UInt32))
                 return UInt32.Parse(value);
+            if (prop.PropertyType == typeof(UInt32?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new UInt32?();
+                return new UInt32?(UInt32.Parse(value));
+            }
             if (prop.PropertyType == typeof(UInt64))
                 return UInt64.Parse(value);
+            if (prop.PropertyType == typeof(UInt64?))
+            {
+                if (string.IsNullOrEmpty(value))
+                    return new UInt64?();
+                return new UInt64?(UInt64.Parse(value));
+            }
             return value;
         }
     }

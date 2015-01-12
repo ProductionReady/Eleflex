@@ -5,7 +5,7 @@ using Eleflex.Storage;
 
 namespace Eleflex.Security
 {
-    public interface IUser : IStorageExtraData
+    public interface IUser : Microsoft.AspNet.Identity.IUser
     {
         System.Guid UserKey { get; set; }
         System.DateTimeOffset CreateDate { get; set; }
@@ -17,9 +17,12 @@ namespace Eleflex.Security
         string PasswordSalt { get; set; }
         System.DateTimeOffset PasswordLastChangeDate { get; set; }
         int LoginFailedAttempts { get; set; }
-        bool IsLockedOut { get; set; }
+        bool EnableLockout { get; set; }
         Nullable<System.DateTimeOffset> LastLoginDate { get; set; }
         Nullable<System.DateTimeOffset> LockoutReinstateDate { get; set; }
-        string Comment { get; set; }        
+        string Comment { get; set; }                
+        bool Inactive { get; set; }
+        bool EmailValid { get; set; }
+        string EmailValidCode { get; set; }
     }
 }

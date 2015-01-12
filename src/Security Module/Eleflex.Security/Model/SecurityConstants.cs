@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -41,29 +41,38 @@ namespace Eleflex.Security
         public const string MODULE_NAME = "Eleflex Security Module";
 
         /// <summary>
-        /// RoleKey for all users.
+        /// RoleKey for a user.
         /// </summary>
-        public static Guid ROLE_ALL_USERS = new Guid("0C3623CB-5643-4FCD-8B8C-949D66C51AF2");
-
+        public static Guid ROLEKEY_USER = new Guid("0C3623CB-5643-4FCD-8B8C-949D66C51AF2");                
         /// <summary>
-        /// RoleKey for administrators.
+        /// RoleKey for an admin.
         /// </summary>
-        public static Guid ROLE_ADMINISTATORS = new Guid("202BBB57-1411-4FC5-BE1A-832520AB78E3");
-
+        public static Guid ROLEKEY_ADMIN = new Guid("202BBB57-1411-4FC5-BE1A-832520AB78E3");
         /// <summary>
-        /// RoleKey for anonymous users.
+        /// PermissionKey for an admin.
         /// </summary>
-        public static Guid ROLE_ANONYMOUS = new Guid("7D99ADF1-83E6-45E6-9EF0-48E958D82945");
-
-        /// <summary>
-        /// PermissionKey for an administrator.
-        /// </summary>
-        public static Guid PERMISSION_ADMINISTATOR = new Guid("3E820CF7-4E24-4C56-8325-BF19ECB70CD7");
-
+        public static Guid PERMISSIONKEY_ADMIN = new Guid("3E820CF7-4E24-4C56-8325-BF19ECB70CD7");
         /// <summary>
         /// PermissionKey for a user.
         /// </summary>
-        public static Guid PERMISSION_USER = new Guid("A9C7918B-653C-4BFA-BF36-3C2CE2DC9489");
+        public static Guid PERMISSIONKEY_USER = new Guid("A9C7918B-653C-4BFA-BF36-3C2CE2DC9489");
+
+        /// <summary>
+        /// Role for a user.
+        /// </summary>
+        public const string ROLE_USER = "User";
+        /// <summary>
+        /// Role for admin.
+        /// </summary>
+        public const string ROLE_ADMIN = "Admin";
+        /// <summary>
+        /// Permission for an admin.
+        /// </summary>
+        public const string PERMISSION_ADMIN = "Admin";
+        /// <summary>
+        /// Permission for a user.
+        /// </summary>
+        public const string PERMISSION_USER = "User";
 
     }
 }

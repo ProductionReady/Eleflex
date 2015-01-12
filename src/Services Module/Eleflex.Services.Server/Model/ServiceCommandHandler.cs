@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -56,8 +56,7 @@ namespace Eleflex.Services.Server
                 //Log exceptions for non-business exceptions since they are not managed errors
                 if (!(ex is IEleflexException))
                     Common.Logging.LogManager.GetLogger("Eleflex.Services.Server.ServiceCommandHandler").Error(request, ex);
-            }
-            uow.Dispose();
+            }            
             return response;
         }
 

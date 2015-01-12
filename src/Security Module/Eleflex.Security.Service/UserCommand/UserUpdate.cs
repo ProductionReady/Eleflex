@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -59,7 +59,7 @@ namespace Eleflex.Security.Service.UserCommand
             item.ChangePasswordSalt(request.Item.PasswordSalt);
             item.ChangePasswordLastChangeDate(request.Item.PasswordLastChangeDate);
             item.ChangeLoginFailedAttempts(request.Item.LoginFailedAttempts);
-            item.ChangeIsLockedOut(request.Item.IsLockedOut);
+            item.ChangeEnableLockout(request.Item.EnableLockout);
             item.ChangeLastLoginDate(request.Item.LastLoginDate);
             item.ChangeLockoutReinstateDate(request.Item.LockoutReinstateDate);
             item.ChangeComment(request.Item.Comment);

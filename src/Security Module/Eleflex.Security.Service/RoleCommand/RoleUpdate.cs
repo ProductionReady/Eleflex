@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -55,6 +55,7 @@ namespace Eleflex.Security.Service.RoleCommand
             item.ChangeName(request.Item.Name);
             item.ChangeDescription(request.Item.Description);
             item.ChangeExtraData(request.Item.ExtraData);
+            item = _roleRepository.Update(item);
             response.Item = AutoMapper.Mapper.Map<ServiceModel.Role>(item);
         }
     }

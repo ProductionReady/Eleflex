@@ -29,8 +29,7 @@
         </div>
         <div class="form-group">
             <button class="btn btn-primary active" type="submit">Search</button>
-            <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminSecurityPermissionsListForm');">Clear</button>
-            <button class="btn btn-primary active" type="button" onclick="window.location.href('@Url.Action("Create","Permissions")')">New Permission</button>
+            <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminSecurityPermissionsListForm');">Clear</button>            
         </div>
     }
 </fieldset>
@@ -38,7 +37,6 @@
 <table class="eleflexdatatable">
     <thead>
         <tr>
-            <th>Identifier</th>
             <th>Name</th>
             <th>Inactive</th>
             <th>Description</th>
@@ -51,15 +49,11 @@
             for (int i = 0; i < Model.Items.Count; i++)
             {
                 <tr>
-                    <td>@Model.Items[i].PermissionKey.ToString()</td>
                     <td>@Model.Items[i].Name</td>
                     <td>@Model.Items[i].Inactive</td>
                     <td>@Model.Items[i].Description</td>
                     <td>
-                        @if(Model.Items[i].ModuleKey == null)
-                        {
-                            @Html.ActionLink("Delete", "Delete", new { key=Model.Items[i].PermissionKey })
-                        }
+                        @Html.ActionLink("Deactivate", "Deactivate", new { key = Model.Items[i].PermissionKey }, new { @class = "btn btn-sm btn-primary", @type = "button" })
                     </td>
                 </tr>
             }

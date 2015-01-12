@@ -18,6 +18,7 @@ namespace Eleflex.Security
         {
             Roles = new List<Role>();
             UserPermissions = new List<Permission>();
+            UserClaims = new List<UserClaim>();
         }
         /// <summary>
         /// Assigned Roles (and linked roles).
@@ -27,5 +28,10 @@ namespace Eleflex.Security
         /// Assigned User Permissions (does not include role permissions)
         /// </summary>
         public List<Permission> UserPermissions { get; protected set; }
+
+        /// <summary>
+        /// Assigned User Claims
+        /// </summary>
+        public List<UserClaim> UserClaims { get; protected set; }
     }
 }

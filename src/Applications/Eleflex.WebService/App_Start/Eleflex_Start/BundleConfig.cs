@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -50,8 +50,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
 
             //JQuery Data Tables Scripts (tables)
             bundles.Add(new ScriptBundle("~/bundles/datatablejsEleflex").Include(
-            "~/Scripts/DataTables-1.10.3/jquery.dataTables.js",
-            "~/Scripts/custom.datatables.datetime.js"));
+            "~/Scripts/DataTables-1.10.4/jquery.dataTables.js"));
 
             //JQuery Chosen Scripts (select choosers)
             bundles.Add(new ScriptBundle("~/bundles/chosenjsEleflex").Include(
@@ -69,6 +68,10 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             bundles.Add(new ScriptBundle("~/bundles/momentjsEleflex").Include(
             "~/Scripts/moment.js"));
 
+            //Moderizer Scripts
+            bundles.Add(new ScriptBundle("~/bundles/modernizrEleflex").Include(
+            "~/Scripts/modernizr-*"));
+            
             //Bootstrap datetimepicker Scripts (date/time choosers)
             bundles.Add(new ScriptBundle("~/bundles/datetimepickerjsEleflex").Include(
             "~/Scripts/bootstrap-datetimepicker.js"));
@@ -77,9 +80,11 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             bundles.Add(new ScriptBundle("~/bundles/jsEleflex").Include(
             "~/Scripts/Eleflex.js"));
 
+
+
             //JQuery Data Tables CSS
-            bundles.Add(new StyleBundle("~/Content/DataTables-1.10.3/cssEleflex").Include(
-                        "~/Content/DataTables-1.10.3/css/jquery.dataTables.css"));
+            bundles.Add(new StyleBundle("~/Content/DataTables-1.10.4/cssEleflex").Include(
+                        "~/Content/DataTables-1.10.4/css/jquery.dataTables.css"));
 
             //JQuery Theme CSS
             bundles.Add(new StyleBundle("~/Content/themes/base/cssEleflex").Include(
@@ -99,6 +104,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             //Chosen select pickers CSS (Default css removed for bootstrap.chosen alternate style)
             //bundles.Add(new StyleBundle("~/Content/chosenEleflex").Include(
             //    "~/Content/chosen.css"));
+            
 
             //Bootstrap Chosen select pickers CSS
             bundles.Add(new StyleBundle("~/Content/bootstrapchosenEleflex").Include(

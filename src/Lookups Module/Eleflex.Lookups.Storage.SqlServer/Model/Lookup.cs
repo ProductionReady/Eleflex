@@ -16,20 +16,19 @@ namespace Eleflex.Lookups.Storage.SqlServer.Model
     {
         public Lookup()
         {
-            this.Sub = new HashSet<Lookup>();
+            this.Children = new HashSet<Lookup>();
         }
     
-        public int LookupKey { get; set; }
-        public System.Guid Code { get; set; }
+        public System.Guid LookupKey { get; set; }
         public string Name { get; set; }
-        public Nullable<int> CategoryKey { get; set; }
+        public Nullable<System.Guid> CategoryKey { get; set; }
         public bool Inactive { get; set; }
         public Nullable<int> SortOrder { get; set; }
         public string Abbreviation { get; set; }
         public string Description { get; set; }
         public string ExtraData { get; set; }
     
-        public virtual ICollection<Lookup> Sub { get; set; }
+        public virtual ICollection<Lookup> Children { get; set; }
         public virtual Lookup Parent { get; set; }
     }
 }

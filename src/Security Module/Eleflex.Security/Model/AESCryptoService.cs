@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 namespace Eleflex.Security
 {
     /// <summary>
-    /// Defines a crypto class for the AES cryto provider
+    /// Defines a crypto class for the AES cryto provider. Code pulled from Microsoft website example.
     /// </summary>
     public partial class AESCryptoService : ICryptoService
     {
@@ -159,7 +159,7 @@ namespace Eleflex.Security
 
 
         /// <summary>
-        /// Encrypt a string. Code pulled from Microsoft website example.
+        /// Encrypt a string.
         /// </summary>
         /// <param name="plainText"></param>
         /// <param name="Key"></param>
@@ -208,7 +208,7 @@ namespace Eleflex.Security
         }
 
         /// <summary>
-        /// Decrypt a string. From Microsoft website example.
+        /// Decrypt a string.
         /// </summary>
         /// <param name="cipherText"></param>
         /// <param name="Key"></param>

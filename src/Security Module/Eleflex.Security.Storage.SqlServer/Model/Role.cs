@@ -14,10 +14,24 @@ namespace Eleflex.Security.Storage.SqlServer.Model
     
     public partial class Role
     {
+        public Role()
+        {
+            this.RolePermissions = new HashSet<RolePermission>();
+            this.RoleRoles = new HashSet<RoleRole>();
+            this.RoleRoles1 = new HashSet<RoleRole>();
+            this.UserRoles = new HashSet<UserRole>();
+        }
+    
         public System.Guid RoleKey { get; set; }
         public bool Inactive { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string ExtraData { get; set; }
+        public Nullable<System.Guid> ModuleKey { get; set; }
+    
+        public virtual ICollection<RolePermission> RolePermissions { get; set; }
+        public virtual ICollection<RoleRole> RoleRoles { get; set; }
+        public virtual ICollection<RoleRole> RoleRoles1 { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

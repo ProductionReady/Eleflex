@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -61,11 +61,20 @@ namespace Eleflex.Storage.EntityFramework
         /// <returns></returns>
         public virtual TDomain Insert(TDomain domain)
         {
+            try
+            { 
             var session = _storageProvider.GetSession().Session as DbContext;
             TEntity entity = AutoMapper.Mapper.Map<TEntity>(domain);
             session.Entry<TEntity>(entity).State = EntityState.Added;
             session.SaveChanges(); //Required to get identity value created from DB (unit of work can rollback if needed)
             return AutoMapper.Mapper.Map<TDomain>(entity);
+            }
+            catch(Exception ex)
+            {
+                string a = ex.ToString();
+                throw;
+            }
+
         }
 
         /// <summary>
@@ -172,6 +181,21 @@ namespace Eleflex.Storage.EntityFramework
             IOrderedQueryable<TEntity> query = EntityQueryBuilder.Query<TEntity>(session.Set<TEntity>() as IQueryable<TEntity>, storageQuery);
             return query.Count();
         }
-       
+
+        /// <summary>
+        /// Commit.
+        /// </summary>
+        public void Commit()
+        {
+            _storageProvider.Commit();
+        }
+
+        /// <summary>
+        /// Rollback.
+        /// </summary>
+        public void Rollback()
+        {
+            _storageProvider.Rollback();
+        }
     }
 }

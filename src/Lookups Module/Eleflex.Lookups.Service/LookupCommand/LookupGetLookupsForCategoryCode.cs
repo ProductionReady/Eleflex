@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -33,13 +33,13 @@ namespace Eleflex.Lookups.Service.LookupCommand
     [ServiceCommandHandlerAttribute(typeof(LookupGetLookupsForCategoryCodeRequest))]
     public class LookupGetLookupsForCategoryCode : ServiceCommandHandler<LookupGetLookupsForCategoryCodeRequest, LookupGetLookupsForCategoryCodeResponse>
     {
-        private readonly ILookupRepository _lookupRepository;
+        private readonly ILookupsRepository _lookupRepository;
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="lookupRepository"></param>
-        public LookupGetLookupsForCategoryCode(ILookupRepository lookupRepository)
+        public LookupGetLookupsForCategoryCode(ILookupsRepository lookupRepository)
         {
             _lookupRepository = lookupRepository;
         }
@@ -51,7 +51,7 @@ namespace Eleflex.Lookups.Service.LookupCommand
         /// <param name="response"></param>
         public override void Execute(LookupGetLookupsForCategoryCodeRequest request, LookupGetLookupsForCategoryCodeResponse response)
         {
-            response.Items = AutoMapper.Mapper.Map<List<ServiceModel.Lookup>>(_lookupRepository.GetLookupsForCategoryCode(request.Item));
+            response.Items = AutoMapper.Mapper.Map<List<ServiceModel.Lookup>>(_lookupRepository.GetLookupsForCategoryKey(request.Item));
         }
     }
 }

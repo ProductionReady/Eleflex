@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -52,7 +52,7 @@ namespace Eleflex.Lookups.Message
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IServiceCommandResponseItem<Lookup> Get(string id)
+        public IServiceCommandResponseItem<Lookup> Get(Guid id)
         {
             using (ILookupsRequestDispatcher dispatcher = ServiceLocator.Current.GetInstance<ILookupsRequestDispatcher>())
             {
@@ -82,7 +82,7 @@ namespace Eleflex.Lookups.Message
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IServiceCommandResponse Delete(string id)
+        public IServiceCommandResponse Delete(Guid id)
         {
             using (ILookupsRequestDispatcher dispatcher = ServiceLocator.Current.GetInstance<ILookupsRequestDispatcher>())
             {
@@ -146,16 +146,16 @@ namespace Eleflex.Lookups.Message
         }
 
         /// <summary>
-        /// Get lookups by category code.
+        /// Get lookups by category key.
         /// </summary>
-        /// <param name="code"></param>
+        /// <param name="key"></param>
         /// <returns></returns>
-        public IServiceCommandResponseItems<Lookup> GetLookupsForCategoryCode(Guid code)
+        public IServiceCommandResponseItems<Lookup> GetLookupsForCategoryKey(Guid key)
         {
             using (ILookupsRequestDispatcher dispatcher = ServiceLocator.Current.GetInstance<ILookupsRequestDispatcher>())
             {
                 LookupGetLookupsForCategoryCodeRequest request = new LookupGetLookupsForCategoryCodeRequest();
-                request.Item = code;
+                request.Item = key;
                 return dispatcher.SendServiceCommand<LookupGetLookupsForCategoryCodeResponse>(request);
             }
         }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework Module", "Framework Module", "{0CADA0B5-FE7E-47FE-9FAB-1A341C5D04D2}"
 EndProject
@@ -14,6 +14,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Logging", "Logging Module\Eleflex.Logging\Eleflex.Logging.csproj", "{BEC30BBA-88EF-4B38-96DD-68D5FD19A95F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Logging.Service", "Logging Module\Eleflex.Logging.Service\Eleflex.Logging.Service.csproj", "{58AA6D52-F8A8-4840-A6F5-1C6F6FDA7D93}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6D92A947-8FBC-4621-A5FB-9E7B86994A5D} = {6D92A947-8FBC-4621-A5FB-9E7B86994A5D}
+		{92273D9E-156F-4CB7-A446-64681659B2B5} = {92273D9E-156F-4CB7-A446-64681659B2B5}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Logging.Message", "Logging Module\Eleflex.Logging.Message\Eleflex.Logging.Message.csproj", "{92273D9E-156F-4CB7-A446-64681659B2B5}"
 EndProject
@@ -32,8 +36,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services Module", "Services Module", "{9FFB8004-C7D3-41B1-BEAB-BE696F6262B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Services", "Services Module\Eleflex.Services\Eleflex.Services.csproj", "{201A991B-EAE3-40D9-B161-C0F5F4DC7512}"
+	ProjectSection(ProjectDependencies) = postProject
+		{18BB79DC-AE56-49D8-9972-2D30038C9603} = {18BB79DC-AE56-49D8-9972-2D30038C9603}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Services.Client", "Services Module\Eleflex.Services.Client\Eleflex.Services.Client.csproj", "{476AEF02-7624-4A7F-8DD5-CEB7CC91F69A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{201A991B-EAE3-40D9-B161-C0F5F4DC7512} = {201A991B-EAE3-40D9-B161-C0F5F4DC7512}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Services.Server", "Services Module\Eleflex.Services.Server\Eleflex.Services.Server.csproj", "{6D92A947-8FBC-4621-A5FB-9E7B86994A5D}"
 EndProject
@@ -43,6 +53,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{18C4FB
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Web", "Web Module\Eleflex.Web\Eleflex.Web.csproj", "{928C5285-FD3E-4F8C-BDFA-777E5295A122}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EAAB1C06-966C-431A-AA8B-B0265E53D84C} = {EAAB1C06-966C-431A-AA8B-B0265E53D84C}
+		{11084DAC-7083-425C-870D-896B4BEDA994} = {11084DAC-7083-425C-870D-896B4BEDA994}
+		{EC89DDED-2ED9-4E96-8185-303AA072178D} = {EC89DDED-2ED9-4E96-8185-303AA072178D}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web Module", "Web Module", "{B9BD8B7A-9C15-475C-A442-772A95E5AD50}"
 EndProject
@@ -51,6 +66,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Lookups", "Lookups Module\Eleflex.Lookups\Eleflex.Lookups.csproj", "{7C051A7D-5AC4-40D2-AF47-1FEC79599005}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Lookups.Service", "Lookups Module\Eleflex.Lookups.Service\Eleflex.Lookups.Service.csproj", "{27B9441E-2293-4FD9-B469-0D9982F1834A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AB4D8779-42C3-4995-B64D-BCAB21EDEBB9} = {AB4D8779-42C3-4995-B64D-BCAB21EDEBB9}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Lookups.Message", "Lookups Module\Eleflex.Lookups.Message\Eleflex.Lookups.Message.csproj", "{AB4D8779-42C3-4995-B64D-BCAB21EDEBB9}"
 EndProject
@@ -81,6 +99,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Security.Storage.SqlServer", "Security Module\Eleflex.Security.Storage.SqlServer\Eleflex.Security.Storage.SqlServer.csproj", "{FDC2BC9C-E68F-4078-89B6-B125C75E8E4E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Security.Web", "Security Module\Eleflex.Security.Web\Eleflex.Security.Web.csproj", "{F523DF02-2866-4D4A-B9EB-668C5B3F18A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{476AEF02-7624-4A7F-8DD5-CEB7CC91F69A} = {476AEF02-7624-4A7F-8DD5-CEB7CC91F69A}
+		{EAAB1C06-966C-431A-AA8B-B0265E53D84C} = {EAAB1C06-966C-431A-AA8B-B0265E53D84C}
+		{201A991B-EAE3-40D9-B161-C0F5F4DC7512} = {201A991B-EAE3-40D9-B161-C0F5F4DC7512}
+		{928C5285-FD3E-4F8C-BDFA-777E5295A122} = {928C5285-FD3E-4F8C-BDFA-777E5295A122}
+		{D57F1BA1-1554-4C4F-A084-C03B8617F595} = {D57F1BA1-1554-4C4F-A084-C03B8617F595}
+		{11084DAC-7083-425C-870D-896B4BEDA994} = {11084DAC-7083-425C-870D-896B4BEDA994}
+		{18BB79DC-AE56-49D8-9972-2D30038C9603} = {18BB79DC-AE56-49D8-9972-2D30038C9603}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Versioning.Web", "Versioning Module\Eleflex.Versioning.Web\Eleflex.Versioning.Web.csproj", "{9A1C97BF-D58B-4AEA-9770-E3F2296E1643}"
 EndProject

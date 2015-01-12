@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -35,7 +35,8 @@ namespace Eleflex.Security.Service
         /// </summary>
         /// <param name="mapper"></param>
         public void CreateMap(IProfileExpression mapper)
-        {
+        {            
+
             mapper.CreateMap<DomainModel.Permission, ServiceModel.Permission>();
             mapper.CreateMap<ServiceModel.Permission, DomainModel.Permission>();
 
@@ -44,6 +45,18 @@ namespace Eleflex.Security.Service
 
             mapper.CreateMap<DomainModel.User, ServiceModel.User>();
             mapper.CreateMap<ServiceModel.User, DomainModel.User>();
+
+            mapper.CreateMap<DomainModel.UserClaim, ServiceModel.UserClaim>();
+            mapper.CreateMap<ServiceModel.UserClaim, DomainModel.UserClaim>();
+
+            mapper.CreateMap<DomainModel.UserLogin, ServiceModel.UserLogin>();
+            mapper.CreateMap<ServiceModel.UserLogin, DomainModel.UserLogin>();
+
+            mapper.CreateMap<DomainModel.UserRole, ServiceModel.UserRole>();
+            mapper.CreateMap<ServiceModel.UserRole, DomainModel.UserRole>();
+
+            mapper.CreateMap<DomainModel.UserDetail, ServiceModel.UserDetail>();
+            mapper.CreateMap<ServiceModel.UserDetail, DomainModel.UserDetail>();
         }
     }
 }

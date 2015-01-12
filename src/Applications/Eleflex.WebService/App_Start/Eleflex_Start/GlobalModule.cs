@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -49,8 +49,9 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             {
                 HttpApplication application = (HttpApplication)sender;
                 Exception exception = application.Server.GetLastError();
-                Common.Logging.LogManager.GetCurrentClassLogger().Error("Web Error", exception);
+                Common.Logging.LogManager.GetLogger<GlobalModule>().Error("Web Error", exception);                
             }
+            HttpContext.Current.Response.Redirect(@"/Error");
         }
 
         /// <summary>
@@ -60,7 +61,11 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
         /// <param name="e"></param>
         void context_EndRequest(object sender, EventArgs e)
         {
-            StructureMap.Web.Pipeline.HttpContextLifecycle.DisposeAndClearAll();
+            //Dispose any unit of work (if needed)            
+            Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>().Dispose();
+
+            //Cleanup structuremap
+            StructureMap.Web.Pipeline.HttpContextLifecycle.DisposeAndClearAll();            
         }
 
         /// <summary>

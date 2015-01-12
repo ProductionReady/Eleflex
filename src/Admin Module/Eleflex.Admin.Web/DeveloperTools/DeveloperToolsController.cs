@@ -6,11 +6,12 @@ using System.Web.Mvc;
 
 namespace Eleflex.Admin.Web.DeveloperTools
 {
+
+    [Authorize(Roles = "Admin")]
     public class DeveloperToolsController : Controller
     {
         //
-        // GET: /Developer/
-
+        // GET: /Developer/        
         public ActionResult Index()
         {
             return View();

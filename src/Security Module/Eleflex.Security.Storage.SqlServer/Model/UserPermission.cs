@@ -22,5 +22,8 @@ namespace Eleflex.Security.Storage.SqlServer.Model
         public Nullable<System.DateTimeOffset> EndDate { get; set; }
         public string Comment { get; set; }
         public string ExtraData { get; set; }
+    
+        public virtual Permission Permission { get; set; }
+        public virtual User User { get; set; }
     }
 }

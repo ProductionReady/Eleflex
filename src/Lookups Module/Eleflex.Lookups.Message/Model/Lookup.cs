@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -29,17 +29,12 @@ namespace Eleflex.Lookups.Message
         /// <summary>
         /// The key for the object.
         /// </summary>
-        public virtual string Key { get; set; }
+        public virtual Guid Key { get; set; }
 
         /// <summary>
         /// Determine if inactive.
         /// </summary>
         public virtual bool Inactive { get; set; }
-
-        /// <summary>
-        /// Code is used to unqiuely identify a lookup value in source code as the Id value may change depending on storage implementation.
-        /// </summary>
-        public virtual Guid Code { get; set; }
 
         /// <summary>
         /// Category this lookup belongs to.
@@ -65,5 +60,10 @@ namespace Eleflex.Lookups.Message
         /// The description.
         /// </summary>
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The description.
+        /// </summary>
+        public virtual string ExtraData { get; set; }
     }
 }

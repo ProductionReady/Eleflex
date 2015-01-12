@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\ProductionReady\Source\EleflexV2\Trunk\Lookups Module\Eleflex.Lookups.Storage.SqlServer\Model\LookupsDB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\GitHub\Eleflex\src\Lookups Module\Eleflex.Lookups.Storage.SqlServer\Model\LookupsDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

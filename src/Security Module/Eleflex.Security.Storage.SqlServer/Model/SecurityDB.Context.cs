@@ -30,6 +30,8 @@ namespace Eleflex.Security.Storage.SqlServer.Model
         public virtual DbSet<RolePermission> RolePermissions { get; set; }
         public virtual DbSet<RoleRole> RoleRoles { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserClaim> UserClaims { get; set; }
+        public virtual DbSet<UserLogin> UserLogins { get; set; }
         public virtual DbSet<UserPermission> UserPermissions { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
     }

@@ -1,83 +1,98 @@
-﻿@model Eleflex.Security.Web.Security.Users.ListModel
+﻿@model Eleflex.Security.Web.Security.Users.ListViewModel
 @{
     ViewBag.Title = "System Users";
 }
 <h1>System Users</h1>
-<fieldset>
-    <legend class="sr-only sr-only-focusable">Search Users</legend>
-@using (Html.BeginForm("List", "Users", FormMethod.Post, new { id = "AdminSecurityUsersListForm", @class = "form-inline" }))
-{
-    <div class="form-group">
-        @Html.LabelFor(x => x.Email, "Email:")
-        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.Email)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(x => x.Username, "Username:")
-        @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.Username)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(x => x.Inactive, "Inactive:")
-        @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselect", data_placeholder = "Select an Item...", Style = "width: 150px;" })
-        @Html.ValidationMessageFor(x => x.Inactive)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(x => x.MaxRecords, "Max Records:")
-        @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
-        @Html.ValidationMessageFor(x => x.MaxRecords)
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary active" type="submit">Search</button>
-        <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminSecurityUsersListForm');">Clear</button>
-        <button class="btn btn-primary active" type="button" onclick="window.location.href('@Url.Action("Create","Users")')">New User</button>
-    </div>
-}
-</fieldset>
-<hr/>
-<table class="eleflexdatatable">
-    <thead>
-        <tr>
-            <th>Username</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Last Login Date</th>
-            <th>Locked Out?</th>
-            <th>Locked Out Reinstate Date</th>
-            <th>Comment</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.Items != null)
+<div class="container">
+    <fieldset>
+        <legend class="sr-only sr-only-focusable">Search Users</legend>
+        @using (Html.BeginForm("List", "Users", FormMethod.Post, new { id = "AdminSecurityUsersListForm", @class = "form-inline" }))
         {
-            for (int i = 0; i < Model.Items.Count; i++)
-            {
-                <tr>
-                    <td>@Model.Items[i].Username</td>
-                    <td>@Model.Items[i].FirstName</td>
-                    <td>@Model.Items[i].LastName</td>
-                    <td>@Model.Items[i].Email</td>
-                    <td>
-                        @if (Model.Items[i].LastLoginDate.HasValue)
-                        { @Model.Items[i].LastLoginDate.Value.Date }
-                        else
-                        { <text>N/A</text>}
-                    </td>
-                    <td>@Model.Items[i].IsLockedOut</td>
-                    <td>@Model.Items[i].LockoutReinstateDate</td>
-                    <td>@Model.Items[i].Comment</td>
-                    <td>
-                        @Html.ActionLink("Deactivate", "Deactivate", new { key = Model.Items[i].UserKey })
-                    </td>
-                </tr>
-            }
+            <div class="form-group">
+                @Html.LabelFor(x => x.Email, "Email:")
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Email)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Username, "Username:")
+                @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Username)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.FirstName, "First Name:")
+                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.FirstName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.LastName, "Last Name:")
+                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.LastName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Inactive, "Inactive:")
+                @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselect", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+                @Html.ValidationMessageFor(x => x.Inactive)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.MaxRecords, "Max Records:")
+                @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
+                @Html.ValidationMessageFor(x => x.MaxRecords)
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary active" type="submit">Search</button>
+                <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminSecurityUsersListForm');">Clear</button>
+                <button class="btn btn-primary active" type="button" onclick="window.location.href('@Url.Action("Create","Users")')">New User</button>
+            </div>
         }
-    </tbody>
-</table>
-<script type="text/javascript">
-    $(document).ready(function () {        
+    </fieldset>
+    <hr />
+    <table class="eleflexdatatable">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Inactive</th>
+                <th>Last Login Date</th>
+                <th>Locked Out Reinstate Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Items != null)
+            {
+                for (int i = 0; i < Model.Items.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.Items[i].Email</td>
+                        <td>@Model.Items[i].Username</td>
+                        <td>@Model.Items[i].FirstName</td>
+                        <td>@Model.Items[i].LastName</td>
+                        <td>@Model.Items[i].Inactive</td>
+                        <td>
+                            @if (Model.Items[i].LastLoginDate.HasValue)
+                            { @Model.Items[i].LastLoginDate.Value.ToLocalTime()}
+                            else
+                            { <text>N/A</text>}
+                        </td>
+                        <td>
+                            @if (Model.Items[i].LockoutReinstateDate.HasValue)
+                            { @Model.Items[i].LockoutReinstateDate.Value.ToLocalTime()}
+                            else
+                            { <text>N/A</text>}
+                        </td>
+                        <td>                            
+                            @Html.ActionLink("Edit", "Details", new { key = Model.Items[i].UserKey }, new { @class="btn btn-sm btn-primary", @type="button" })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-    });
-</script>
+        });
+    </script>

@@ -3,38 +3,40 @@
     ViewBag.Title = "Lookup";
 }
 <h1>Lookup</h1>
-<fieldset>
-    <legend class="sr-only sr-only-focusable">Lookup Form</legend>
-@using (Html.BeginForm("Details", "Admin", FormMethod.Post, new { id = "AdminLookupsDetailsForm", @class = "form-horizontal" }))
-{
-    @Html.HiddenFor(x => x.Key)
-    @Html.ValidationSummary(true)
-    <div class="form-group">
-        @Html.LabelFor(x => x.Abbreviation, "Abbreviation:")<span class="required">*</span>
-        @Html.TextBoxFor(x => x.Abbreviation, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.Abbreviation)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(x => x.Name, "Name:")<span class="required">*</span>
-        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.Name)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(x => x.Description, "Description:")
-        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", rows="3"  })
-        @Html.ValidationMessageFor(x => x.Description)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(x => x.Inactive, "Inactive:")
-        @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselectrequired", data_placeholder = "Select an Item...", Style = "width: 150px;" })
-        @Html.ValidationMessageFor(x => x.Inactive)
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary active" type="submit">Save</button>
-        <button class="btn btn-default active" type="button" onclick="window.location.href('@Url.Action("List","Lookups")')">Cancel</button>
-    </div>
-}
-</fieldset>
+<div class="container">
+    <fieldset>
+        <legend class="sr-only sr-only-focusable">Lookup Form</legend>
+        @using (Html.BeginForm("Details", "Admin", FormMethod.Post, new { id = "AdminLookupsDetailsForm", @class = "form-horizontal" }))
+        {
+            @Html.HiddenFor(x => x.Key)
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                @Html.LabelFor(x => x.Abbreviation, "Abbreviation:")<span class="required">*</span>
+                @Html.TextBoxFor(x => x.Abbreviation, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Abbreviation)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Name, "Name:")<span class="required">*</span>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Name)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Description, "Description:")
+                @Html.TextAreaFor(x => x.Description, new { @class = "form-control", rows = "3" })
+                @Html.ValidationMessageFor(x => x.Description)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Inactive, "Inactive:")
+                @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselectrequired", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+                @Html.ValidationMessageFor(x => x.Inactive)
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary active" type="submit">Save</button>
+                <button class="btn btn-default active" type="button" onclick="window.location.href('@Url.Action("List","Lookups")')">Cancel</button>
+            </div>
+        }
+    </fieldset>
+</div>
 <script type="text/javascript">
     $(document).ready(function () {        
 

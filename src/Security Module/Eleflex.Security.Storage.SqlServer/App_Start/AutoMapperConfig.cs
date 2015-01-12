@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -36,14 +36,28 @@ namespace Eleflex.Security.Storage.SqlServer
         /// <param name="mapper"></param>
         public void CreateMap(IProfileExpression mapper)
         {
-            mapper.CreateMap<DomainModel.User, StorageModel.User>();
-            mapper.CreateMap<StorageModel.User, DomainModel.User>();
+                        
+
+            mapper.CreateMap<DomainModel.Permission, StorageModel.Permission>();
+            mapper.CreateMap<StorageModel.Permission, DomainModel.Permission>();
 
             mapper.CreateMap<DomainModel.Role, StorageModel.Role>();
             mapper.CreateMap<StorageModel.Role, DomainModel.Role>();
 
-            mapper.CreateMap<DomainModel.Permission, StorageModel.Permission>();
-            mapper.CreateMap<StorageModel.Permission, DomainModel.Permission>();
+            mapper.CreateMap<DomainModel.Role, StorageModel.Role>();
+            mapper.CreateMap<StorageModel.Role, DomainModel.Role>();
+
+            mapper.CreateMap<DomainModel.User, StorageModel.User>();
+            mapper.CreateMap<StorageModel.User, DomainModel.User>();
+
+            mapper.CreateMap<DomainModel.UserClaim, StorageModel.UserClaim>();
+            mapper.CreateMap<StorageModel.UserClaim, DomainModel.UserClaim>();
+
+            mapper.CreateMap<DomainModel.UserLogin, StorageModel.UserLogin>();
+            mapper.CreateMap<StorageModel.UserLogin, DomainModel.UserLogin>();
+
+            mapper.CreateMap<DomainModel.UserRole, StorageModel.UserRole>();
+            mapper.CreateMap<StorageModel.UserRole, DomainModel.UserRole>();
         }
     }
 }

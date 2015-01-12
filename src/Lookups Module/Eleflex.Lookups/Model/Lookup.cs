@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -29,18 +29,13 @@ namespace Eleflex.Lookups
         /// <summary>
         /// The key for the object.
         /// </summary>
-        public virtual string Key { get; set; }
+        public virtual Guid Key { get; set; }
 
         /// <summary>
         /// Determine if inactive.
         /// </summary>
         public virtual bool Inactive { get; set; }
-
-        /// <summary>
-        /// Code is used to unqiuely identify a lookup value in source code as the Id value may change depending on storage implementation.
-        /// </summary>
-        public virtual Guid Code { get; set; }
-
+        
         /// <summary>
         /// Category this lookup belongs to.
         /// </summary>
@@ -66,38 +61,43 @@ namespace Eleflex.Lookups
         /// </summary>
         public virtual string Description { get; set; }
 
+        /// <summary>
+        /// ExtraData.
+        /// </summary>
+        public virtual string ExtraData { get; set; }
 
 
 
-        public virtual void ChangeLookupKey(string val)
+        public virtual void ChangeKey(Guid val)
         {
             Key = val;
         }
-        public virtual void ChangeLookupInactive(bool val)
+        public virtual void ChangeInactive(bool val)
         {
             Inactive = val;
         }
-        public virtual void ChangeLookupCode (Guid val)
-        {
-            Code = val;
-        }
-        public virtual void ChangeLookupCategory (Lookup val)
+        public virtual void ChangeCategory (Lookup val)
         {
             Category = val;
         }
-        public virtual void ChangeLookupSort (int? val)
+        public virtual void ChangeSort (int? val)
         {
             SortOrder = val;
         }
-        public virtual void ChangeLookupAbbreviation (string val)
+        public virtual void ChangeAbbreviation (string val)
         {
             Abbreviation = val;
         }
-        public virtual void ChangeLookupName (string val)
+        public virtual void ChangeName (string val)
         {
             Name = val;
         }
-        public virtual void ChangeLookupDescription(string val)
+        public virtual void ChangeDescription(string val)
+        {
+            Description = val;
+        }
+
+        public virtual void ChangeExtraData(string val)
         {
             Description = val;
         }

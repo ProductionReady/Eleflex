@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -71,7 +71,7 @@ namespace Eleflex.Versioning.Storage.SqlServer
             }
             catch (Exception ex)
             {
-                Common.Logging.LogManager.GetCurrentClassLogger().Error(ex);
+                Common.Logging.LogManager.GetLogger<ModuleVersionRepository>().Error(ex);
                 return null;
             }
             finally
@@ -119,7 +119,7 @@ namespace Eleflex.Versioning.Storage.SqlServer
             }
             catch (Exception ex)
             {
-                Common.Logging.LogManager.GetCurrentClassLogger().Error(ex);
+                Common.Logging.LogManager.GetLogger<ModuleVersionRepository>().Error(ex);
                 return null;
             }
             finally
@@ -160,7 +160,7 @@ namespace Eleflex.Versioning.Storage.SqlServer
             }
             catch (Exception ex)
             {
-                Common.Logging.LogManager.GetCurrentClassLogger().Error(ex);
+                Common.Logging.LogManager.GetLogger<ModuleVersionRepository>().Error(ex);
                 return null;
             }
             finally
@@ -190,7 +190,7 @@ namespace Eleflex.Versioning.Storage.SqlServer
             }
             catch (Exception ex)
             {
-                Common.Logging.LogManager.GetCurrentClassLogger().Error(ex);
+                Common.Logging.LogManager.GetLogger<ModuleVersionRepository>().Error(ex);
             }
             finally
             {
@@ -301,7 +301,7 @@ END
             }
             catch (Exception ex)
             {
-                Common.Logging.LogManager.GetCurrentClassLogger().Error(ex);
+                Common.Logging.LogManager.GetLogger<ModuleVersionRepository>().Error(ex);
                 return null;
             }
             finally

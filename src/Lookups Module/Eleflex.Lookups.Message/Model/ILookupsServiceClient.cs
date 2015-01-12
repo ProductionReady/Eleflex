@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -29,7 +29,7 @@ namespace Eleflex.Lookups.Message
     /// <summary>
     /// Service client for the Lookups.
     /// </summary>
-    public interface ILookupsServiceClient : IServiceCommandRepository<Lookup, string>
+    public interface ILookupsServiceClient : IServiceCommandRepository<Lookup, Guid>
     {
         /// <summary>
         /// Get a list of categories.
@@ -40,9 +40,9 @@ namespace Eleflex.Lookups.Message
         /// <summary>
         /// Get a list of lookups for the specified category code.
         /// </summary>
-        /// <param name="category"></param>
+        /// <param name="key"></param>
         /// <returns></returns>
-        IServiceCommandResponseItems<Lookup> GetLookupsForCategoryCode(Guid code);
+        IServiceCommandResponseItems<Lookup> GetLookupsForCategoryKey(Guid key);
 
         /// <summary>
         /// Get a list of lookups for the specified category name.

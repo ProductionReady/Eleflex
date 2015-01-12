@@ -4,15 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LookupsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LookupsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Lookup">
           <Key>
             <PropertyRef Name="LookupKey" />
           </Key>
-          <Property Name="LookupKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LookupKey" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="CategoryKey" Type="int" />
+          <Property Name="CategoryKey" Type="uniqueidentifier" />
           <Property Name="Inactive" Type="bit" Nullable="false" />
           <Property Name="SortOrder" Type="int" />
           <Property Name="Abbreviation" Type="nvarchar" MaxLength="50" />
@@ -42,21 +41,20 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="LookupsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="LookupsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Lookup">
           <Key>
             <PropertyRef Name="LookupKey" />
           </Key>
-          <Property Name="LookupKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="Guid" Nullable="false" />
+          <Property Name="LookupKey" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CategoryKey" Type="Int32" />
+          <Property Name="CategoryKey" Type="Guid" />
           <Property Name="Inactive" Type="Boolean" Nullable="false" />
           <Property Name="SortOrder" Type="Int32" />
           <Property Name="Abbreviation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Sub" Relationship="Self.FK_Lookup_Lookup" FromRole="Lookup" ToRole="Lookup1" />
+          <NavigationProperty Name="Children" Relationship="Self.FK_Lookup_Lookup" FromRole="Lookup" ToRole="Lookup1" />
           <NavigationProperty Name="Parent" Relationship="Self.FK_Lookup_Lookup" FromRole="Lookup1" ToRole="Lookup" />
         </EntityType>
         <Association Name="FK_Lookup_Lookup">
@@ -88,7 +86,6 @@
             <EntityTypeMapping TypeName="LookupsModel.Lookup">
               <MappingFragment StoreEntitySet="Lookup">
                 <ScalarProperty Name="LookupKey" ColumnName="LookupKey" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CategoryKey" ColumnName="CategoryKey" />
                 <ScalarProperty Name="Inactive" ColumnName="Inactive" />

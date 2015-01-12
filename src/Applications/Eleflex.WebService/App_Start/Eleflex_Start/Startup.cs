@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -44,7 +44,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             patcher.Update();
 
             //Log a message that the application has started
-            Common.Logging.LogManager.GetCurrentClassLogger().Info("Application Start");
+            Common.Logging.LogManager.GetLogger(typeof(Startup)).Info("Application Start");
         }
     }
 }

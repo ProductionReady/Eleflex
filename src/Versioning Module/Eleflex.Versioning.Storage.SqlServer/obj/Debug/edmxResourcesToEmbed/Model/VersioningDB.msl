@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VersioningModelStoreContainer" CdmEntityContainer="VersioningDB">
+    <EntitySetMapping Name="ModuleVersions">
+      <EntityTypeMapping TypeName="VersioningModel.ModuleVersion">
+        <MappingFragment StoreEntitySet="ModuleVersion">
+          <ScalarProperty Name="ModuleKey" ColumnName="ModuleKey" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="Major" ColumnName="Major" />
+          <ScalarProperty Name="Minor" ColumnName="Minor" />
+          <ScalarProperty Name="Build" ColumnName="Build" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="ExtraData" ColumnName="ExtraData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

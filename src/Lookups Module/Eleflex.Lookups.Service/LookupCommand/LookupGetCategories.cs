@@ -1,5 +1,5 @@
-﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2014 Production Ready, LLC. All Rights Reserved.
-//Copyright © 2014 Production Ready, LLC. All Rights Reserved.
+﻿#region PRODUCTION READY® ELEFLEX® Software License. Copyright © 2015 Production Ready, LLC. All Rights Reserved.
+//Copyright © 2015 Production Ready, LLC. All Rights Reserved.
 //For more information, visit http://www.ProductionReady.com
 //This file is part of PRODUCTION READY® ELEFLEX®.
 //
@@ -33,13 +33,13 @@ namespace Eleflex.Lookups.Service.LookupCommand
     [ServiceCommandHandlerAttribute(typeof(LookupGetCategoriesRequest))]
     public class LookupGetCategories : ServiceCommandHandler<LookupGetCategoriesRequest, LookupGetCategoriesResponse>
     {
-        private readonly ILookupRepository _lookupRepository;
+        private readonly ILookupsRepository _lookupRepository;
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="lookupRepository"></param>
-        public LookupGetCategories(ILookupRepository lookupRepository)
+        public LookupGetCategories(ILookupsRepository lookupRepository)
         {
             _lookupRepository = lookupRepository;
         }
