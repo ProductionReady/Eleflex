@@ -8,6 +8,7 @@
         <legend class="sr-only sr-only-focusable">Search Users</legend>
         @using (Html.BeginForm("List", "Users", FormMethod.Post, new { id = "AdminSecurityUsersListForm", @class = "form-inline" }))
         {
+            @Html.AntiForgeryToken()
             <div class="form-group">
                 @Html.LabelFor(x => x.Email, "Email:")
                 @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
@@ -35,12 +36,12 @@
             </div>
             <div class="form-group">
                 @Html.LabelFor(x => x.MaxRecords, "Max Records:")
-                @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
+                @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.StorageConstants.MAX_RETURNED_RECORDS_DEFAULT })
                 @Html.ValidationMessageFor(x => x.MaxRecords)
             </div>
             <div class="form-group">
                 <button class="btn btn-primary active" type="submit">Search</button>
-                <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminSecurityUsersListForm');">Clear</button>
+                <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminSecurityUsersListForm')">Clear</button>
                 <button class="btn btn-primary active" type="button" onclick="window.location.href('@Url.Action("Create","Users")')">New User</button>
             </div>
         }
@@ -72,18 +73,14 @@
                         <td>@Model.Items[i].Inactive</td>
                         <td>
                             @if (Model.Items[i].LastLoginDate.HasValue)
-                            { @Model.Items[i].LastLoginDate.Value.ToLocalTime()}
-                            else
-                            { <text>N/A</text>}
+                            { @Model.Items[i].LastLoginDate.Value.ToLocalTime().DateTime}
                         </td>
                         <td>
                             @if (Model.Items[i].LockoutReinstateDate.HasValue)
-                            { @Model.Items[i].LockoutReinstateDate.Value.ToLocalTime()}
-                            else
-                            { <text>N/A</text>}
+                            { @Model.Items[i].LockoutReinstateDate.Value.ToLocalTime().DateTime}
                         </td>
                         <td>                            
-                            @Html.ActionLink("Edit", "Details", new { key = Model.Items[i].UserKey }, new { @class="btn btn-sm btn-primary", @type="button" })
+                            @Html.ActionLink("Edit", "Edit", new { userKey = Model.Items[i].UserKey }, new { @class="btn btn-sm btn-primary", @type="button" })
                         </td>
                     </tr>
                 }

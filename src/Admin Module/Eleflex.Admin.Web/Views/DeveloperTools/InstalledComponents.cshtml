@@ -1,6 +1,13 @@
 ﻿@{
     ViewBag.Title = "ELEFLEX Installed Components";
 }
+@section styles
+{
+    <style>
+        .panel-heading{font-weight:bold;font-size:1.4em;}
+        .table thead tr th{color:black;font-weight:normal;}
+    </style>
+}
 <h1>ELEFLEX<sup>&reg;</sup> Installed Components</h1>
 <p>
     The ELEFLEX<sup>&reg;</sup> platform utilizes <a href="http://NuGet.org">NuGet</a> to integrate open source components. 
@@ -39,7 +46,7 @@
     </div>
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">Common.Logging v2.3.1</div>
+            <div class="panel-heading">Common.Logging v3.0.0</div>
             <div class="panel-body">
                 Common.Logging library introduces a simple abstraction to allow you to select a specific logging implementation at runtime.
             </div>
@@ -63,7 +70,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">AutoMapper v3.2.1</div>
+            <div class="panel-heading">AutoMapper v3.3.0</div>
             <div class="panel-body">
                 A convention-based object-object mapper. AutoMapper uses a fluent configuration API to define an object-object mapping strategy.
                 AutoMapper uses a convention-based matching algorithm to match up source to destination values.
@@ -156,6 +163,80 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">CommonServiceLocator v1.3</div>
+            <div class="panel-body">
+                The Common Service Locator library contains a shared interface for service location which application and framework developers can reference.
+                The library provides an abstraction over IoC containers and service locators. Using the library allows an application to indirectly access the capabilities without relying on hard references.
+                The hope is that using this library, third-party applications and frameworks can begin to leverage IoC/Service Location without tying themselves down to a specific implementation.
+                This library contains a portable class library that targets .NET Framework 4, Windows 8, Windows Phone Silverlight 8, Windows Phone 8.1, and Silverlight 5.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/CommonServiceLocator/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">CommonServiceLocator.StructureMapAdapter.Unofficial v3.0.4.125</div>
+            <div class="panel-body">
+                An unofficial StructureMap Adapter for the Common Service Locator.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/CommonServiceLocator.StructureMapAdapter.Unofficial/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Common.Logging.Core v3.0.0</div>
+            <div class="panel-body">
+                Common.Logging.Core contains the portable (PCL) implementation of the Common.Logging low-level abstractions common to all other Common.Logging packages.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Common.Logging.Core/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
 <h3>Data Access Components</h3>
 <p>
     The following components provide data access infrastructure for the ELEFLEX<sup>&reg;</sup> platform.
@@ -167,7 +248,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">EntityFramework v6.1.1</div>
+            <div class="panel-heading">EntityFramework v6.1.2</div>
             <div class="panel-body">
                 Entity Framework is Microsoft's recommended data access technology for new applications.
             </div>
@@ -210,21 +291,12 @@
         </div>
     </div>
 </div>
-<h3>Service Components</h3>
-<p>
-    The following components provide the service interaction to support the service-oriented architecture (SOA).
-    A single WCF service is used that encapsulates all service messaages exposed by system modules.
-    Common Service Locator is used to inject concrete service providers to interfaces throughout the system, with the unofficial adapter providing integration with Structuremap.
-</p>
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">CommonServiceLocator v1.3</div>
+            <div class="panel-heading">EdmLib for OData v1-3 v5.6.3</div>
             <div class="panel-body">
-                The Common Service Locator library contains a shared interface for service location which application and framework developers can reference.
-                The library provides an abstraction over IoC containers and service locators. Using the library allows an application to indirectly access the capabilities without relying on hard references.
-                The hope is that using this library, third-party applications and frameworks can begin to leverage IoC/Service Location without tying themselves down to a specific implementation.
-                This library contains a portable class library that targets .NET Framework 4, Windows 8, Windows Phone Silverlight 8, Windows Phone 8.1, and Silverlight 5.
+                Classes to represent, construct, parse, serialize and validate entity data models. Targets .NET 4.0, Silverlight 4. , .NET 4.0 Portable Lib (SL 5.0, Win Phone 8, Win Phone 8.1, and Win 8) and .NET 4.5 Portable Lib (Win Phone 8, Win Phone 8.1, and Win 8). Localized for CHS, CHT, DEU, ESN, FRA, ITA, JPN, KOR and RUS.
             </div>
             <table class="table">
                 <thead>
@@ -235,7 +307,83 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="http://www.nuget.org/packages/CommonServiceLocator/">NuGet Package Information</a></td>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Data.Edm/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">ODataLib for OData v1-3 v5.6.3</div>
+            <div class="panel-body">
+                Classes to serialize, deserialize and validate OData payloads. Enables construction of OData producers and consumers. Targets .NET 4.0, Silverlight 4.0, .NET 4.0 Portable Lib (SL 5.0, Win Phone 8, Win Phone 8.1, and Win 8) and .NET 4.5 Portable Lib (Win Phone 8, Win Phone 8.1, and Win 8). Localized for CHS, CHT, DEU, ESN, FRA, ITA, JPN, KOR and RUS.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Data.OData/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">System.Spatial for OData v1-3 v5.6.3</div>
+            <div class="panel-body">
+                Contains classes and methods that facilitate geography and geometry spatial operations. Targets .NET 4.0, Silverlight 4.0 , .NET 4.0 Portable Lib (SL 5.0, Win Phone 8, Win Phone 8.1, and Win 8) and .NET 4.5 Portable Lib (Win Phone 8, Win Phone 8.1, and Win 8). Localized for CHS, CHT, DEU, ESN, FRA, ITA, JPN, KOR and RUS.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/System.Spatial/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<h3>Service Components</h3>
+<p>
+    The following components provide the service interaction to support the service-oriented architecture (SOA).
+    A single WCF service is used that encapsulates all service messages exposed by system modules.
+    Common Service Locator is used to inject concrete service providers to interfaces throughout the system, with the unofficial adapter providing integration with Structuremap.
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Web API 2.2 v5.2.2</div>
+            <div class="panel-body">
+                This package contains everything you need to host ASP.NET Web API on IIS. ASP.NET Web API is a framework that makes it easy to build HTTP services that reach a broad range of clients, including browsers and mobile devices. ASP.NET Web API is an ideal platform for building RESTful applications on the .NET Framework.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.WebApi/">NuGet Package Information</a></td>
                         <td>NuGet package information.</td>
                     </tr>
                 </tbody>
@@ -244,9 +392,9 @@
     </div>
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">CommonServiceLocator.StructureMapAdapter.Unofficial v3.0.4.125</div>
+            <div class="panel-heading">Microsoft ASP.NET Web API 2.2 Client Libraries v5.2.2</div>
             <div class="panel-body">
-                An unofficial StructureMap Adapter for the Common Service Locator.
+                This package adds support for formatting and content negotiation to System.Net.Http. It includes support for JSON, XML, and form URL encoded data.
             </div>
             <table class="table">
                 <thead>
@@ -257,7 +405,169 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="http://www.nuget.org/packages/CommonServiceLocator.StructureMapAdapter.Unofficial/">NuGet Package Information</a></td>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Web API 2.2 Core Libraries v5.2.2</div>
+            <div class="panel-body">
+                This package contains the core runtime assemblies for ASP.NET Web API. This package is used by hosts of the ASP.NET Web API runtime. To host a Web API in IIS use the Microsoft.AspNet.WebApi.WebHost package. To host a Web API in your own process use the Microsoft.AspNet.WebApi.SelfHost package.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.WebApi.Core/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Web API 2.2 Help Page v5.2.2</div>
+            <div class="panel-body">
+                The ASP.NET Web API Help Page automatically generates help page content for the web APIs on your site. Visitors to your help page can use this content to learn how to call your web APIs. Everything generated by the help page is fully customizable using ASP.NET MVC and Razor. ASP.NET Web API Help Page is a great addition to any ASP.NET Web API project.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.WebApi.HelpPage/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Web API 2.2 for OData v1-3 v5.3.1</div>
+            <div class="panel-body">
+                This package contains everything you need to create OData endpoints using ASP.NET Web API and to support OData query syntax for your web APIs.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.WebApi.OData/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Web API 2.2 OWIN v5.2.2</div>
+            <div class="panel-body">
+                This package allows you to host ASP.NET Web API within an OWIN server and provides access to additional OWIN features.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.WebApi.Owin/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Web API 2.2 Tracing v5.2.2</div>
+            <div class="panel-body">
+                Enables ASP.NET Web API tracing using System.Diagnostics.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.WebApi.Tracing/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Web Pages v3.2.2</div>
+            <div class="panel-body">
+                This package contains core runtime assemblies shared between ASP.NET MVC and ASP.NET Web Pages.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.WebPages/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Web API 2.2 Web Host v5.2.2</div>
+            <div class="panel-body">
+                This package contains everything you need to host ASP.NET Web API on IIS. ASP.NET Web API is a framework that makes it easy to build HTTP services that reach a broad range of clients, including browsers and mobile devices. ASP.NET Web API is an ideal platform for building RESTful applications on the .NET Framework.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.WebApi.WebHost/">NuGet Package Information</a></td>
                         <td>NuGet package information.</td>
                     </tr>
                 </tbody>
@@ -268,11 +578,102 @@
 <h3>Web Infrastructure Components</h3>
 <p>
     The following components provide infrastructure to the web application.
-    Microsoft MVC 4 provides the Model/View/Controller pattern to display web page content utilizing the Razor engine.
-    MvcCodeRouting is used to provide namespace-based routing, rather than using "Areas" for containing controllers and views. 
-    Additionally, ELEFLEX<sup>&reg;</sup> Modules utilize MvcCodeRouting to deploy self-contained NuGet packages for easy integration in the platform.
+    Microsoft MVC 5 and related components provide the Model/View/Controller pattern to display web page content utilizing the Razor engine.
+    MvcCodeRouting is used to provide namespace-based routing, as well as embedded controllers and views for modularizing the platform.
     The WebactivatorEx component allows the platform to register startup and shutdown methods with the web application host without having to modify Global.asax.
 </p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Antlr v3.5.0.2</div>
+            <div class="panel-body">
+                ANother Tool for Language Recognition, is a language tool that provides a framework for constructing recognizers, interpreters, compilers, and translators from grammatical descriptions containing actions in a variety of target languages.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Antlr/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Universal Providers Core Libraries v2.0.0</div>
+            <div class="panel-body">
+                ASP.NET Universal Providers add provider support in ASP.NET 4 for all editions of SQL Server 2005 and later and to SQL Azure. If you use these providers to develop your application, the application will be ready for cloud environments like Azure. Other than supporting additional storage options, the providers work like the existing SQL-based providers, so that you can easily switch an application to use cloud storage via SQL Azure.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.Providers.Core/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Universal Providers for LocalDB v2.0.0</div>
+            <div class="panel-body">
+                ASP.NET Universal Providers add provider support in ASP.NET 4 for all editions of SQL Server 2005 and later and to SQL Azure. If you use these providers to develop your application, the application will be ready for cloud environments like Azure. Other than supporting additional storage options, the providers work like the existing SQL-based providers, so that you can easily switch an application to use cloud storage via SQL Azure.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.Providers.LocalDb/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Web Optimization Framework v1.1.3</div>
+            <div class="panel-body">
+                ASP.NET Optimization introduces a way to bundle and optimize CSS and JavaScript files.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.Web.Optimization/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-primary">
@@ -344,7 +745,7 @@
     </div>
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">WebActivatorEx v2.0.5</div>
+            <div class="panel-heading">WebActivatorEx v2.0.6</div>
             <div class="panel-body">
                 A package that allows other packages to execute some startup code in web apps. This package should be used over the older WebActivator, which was not strong named.
             </div>
@@ -365,6 +766,404 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">MvcCodeRouting.Web.Http v1.1.0</div>
+            <div class="panel-body">
+                ASP.NET Web API support for MvcCodeRouting. For System.Web hosting install the MvcCodeRouting.Web.Http.WebHost package.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/MvcCodeRouting.Web.Http/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">MvcCodeRouting.Web.Http.WebHost v1.1.0</div>
+            <div class="panel-body">
+                ASP.NET Web API support for MvcCodeRouting.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/MvcCodeRouting.Web.Http.WebHost/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.Web.Infrastructure v1.0.0</div>
+            <div class="panel-body">
+                This package contains the Microsoft.Web.Infrastructure assembly that lets you dynamically register HTTP modules at run time.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Web.Infrastructure/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">structuremap.web v3.1.0.133</div>
+            <div class="panel-body">
+                This is a package that provides support for Web-related lifecycles in StructureMap.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/structuremap.web/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>    
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">WebGrease v1.6.0</div>
+            <div class="panel-body">
+                Web Grease is a suite of tools for optimizing javascript, css files and images.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/WebGrease/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<h3>Web Security Components</h3>
+<p>
+    The following components provide security for the web application.
+    The platform utilizes Microsoft ASP.NET Identity and OWIN to provide claims-based security for authentication and authorization.
+    This common framework also allows integration with 3rd party token issuers such as Microsoft, Facebook, Google, Twitter and more.
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Identity Core v2.1.0</div>
+            <div class="panel-body">
+                Core interfaces for ASP.NET Identity.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.Identity.Core/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft ASP.NET Identity Owin v2.1.0</div>
+            <div class="panel-body">
+                Owin implementation for ASP.NET Identity.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.AspNet.Identity.Owin/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.Owin v3.0.0</div>
+            <div class="panel-body">
+                Provides a set of helper types and abstractions for simplifying the creation of OWIN components.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Owin/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.Owin.Host.SystemWeb v3.0.0</div>
+            <div class="panel-body">
+                OWIN server that enables OWIN-based applications to run on IIS using the ASP.NET request pipeline.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.Owin.Security v3.0.0</div>
+            <div class="panel-body">
+                Common types which are shared by the various authentication middleware components.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Owin.Security/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.Owin.Security.Cookies v3.0.0</div>
+            <div class="panel-body">
+                Middleware that enables an application to use cookie based authentication, similar to ASP.NET's forms authentication.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Owin.Security.Cookies/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.Owin.Security.Facebook v3.0.0</div>
+            <div class="panel-body">
+                Middleware that enables an application to support Facebook's OAuth 2.0 authentication workflow.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Owin.Security.Facebook/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.Owin.Security.Google v3.0.0</div>
+            <div class="panel-body">
+                Contains middlewares to support Google's OpenId and OAuth 2.0 authentication workflows.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Owin.Security.Google/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.Owin.Security.MicrosoftAccount v3.0.0</div>
+            <div class="panel-body">
+                Middleware that enables an application to support the Microsoft Account authentication workflow.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Owin.Security.MicrosoftAccount/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.Owin.Security.OAuth v3.0.0</div>
+            <div class="panel-body">
+                Middleware that enables an application to support any standard OAuth 2.0 authentication workflow.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Owin.Security.OAuth/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft.Owin.Security.Twitter v3.0.0</div>
+            <div class="panel-body">
+                Middleware that enables an application to support Twitter's OAuth 2.0 authentication workflow.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.Owin.Security.Twitter/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Owin v1.0.0</div>
+            <div class="panel-body">
+                OWIN IAppBuilder startup interface
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Owin/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>    
+</div>
 <h3>Web User Interface Components</h3>
 <p>
     The following components provide the user interface infrastructure to the web application.
@@ -375,7 +1174,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">Bootstrap v3.2.0</div>
+            <div class="panel-heading">Bootstrap v3.3.1</div>
             <div class="panel-body">
                 Bootstrap is a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development. It provides a standardized CSS
                 foundation for building web pages.
@@ -443,7 +1242,99 @@
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">jQuery v2.1.1</div>
+            <div class="panel-heading">Chosen v1.2.0</div>
+            <div class="panel-body">
+                Chosen is a JavaScript plugin that makes long, unwieldy select boxes much more user-friendly. It is currently available in both jQuery and Prototype flavors.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/chosen/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">chosen.jquery v1.2.0</div>
+            <div class="panel-body">
+                Chosen is a JavaScript plugin that makes long, unwieldy select boxes much more user-friendly. It is currently available in both jQuery and Prototype flavors.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/chosen.jquery/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Bootstrap Chosen v3.2.0</div>
+            <div class="panel-body">
+                An alternate stylesheet for Chosen 1.0. This one is supposed to integrate better with Bootstrap 3.0.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/bootstrap.chosen/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Smalot's bootstrap-datetimepicker v1.0.4</div>
+            <div class="panel-body">
+                This library is developed by Smalot, this package is just copy the library to nuget.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/smalot.bootstrap-datetimepicker/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">jQuery v2.1.3</div>
             <div class="panel-body">
                 jQuery is a new kind of JavaScript Library.
                 jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development. jQuery is designed to change the way that you write JavaScript.
@@ -467,7 +1358,7 @@
     </div>
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">jquery.datatables v1.10.3</div>
+            <div class="panel-heading">jquery.datatables v1.10.4</div>
             <div class="panel-body">
                 DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, based upon the foundations of progressive enhancement, which will add advanced interaction controls to any HTML table.
             </div>
@@ -491,7 +1382,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">jQuery.UI.Combined v1.11.1</div>
+            <div class="panel-heading">jQuery.UI.Combined v1.11.2</div>
             <div class="panel-body">
                 jQuery UI is an open source library of interface components — interactions, full-featured widgets, and animation effects — based on the stellar jQuery javascript library . Each component is built according to jQuery's event-driven architecture (find something, manipulate it) and is themeable, making it easy for developers of any skill level to integrate and extend into their own code.
                 NOTE: This package is maintained on behalf of the library owners by the NuGet Community Packages project at http://nugetpackages.codeplex.com/
@@ -514,7 +1405,7 @@
     </div>
     <div class="col-md-6">
         <div class="panel panel-primary">
-            <div class="panel-heading">jQuery.Validation v1.13.0</div>
+            <div class="panel-heading">jQuery.Validation v1.13.1</div>
             <div class="panel-body">
                 This jQuery plugin makes simple clientside form validation trivial, while offering lots of option for customization. That makes a good choice if you’re building something new from scratch, but also when you’re trying to integrate it into an existing application with lots of existing markup. The plugin comes bundled with a useful set of validation methods, including URL and email validation, while providing an API to write your own methods. All bundled methods come with default error messages in english and translations into 32 languages.
                 NOTE: This package is maintained on behalf of the library owners by the NuGet Community Packages project at http://nugetpackages.codeplex.com/
@@ -529,6 +1420,149 @@
                 <tbody>
                     <tr>
                         <td><a href="http://www.nuget.org/packages/jQuery.Validation/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">knockoutjs v3.2.0</div>
+            <div class="panel-body">
+                A JavaScript MVVM library to help you create rich, dynamic user interfaces with clean maintainable code
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/knockoutjs/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft jQuery Unobtrusive Ajax v3.2.2</div>
+            <div class="panel-body">
+                jQuery plugin that unobtrusively sets up jQuery Ajax.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.jQuery.Unobtrusive.Ajax/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Microsoft jQuery Unobtrusive Validation v3.2.2</div>
+            <div class="panel-body">
+                jQuery plugin that unobtrusively sets up jQuery.Validation.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Microsoft.jQuery.Unobtrusive.Validation/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Moment.js v2.9.0</div>
+            <div class="panel-body">
+                A lightweight javascript date library for parsing, manipulating, and formatting dates.
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Moment.js/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Modernizr v2.8.3</div>
+            <div class="panel-body">
+                Modernizr adds classes to the &lt;html&gt;
+                element which allow you to target specific browser functionality in your stylesheet. You don't actually need to write any Javascript to use it.
+
+                Modernizr is a small and simple JavaScript library that helps you take advantage of emerging web technologies (CSS3, HTML5) while still maintaining a fine level of control over older browsers that may not yet support these new technologies.
+
+                NOTE: This package is maintained on behalf of the library owners by the NuGet Community Packages project at http://nugetpackages.codeplex.com/
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Modernizr/">NuGet Package Information</a></td>
+                        <td>NuGet package information.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Json.NET v6.0.8</div>
+            <div class="panel-body">
+                Json.NET is a popular high-performance JSON framework for .NET
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Link</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="http://www.nuget.org/packages/Newtonsoft.Json/">NuGet Package Information</a></td>
                         <td>NuGet package information.</td>
                     </tr>
                 </tbody>

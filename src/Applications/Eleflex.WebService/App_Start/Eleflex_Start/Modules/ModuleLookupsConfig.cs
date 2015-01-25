@@ -39,7 +39,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             container.Configure(x =>
             {
                 x.For<Eleflex.Lookups.ILookupsStorageProvider>().Use<Eleflex.Lookups.Storage.SqlServer.LookupsStorageProvider>()
-                    .Ctor<string>("connectionStringKey").Is(Eleflex.Storage.Constants.CONNECTION_STRING_KEY_DEFAULT);
+                    .Ctor<string>("connectionStringKey").Is(Eleflex.Storage.StorageConstants.CONNECTION_STRING_KEY_DEFAULT);
 
                 x.For<Eleflex.Lookups.Message.ILookupsRequestDispatcher>().Use<Eleflex.Lookups.Message.LookupsRequestDispatcher>()
                     .Ctor<string>("endpoint").Is(Eleflex.Services.ServicesConstants.SERVICE_ENDPOINT_NAME_DEFAULT);

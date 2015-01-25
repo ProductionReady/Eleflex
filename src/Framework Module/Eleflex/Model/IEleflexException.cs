@@ -17,6 +17,7 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Eleflex
@@ -26,5 +27,8 @@ namespace Eleflex
     /// </summary>
     public interface IEleflexException : _Exception
     {
+
+        List<EleflexValidationMessage> ValidationMessages { get; set; }
+
     }
 }

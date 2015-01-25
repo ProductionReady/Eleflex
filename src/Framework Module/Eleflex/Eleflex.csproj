@@ -86,12 +86,11 @@
     <Compile Include="App_Start\BusinessRuleConfig.cs" />
     <Compile Include="BusinessRules\IBusinessRule.cs" />
     <Compile Include="BusinessRules\IBusinessRuleContext.cs" />
+    <Compile Include="Model\EleflexValidationMessage.cs" />
     <Compile Include="Model\EleflexException.cs" />
     <Compile Include="Model\IEleflexException.cs" />
-    <Compile Include="Model\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\StructureMapConfig.cs" />
-    <Compile Include="Model\IUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

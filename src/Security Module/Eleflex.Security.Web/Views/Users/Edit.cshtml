@@ -1,0 +1,248 @@
+﻿@model Eleflex.Security.Web.Security.Users.EditViewModel
+@{
+    ViewBag.Title = "Lookup";
+}
+@section styles
+{
+    <style>
+        .viewsection{ padding-left:0px;margin-left:0px;}
+    </style>
+}
+<h1>User Detail</h1>
+<div class="container">
+    <fieldset>
+    <legend class="sr-only sr-only-focusable">User Form</legend>
+    @using (Html.BeginForm("Edit", "Users", FormMethod.Post, new { id = "UsersDetailsForm", @class = "form-horizontal" }))
+        {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.UserKey)
+        @Html.ValidationSummary(true)
+        <div class="row">
+            <div class="col-md-6">
+                    <div class="form-group">
+                        <h2 class="viewsection">Basic Info</h2>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Email, "Email:")<span class="required">*</span>
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Email)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Username, "User Name:")<span class="required">*</span>
+                        @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Username)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.FirstName, "First Name:")
+                        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.FirstName)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.LastName, "Last Name:")
+                        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.LastName)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Phone, "Phone:")
+                        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Phone)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Inactive, "Inactive:")
+                        @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselectrequired", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+                        @Html.ValidationMessageFor(x => x.Inactive)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Comment, "Comment:")
+                        @Html.TextAreaFor(x => x.Comment, new { @class = "form-control", rows = "3" })
+                        @Html.ValidationMessageFor(x => x.Comment)
+                    </div>
+                    <div class="form-group">
+                        <span>
+                            <button class="btn btn-primary active" type="submit">Save</button>
+                            <button class="btn btn-default active" type="button" onclick="window.location.href('@Url.Action("List","Users")')">Cancel</button>
+                        </span>
+                        @if(Model.UserKey.HasValue)
+                        { 
+                        <span style="float:right;">                            
+                            @Html.ActionLink("Manage Roles", "Roles", new { userKey = Model.UserKey }, new { @class = "btn btn-primary", @type = "button" })
+                            @Html.ActionLink("Manage Permissions", "Permissions", new { userKey = Model.UserKey }, new { @class = "btn btn-primary", @type = "button" })
+                            @Html.ActionLink("Manage Claims", "Claims", new { userKey = Model.UserKey }, new { @class = "btn btn-primary", @type = "button" })
+                            <br/>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#diveffectivesecurity" onclick="LoadEffectiveSecurity()">View Effective Security</button>
+                        </span>
+                        }
+                    </div>
+                </div>
+            <div class="col-md-4 col-md-offset-1">
+                <h2 class="viewsection">Lockout</h2>
+                <div class="well">
+                    <div>
+                        @Html.LabelFor(x => x.EnableLockout, "Enable Lockout:")
+                        @Model.EnableLockout
+                    </div>
+                    <div>
+                        @Html.LabelFor(x => x.LoginFailedAttempts, "Login Failed Attempts:")
+                        <span id="loginfailedattempts">@Model.LoginFailedAttempts</span>
+                    </div>
+                    <div>
+                        @Html.LabelFor(x => x.LockoutReinstateDate, "Reinstate Date:")
+                        <span id="reinstatedate">
+                            @if (Model.LockoutReinstateDate.HasValue)
+                            { @Model.LockoutReinstateDate.Value.ToLocalTime().DateTime
+                            }
+                        </span>
+                    </div>
+                    @if (Model.UserKey.HasValue)
+                    {
+                        <button id="btnlockout" type="button" class="btn btn-primary" data-toggle="modal" data-target="#divlockoutmodal">Change Lockout</button>    
+                    }                    
+                </div>
+                <h2 class="viewsection">Validation</h2>
+                <div class="well">
+                    <div>
+                        @Html.LabelFor(x => x.EmailValid, "Email Validated:")
+                        @Model.EmailValid
+                    </div>
+                    <div>
+                        @Html.LabelFor(x => x.PhoneValid, "Phone Validated:")
+                        @Model.PhoneValid
+                    </div>
+                    <div>
+                        @Html.LabelFor(x => x.TwoFactorAuth, "Two Factor Authentication:")
+                        @Model.TwoFactorAuth
+                    </div>
+                </div>
+                <h2 class="viewsection">History</h2>
+                <div class="well">          
+                    <div>
+                        @Html.LabelFor(x => x.LastLoginDate, "Last Login:")
+                        @if (Model.LastLoginDate.HasValue)
+                        {@Model.LastLoginDate.Value.ToLocalTime().DateTime}
+                    </div>
+                    <div>
+                        @Html.LabelFor(x => x.PasswordLastChangeDate, "Password Change:")
+                        @Model.PasswordLastChangeDate.ToLocalTime().DateTime
+                    </div>
+                    <div>
+                        @Html.LabelFor(x => x.CreateDate, "Create Date:")
+                        @Model.CreateDate.ToLocalTime().DateTime
+                    </div>               
+                </div>                
+            </div>                
+        </div>        
+        }
+    </fieldset>
+</div>
+
+<div class="modal fade" id="divlockoutmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Lockout User</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.LockoutReinstateDateLocalTime, "Lockout End Date:")
+                    @Html.TextBoxFor(x => x.LockoutReinstateDateLocalTime, new { @class = "form-control eleflexdatetime", @id = "lockoutdate" })
+                    @Html.ValidationMessageFor(x => x.LockoutReinstateDateLocalTime)
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="lockoutUser();">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="diveffectivesecurity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Effective Security</h4>
+            </div>
+            <div id="effectivesecuritycontent" class="modal-body">
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        @if(!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <text>eleflexShowSuccessMessage("@(Model.SuccessMessage)");</text>
+        }
+
+    });
+
+    function lockoutUser() {
+        var url = '@Url.Action("LockoutUser", "Users")';
+
+        @if(Model.UserKey.HasValue)
+        {<text>var userKey = '@(Model.UserKey.Value)';</text>}
+        else
+        {<text>var userKey = '';</text>}
+        
+        var lockoutdate = $('#lockoutdate').val();
+
+        $.ajax({
+            url: url,
+            data: {
+                userKey: userKey,
+                lockoutDate: lockoutdate,
+                __RequestVerificationToken: eleflexGetRequestVerificationToken(),
+            },
+            type: "POST",
+            dataType: "html",
+            success: function (result) {
+                var ajaxResult = eleflexHandleAjaxResult(result);
+                if (ajaxResult.Status == "success") {
+                    if (ajaxResult.Data.LockoutReinstateDate) {
+                        $("#reinstatedate").html(moment(ajaxResult.Data.LockoutReinstateDate).format('M/D/YYYY h:mm:ss A'));
+                    }
+                    else {
+                        $("#reinstatedate").html('');
+                    }
+                    $("#loginfailedattempts").html(ajaxResult.Data.LoginFailedAttempts);
+                }
+            }
+        });
+    }
+
+
+    function LoadEffectiveSecurity() {
+        var url = '@Url.Action("GetEffectiveSecurity", "Users")';
+
+        @if(Model.UserKey.HasValue)
+        {<text>var userKey = '@(Model.UserKey.Value)';</text>}
+        else
+        {<text>var userKey = '';</text>}
+
+        $.ajax({
+            url: url,
+            data: {
+                userKey: userKey,
+                __RequestVerificationToken: eleflexGetRequestVerificationToken(),
+            },
+            type: "POST",
+            dataType: "html",
+            success: function (result) {
+                $("#effectivesecuritycontent").html(result);
+            }
+        });
+    }
+
+</script>
+

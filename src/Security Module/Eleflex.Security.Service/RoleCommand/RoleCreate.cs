@@ -50,11 +50,15 @@ namespace Eleflex.Security.Service.RoleCommand
         /// <param name="response"></param>
         public override void Execute(RoleCreateRequest request, RoleCreateResponse response)
         {
-            DomainModel.Role item = new DomainModel.Role();            
+            DomainModel.Role item = new DomainModel.Role();
+            item.ChangeRoleKey(request.Item.RoleKey);
             item.ChangeInactive (request.Item.Inactive);
             item.ChangeName(request.Item.Name);
             item.ChangeDescription(request.Item.Description);
             item.ChangeExtraData(request.Item.ExtraData);
+            item.ChangeStartDate(request.Item.StartDate);
+            item.ChangeEndDate(request.Item.EndDate);
+            item.ChangeModuleKey(request.Item.ModuleKey);
             item = _roleRepository.Insert(item);
             response.Item = AutoMapper.Mapper.Map<ServiceModel.Role>(item);
         }

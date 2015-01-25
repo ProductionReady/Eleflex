@@ -1,0 +1,51 @@
+﻿@model Eleflex.Security.Web.Security.Users.SelectRoleViewModel
+<fieldset>
+    <legend class="sr-only sr-only-focusable">Search Roles</legend>
+    @using (Html.BeginForm("EditRoleSearch", "Users", FormMethod.Post, new { id = "AdminSecurityUsersSelectRoleForm", @class = "form-inline" }))
+    {        
+        <div class="form-group">
+            @Html.LabelFor(x => x.SearchName, "Search Name:")
+            @Html.TextBoxFor(x => x.SearchName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.SearchName)
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary active" type="button" onclick="SearchRoles()">Search</button>
+            <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminSecurityUsersSelectRoleForm')">Clear</button>
+        </div>
+    }
+</fieldset>
+<hr />
+<table class="eleflexdatatable">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Inactive</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.SearchRoles != null)
+        {
+            for (int i = 0; i < Model.SearchRoles.Count; i++)
+            {
+                <tr>
+                    <td><button class="btn btn-sm btn-primary" type="button" data-dismiss="modal" onclick="SelectRole('@(Model.SearchRoles[i].RoleKey)', '@Model.SearchRoles[i].Name')">Select</button></td>
+                    <td>@Model.SearchRoles[i].Name</td>                    
+                    <td>@Model.SearchRoles[i].Description</td>
+                    <td>@Model.SearchRoles[i].Inactive</td>
+                    <td>
+                        @if (Model.SearchRoles[i].StartDate.HasValue)
+                        { @Model.SearchRoles[i].StartDate.Value.ToLocalTime().DateTime}
+                    </td>
+                    <td>
+                        @if (Model.SearchRoles[i].EndDate.HasValue)
+                        { @Model.SearchRoles[i].EndDate.Value.ToLocalTime().DateTime}
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

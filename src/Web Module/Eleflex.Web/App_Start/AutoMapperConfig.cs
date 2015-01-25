@@ -43,14 +43,29 @@ namespace Eleflex.Web
             mapper.CreateMap<DomainModel.Role, ServiceModel.Role>();
             mapper.CreateMap<ServiceModel.Role, DomainModel.Role>();
 
+            mapper.CreateMap<DomainModel.RoleRole, ServiceModel.RoleRole>();
+            mapper.CreateMap<ServiceModel.RoleRole, DomainModel.RoleRole>();
+
+            mapper.CreateMap<DomainModel.RolePermission, ServiceModel.RolePermission>();
+            mapper.CreateMap<ServiceModel.RolePermission, DomainModel.RolePermission>();
+
             mapper.CreateMap<DomainModel.User, ServiceModel.User>();
             mapper.CreateMap<ServiceModel.User, DomainModel.User>();
 
             mapper.CreateMap<DomainModel.UserClaim, ServiceModel.UserClaim>();
             mapper.CreateMap<ServiceModel.UserClaim, DomainModel.UserClaim>();
 
+            mapper.CreateMap<DomainModel.UserLogin, ServiceModel.UserLogin>();
+            mapper.CreateMap<ServiceModel.UserLogin, DomainModel.UserLogin>();
+
+            mapper.CreateMap<DomainModel.UserRole, ServiceModel.UserRole>();
+            mapper.CreateMap<ServiceModel.UserRole, DomainModel.UserRole>();
+
             mapper.CreateMap<DomainModel.UserDetail, ServiceModel.UserDetail>();
             mapper.CreateMap<ServiceModel.UserDetail, DomainModel.UserDetail>();
+
+            mapper.CreateMap<DomainModel.UserPermission, ServiceModel.UserPermission>();
+            mapper.CreateMap<ServiceModel.UserPermission, DomainModel.UserPermission>();
         }
     }
 }

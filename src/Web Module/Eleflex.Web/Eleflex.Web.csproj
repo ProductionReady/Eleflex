@@ -143,10 +143,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
+    <Compile Include="Mvc\AjaxResult.cs" />
+    <Compile Include="Mvc\ModelStateDictionaryWebExtensions.cs" />
+    <Compile Include="Security\ApplicationRoleManager.cs" />
     <Compile Include="Security\ApplicationSignInManager.cs" />
     <Compile Include="Security\ApplicationUserManager.cs" />
     <Compile Include="Mvc\StructureMapDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\IdentityRoleStoreServiceClient.cs" />
     <Compile Include="Security\IdentityUserStoreServiceClient.cs" />
   </ItemGroup>
   <ItemGroup>

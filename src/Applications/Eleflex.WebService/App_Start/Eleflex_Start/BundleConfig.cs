@@ -74,7 +74,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             
             //Bootstrap datetimepicker Scripts (date/time choosers)
             bundles.Add(new ScriptBundle("~/bundles/datetimepickerjsEleflex").Include(
-            "~/Scripts/bootstrap-datetimepicker.js"));
+            "~/Scripts/smalot-datetimepicker/bootstrap-datetimepicker.js"));
 
             //Eleflex Scripts
             bundles.Add(new ScriptBundle("~/bundles/jsEleflex").Include(
@@ -119,8 +119,8 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
                 "~/Content/bootstrap.css"));
 
             //Bootstrap datetimepicker CSS
-            bundles.Add(new StyleBundle("~/Content/datetimepickerEleflex").Include(
-                "~/Content/bootstrap-datetimepicker.css"));
+            bundles.Add(new StyleBundle("~/Content/smalot-datetimepicker/datetimepickerEleflex").Include(
+                "~/Content/smalot-datetimepicker/bootstrap-datetimepicker.css"));
 
             //Eleflex CSS
             bundles.Add(new StyleBundle("~/Content/cssEleflex").Include(

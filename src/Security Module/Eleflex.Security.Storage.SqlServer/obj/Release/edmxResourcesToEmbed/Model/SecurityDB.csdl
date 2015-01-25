@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SecurityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="PermissionKey" />
+    </Key>
+    <Property Name="PermissionKey" Type="Guid" Nullable="false" />
+    <Property Name="ModuleKey" Type="Guid" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RolePermissions" Relationship="Self.FK_RolePermission_Permission" FromRole="Permission" ToRole="RolePermission" />
+    <NavigationProperty Name="UserPermissions" Relationship="Self.FK_UserPermission_Permission" FromRole="Permission" ToRole="UserPermission" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleKey" />
+    </Key>
+    <Property Name="RoleKey" Type="Guid" Nullable="false" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModuleKey" Type="Guid" />
+    <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
+    <NavigationProperty Name="RolePermissions" Relationship="Self.FK_RolePermission_Role" FromRole="Role" ToRole="RolePermission" />
+    <NavigationProperty Name="RoleRoles" Relationship="Self.FK_RoleRole_Role_Child" FromRole="Role" ToRole="RoleRole" />
+    <NavigationProperty Name="RoleRoles1" Relationship="Self.FK_RoleRole_Role_Parent" FromRole="Role" ToRole="RoleRole" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_Role" FromRole="Role" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="RolePermission">
+    <Key>
+      <PropertyRef Name="RolePermissionKey" />
+    </Key>
+    <Property Name="RolePermissionKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleKey" Type="Guid" Nullable="false" />
+    <Property Name="PermissionKey" Type="Guid" Nullable="false" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
+    <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModuleKey" Type="Guid" />
+    <NavigationProperty Name="Permission" Relationship="Self.FK_RolePermission_Permission" FromRole="RolePermission" ToRole="Permission" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_RolePermission_Role" FromRole="RolePermission" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="RoleRole">
+    <Key>
+      <PropertyRef Name="RoleRoleKey" />
+    </Key>
+    <Property Name="RoleRoleKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentRoleKey" Type="Guid" Nullable="false" />
+    <Property Name="ChildRoleKey" Type="Guid" Nullable="false" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
+    <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModuleKey" Type="Guid" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_RoleRole_Role_Child" FromRole="RoleRole" ToRole="Role" />
+    <NavigationProperty Name="Role1" Relationship="Self.FK_RoleRole_Role_Parent" FromRole="RoleRole" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserKey" />
+    </Key>
+    <Property Name="UserKey" Type="Guid" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordLastChangeDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="LoginFailedAttempts" Type="Int32" Nullable="false" />
+    <Property Name="EnableLockout" Type="Boolean" Nullable="false" />
+    <Property Name="LastLoginDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="LockoutReinstateDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
+    <Property Name="EmailValid" Type="Boolean" Nullable="false" />
+    <Property Name="EmailValidCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneValid" Type="Boolean" Nullable="false" />
+    <Property Name="PhoneValidCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TwoFactorAuth" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="UserClaims" Relationship="Self.FK_UserClaim_User" FromRole="User" ToRole="UserClaim" />
+    <NavigationProperty Name="UserLogins" Relationship="Self.FK_UserLogin_User" FromRole="User" ToRole="UserLogin" />
+    <NavigationProperty Name="UserPermissions" Relationship="Self.FK_UserPermission_User" FromRole="User" ToRole="UserPermission" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_User" FromRole="User" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="UserClaim">
+    <Key>
+      <PropertyRef Name="UserClaimKey" />
+    </Key>
+    <Property Name="UserClaimKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserKey" Type="Guid" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
+    <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserClaim_User" FromRole="UserClaim" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="UserLoginKey" />
+    </Key>
+    <Property Name="UserLoginKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserKey" Type="Guid" Nullable="false" />
+    <Property Name="LoginProvider" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
+    <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserLogin_User" FromRole="UserLogin" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserPermission">
+    <Key>
+      <PropertyRef Name="UserPermissionKey" />
+    </Key>
+    <Property Name="UserPermissionKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserKey" Type="Guid" Nullable="false" />
+    <Property Name="PermissionKey" Type="Guid" Nullable="false" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
+    <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Permission" Relationship="Self.FK_UserPermission_Permission" FromRole="UserPermission" ToRole="Permission" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserPermission_User" FromRole="UserPermission" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserRoleKey" />
+    </Key>
+    <Property Name="UserRoleKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserKey" Type="Guid" Nullable="false" />
+    <Property Name="RoleKey" Type="Guid" Nullable="false" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
+    <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserRole_User" FromRole="UserRole" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_RolePermission_Permission">
+    <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+    <End Role="RolePermission" Type="Self.RolePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="PermissionKey" />
+      </Principal>
+      <Dependent Role="RolePermission">
+        <PropertyRef Name="PermissionKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPermission_Permission">
+    <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+    <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="PermissionKey" />
+      </Principal>
+      <Dependent Role="UserPermission">
+        <PropertyRef Name="PermissionKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RolePermission_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RolePermission" Type="Self.RolePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleKey" />
+      </Principal>
+      <Dependent Role="RolePermission">
+        <PropertyRef Name="RoleKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleRole_Role_Child">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RoleRole" Type="Self.RoleRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleKey" />
+      </Principal>
+      <Dependent Role="RoleRole">
+        <PropertyRef Name="ChildRoleKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleRole_Role_Parent">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RoleRole" Type="Self.RoleRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleKey" />
+      </Principal>
+      <Dependent Role="RoleRole">
+        <PropertyRef Name="ParentRoleKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleKey" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserClaim_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserClaim" Type="Self.UserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserKey" />
+      </Principal>
+      <Dependent Role="UserClaim">
+        <PropertyRef Name="UserKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserKey" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="UserKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPermission_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserPermission" Type="Self.UserPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserKey" />
+      </Principal>
+      <Dependent Role="UserPermission">
+        <PropertyRef Name="UserKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserKey" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SecurityDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Permissions" EntityType="Self.Permission" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="RolePermissions" EntityType="Self.RolePermission" />
+    <EntitySet Name="RoleRoles" EntityType="Self.RoleRole" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserClaims" EntityType="Self.UserClaim" />
+    <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
+    <EntitySet Name="UserPermissions" EntityType="Self.UserPermission" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <AssociationSet Name="FK_RolePermission_Permission" Association="Self.FK_RolePermission_Permission">
+      <End Role="Permission" EntitySet="Permissions" />
+      <End Role="RolePermission" EntitySet="RolePermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPermission_Permission" Association="Self.FK_UserPermission_Permission">
+      <End Role="Permission" EntitySet="Permissions" />
+      <End Role="UserPermission" EntitySet="UserPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RolePermission_Role" Association="Self.FK_RolePermission_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="RolePermission" EntitySet="RolePermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleRole_Role_Child" Association="Self.FK_RoleRole_Role_Child">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="RoleRole" EntitySet="RoleRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleRole_Role_Parent" Association="Self.FK_RoleRole_Role_Parent">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="RoleRole" EntitySet="RoleRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserClaim_User" Association="Self.FK_UserClaim_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserClaim" EntitySet="UserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_User" Association="Self.FK_UserLogin_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserLogin" EntitySet="UserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPermission_User" Association="Self.FK_UserPermission_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserPermission" EntitySet="UserPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_User" Association="Self.FK_UserRole_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

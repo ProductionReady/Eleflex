@@ -103,10 +103,12 @@
     <Compile Include="Model\RolePermission.cs">
       <DependentUpon>SecurityDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\RolePermissionRepository.cs" />
     <Compile Include="Model\RoleRepository.cs" />
     <Compile Include="Model\RoleRole.cs">
       <DependentUpon>SecurityDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\RoleRoleRepository.cs" />
     <Compile Include="Model\SecurityDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -138,6 +140,7 @@
     <Compile Include="Model\UserPermission.cs">
       <DependentUpon>SecurityDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\UserPermissionRepository.cs" />
     <Compile Include="Model\UserRepository.cs" />
     <Compile Include="Model\UserRole.cs">
       <DependentUpon>SecurityDB.tt</DependentUpon>
@@ -150,6 +153,7 @@
     <Compile Include="VersionPatch\Version_2_0_12.cs" />
     <Compile Include="VersionPatch\Version_2_0_13.cs" />
     <Compile Include="VersionPatch\Version_2_0_14.cs" />
+    <Compile Include="VersionPatch\Version_2_0_21.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

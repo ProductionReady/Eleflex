@@ -55,6 +55,9 @@ namespace Eleflex.Security.Service.RoleCommand
             item.ChangeName(request.Item.Name);
             item.ChangeDescription(request.Item.Description);
             item.ChangeExtraData(request.Item.ExtraData);
+            item.ChangeStartDate(request.Item.StartDate);
+            item.ChangeEndDate(request.Item.EndDate);
+            item.ChangeModuleKey(request.Item.ModuleKey);
             item = _roleRepository.Update(item);
             response.Item = AutoMapper.Mapper.Map<ServiceModel.Role>(item);
         }

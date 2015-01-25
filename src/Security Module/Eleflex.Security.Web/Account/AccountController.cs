@@ -27,6 +27,7 @@ using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Eleflex.Web;
+using ServiceModel = Eleflex.Security.Message;
 
 namespace Eleflex.Security.Web.Account
 {
@@ -105,24 +106,31 @@ namespace Eleflex.Security.Web.Account
 
             if (string.IsNullOrEmpty(returnUrl))
                 returnUrl = @"/";
-            
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
-            switch (result)
+
+            var resultUser = await UserManager.FindByEmailAsync(model.Email);
+            if (resultUser != null)
             {
-                case SignInStatus.Success:
-                    var user = UserManager.FindByEmail(model.Email);
-                    user.ChangeLastLoginDate(DateTimeOffset.UtcNow);
-                    UserManager.Update(user);
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                var result = await SignInManager.PasswordSignInAsync(resultUser.Username, model.Password, model.RememberMe, shouldLockout: true);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        var user = UserManager.FindByEmail(model.Email);
+                        user.LoginFailedAttempts = 0;
+                        user.LastLoginDate = DateTimeOffset.UtcNow;
+                        UserManager.Update(user);
+                        return RedirectToLocal(returnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                        return View(model);
+                }
             }
+            ModelState.AddModelError("", "Invalid login attempt.");
+            return View(model);
         }
 
         //
@@ -141,6 +149,8 @@ namespace Eleflex.Security.Web.Account
             return View();
         }
 
+        private static bool FirstUserCheck = false;
+
         //
         // POST: /Account/Register
         [HttpPost]
@@ -148,23 +158,39 @@ namespace Eleflex.Security.Web.Account
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
-                var user = new Eleflex.Security.User { UserKey = Guid.NewGuid(), UserName = model.Email, Email = model.Email };
+                bool addFirstUserAdmin = false;
+                //First user to register becomes admin
+                if (!FirstUserCheck)
+                {
+                    Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
+                    builder.Aggregate("UserKey", Storage.StorageQueryAggregateType.Count);
+                    builder.IsEqual("Inactive", false.ToString());
+                    var resp = _userServiceClient.QueryAggregate(builder.GetStorageQuery());
+                    if (resp.Item == 0)
+                        addFirstUserAdmin = true;
+                    FirstUserCheck = true;
+                }
+
+                var user = new Eleflex.Security.User { 
+                    UserKey = Guid.NewGuid(), 
+                    UserName = model.Email, 
+                    Email = model.Email , 
+                    CreateDate = DateTimeOffset.UtcNow, 
+                    PasswordLastChangeDate = DateTimeOffset.UtcNow};
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //Add the user role
+                    //Add the default user role
                     await UserManager.AddToRoleAsync(user.UserKey.ToString(), Eleflex.Security.SecurityConstants.ROLE_USER);
-
-                    //First user to register becomes admin
-                    Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-                    builder.Aggregate("UserKey",Storage.StorageQueryAggregateType.Count);
-                    var resp =_userServiceClient.QueryAggregate(builder.GetStorageQuery());
-                    if (resp.Item == 1)
-                        await UserManager.AddToRoleAsync(user.UserKey.ToString(), Eleflex.Security.SecurityConstants.ROLE_ADMIN);                    
-
+                    if(addFirstUserAdmin)
+                        await UserManager.AddToRoleAsync(user.UserKey.ToString(), Eleflex.Security.SecurityConstants.ROLE_ADMIN);
+                    
                     //Signin with the user
+                    System.Threading.Thread.Sleep(1000); //Ensure underlying storage provider is committed
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

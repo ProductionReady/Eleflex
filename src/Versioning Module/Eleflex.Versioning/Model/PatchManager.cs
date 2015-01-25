@@ -23,6 +23,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Practices.ServiceLocation;
+using Eleflex.Storage;
 
 namespace Eleflex.Versioning
 {
@@ -58,8 +59,7 @@ namespace Eleflex.Versioning
         {
             //Since configured logging provider may not work until updated, we will use an internal log
             //and try to write entries at the end
-            List<PatchLog> log = new List<PatchLog>();
-            log.Add(new PatchLog(Common.Logging.LogLevel.Info, SOURCE, "Patch update begin", null));
+            List<PatchLog> log = new List<PatchLog>();            
             try
             {
                 //Get current system summary
@@ -117,20 +117,19 @@ namespace Eleflex.Versioning
 
                 //Log result
                 if (success)
-                    log.Add(new PatchLog(Common.Logging.LogLevel.Info, SOURCE, "Patch overall status: success", null));
+                    log.Add(new PatchLog(Common.Logging.LogLevel.Info, SOURCE, "PatchManager update status: success", null));
                 else
-                    log.Add(new PatchLog(Common.Logging.LogLevel.Info, SOURCE, "Patch overall status: error", null));
+                    log.Add(new PatchLog(Common.Logging.LogLevel.Info, SOURCE, "PatchManager update status: error", null));
 
                 return success;
             }
             catch (Exception ex)
             {
-                log.Add(new PatchLog(Common.Logging.LogLevel.Error, SOURCE, "Patch update error", ex));
+                log.Add(new PatchLog(Common.Logging.LogLevel.Error, SOURCE, "PatchManager update error", ex));
                 return false;
             }
             finally
-            {
-                log.Add(new PatchLog(Common.Logging.LogLevel.Info, SOURCE, "Patch update end", null));
+            {                
                 //Try adding log entries to provider now
                 for (int i = 0; i < log.Count; i++)
                 {
@@ -200,7 +199,7 @@ namespace Eleflex.Versioning
             //Execute patches in order
             foreach (IModulePatch patch in orderedPatches)
             {
-                string message = "Patch updating Module: " + patch.ModuleKey + " Module Name: " + patch.ModuleName + " Version: " + patch.Version.ToString() + " Result: ";
+                string message = "PatchManager updating Module: " + patch.ModuleKey + " Module Name: " + patch.ModuleName + " Version: " + patch.Version.ToString() + " Result: ";
                 bool success = Patch(patch, log);                                        
                 if (success)
                     log.Add(new PatchLog(Common.Logging.LogLevel.Info, SOURCE, message + "success", null));
@@ -218,7 +217,7 @@ namespace Eleflex.Versioning
         /// <returns></returns>
         protected virtual bool Patch(IModulePatch patch, List<PatchLog> log)
         {
-            IUnitOfWork uow = ServiceLocator.Current.GetInstance<IUnitOfWork>();
+            IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<IStorageProviderUnitOfWork>();
             try
             {
                 //Update the patch

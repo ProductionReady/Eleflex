@@ -135,8 +135,19 @@ namespace Eleflex.Logging
             else
                 item.IsError = false;
             item.Source = _source;
-            item.Message = message == null ? null : message.ToString();
-            item.Exception = exception == null ? null : exception.ToString();
+            if (message is System.Runtime.InteropServices._Exception) //sometimes compiler uses wrong resolution method
+            {
+                item.Message = ((System.Runtime.InteropServices._Exception)message).Message;
+                if (exception == null)
+                    item.Exception = ((System.Runtime.InteropServices._Exception)message).ToString();
+                else
+                    item.Exception = exception.ToString();
+            }
+            else
+            {
+                item.Message = message == null ? null : message.ToString();
+                item.Exception = exception == null ? null : exception.ToString();
+            }
             item.Server = _server;
             item.Severity = level.ToString();            
 

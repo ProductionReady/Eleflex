@@ -4,14 +4,23 @@ using Eleflex.Storage;
 
 namespace Eleflex.Security
 {
-    public partial class Role : IStorageExtraData
+    public partial class Role : IRole, IStorageExtraData
     {
+
+        
         public System.Guid RoleKey { get; set; }
         public bool Inactive { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string ExtraData { get; set; }
         public Guid? ModuleKey { get; set; }
+        public Nullable<System.DateTimeOffset> StartDate { get; set; }
+        public Nullable<System.DateTimeOffset> EndDate { get; set; }
+
+        public string Id
+        {
+            get { return RoleKey.ToString(); }
+        }
 
         public void ChangeRoleKey (System.Guid val)
         {
@@ -42,6 +51,14 @@ namespace Eleflex.Security
         {
             ModuleKey = val;
         }
-        
+        public void ChangeStartDate(Nullable<System.DateTimeOffset> val)
+        {
+            StartDate = val;
+        }
+        public void ChangeEndDate(Nullable<System.DateTimeOffset> val)
+        {
+            EndDate = val;
+        }
+
     }
 }

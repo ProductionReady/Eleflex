@@ -28,6 +28,8 @@ namespace Eleflex.Security.Storage.SqlServer.Model
         public string Description { get; set; }
         public string ExtraData { get; set; }
         public Nullable<System.Guid> ModuleKey { get; set; }
+        public Nullable<System.DateTimeOffset> StartDate { get; set; }
+        public Nullable<System.DateTimeOffset> EndDate { get; set; }
     
         public virtual ICollection<RolePermission> RolePermissions { get; set; }
         public virtual ICollection<RoleRole> RoleRoles { get; set; }

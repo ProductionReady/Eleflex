@@ -26,6 +26,8 @@
           <Property Name="Description" Type="nvarchar" MaxLength="2000" />
           <Property Name="ExtraData" Type="nvarchar(max)" />
           <Property Name="ModuleKey" Type="uniqueidentifier" />
+          <Property Name="StartDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="EndDate" Type="datetimeoffset" Precision="7" />
         </EntityType>
         <EntityType Name="RolePermission">
           <Key>
@@ -335,6 +337,8 @@
           <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ModuleKey" Type="Guid" />
+          <Property Name="StartDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="EndDate" Type="DateTimeOffset" Precision="7" />
           <NavigationProperty Name="RolePermissions" Relationship="Self.FK_RolePermission_Role" FromRole="Role" ToRole="RolePermission" />
           <NavigationProperty Name="RoleRoles" Relationship="Self.FK_RoleRole_Role_Child" FromRole="Role" ToRole="RoleRole" />
           <NavigationProperty Name="RoleRoles1" Relationship="Self.FK_RoleRole_Role_Parent" FromRole="Role" ToRole="RoleRole" />
@@ -661,6 +665,8 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ExtraData" ColumnName="ExtraData" />
                 <ScalarProperty Name="ModuleKey" ColumnName="ModuleKey" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

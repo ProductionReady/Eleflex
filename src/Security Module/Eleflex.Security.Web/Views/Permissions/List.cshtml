@@ -1,4 +1,4 @@
-﻿@model Eleflex.Security.Web.Security.Permissions.ListModel
+﻿@model Eleflex.Security.Web.Security.Permissions.ListViewModel
 @{
     ViewBag.Title = "System Permissions";
 }
@@ -7,6 +7,7 @@
     <legend class="sr-only sr-only-focusable">Search Permissions</legend>
     @using (Html.BeginForm("List", "Permissions", FormMethod.Post, new { id = "AdminSecurityPermissionsListForm", @class = "form-inline" }))
     {
+        @Html.AntiForgeryToken()
         <div class="form-group">
             @Html.LabelFor(x => x.Name, "Name:")
             @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
@@ -24,7 +25,7 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(x => x.MaxRecords, "Max Records:")
-            @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.Constants.MAX_RETURNED_RECORDS_DEFAULT })
+            @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.StorageConstants.MAX_RETURNED_RECORDS_DEFAULT })
             @Html.ValidationMessageFor(x => x.MaxRecords)
         </div>
         <div class="form-group">
@@ -40,7 +41,6 @@
             <th>Name</th>
             <th>Inactive</th>
             <th>Description</th>
-            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -52,9 +52,6 @@
                     <td>@Model.Items[i].Name</td>
                     <td>@Model.Items[i].Inactive</td>
                     <td>@Model.Items[i].Description</td>
-                    <td>
-                        @Html.ActionLink("Deactivate", "Deactivate", new { key = Model.Items[i].PermissionKey }, new { @class = "btn btn-sm btn-primary", @type = "button" })
-                    </td>
                 </tr>
             }
         }
@@ -64,4 +61,39 @@
     $(document).ready(function () {
 
     });
+
+    function DeactivatePermission(permissionKey) {
+        var url = '@Url.Action("Deactivate", "Permissions")';
+
+        $.ajax({
+            url: url,
+            data: {
+                permissionKey: permissionKey,
+                __RequestVerificationToken: eleflexGetRequestVerificationToken(),
+            },
+            type: "POST",
+            dataType: "html",
+            success: function (result) {
+                var ajaxResult = eleflexHandleAjaxResult(result);
+            }
+        });
+    };
+
+    function ReactivatePermission(permissionKey) {
+        var url = '@Url.Action("Reactivate", "Permissions")';
+
+        $.ajax({
+            url: url,
+            data: {
+                permissionKey: permissionKey,
+                __RequestVerificationToken: eleflexGetRequestVerificationToken(),
+            },
+            type: "POST",
+            dataType: "html",
+            success: function (result) {
+                var ajaxResult = eleflexHandleAjaxResult(result);
+            }
+        });
+    };
+
 </script>

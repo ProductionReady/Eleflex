@@ -44,8 +44,11 @@ namespace Eleflex.Security.Storage.SqlServer
             mapper.CreateMap<DomainModel.Role, StorageModel.Role>();
             mapper.CreateMap<StorageModel.Role, DomainModel.Role>();
 
-            mapper.CreateMap<DomainModel.Role, StorageModel.Role>();
-            mapper.CreateMap<StorageModel.Role, DomainModel.Role>();
+            mapper.CreateMap<DomainModel.RoleRole, StorageModel.RoleRole>();
+            mapper.CreateMap<StorageModel.RoleRole, DomainModel.RoleRole>();
+
+            mapper.CreateMap<DomainModel.RolePermission, StorageModel.RolePermission>();
+            mapper.CreateMap<StorageModel.RolePermission, DomainModel.RolePermission>();
 
             mapper.CreateMap<DomainModel.User, StorageModel.User>();
             mapper.CreateMap<StorageModel.User, DomainModel.User>();
@@ -58,6 +61,9 @@ namespace Eleflex.Security.Storage.SqlServer
 
             mapper.CreateMap<DomainModel.UserRole, StorageModel.UserRole>();
             mapper.CreateMap<StorageModel.UserRole, DomainModel.UserRole>();
+
+            mapper.CreateMap<DomainModel.UserPermission, StorageModel.UserPermission>();
+            mapper.CreateMap<StorageModel.UserPermission, DomainModel.UserPermission>();
         }
     }
 }

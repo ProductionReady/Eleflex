@@ -1,0 +1,129 @@
+﻿@model Eleflex.Security.Web.Security.Users.EditPermissionViewModel
+@{
+    ViewBag.Title = "Edit Permission Assignment";
+}
+<h1>Permission Assignment</h1>
+<div class="container">
+    <fieldset>
+        <legend class="sr-only sr-only-focusable">Permission Form</legend>
+        @using (Html.BeginForm("EditPermission", "Users", FormMethod.Post, new { id = "AdminSecurityUsersEditPermissionForm", @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.UserPermissionKey)
+            @Html.HiddenFor(x => x.PermissionKey)
+            @Html.HiddenFor(x => x.UserKey)
+            @Html.ValidationSummary(false)
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <span>
+                            <label >Selected Permission: </label><span class="required">*</span> <span class="well well-sm"><span id="divselectedpermission"></span></span>
+                        </span>
+                        <div><button type="button" class="btn btn-primary active" data-toggle="modal" data-target="#divnewpermission" onclick="SearchPermissions()">Select Permission</button></div>
+                        <div id="selectedpermissionerror" class="alert alert-danger hide" role="alert">
+                            Please select a permission.
+                        </div>                        
+                    </div>
+                    <div id="CreateDateFromGroup" class="form-group date">
+                        @Html.LabelFor(x => x.StartDateLocalTime, "Effective Date Begin:")
+                        @Html.TextBoxFor(x => x.StartDateLocalTime, new { @class = "form-control eleflexdatetime" })
+                        @Html.ValidationMessageFor(x => x.StartDateLocalTime)
+                    </div>
+                    <div id="CreateDateToGroup" class="form-group date">
+                        @Html.LabelFor(x => x.EndDateLocalTime, "Effective Date End:")
+                        @Html.TextBoxFor(x => x.EndDateLocalTime, new { @class = "form-control eleflexdatetime" })
+                        @Html.ValidationMessageFor(x => x.EndDateLocalTime)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Inactive, "Inactive:")
+                        @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselectrequired", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+                        @Html.ValidationMessageFor(x => x.Inactive)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Comment, "Comment:")
+                        @Html.TextAreaFor(x => x.Comment, new { @class = "form-control", rows = "3" })
+                        @Html.ValidationMessageFor(x => x.Comment)
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary active" type="submit" onclick="return CanSubmit()">Save</button>
+                        <button class="btn btn-default active" type="button" onclick="window.location.href('@Url.Action("Permissions", "Users", new { userKey = Model.UserKey })')">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </fieldset>
+
+    <div class="modal fade" id="divnewpermission" tabindex="-1" permission="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:800px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Select a Permission</h4>
+                </div>
+                <div id="newpermissioncontent" class="modal-body">
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        @if(!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <text>eleflexShowSuccessMessage("@(Model.SuccessMessage)");</text>
+        }
+        $("#divselectedpermission").html('@(Model.SelectedPermission)');
+        
+    });
+
+    function CanSubmit()
+    {
+        if ($("#PermissionKey").val()) {
+            $("#selectedpermissionerror").addClass("hide");
+            return true;
+        }
+        else
+        {
+            $("#selectedpermissionerror").removeClass("hide");
+            return false;
+        }
+    }
+
+    function SelectPermission(permissionKey, name) {
+        $("#PermissionKey").val(permissionKey);
+        $("#divselectedpermission").html(name);
+        if (!$("#selectedpermissionerror").hasClass("hide")) {
+            $("#selectedpermissionerror").addClass("hide");
+        }
+    }
+
+</script>
+
+<script type="text/javascript">
+
+    function SearchPermissions() {
+        var url = '@Url.Action("EditPermissionSearch", "Users")';
+
+        $.ajax({
+            url: url,
+            data: {
+                permissionName: $("#SearchName").val(),
+                __RequestVerificationToken: eleflexGetRequestVerificationToken(),
+            },
+            type: "POST",
+            dataType: "html",
+            success: function (result) {
+                $("#newpermissioncontent").html(result);
+            }
+        });
+    }
+
+
+</script>

@@ -1,0 +1,43 @@
+﻿@model Eleflex.Security.Web.Security.Roles.SelectPermissionViewModel
+<fieldset>
+    <legend class="sr-only sr-only-focusable">Search Permissions</legend>
+    @using (Html.BeginForm("EditPermissionSearch", "Roles", FormMethod.Post, new { id = "AdminSecurityRolesSelectPermissionForm", @class = "form-inline" }))
+    {        
+        <div class="form-group">
+            @Html.LabelFor(x => x.SearchName, "Search Name:")
+            @Html.TextBoxFor(x => x.SearchName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.SearchName)
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary active" type="button" onclick="SearchPermissions()">Search</button>
+            <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminSecurityRolesSelectPermissionForm')">Clear</button>
+        </div>
+    }
+</fieldset>
+<hr />
+<table class="eleflexdatatable">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Inactive</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.SearchPermissions != null)
+        {
+            for (int i = 0; i < Model.SearchPermissions.Count; i++)
+            {
+                <tr>
+                    <td><button class="btn btn-sm btn-primary" type="button" data-dismiss="modal" onclick="SelectPermission('@(Model.SearchPermissions[i].PermissionKey)', '@Model.SearchPermissions[i].Name')">Select</button></td>
+                    <td>@Model.SearchPermissions[i].Name</td>                    
+                    <td>@Model.SearchPermissions[i].Description</td>
+                    <td>@Model.SearchPermissions[i].Inactive</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

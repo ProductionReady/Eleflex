@@ -103,7 +103,7 @@ namespace Eleflex.Lookups.Web
             if (model != null && model.MaxRecords.HasValue)
                 builder.Paging(1, model.MaxRecords.Value);
             else
-                builder.Paging(1, Constants.MAX_RETURNED_RECORDS_DEFAULT);
+                builder.Paging(1, StorageConstants.MAX_RETURNED_RECORDS_DEFAULT);
 
             var response = _lookupServiceClient.Query(builder.GetStorageQuery());
             model.Items = response.Items;

@@ -31,7 +31,7 @@ namespace Eleflex.Services
         /// </summary>
         public ServiceCommandResponseStatus()
         {
-            Messages = new List<ServiceCommandResponseStatusMessage>();
+            Messages = new List<EleflexValidationMessage>();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Eleflex.Services
             {
                 if (Messages == null || Messages.Count == 0)
                     return false;
-                foreach (ServiceCommandResponseStatusMessage message in Messages)
+                foreach (EleflexValidationMessage message in Messages)
                 {
                     if (message.IsError)
                         return true;
@@ -55,7 +55,7 @@ namespace Eleflex.Services
         /// <summary>
         /// The list of message.
         /// </summary>
-        public virtual List<ServiceCommandResponseStatusMessage> Messages { get; set; }
+        public virtual List<EleflexValidationMessage> Messages { get; set; }
 
         /// <summary>
         /// Add an error message.
@@ -65,7 +65,7 @@ namespace Eleflex.Services
         /// <param name="field"></param>
         public virtual void AddError(string message, string messageCode = null, string field = null)
         {
-            ServiceCommandResponseStatusMessage item = new ServiceCommandResponseStatusMessage();
+            EleflexValidationMessage item = new EleflexValidationMessage();
             item.IsError = true;
             item.Field = field;
             item.Message = message;
@@ -81,7 +81,7 @@ namespace Eleflex.Services
         /// <param name="field"></param>
         public virtual void AddMessage(string message, string messageCode = null, string field = null)
         {
-            ServiceCommandResponseStatusMessage item = new ServiceCommandResponseStatusMessage();
+            EleflexValidationMessage item = new EleflexValidationMessage();
             item.IsError = false;
             item.Field = field;
             item.Message = message;

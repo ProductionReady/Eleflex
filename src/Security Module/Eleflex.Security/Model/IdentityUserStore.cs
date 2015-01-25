@@ -1,14 +1,15 @@
-﻿﻿using Microsoft.AspNet.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Practices.ServiceLocation;
 
 namespace Eleflex.Security
 {
     /// <summary>
-    /// Class that implements the key ASP.NET Identity user store iterfaces
+    /// Class that implements the key ASP.NET Identity user store iterfaces and communicates via data storage repositories.
     /// </summary>
     public class IdentityUserStore<TUser> : IUserLoginStore<TUser>,
         IUserClaimStore<TUser>,
@@ -24,31 +25,11 @@ namespace Eleflex.Security
         where TUser : Eleflex.Security.User
     {
 
-        IRoleRepository _roleRepository = null;
-        IUserRepository _userRepository = null;
-        IUserClaimRepository _userClaimRepository = null;
-        IUserLoginRepository _userLoginRepository = null;
-        IUserRoleRepository _userRoleRepository = null;
-
-
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="roleRepository"></param>
-        /// <param name="userRepository"></param>
-        public IdentityUserStore(
-            IRoleRepository roleRepository,
-            IUserRepository userRepository,
-            IUserClaimRepository userClaimRepository,
-            IUserLoginRepository userLoginRepository,
-            IUserRoleRepository userRoleRepository
-        )
+        public IdentityUserStore()
         {
-            _roleRepository = roleRepository;
-            _userRepository = userRepository;
-            _userClaimRepository = userClaimRepository;
-            _userLoginRepository = userLoginRepository;
-            _userRoleRepository = userRoleRepository;
         }
 
         /// <summary>
@@ -56,11 +37,6 @@ namespace Eleflex.Security
         /// </summary>
         public void Dispose()
         {
-            _roleRepository.Commit();
-            _userRepository.Commit();
-            _userClaimRepository.Commit();
-            _userLoginRepository.Commit();
-            _userRoleRepository.Commit();
         }
 
         /// <summary>
@@ -81,8 +57,18 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task CreateAsync(TUser user)
         {
-            _userRepository.Insert(user);
-            _userRepository.Commit();
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                IUserRepository userRepository = ServiceLocator.Current.GetInstance<IUserRepository>();
+                userRepository.Insert(user);                
+                uow.Commit();
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }            
 
             return Task.FromResult<object>(null);
         }
@@ -94,16 +80,24 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task<TUser> FindByIdAsync(string userId)
         {
-            if (string.IsNullOrEmpty(userId))
-                throw new ArgumentException("Null or empty argument: userId");
-            Guid key;
-            if (!Guid.TryParse(userId, out key))
-                throw new FormatException("Argument not a Guid: userId");
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {                
+                Guid key;
+                if (!Guid.TryParse(userId, out key))
+                    throw new FormatException("Argument not a Guid:" + userId);
 
-            TUser item = _userRepository.Get(key) as TUser;
-            _userRepository.Commit();
-
-            return Task.FromResult<TUser>(item);
+                IUserRepository userRepository = ServiceLocator.Current.GetInstance<IUserRepository>();
+                TUser item = userRepository.Get(key) as TUser;                
+                uow.Commit();
+                return Task.FromResult<TUser>(item);
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
+            return Task.FromResult<TUser>(null);            
         }
 
         /// <summary>
@@ -113,16 +107,26 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task<TUser> FindByNameAsync(string userName)
         {
-            if (string.IsNullOrEmpty(userName))
-                throw new ArgumentException("Null or empty argument: userName");
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                IUserRepository userRepository = ServiceLocator.Current.GetInstance<IUserRepository>();       
+                Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+                builder.IsEqual("Username", userName);
+                builder.IsEqual("Inactive", false.ToString());
+                IList<User> users = userRepository.Query(builder.GetStorageQuery());
 
-            Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
-            builder.IsEqual("Username", userName);
-            IList<User> users = _userRepository.Query(builder.GetStorageQuery());
-            _userRepository.Commit();
+                uow.Commit();
 
-            if (users != null && users.Count > 0)
-                return Task.FromResult<TUser>(users[0] as TUser);
+                if (users != null && users.Count > 0)
+                    return Task.FromResult<TUser>(users[0] as TUser);
+
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
             return Task.FromResult<TUser>(null);
         }
 
@@ -133,9 +137,18 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task UpdateAsync(TUser user)
         {
-            _userRepository.Update(user);
-            _userRepository.Commit();
-
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                IUserRepository userRepository = ServiceLocator.Current.GetInstance<IUserRepository>();
+                userRepository.Update(user);
+                uow.Commit();
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }            
             return Task.FromResult<object>(null);
         }
 
@@ -149,16 +162,51 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task AddClaimAsync(TUser user, Claim claim)
         {
-            UserClaim newClaim = new UserClaim();
-            newClaim.ClaimType = claim.Type;
-            newClaim.ClaimValue = claim.Value;
-            newClaim.UserKey = user.UserKey;
-            newClaim.StartDate = DateTimeOffset.UtcNow;
-            _userClaimRepository.Insert(newClaim);
-            _userClaimRepository.Commit();
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                IUserClaimRepository userClaimRepository = ServiceLocator.Current.GetInstance<IUserClaimRepository>();
+                UserClaim newClaim = new UserClaim();
+                newClaim.ClaimType = claim.Type;
+                newClaim.ClaimValue = claim.Value;
+                newClaim.UserKey = user.UserKey;
+                newClaim.StartDate = DateTimeOffset.UtcNow;
+                userClaimRepository.Insert(newClaim);
+                uow.Commit();
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }             
 
             return Task.FromResult<object>(null);
         }
+
+        protected virtual Eleflex.Storage.StorageQueryBuilder GetUserEffectiveDateBuilder(string userKey)
+        {
+            DateTimeOffset now = DateTimeOffset.UtcNow;
+            Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+            builder.BeginExpression()
+                .IsEqual("UserKey", userKey)
+                .And()
+                .IsEqual("Inactive", false.ToString())
+                .EndExpression()
+                .And()
+                .BeginExpression()
+                .IsNull("EndDate")
+                .Or()
+                .IsGreaterThanOrEqual("EndDate", now.ToString())
+                .EndExpression()
+                .And()
+                .BeginExpression()
+                .IsNull("StartDate")
+                .Or()
+                .IsLessThanOrEqual("StartDate", now.ToString())
+                .EndExpression();
+            return builder;
+        }
+
 
         /// <summary>
         /// Returns all claims for a given user
@@ -167,28 +215,26 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task<IList<Claim>> GetClaimsAsync(TUser user)
         {
-            Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-            builder.BeginExpression()
-                .IsEqual("UserKey", user.UserKey.ToString())
-                .And()
-                .IsEqual("Inactive", false.ToString())
-                .EndExpression()
-                .And()
-                .BeginExpression()
-                .IsNull("EndDate")
-                .Or()
-                .IsLessThan("EndDate", DateTimeOffset.UtcNow.ToString())
-                .EndExpression();
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                IUserClaimRepository userClaimRepository = ServiceLocator.Current.GetInstance<IUserClaimRepository>();
+                Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                var list = userClaimRepository.Query(builder.GetStorageQuery());
+                List<Claim> claims = new List<Claim>();
+                foreach (var item in list)
+                    claims.Add(new Claim(item.ClaimType, item.ClaimValue));
+                
+                uow.Commit();
 
-            var list = _userClaimRepository.Query(builder.GetStorageQuery());
-
-            List<Claim> claims = new List<Claim>();
-            foreach (var item in list)
-                claims.Add(new Claim(item.ClaimType, item.ClaimValue));
-
-            _userClaimRepository.Commit();
-
-            return Task.FromResult<IList<Claim>>(claims);
+                return Task.FromResult<IList<Claim>>(claims);
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
+            return Task.FromResult<IList<Claim>>(null);            
         }
 
         /// <summary>
@@ -199,18 +245,34 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task RemoveClaimAsync(TUser user, Claim claim)
         {
-            Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-            builder.IsEqual("UserKey", user.UserKey.ToString());
-            builder.IsEqual("ClaimType", claim.Type);
-            builder.IsEqual("ClaimValue", claim.Value);
-            var list = _userClaimRepository.Query(builder.GetStorageQuery());
-            if (list != null && list.Count > 0)
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
             {
-                foreach (var item in list)
-                    _userClaimRepository.Delete(item.UserClaimKey);
-            }
-            _userClaimRepository.Commit();
+                IUserClaimRepository userClaimRepository = ServiceLocator.Current.GetInstance<IUserClaimRepository>();
+                Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                builder.And()
+                    .BeginExpression()
+                    .IsEqual("ClaimType", claim.Type)
+                    .And()
+                    .IsEqual("ClaimValue", claim.Value)
+                    .EndExpression();
 
+                var list = userClaimRepository.Query(builder.GetStorageQuery());
+                if (list != null && list.Count > 0)
+                {
+                    foreach (var item in list)
+                        userClaimRepository.Delete(item.UserClaimKey);
+                }
+
+                uow.Commit();
+
+                return Task.FromResult<object>(null);                
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
             return Task.FromResult<object>(null);
         }
 
@@ -222,14 +284,25 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task AddLoginAsync(TUser user, UserLoginInfo login)
         {
-            UserLogin newItem = new UserLogin();
-            newItem.LoginProvider = login.LoginProvider;
-            newItem.ProviderKey = login.ProviderKey;
-            newItem.UserKey = user.UserKey;
-            newItem.StartDate = DateTimeOffset.UtcNow;
-            _userLoginRepository.Insert(newItem);
-            _userLoginRepository.Commit();
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                IUserLoginRepository userLoginRepository = ServiceLocator.Current.GetInstance<IUserLoginRepository>();
 
+                UserLogin newItem = new UserLogin();
+                newItem.LoginProvider = login.LoginProvider;
+                newItem.ProviderKey = login.ProviderKey;
+                newItem.UserKey = user.UserKey;
+                newItem.StartDate = DateTimeOffset.UtcNow;
+                userLoginRepository.Insert(newItem);
+
+                uow.Commit();
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
             return Task.FromResult<object>(null);
         }
 
@@ -240,18 +313,51 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task<TUser> FindAsync(UserLoginInfo login)
         {
-            Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-            builder.IsEqual("LoginProvider", login.LoginProvider);
-            builder.IsEqual("ProviderKey", login.ProviderKey);
-            var list = _userLoginRepository.Query(builder.GetStorageQuery());
-
-            if (list != null && list.Count > 0)
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
             {
-                var user = _userRepository.Get(list[0].UserKey);
+                IUserLoginRepository userLoginRepository = ServiceLocator.Current.GetInstance<IUserLoginRepository>();
+
+                DateTimeOffset now = DateTimeOffset.UtcNow;
+                Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+                builder.BeginExpression()
+                    .IsEqual("LoginProvider", login.LoginProvider)
+                    .And()
+                    .IsEqual("ProviderKey", login.ProviderKey)
+                    .And()
+                    .IsEqual("Inactive", false.ToString())
+                    .EndExpression()
+                    .And()
+                    .BeginExpression()
+                    .IsNull("EndDate")
+                    .Or()
+                    .IsGreaterThanOrEqual("EndDate", now.ToString())
+                    .EndExpression()
+                    .And()
+                    .BeginExpression()
+                    .IsNull("StartDate")
+                    .Or()
+                    .IsLessThanOrEqual("StartDate", now.ToString())
+                    .EndExpression();
+
+                var list = userLoginRepository.Query(builder.GetStorageQuery());
+
+                User user = null;
+                if (list != null && list.Count > 0)
+                {
+                    IUserRepository userRepository = ServiceLocator.Current.GetInstance<IUserRepository>();
+                    user = userRepository.Get(list[0].UserKey);                    
+                }
+
+                uow.Commit();
+
                 return Task.FromResult<TUser>(user as TUser);
             }
-            _userLoginRepository.Commit();
-
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
             return Task.FromResult<TUser>(null);
         }
 
@@ -262,23 +368,31 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task<IList<UserLoginInfo>> GetLoginsAsync(TUser user)
         {
-            List<UserLoginInfo> userLogins = new List<UserLoginInfo>();
-            if (user == null)
-                throw new ArgumentNullException("user");
-
-            Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-            builder.IsEqual("UserKey", user.UserKey.ToString());
-            var list = _userLoginRepository.Query(builder.GetStorageQuery());
-            _userLoginRepository.Commit();
-
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
             List<UserLoginInfo> logins = new List<UserLoginInfo>();
-            if (list != null && list.Count > 0)
+            try
             {
-                foreach (var item in list)
-                    logins.Add(new UserLoginInfo(item.LoginProvider, item.ProviderKey));
+                IUserLoginRepository userLoginRepository = ServiceLocator.Current.GetInstance<IUserLoginRepository>();
+
+                List<UserLoginInfo> userLogins = new List<UserLoginInfo>();
+                Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                var list = userLoginRepository.Query(builder.GetStorageQuery());
+                if (list != null && list.Count > 0)
+                {
+                    foreach (var item in list)
+                        logins.Add(new UserLoginInfo(item.LoginProvider, item.ProviderKey));                    
+                }
+                
+                uow.Commit();
+
                 return Task.FromResult<IList<UserLoginInfo>>(logins);
             }
-            return Task.FromResult<IList<UserLoginInfo>>(logins);
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
+            return Task.FromResult<IList<UserLoginInfo>>(logins);            
         }
 
         /// <summary>
@@ -289,17 +403,33 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task RemoveLoginAsync(TUser user, UserLoginInfo login)
         {
-            Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-            builder.IsEqual("UserKey", user.UserKey.ToString());
-            builder.IsEqual("LoginProvider", login.LoginProvider);
-            builder.IsEqual("ProviderKey", login.ProviderKey);
-            var list = _userLoginRepository.Query(builder.GetStorageQuery());
-            _userLoginRepository.Commit();
-
-            if (list != null && list.Count > 0)
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();            
+            try
             {
-                foreach (var item in list)
-                    _userLoginRepository.Delete(item.UserLoginKey);
+                IUserLoginRepository userLoginRepository = ServiceLocator.Current.GetInstance<IUserLoginRepository>();
+
+                Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                builder.And()
+                    .BeginExpression()
+                    .IsEqual("LoginProvider", login.LoginProvider)
+                    .And()
+                    .IsEqual("ProviderKey", login.ProviderKey)
+                    .EndExpression();
+                var list = userLoginRepository.Query(builder.GetStorageQuery());
+                if (list != null && list.Count > 0)
+                {
+                    foreach (var item in list)
+                        userLoginRepository.Delete(item.UserLoginKey);                    
+                }
+
+                uow.Commit();
+
+                return Task.FromResult<Object>(null);
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
             }
             return Task.FromResult<Object>(null);
         }
@@ -312,20 +442,52 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task AddToRoleAsync(TUser user, string roleName)
         {
-            Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-            builder.IsEqual("Name", roleName);
-            var list = _roleRepository.Query(builder.GetStorageQuery());
-
-            if (list != null && list.Count > 0)
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
             {
-                UserRole newItem = new UserRole();
-                newItem.RoleKey = list[0].RoleKey;
-                newItem.UserKey = user.UserKey;
-                newItem.StartDate = DateTimeOffset.UtcNow;
-                _userRoleRepository.Insert(newItem);
-            }
-            _roleRepository.Commit();
+                IRoleRepository roleRepository = ServiceLocator.Current.GetInstance<IRoleRepository>();
 
+                DateTimeOffset now = DateTimeOffset.UtcNow;
+                Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
+                builder.BeginExpression()
+                    .IsEqual("Name", roleName)
+                    .And()
+                    .IsEqual("Inactive", false.ToString())
+                    .EndExpression()
+                    .And()
+                    .BeginExpression()
+                    .IsNull("EndDate")
+                    .Or()
+                    .IsGreaterThanOrEqual("EndDate", now.ToString())
+                    .EndExpression()
+                    .And()
+                    .BeginExpression()
+                    .IsNull("StartDate")
+                    .Or()
+                    .IsLessThanOrEqual("StartDate", now.ToString())
+                    .EndExpression();
+
+                var list = roleRepository.Query(builder.GetStorageQuery());
+                if (list != null && list.Count > 0)
+                {
+                    IUserRoleRepository userRoleRepository = ServiceLocator.Current.GetInstance<IUserRoleRepository>();
+
+                    UserRole newItem = new UserRole();
+                    newItem.RoleKey = list[0].RoleKey;
+                    newItem.UserKey = user.UserKey;
+                    newItem.StartDate = DateTimeOffset.UtcNow;
+                    userRoleRepository.Insert(newItem);
+                }
+
+                uow.Commit();
+
+                return Task.FromResult<object>(null);
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
             return Task.FromResult<object>(null);
         }
 
@@ -336,30 +498,146 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task<IList<string>> GetRolesAsync(TUser user)
         {
-            Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-            builder.IsEqual("UserKey", user.UserKey.ToString());
-            var userRoles = _userRoleRepository.Query(builder.GetStorageQuery());
-            _userRoleRepository.Commit();
+            IList<string> assignedRoles = GetInheritedRoles(user);
+            return Task.FromResult<IList<string>>(assignedRoles);
+        }
 
-            string[] roleKeys = userRoles.Select(x => x.RoleKey.ToString()).ToArray();
 
-            List<string> list = new List<string>();
-
-            if (roleKeys != null && roleKeys.Length > 0)
+        protected virtual IList<string> GetInheritedRoles(TUser user)
+        {
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            List<string> assignedRoleNames = new List<string>();
+            try
             {
-                builder = new Storage.StorageQueryBuilder();
-                builder.IsInSet("RoleKey", roleKeys);
-                var roles = _roleRepository.Query(builder.GetStorageQuery());
-                _roleRepository.Commit();
+                IUserRoleRepository userRoleRepository = ServiceLocator.Current.GetInstance<IUserRoleRepository>();
+                IRoleRoleRepository roleRoleRepository = ServiceLocator.Current.GetInstance<IRoleRoleRepository>();
+                IRoleRepository roleRepository = ServiceLocator.Current.GetInstance<IRoleRepository>();
+                IRolePermissionRepository rolePermissionRepository = ServiceLocator.Current.GetInstance<IRolePermissionRepository>();
+                IPermissionRepository permissionRepository = ServiceLocator.Current.GetInstance<IPermissionRepository>();
+                IUserPermissionRepository userPermissionRepository = ServiceLocator.Current.GetInstance<IUserPermissionRepository>();
 
-                if (roles != null && roles.Count > 0)
+                //Get list of assigned user roles                
+                Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                var assignedUserRoles = userRoleRepository.Query(builder.GetStorageQuery());
+
+                //Find list of inherited roles   
+                List<string> permissionKeys = new List<string>();
+                List<string> assignedRoleKeys = new List<string>(assignedUserRoles.Select(x => x.RoleKey.ToString()).ToArray());
+                if (assignedRoleKeys.Count > 0)
                 {
-                    foreach (var item in roles)
-                        list.Add(item.Name);
+                    //Recursively query to find all linked roles (this gets more expensive the more complex the structure)
+                    List<string> nextSet = new List<string>(assignedRoleKeys);
+                    while (nextSet.Count > 0)
+                    {
+                        Eleflex.Storage.IStorageQuery roleRoleQuery = GetRoleRoleEffectiveDateQuery(nextSet.ToArray());
+                        var inheritedRoles = roleRoleRepository.Query(roleRoleQuery);
+                        nextSet = new List<string>();
+                        foreach (var irole in inheritedRoles)
+                        {
+                            string newRoleKey = irole.ChildRoleKey.ToString();
+                            if (!assignedRoleKeys.Contains(newRoleKey))
+                            {
+                                //New inherited role found
+                                assignedRoleKeys.Add(newRoleKey);
+                                nextSet.Add(newRoleKey);
+                            }
+                        }
+                    }
+
+                    //Get the role names
+                    var roles = roleRepository.Query(GetRoleEffectiveDateQuery(assignedRoleKeys.ToArray()));
+                    assignedRoleNames.AddRange(roles.Select(x => x.Name).ToArray());
+
+                    //Find all permissions for all assigned roles
+                    var rolePermissions = rolePermissionRepository.Query(GetRoleEffectiveDateQuery(assignedRoleKeys.ToArray()));
+                    permissionKeys.AddRange(rolePermissions.Select(x => x.PermissionKey.ToString()).ToList());
+                }       
+         
+                //Get user permissions
+                builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                var respUserPerm = userPermissionRepository.Query(builder.GetStorageQuery());
+                permissionKeys.AddRange(respUserPerm.Select(x => x.PermissionKey.ToString()).ToList());
+
+                if(permissionKeys.Count > 0)
+                {
+                    //Get permission names
+                    var permissions =
+                        permissionRepository.Query(GetPermissionEffectiveDateQuery(permissionKeys.Distinct().ToArray()));
+
+                    //Add permissions names
+                    assignedRoleNames.AddRange(permissions.Select(x => x.Name).ToArray());
                 }
+
+
+                uow.Commit();
+
+                return assignedRoleNames.Distinct().ToList();
             }
-            
-            return Task.FromResult<IList<string>>(list);
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
+            return assignedRoleNames;
+        }
+
+
+        protected virtual Eleflex.Storage.IStorageQuery GetRoleRoleEffectiveDateQuery(string[] inheritedRoles)
+        {
+            DateTimeOffset now = DateTimeOffset.UtcNow;
+            Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+            builder.BeginExpression()
+                .IsInSet("ParentRoleKey", inheritedRoles)
+                .And()
+                .IsEqual("Inactive", false.ToString())
+                .EndExpression()
+                .And()
+                .BeginExpression()
+                .IsNull("EndDate")
+                .Or()
+                .IsGreaterThanOrEqual("EndDate", now.ToString())
+                .EndExpression()
+                .And()
+                .BeginExpression()
+                .IsNull("StartDate")
+                .Or()
+                .IsLessThanOrEqual("StartDate", now.ToString())
+                .EndExpression();
+            return builder.GetStorageQuery();
+        }
+
+        protected virtual Eleflex.Storage.IStorageQuery GetRoleEffectiveDateQuery(string[] roles)
+        {
+            DateTimeOffset now = DateTimeOffset.UtcNow;
+            Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+            builder.BeginExpression()
+                .IsInSet("RoleKey", roles)
+                .And()
+                .IsEqual("Inactive", false.ToString())
+                .EndExpression()
+                .And()
+                .BeginExpression()
+                .IsNull("EndDate")
+                .Or()
+                .IsGreaterThanOrEqual("EndDate", now.ToString())
+                .EndExpression()
+                .And()
+                .BeginExpression()
+                .IsNull("StartDate")
+                .Or()
+                .IsLessThanOrEqual("StartDate", now.ToString())
+                .EndExpression();
+            return builder.GetStorageQuery();
+        }
+
+        protected virtual Eleflex.Storage.IStorageQuery GetPermissionEffectiveDateQuery(string[] permissionKeys)
+        {
+            DateTimeOffset now = DateTimeOffset.UtcNow;
+            Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+            builder.IsInSet("PermissionKey", permissionKeys);
+            builder.And();
+            builder.IsEqual("Inactive", false.ToString());
+            return builder.GetStorageQuery();
         }
 
         /// <summary>
@@ -370,31 +648,8 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task<bool> IsInRoleAsync(TUser user, string role)
         {
-            if (user == null)
-                throw new ArgumentNullException("user");
-
-            if (string.IsNullOrEmpty(role))
-                throw new ArgumentNullException("role");
-
-            Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-            builder.IsEqual("Name", role);
-            var roleList = _roleRepository.Query(builder.GetStorageQuery());
-            _roleRepository.Commit();
-
-            bool found = false;
-            if (roleList != null && roleList.Count > 0)
-            {
-                builder = new Storage.StorageQueryBuilder();
-                builder.IsEqual("UserKey", user.UserKey.ToString());
-                builder.IsEqual("RoleKey", roleList[0].RoleKey.ToString());
-                var userRole = _userRoleRepository.Query(builder.GetStorageQuery());
-                _userRoleRepository.Commit();
-                if (userRole != null && userRole.Count > 0)
-                    found = true;
-            }
-            
-
-            return Task.FromResult<bool>(found);
+            IList<string> list = GetInheritedRoles(user);
+            return Task.FromResult<bool>(list.Contains(role));
         }
 
         /// <summary>
@@ -405,25 +660,58 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task RemoveFromRoleAsync(TUser user, string role)
         {
-            Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-            builder.IsEqual("Name", role);
-            var roleList = _roleRepository.Query(builder.GetStorageQuery());
-            _roleRepository.Commit();
-            
-            if (roleList != null && roleList.Count > 0)
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
             {
-                builder = new Storage.StorageQueryBuilder();
-                builder.IsEqual("UserKey", user.UserKey.ToString());
-                builder.IsEqual("RoleKey", roleList[0].RoleKey.ToString());
-                var userRole = _userRoleRepository.Query(builder.GetStorageQuery());                
-                if (userRole != null && userRole.Count > 0)
-                {
-                    foreach (var item in userRole)
-                        _userRoleRepository.Delete(item.UserRoleKey);
-                }
-                _userRoleRepository.Commit();
-            }
+                IRoleRepository roleRepository = ServiceLocator.Current.GetInstance<IRoleRepository>();
+                IUserRoleRepository userRoleRepository = ServiceLocator.Current.GetInstance<IUserRoleRepository>();
 
+                DateTimeOffset now = DateTimeOffset.UtcNow;
+                Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
+                builder.BeginExpression()
+                    .IsEqual("Name", role)
+                    .And()
+                    .IsEqual("Inactive", false.ToString())
+                    .EndExpression()
+                    .And()
+                    .BeginExpression()
+                    .IsNull("EndDate")
+                    .Or()
+                    .IsGreaterThanOrEqual("EndDate", now.ToString())
+                    .EndExpression()
+                    .And()
+                    .BeginExpression()
+                    .IsNull("StartDate")
+                    .Or()
+                    .IsLessThanOrEqual("StartDate", now.ToString())
+                    .EndExpression();
+
+                var list = roleRepository.Query(builder.GetStorageQuery());
+                if (list != null && list.Count > 0)
+                {
+                    builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                    builder.And()
+                        .BeginExpression()
+                        .IsEqual("RoleKey", list[0].RoleKey.ToString())
+                        .EndExpression();
+
+                    var assignedUserRoles = userRoleRepository.Query(builder.GetStorageQuery());
+                    if (assignedUserRoles != null && assignedUserRoles.Count > 0)
+                    {
+                        foreach (var userRole in assignedUserRoles)
+                            userRoleRepository.Delete(userRole.UserRoleKey);
+                    }
+                }                
+
+                uow.Commit();
+
+                return Task.FromResult<object>(null);
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
             return Task.FromResult<object>(null);
         }
 
@@ -434,33 +722,27 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task DeleteAsync(TUser user)
         {
-            Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-            builder.IsEqual("UserKey", user.UserKey.ToString());            
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                IUserRepository userRepository = ServiceLocator.Current.GetInstance<IUserRepository>();
 
-            var userRoles = _userRoleRepository.Query(builder.GetStorageQuery());
-            foreach(var userRoleItem in userRoles)
-                _userRoleRepository.Delete(userRoleItem.UserRoleKey);
-            _userRoleRepository.Commit();
+                TUser item = userRepository.Get(user.UserKey) as TUser;
+                if (item != null)
+                {
+                    item.ChangeInactive(true);
+                    userRepository.Update(item);
+                }                
 
-            var userClaims = _userClaimRepository.Query(builder.GetStorageQuery());
-            foreach (var userClaimItem in userClaims)
-                _userClaimRepository.Delete(userClaimItem.UserClaimKey);
-            _userClaimRepository.Commit();
+                uow.Commit();
 
-            var userLogins = _userLoginRepository.Query(builder.GetStorageQuery());
-            foreach (var userLoginItem in userLogins)
-                _userLoginRepository.Delete(userLoginItem.UserLoginKey);
-            _userLoginRepository.Commit();
-
-            //var userPermissions = _userPermissionRepository.Query(builder.GetStorageQuery());
-            //foreach (var userPermissionItem in userPermissions)
-            //    _userPermissionRepository.Delete(userPermissionItem.UserPermissionKey);
-            //_userPermissionRepository.Commit();
-
-            
-            _userRepository.Delete(user.UserKey);
-            _userRepository.Commit();
-
+                return Task.FromResult<Object>(null);
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
             return Task.FromResult<Object>(null);
         }
 
@@ -571,14 +853,29 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task<TUser> FindByEmailAsync(string email)
         {
-            Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-            builder.IsEqual("Email", email);
-            var users = _userRepository.Query(builder.GetStorageQuery());
-            _userRepository.Commit();
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                IUserRepository userRepository = ServiceLocator.Current.GetInstance<IUserRepository>();
 
-            if (users != null && users.Count > 0)
-                return Task.FromResult<TUser>(users[0] as TUser);
+                Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
+                builder.IsEqual("Email", email);
+                builder.IsEqual("Inactive", false.ToString());
+                var users = userRepository.Query(builder.GetStorageQuery());
 
+                User user = null;
+                if (users != null && users.Count > 0)
+                    user = users[0];                
+
+                uow.Commit();
+
+                return Task.FromResult<TUser>(user as TUser);
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+            }
             return Task.FromResult<TUser>(null);
         }
 
@@ -655,6 +952,8 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task<DateTimeOffset> GetLockoutEndDateAsync(TUser user)
         {
+            if (user.Inactive)
+                return Task.FromResult(DateTimeOffset.MaxValue);
             return
                 Task.FromResult(user.LockoutReinstateDate.HasValue
                     ? user.LockoutReinstateDate.Value

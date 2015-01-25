@@ -45,7 +45,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             container.Configure(x =>
             {                
                 x.For<Eleflex.Logging.ILoggingStorageProvider>().Use<Eleflex.Logging.Storage.SqlServer.LoggingStorageProvider>()
-                    .Ctor<string>("connectionStringKey").Is(Eleflex.Storage.Constants.CONNECTION_STRING_KEY_DEFAULT);
+                    .Ctor<string>("connectionStringKey").Is(Eleflex.Storage.StorageConstants.CONNECTION_STRING_KEY_DEFAULT);
 
                 x.For<Eleflex.Logging.Message.ILoggingRequestDispatcher>().Use<Eleflex.Logging.Message.LoggingRequestDispatcher>()
                     .Ctor<string>("endpoint").Is(Eleflex.Services.ServicesConstants.SERVICE_ENDPOINT_NAME_DEFAULT);

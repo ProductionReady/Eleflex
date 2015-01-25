@@ -24,6 +24,7 @@ using System.Web.Mvc;
 using Eleflex.Storage;
 using Eleflex.Security.Message;
 using Eleflex.Security.Message.PermissionCommand;
+using Eleflex.Web;
 
 namespace Eleflex.Security.Web.Security.Permissions
 {
@@ -56,26 +57,22 @@ namespace Eleflex.Security.Web.Security.Permissions
             return RedirectToAction("List");
         }
 
-
         /// <summary>
-        /// Edit.
+        /// List
         /// </summary>
         /// <returns></returns>
-        public ActionResult Edit(string key)
+        [HttpGet]
+        public ActionResult List()
         {
-            DetailsViewModel viewModel = new DetailsViewModel();
-            return View("Details", viewModel);
-        }
-
-        /// <summary>
-        /// Details.
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Details(DetailsViewModel model)
-        {
-            if (!ModelState.IsValid)
+            ListViewModel model = new ListViewModel();
+            StorageQueryBuilder builder = new StorageQueryBuilder();
+            builder.Paging(1, StorageConstants.MAX_RETURNED_RECORDS_DEFAULT);
+            builder.Sort("Name", true);
+            var response = _permissionServiceClient.Query(builder.GetStorageQuery());
+            if (ModelState.IsServiceError(response))
                 return View(model);
 
+            model.Items = response.Items;
             return View(model);
         }
 
@@ -83,7 +80,9 @@ namespace Eleflex.Security.Web.Security.Permissions
         /// List.
         /// </summary>
         /// <returns></returns>        
-        public ActionResult List(ListModel model = null)
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult List(ListViewModel model)
         {
             StorageQueryBuilder builder = new StorageQueryBuilder();
             if (model != null)
@@ -99,12 +98,46 @@ namespace Eleflex.Security.Web.Security.Permissions
             if (model != null && model.MaxRecords.HasValue)
                 builder.Paging(1, model.MaxRecords.Value);
             else
-                builder.Paging(1, Constants.MAX_RETURNED_RECORDS_DEFAULT);
+                builder.Paging(1, StorageConstants.MAX_RETURNED_RECORDS_DEFAULT);
 
             builder.Sort("Name", true);
             var response = _permissionServiceClient.Query(builder.GetStorageQuery());
             model.Items = response.Items;
             return View(model);
         }
+
+        //[ValidateAntiForgeryToken]
+        //[HttpPost]
+        //public ActionResult Deactivate(Guid permissionKey)
+        //{
+        //    var resp = _permissionServiceClient.Get(permissionKey);
+        //    if (resp.Item == null)
+        //        return Json(AjaxResult.Error("Service error."));
+
+        //    var item = resp.Item;
+        //    item.Inactive = true;
+        //    var respUpdate = _permissionServiceClient.Update(item);
+        //    if (ModelState.IsServiceError(respUpdate))
+        //        return Json(AjaxResult.Error("Service error."));
+
+        //    return Json(AjaxResult.SuccessReload("Permission deactivated."));
+        //}
+
+        //[ValidateAntiForgeryToken]
+        //[HttpPost]
+        //public ActionResult Reactivate(Guid permissionKey)
+        //{
+        //    var resp = _permissionServiceClient.Get(permissionKey);
+        //    if (resp.Item == null)
+        //        return Json(AjaxResult.Error("Service error."));
+
+        //    var item = resp.Item;
+        //    item.Inactive = false;
+        //    var respUpdate = _permissionServiceClient.Update(item);
+        //    if (ModelState.IsServiceError(respUpdate))
+        //        return Json(AjaxResult.Error("Service error."));
+
+        //    return Json(AjaxResult.SuccessReload("Permission deactivated."));
+        //}
     }
 }

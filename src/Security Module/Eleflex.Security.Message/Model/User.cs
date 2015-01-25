@@ -23,5 +23,9 @@ namespace Eleflex.Security.Message
         public bool Inactive { get; set; }
         public bool EmailValid { get; set; }
         public string EmailValidCode { get; set; }
+        public string Phone { get; set; }
+        public bool PhoneValid { get; set; }
+        public string PhoneValidCode { get; set; }
+        public bool TwoFactorAuth { get; set; }
     }
 }

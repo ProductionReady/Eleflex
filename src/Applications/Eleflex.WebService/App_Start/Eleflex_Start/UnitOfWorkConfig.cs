@@ -23,6 +23,7 @@ using StructureMap.Pipeline.Lazy;
 using StructureMap.Web;
 using StructureMap.Web.Pipeline;
 using Bootstrap.Extensions.StartupTasks;
+using Eleflex.Storage;
 
 namespace Eleflex.WebService.App_Start.Eleflex_Start
 {
@@ -45,10 +46,10 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
 
                 x.For<Eleflex.Storage.StorageProviderUnitOfWork>().HybridHttpOrThreadLocalScoped();
 
-                x.For<Eleflex.IUnitOfWork>().LifecycleIs<HttpContextLifecycle>().Use(() => container.GetInstance<Eleflex.Storage.StorageProviderUnitOfWork>());
+                x.For<Eleflex.Storage.IUnitOfWork>().LifecycleIs<HttpContextLifecycle>().Use(() => container.GetInstance<Eleflex.Storage.StorageProviderUnitOfWork>());
                 x.For<Eleflex.Storage.IStorageProviderUnitOfWork>().LifecycleIs<HttpContextLifecycle>().Use(() => container.GetInstance<Eleflex.Storage.StorageProviderUnitOfWork>());
 
-                x.For<Eleflex.IUnitOfWork>().LifecycleIs<ThreadLocalStorageLifecycle>().Use(() => container.GetInstance<Eleflex.Storage.StorageProviderUnitOfWork>());
+                x.For<Eleflex.Storage.IUnitOfWork>().LifecycleIs<ThreadLocalStorageLifecycle>().Use(() => container.GetInstance<Eleflex.Storage.StorageProviderUnitOfWork>());
                 x.For<Eleflex.Storage.IStorageProviderUnitOfWork>().LifecycleIs<ThreadLocalStorageLifecycle>().Use(() => container.GetInstance<Eleflex.Storage.StorageProviderUnitOfWork>());
             });
         }

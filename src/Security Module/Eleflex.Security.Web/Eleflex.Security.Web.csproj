@@ -55,6 +55,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Bootstrapper.2.0.3.13\lib\Net40\Bootstrapper.dll</HintPath>
     </Reference>
+    <Reference Include="Bootstrapper.AutoMapper, Version=2.0.3.14, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Bootstrapper.AutoMapper.2.0.3.14\lib\Net40\Bootstrapper.AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
@@ -185,16 +189,36 @@
     <Compile Include="Account\ResetPasswordViewModel.cs" />
     <Compile Include="Account\SendCodeViewModel.cs" />
     <Compile Include="Account\VerifyCodeViewModel.cs" />
-    <Compile Include="Admin\Permissions\DetailsViewModel.cs" />
-    <Compile Include="Admin\Permissions\ListModel.cs" />
-    <Compile Include="Admin\Roles\DetailsViewModel.cs" />
-    <Compile Include="Admin\Roles\ListModel.cs" />
+    <Compile Include="Admin\Permissions\ListViewModel.cs" />
+    <Compile Include="Admin\Roles\EditPermissionViewModel.cs" />
+    <Compile Include="Admin\Roles\EditRoleViewModel.cs" />
+    <Compile Include="Admin\Roles\EditViewModel.cs" />
+    <Compile Include="Admin\Roles\ListViewModel.cs" />
     <Compile Include="Admin\AdminController.cs" />
     <Compile Include="Admin\Permissions\PermissionsController.cs" />
+    <Compile Include="Admin\Roles\PermissionsViewModel.cs" />
+    <Compile Include="Admin\Roles\RoleRoleViewModel.cs" />
     <Compile Include="Admin\Roles\RolesController.cs" />
-    <Compile Include="Admin\Users\DetailsViewModel.cs" />
+    <Compile Include="Admin\Roles\RolesViewModel.cs" />
+    <Compile Include="Admin\Roles\SelectPermissionViewModel.cs" />
+    <Compile Include="Admin\Roles\SelectRoleViewModel.cs" />
+    <Compile Include="Admin\Roles\RolePermissionViewModel.cs" />
+    <Compile Include="Admin\Users\ClaimsViewModel.cs" />
+    <Compile Include="Admin\Users\EditClaimViewModel.cs" />
+    <Compile Include="Admin\Users\EditPermissionViewModel.cs" />
+    <Compile Include="Admin\Users\EditRoleViewModel.cs" />
+    <Compile Include="Admin\Users\EditViewModel.cs" />
     <Compile Include="Admin\Users\ListViewModel.cs" />
+    <Compile Include="Admin\Users\PermissionsViewModel.cs" />
+    <Compile Include="Admin\Users\EffectiveSecurityViewModel.cs" />
+    <Compile Include="Admin\Users\RolesViewModel.cs" />
+    <Compile Include="Admin\Users\SelectPermissionViewModel.cs" />
+    <Compile Include="Admin\Users\SelectRoleViewModel.cs" />
+    <Compile Include="Admin\Users\UserClaimViewModel.cs" />
+    <Compile Include="Admin\Users\UserPermissionViewModel.cs" />
+    <Compile Include="Admin\Users\UserRoleViewModel.cs" />
     <Compile Include="Admin\Users\UsersController.cs" />
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -331,13 +355,55 @@
     <EmbeddedResource Include="Views\Manage\SetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Users\Details.cshtml" />
+    <EmbeddedResource Include="Views\Users\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Roles\Details.cshtml" />
+    <EmbeddedResource Include="Views\Roles\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Permissions\Details.cshtml" />
+    <EmbeddedResource Include="Views\Users\Roles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Users\EditRole.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Users\SelectRole.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Users\Permissions.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Users\EditPermission.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Users\SelectPermission.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Users\EffectiveSecurity.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Users\EditClaim.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Users\Claims.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Roles\EditRole.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Roles\Roles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Roles\SelectRole.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Roles\EditPermission.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Roles\Permissions.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Roles\SelectPermission.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

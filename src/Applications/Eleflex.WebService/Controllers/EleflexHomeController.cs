@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Eleflex.WebService.Models;
 
 namespace Eleflex.WebService.Controllers
 {
@@ -56,13 +57,16 @@ namespace Eleflex.WebService.Controllers
             return View();
         }
 
+
         /// <summary>
         /// AGPL page.
         /// </summary>
         /// <returns></returns>
-        public ActionResult Error()
+        public ActionResult Error(string error)
         {
-            return View();
+            ErrorViewModel viewModel = new ErrorViewModel();
+            viewModel.Error = error;
+            return View(viewModel);
         }
     }
 }

@@ -102,7 +102,7 @@ namespace Eleflex.Logging.Web.Controllers
             if (model != null && model.MaxRecords.HasValue)
                 builder.Paging(1, model.MaxRecords.Value);
             else
-                builder.Paging(1, Constants.MAX_RETURNED_RECORDS_DEFAULT);
+                builder.Paging(1, StorageConstants.MAX_RETURNED_RECORDS_DEFAULT);
             
             builder.Sort("CreateDate", false);
             var response = _logServiceClient.Query(builder.GetStorageQuery());            

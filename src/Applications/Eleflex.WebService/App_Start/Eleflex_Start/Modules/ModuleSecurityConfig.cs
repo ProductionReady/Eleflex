@@ -21,6 +21,8 @@ using System.Collections.Specialized;
 using Bootstrap.Extensions.StartupTasks;
 using Eleflex.Services;
 using Microsoft.AspNet.Identity;
+using StructureMap.Pipeline;
+using StructureMap.Web;
 
 namespace Eleflex.WebService.App_Start.Eleflex_Start
 {
@@ -40,13 +42,17 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             container.Configure(x =>
             {
                 x.For<Eleflex.Security.ISecurityStorageProvider>().Use<Eleflex.Security.Storage.SqlServer.SecurityStorageProvider>()
-                    .Ctor<string>("connectionStringKey").Is(Eleflex.Storage.Constants.CONNECTION_STRING_KEY_DEFAULT);
+                    .Ctor<string>("connectionStringKey").Is(Eleflex.Storage.StorageConstants.CONNECTION_STRING_KEY_DEFAULT);
 
                 x.For<Eleflex.Security.Message.ISecurityRequestDispatcher>().Use<Eleflex.Security.Message.SecurityRequestDispatcher>()
                     .Ctor<string>("endpoint").Is(Eleflex.Services.ServicesConstants.SERVICE_ENDPOINT_NAME_DEFAULT);
 
-                //Setup user store for Identity and claims
-                x.For<IUserStore<Eleflex.Security.User>>().Use<Eleflex.Web.IdentityUserStoreServiceClient<Eleflex.Security.User>>();
+                //Setup user store for Identity and claims. Use (Eleflex.Web.IdentityUserStoreServiceClient and Eleflex.Web.IdentityRoleStoreServiceClient) for client apps
+                x.For<Eleflex.Security.IdentityUserStore<Eleflex.Security.User>>().HybridHttpOrThreadLocalScoped();
+                x.For<IUserStore<Eleflex.Security.User>>().LifecycleIs<StructureMap.Pipeline.ThreadLocalStorageLifecycle>().Use<Eleflex.Security.IdentityUserStore<Eleflex.Security.User>>();
+
+                x.For<Eleflex.Security.IdentityRoleStore<Eleflex.Security.Role>>().HybridHttpOrThreadLocalScoped();
+                x.For<IRoleStore<Eleflex.Security.Role>>().LifecycleIs<StructureMap.Pipeline.ThreadLocalStorageLifecycle>().Use<Eleflex.Security.IdentityRoleStore<Eleflex.Security.Role>>();
             });
         }
 

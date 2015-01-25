@@ -17,6 +17,7 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endregion
 using System;
+using System.Collections.Generic;
 
 namespace Eleflex
 {
@@ -28,19 +29,46 @@ namespace Eleflex
         /// <summary>
         /// Constructor.
         /// </summary>
-        public EleflexException() : base() { }
+        public EleflexException() : base() 
+        {
+            ValidationMessages = new List<EleflexValidationMessage>();
+        }
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="message"></param>
-        public EleflexException(string message) : base(message) { }
+        public EleflexException(string message) : base(message) 
+        {
+            ValidationMessages = new List<EleflexValidationMessage>();
+        }
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="message"></param>
         /// <param name="innerException"></param>
-        public EleflexException(string message, Exception innerException) : base(message, innerException) { }
+        public EleflexException(string message, Exception innerException) : base(message, innerException) 
+        {
+            ValidationMessages = new List<EleflexValidationMessage>();
+        }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="messages"></param>
+        public EleflexException(List<EleflexValidationMessage> messages)
+            : base()
+        {
+            ValidationMessages = new List<EleflexValidationMessage>();
+            if(messages != null)
+                ValidationMessages.AddRange(messages);
+            
+        }
+
+        /// <summary>
+        /// List of validation messages.
+        /// </summary>
+        public List<EleflexValidationMessage> ValidationMessages { get; set; }
     }
 }

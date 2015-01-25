@@ -47,6 +47,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             // Configure user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext<ApplicationUserManager>(AuthConfig.CreateUserManager);
             app.CreatePerOwinContext<ApplicationSignInManager>(AuthConfig.CreateSignInManager);
+            app.CreatePerOwinContext<ApplicationRoleManager>(AuthConfig.CreateRoleManager);
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
@@ -148,6 +149,12 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             return manager;
         }
 
+        public static ApplicationRoleManager CreateRoleManager(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            var roleStore = Microsoft.Practices.ServiceLocation.ServiceLocator.Current.GetInstance<IRoleStore<Eleflex.Security.Role>>();
+            var manager = new ApplicationRoleManager(roleStore);
+            return manager;
+        }
 
         public class EmailService : IIdentityMessageService
         {

@@ -62,7 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Constants.cs" />
+    <Compile Include="Model\StorageConstants.cs" />
     <Compile Include="Model\IMemoryStorageObject.cs" />
     <Compile Include="Model\IStorageExtraData.cs" />
     <Compile Include="Model\IStoragePaging.cs" />
@@ -73,6 +73,7 @@
     <Compile Include="Model\IStorageProvider.cs" />
     <Compile Include="Model\IStorageSession.cs" />
     <Compile Include="Model\IStorageProviderUnitOfWork.cs" />
+    <Compile Include="Model\IUnitOfWork.cs" />
     <Compile Include="Model\MemoryStorageProvider.cs" />
     <Compile Include="Model\MemoryStorageRepository.cs" />
     <Compile Include="Model\MemoryStorageSession.cs" />

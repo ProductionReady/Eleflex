@@ -11,5 +11,7 @@ namespace Eleflex.Security.Message
         public string Description { get; set; }
         public string ExtraData { get; set; }
         public Guid? ModuleKey { get; set; }
+        public Nullable<System.DateTimeOffset> StartDate { get; set; }
+        public Nullable<System.DateTimeOffset> EndDate { get; set; }
     }
 }

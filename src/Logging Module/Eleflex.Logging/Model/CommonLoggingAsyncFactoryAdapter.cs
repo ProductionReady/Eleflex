@@ -24,6 +24,7 @@ using System.Threading;
 using Common.Logging;
 using Common.Logging.Factory;
 using Microsoft.Practices.ServiceLocation;
+using Eleflex.Storage;
 
 namespace Eleflex.Logging
 {
@@ -305,16 +306,17 @@ namespace Eleflex.Logging
         {
             //We want to process logging on a different thread from the current request thread as to not slow down processing for persisting log messages.
             //Additionally messages created on the context of the request thread would be rolledback should the unit of work be rolledback/disposed.
+            IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<IStorageProviderUnitOfWork>();
             try
             {
                 ILogRepository logRepository = ServiceLocator.Current.GetInstance<ILogRepository>();
                 logRepository.Insert(message);
-                ServiceLocator.Current.GetInstance<Eleflex.IUnitOfWork>().Commit();
+                uow.Commit();
                 return true;
             }
             catch (Exception ex)
             {
-                ServiceLocator.Current.GetInstance<Eleflex.IUnitOfWork>().Rollback();
+                uow.Rollback();
                 Common.Logging.LogManager.GetLogger("CommonLoggingAsyncFactoryAdapter:ProcessMessage").Error(ex);
                 return false;
             }

@@ -86,6 +86,10 @@
       <Project>{d57f1ba1-1554-4c4f-a084-c03b8617f595}</Project>
       <Name>Eleflex</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Storage Module\Eleflex.Storage\Eleflex.Storage.csproj">
+      <Project>{18bb79dc-ae56-49d8-9972-2d30038c9603}</Project>
+      <Name>Eleflex.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Eleflex.Services.Client\Eleflex.Services.Client.csproj">
       <Project>{476aef02-7624-4a7f-8dd5-ceb7cc91f69a}</Project>
       <Name>Eleflex.Services.Client</Name>

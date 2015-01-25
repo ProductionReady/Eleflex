@@ -50,20 +50,29 @@ namespace Eleflex.Security.Service.UserCommand
         /// <param name="response"></param>
         public override void Execute(UserUpdateRequest request, UserUpdateResponse response)
         {
-            DomainModel.User item = _userRepository.Get(request.Item.UserKey);            
-            item.ChangeFirstName(request.Item.FirstName);
-            item.ChangeLastName(request.Item.LastName);
-            item.ChangeUsername(request.Item.Username);
-            item.ChangeEmail(request.Item.Email);
-            item.ChangePassword(request.Item.Password);
-            item.ChangePasswordSalt(request.Item.PasswordSalt);
-            item.ChangePasswordLastChangeDate(request.Item.PasswordLastChangeDate);
-            item.ChangeLoginFailedAttempts(request.Item.LoginFailedAttempts);
-            item.ChangeEnableLockout(request.Item.EnableLockout);
-            item.ChangeLastLoginDate(request.Item.LastLoginDate);
-            item.ChangeLockoutReinstateDate(request.Item.LockoutReinstateDate);
+            DomainModel.User item = _userRepository.Get(request.Item.UserKey);
             item.ChangeComment(request.Item.Comment);
+            item.ChangeCreateDate(request.Item.CreateDate);
+            item.ChangeEmail(request.Item.Email);
+            item.ChangeEmailValid(request.Item.EmailValid);
+            item.ChangeEmailValidCode(request.Item.EmailValidCode);
+            item.ChangeEnableLockout(request.Item.EnableLockout);
             item.ChangeExtraData(request.Item.ExtraData);
+            item.ChangeFirstName(request.Item.FirstName);
+            item.ChangeInactive(request.Item.Inactive);
+            item.ChangeLastLoginDate(request.Item.LastLoginDate);
+            item.ChangeLastName(request.Item.LastName);
+            item.ChangeLockoutReinstateDate(request.Item.LockoutReinstateDate);
+            item.ChangeLoginFailedAttempts(request.Item.LoginFailedAttempts);
+            item.ChangePassword(request.Item.Password);
+            item.ChangePasswordLastChangeDate(request.Item.PasswordLastChangeDate);
+            item.ChangePasswordSalt(request.Item.PasswordSalt);
+            item.ChangePhone(request.Item.Phone);
+            item.ChangePhoneValid(request.Item.PhoneValid);
+            item.ChangePhoneValidCode(request.Item.PhoneValidCode);
+            item.ChangeTwoFactorAuth(request.Item.TwoFactorAuth);
+            //item.ChangeUserKey(request.Item.UserKey);
+            item.ChangeUsername(request.Item.Username);
             item = _userRepository.Update(item);
             response.Item = AutoMapper.Mapper.Map<ServiceModel.User>(item);
         }

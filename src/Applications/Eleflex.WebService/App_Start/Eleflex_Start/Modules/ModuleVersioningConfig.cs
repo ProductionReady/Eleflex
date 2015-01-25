@@ -39,7 +39,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             container.Configure(x =>
             {
                 x.For<Eleflex.Versioning.IVersioningStorageProvider>().Use<Eleflex.Versioning.Storage.SqlServer.VersioningStorageProvider>()
-                    .Ctor<string>("connectionStringKey").Is(Eleflex.Storage.Constants.CONNECTION_STRING_KEY_DEFAULT);
+                    .Ctor<string>("connectionStringKey").Is(Eleflex.Storage.StorageConstants.CONNECTION_STRING_KEY_DEFAULT);
 
                 x.For<Eleflex.Versioning.Message.IVersioningRequestDispatcher>().Use<Eleflex.Versioning.Message.VersioningRequestDispatcher>()
                     .Ctor<string>("endpoint").Is(Eleflex.Services.ServicesConstants.SERVICE_ENDPOINT_NAME_DEFAULT);

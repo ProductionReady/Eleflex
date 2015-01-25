@@ -20,6 +20,7 @@ using System;
 using Eleflex;
 using Eleflex.Services;
 using Microsoft.Practices.ServiceLocation;
+using Eleflex.Storage;
 
 namespace Eleflex.Services.Server
 {
@@ -41,7 +42,7 @@ namespace Eleflex.Services.Server
         public virtual ServiceCommandResponse SendServiceCommand(ServiceCommandRequest request)
         {            
             TResponse response = ServiceLocator.Current.GetInstance<TResponse>();
-            IUnitOfWork uow = ServiceLocator.Current.GetInstance<IUnitOfWork>();
+            IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<IStorageProviderUnitOfWork>();
             try
             {
                 Execute((TRequest)request, (TResponse)response);

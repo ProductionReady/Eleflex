@@ -275,6 +275,7 @@
     <Compile Include="App_Start\Eleflex_Start\Startup.cs" />
     <Compile Include="App_Start\Eleflex_Start\Modules\ModuleVersioningConfig.cs" />
     <Compile Include="Controllers\EleflexHomeController.cs" />
+    <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -285,8 +286,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-chosen.css" />
-    <Content Include="Content\bootstrap-datetimepicker.css" />
-    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -353,6 +352,8 @@
     <Content Include="Content\EleflexTheme.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\smalot-datetimepicker\bootstrap-datetimepicker.css" />
+    <Content Include="Content\smalot-datetimepicker\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -397,20 +398,14 @@
     <Content Include="Images\ProductionReady\EleflexIcon57x57.png" />
     <Content Include="Images\ProductionReady\EleflexIcon72x72.png" />
     <Content Include="Images\ProductionReady\favicon.ico" />
+    <Content Include="Images\ProductionReady\ProductionReadyIcon.png" />
     <Content Include="Images\required.png" />
-    <Content Include="Scripts\bootstrap-datetimepicker.js" />
-    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Content\bootstrap-chosen.scss" />
     <Content Include="Content\bootstrap-chosen.less" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\DataTables-1.10.4\css\dataTables.responsive.scss" />
     <Content Include="Content\DataTables-1.10.4\css\dataTables.jqueryui.scss" />
     <Content Include="Scripts\bootstrap.js" />
@@ -441,6 +436,11 @@
     <Content Include="Scripts\DataTables-1.10.4\jquery.dataTables.js" />
     <Content Include="Scripts\DataTables-1.10.4\jquery.dataTables.min.js" />
     <Content Include="Scripts\Eleflex.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
@@ -462,6 +462,50 @@
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\smalot-datetimepicker\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\smalot-datetimepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.ar.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.bg.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.ca.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.cs.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.da.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.de.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.ee.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.el.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.es.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.fi.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.fr.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.he.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.hr.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.hu.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.is.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.it.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.ja.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.ko.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.lt.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.lv.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.ms.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.nb.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.nl.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.no.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.pl.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.pt-BR.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.pt.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.ro.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.rs-latin.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.rs.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.ru.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.sk.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.sl.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.sv.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.sw.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.th.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.tr.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.ua.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.uk.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.zh-TW.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -503,10 +547,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\themes\base\minified\images\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Admin Module\Eleflex.Admin.Web\Eleflex.Admin.Web.csproj">

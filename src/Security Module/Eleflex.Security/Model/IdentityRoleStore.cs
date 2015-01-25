@@ -1,105 +1,168 @@
-﻿//﻿using Microsoft.AspNet.Identity;
-//using System;
-//using System.Linq;
-//using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Practices.ServiceLocation;
 
-//namespace Eleflex.Security
-//{
-//    /// <summary>
-//    /// Class that implements the key ASP.NET Identity role store iterfaces
-//    /// </summary>
-//    public class RoleStore<TRole> : IQueryableRoleStore<TRole>
-//        where TRole : IdentityRole
-//    {
-//        private RoleTable roleTable;
-//        public MySQLDatabase Database { get; private set; }
+namespace Eleflex.Security
+{
+    /// <summary>
+    /// Class that implements the key ASP.NET Identity role store iterfaces
+    /// </summary>
+    public class IdentityRoleStore<TRole> : IRoleStore<TRole>, IQueryableRoleStore<TRole>
+        where TRole : Eleflex.Security.Role
+    {
 
-//        public IQueryable<TRole> Roles
-//        {
-//            get
-//            {
-//                throw new NotImplementedException();
-//            }
-//        }
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public IdentityRoleStore()
+        {            
+        }
+
+        /// <summary>
+        /// Disposal.
+        /// </summary>
+        public void Dispose()
+        {
+        }
 
 
-//        /// <summary>
-//        /// Default constructor that initializes a new MySQLDatabase
-//        /// instance using the Default Connection string
-//        /// </summary>
-//        public RoleStore()
-//        {
-//            new RoleStore<TRole>(new MySQLDatabase());
-//        }
+        public IQueryable<TRole> Roles
+        {
+            get
+            {
+                return new List<TRole>().AsQueryable();
+            }
+        }
 
-//        /// <summary>
-//        /// Constructor that takes a MySQLDatabase as argument 
-//        /// </summary>
-//        /// <param name="database"></param>
-//        public RoleStore(MySQLDatabase database)
-//        {
-//            Database = database;
-//            roleTable = new RoleTable(database);
-//        }
+        public Task CreateAsync(TRole role)
+        {
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                IRoleRepository roleRepository = ServiceLocator.Current.GetInstance<IRoleRepository>();
+                roleRepository.Insert(role);
+                uow.Commit();
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityRoleStore<TRole>>().Error(ex);
+                return Task.FromResult(IdentityResult.Failed("Internal error"));
+            }
 
-//        public Task CreateAsync(TRole role)
-//        {
-//            if (role == null)
-//            {
-//                throw new ArgumentNullException("role");
-//            }
+            return Task.FromResult(IdentityResult.Success);
+        }
 
-//            roleTable.Insert(role);
+        public Task DeleteAsync(TRole role)
+        {
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                IRoleRepository roleRepository = ServiceLocator.Current.GetInstance<IRoleRepository>();
 
-//            return Task.FromResult<object>(null);
-//        }
+                TRole item = roleRepository.Get(role.RoleKey) as TRole;
+                if (item != null)
+                {
+                    item.ChangeInactive(true);
+                    roleRepository.Update(item);
+                }
 
-//        public Task DeleteAsync(TRole role)
-//        {
-//            if (role == null)
-//            {
-//                throw new ArgumentNullException("user");
-//            }
+                uow.Commit();
 
-//            roleTable.Delete(role.Id);
+                return Task.FromResult<Object>(null);
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityRoleStore<TRole>>().Error(ex);
+            }
+            return Task.FromResult<Object>(null);
+        }
 
-//            return Task.FromResult<Object>(null);
-//        }
+        public Task<TRole> FindByIdAsync(string roleId)
+        {
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                Guid key;
+                if (!Guid.TryParse(roleId, out key))
+                    throw new FormatException("Argument not a Guid: " + roleId);
 
-//        public Task<TRole> FindByIdAsync(string roleId)
-//        {
-//            TRole result = roleTable.GetRoleById(roleId) as TRole;
+                IRoleRepository roleRepository = ServiceLocator.Current.GetInstance<IRoleRepository>();
+                TRole item = roleRepository.Get(key) as TRole;
+                uow.Commit();
+                return Task.FromResult<TRole>(item);
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityRoleStore<TRole>>().Error(ex);
+            }
+            return Task.FromResult<TRole>(null); 
+        }
 
-//            return Task.FromResult<TRole>(result);
-//        }
+        public Task<TRole> FindByNameAsync(string roleName)
+        {
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                DateTimeOffset now = DateTimeOffset.UtcNow;
+                IRoleRepository roleRepository = ServiceLocator.Current.GetInstance<IRoleRepository>();
+                Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();                
+                builder.BeginExpression()
+                    .IsEqual("Name", roleName)
+                    .And()
+                    .IsEqual("Inactive", false.ToString())
+                    .EndExpression()
+                    .And()
+                    .BeginExpression()
+                    .IsNull("EndDate")
+                    .Or()
+                    .IsGreaterThanOrEqual("EndDate", now.ToString())
+                    .EndExpression()
+                    .And()
+                    .BeginExpression()
+                    .IsNull("StartDate")
+                    .Or()
+                    .IsLessThanOrEqual("StartDate", now.ToString())
+                    .EndExpression();
+                IList<Role> roles = roleRepository.Query(builder.GetStorageQuery());
 
-//        public Task<TRole> FindByNameAsync(string roleName)
-//        {
-//            TRole result = roleTable.GetRoleByName(roleName) as TRole;
+                uow.Commit();
 
-//            return Task.FromResult<TRole>(result);
-//        }
+                if (roles != null && roles.Count > 0)
+                    return Task.FromResult<TRole>(roles[0] as TRole);
 
-//        public Task UpdateAsync(TRole role)
-//        {
-//            if (role == null)
-//            {
-//                throw new ArgumentNullException("user");
-//            }
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityRoleStore<TRole>>().Error(ex);
+            }
+            return Task.FromResult<TRole>(null);
+        }
 
-//            roleTable.Update(role);
+        public Task UpdateAsync(TRole role)
+        {
+            Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+            try
+            {
+                IRoleRepository roleRepository = ServiceLocator.Current.GetInstance<IRoleRepository>();
+                roleRepository.Update(role);
+                uow.Commit();
+            }
+            catch (Exception ex)
+            {
+                uow.Rollback();
+                Common.Logging.LogManager.GetLogger<IdentityRoleStore<TRole>>().Error(ex);
+                return Task.FromResult(IdentityResult.Failed("Internal error"));
+            }
+            return Task.FromResult<object>(null);
+        }
 
-//            return Task.FromResult<Object>(null);
-//        }
-
-//        public void Dispose()
-//        {
-//            if (Database != null)
-//            {
-//                Database.Dispose();
-//                Database = null;
-//            }
-//        }
-
-//    }
-//}
+    }
+}
