@@ -228,6 +228,8 @@ namespace Eleflex.Security.Web.Account.Manage
             if (result.Succeeded)
             {
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                user.ChangePasswordLastChangeDate(DateTimeOffset.UtcNow);
+                UserManager.Update(user);
                 if (user != null)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
