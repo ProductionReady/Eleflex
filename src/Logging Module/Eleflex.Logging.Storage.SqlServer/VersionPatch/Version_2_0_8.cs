@@ -37,7 +37,7 @@ namespace Eleflex.Logging.Storage.SqlServer
         /// Constructor.
         /// </summary>
         public Version_2_0_8()
-            : base(LoggingConstants.MODULE_KEY, LoggingConstants.MODULE_NAME)
+            : base(LoggingConstants.STORAGE_PROVIDER_MODULE_KEY, LoggingStorageConstants.MODULE_NAME)
         {
         }
 

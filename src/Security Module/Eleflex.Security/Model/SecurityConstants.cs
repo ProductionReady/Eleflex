@@ -25,20 +25,26 @@ namespace Eleflex.Security
     /// </summary>
     public class SecurityConstants
     {
-        /// <summary>
-        /// The name used to distinguish the security storage provider from others.
-        /// </summary>
-        public const string STORAGE_PROVIDER_NAME = "EleflexSecurityStorageProvider";
 
         /// <summary>
         /// The module key for versioning.
         /// </summary>
-        public static Guid MODULE_KEY = Guid.Parse("72E85BF1-8903-45C2-8DD7-CA25F76DC08F");
+        public static Guid MODULE_KEY = Guid.Parse("8C727F8D-D891-4481-B879-D0926A18A53A");
 
         /// <summary>
         /// The module name for versioning.
         /// </summary>
         public const string MODULE_NAME = "Eleflex Security Module";
+
+        /// <summary>
+        /// The module key for security storage providers.
+        /// </summary>
+        public static Guid STORAGE_PROVIDER_MODULE_KEY = Guid.Parse("72E85BF1-8903-45C2-8DD7-CA25F76DC08F");
+
+        /// <summary>
+        /// The name used to distinguish the security storage provider from others.
+        /// </summary>
+        public const string STORAGE_PROVIDER_NAME = "EleflexSecurityStorageProvider";
 
         /// <summary>
         /// RoleKey for a user.

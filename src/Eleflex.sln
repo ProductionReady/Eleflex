@@ -117,6 +117,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin Module", "Admin Modul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Admin.Web", "Admin Module\Eleflex.Admin.Web\Eleflex.Admin.Web.csproj", "{D8BE916D-EE0F-4D1F-AB2C-A71A3912E6A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Versioning.Storage.Azure", "Versioning Module\Eleflex.Versioning.Storage.Azure\Eleflex.Versioning.Storage.Azure.csproj", "{E69AFE84-84CB-48E9-9D6F-3A1B01777E5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Logging.Storage.Azure", "Logging Module\Eleflex.Logging.Storage.Azure\Eleflex.Logging.Storage.Azure.csproj", "{5DE7B4D8-C6B4-4A95-99D4-2E546E978718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Lookups.Storage.Azure", "Lookups Module\Eleflex.Lookups.Storage.Azure\Eleflex.Lookups.Storage.Azure.csproj", "{0D1ADCD6-8546-44A9-965B-D2606A7B44DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Security.Storage.Azure", "Security Module\Eleflex.Security.Storage.Azure\Eleflex.Security.Storage.Azure.csproj", "{D2A87828-68D0-4FFE-A273-55906DEFEB04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.WebClient", "Applications\Eleflex.WebClient\Eleflex.WebClient.csproj", "{7D24F7BD-3EA1-4F0C-9F9A-5120BD7B73B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.AzureWebService", "Applications\Eleflex.AzureWebService\Eleflex.AzureWebService.csproj", "{ECC77A20-8FCE-4984-B1D4-FFEB36B7DEC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -247,6 +259,30 @@ Global
 		{D8BE916D-EE0F-4D1F-AB2C-A71A3912E6A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8BE916D-EE0F-4D1F-AB2C-A71A3912E6A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8BE916D-EE0F-4D1F-AB2C-A71A3912E6A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E69AFE84-84CB-48E9-9D6F-3A1B01777E5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E69AFE84-84CB-48E9-9D6F-3A1B01777E5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E69AFE84-84CB-48E9-9D6F-3A1B01777E5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E69AFE84-84CB-48E9-9D6F-3A1B01777E5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DE7B4D8-C6B4-4A95-99D4-2E546E978718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DE7B4D8-C6B4-4A95-99D4-2E546E978718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DE7B4D8-C6B4-4A95-99D4-2E546E978718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DE7B4D8-C6B4-4A95-99D4-2E546E978718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D1ADCD6-8546-44A9-965B-D2606A7B44DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D1ADCD6-8546-44A9-965B-D2606A7B44DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D1ADCD6-8546-44A9-965B-D2606A7B44DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D1ADCD6-8546-44A9-965B-D2606A7B44DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A87828-68D0-4FFE-A273-55906DEFEB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A87828-68D0-4FFE-A273-55906DEFEB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A87828-68D0-4FFE-A273-55906DEFEB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A87828-68D0-4FFE-A273-55906DEFEB04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D24F7BD-3EA1-4F0C-9F9A-5120BD7B73B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D24F7BD-3EA1-4F0C-9F9A-5120BD7B73B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D24F7BD-3EA1-4F0C-9F9A-5120BD7B73B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D24F7BD-3EA1-4F0C-9F9A-5120BD7B73B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECC77A20-8FCE-4984-B1D4-FFEB36B7DEC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECC77A20-8FCE-4984-B1D4-FFEB36B7DEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECC77A20-8FCE-4984-B1D4-FFEB36B7DEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECC77A20-8FCE-4984-B1D4-FFEB36B7DEC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -283,5 +319,11 @@ Global
 		{9A1C97BF-D58B-4AEA-9770-E3F2296E1643} = {3805E2BC-54FD-49AA-9AD4-A56AFFE5C689}
 		{3C5DA6B7-C9A0-4747-81EC-BA475DFD8736} = {3805E2BC-54FD-49AA-9AD4-A56AFFE5C689}
 		{D8BE916D-EE0F-4D1F-AB2C-A71A3912E6A1} = {C8229979-6EF0-4817-AFE4-B830EF85722C}
+		{E69AFE84-84CB-48E9-9D6F-3A1B01777E5D} = {3805E2BC-54FD-49AA-9AD4-A56AFFE5C689}
+		{5DE7B4D8-C6B4-4A95-99D4-2E546E978718} = {C2018D92-7C6A-417B-8DE4-ADE592DCD93D}
+		{0D1ADCD6-8546-44A9-965B-D2606A7B44DE} = {1814B3A7-4874-41C5-A7C0-FB23D4AA43DB}
+		{D2A87828-68D0-4FFE-A273-55906DEFEB04} = {83F72E9C-A509-46DE-9E8F-88DB46460440}
+		{7D24F7BD-3EA1-4F0C-9F9A-5120BD7B73B1} = {DC250DAF-82F1-4B25-8710-47988BFC47BC}
+		{ECC77A20-8FCE-4984-B1D4-FFEB36B7DEC9} = {DC250DAF-82F1-4B25-8710-47988BFC47BC}
 	EndGlobalSection
 EndGlobal

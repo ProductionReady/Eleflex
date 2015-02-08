@@ -37,7 +37,7 @@ namespace Eleflex.Versioning.Storage.SqlServer
         /// Constructor.
         /// </summary>
         public Version_2_0_0_0()
-            : base(VersioningConstants.MODULE_KEY, VersioningConstants.MODULE_NAME)
+            : base(VersioningConstants.STORAGE_PROVIDER_MODULE_KEY, VersioningStorageConstants.MODULE_NAME)
         {
         }
 

@@ -127,6 +127,7 @@
       <DependentUpon>SecurityDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\SecurityDBCustom.cs" />
+    <Compile Include="Model\SecurityStorageConstants.cs" />
     <Compile Include="Model\SecurityStorageProvider.cs" />
     <Compile Include="Model\User.cs">
       <DependentUpon>SecurityDB.tt</DependentUpon>
@@ -156,6 +157,7 @@
     <Compile Include="VersionPatch\Version_2_0_13.cs" />
     <Compile Include="VersionPatch\Version_2_0_14.cs" />
     <Compile Include="VersionPatch\Version_2_0_21.cs" />
+    <Compile Include="VersionPatch\Version_2_0_26.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

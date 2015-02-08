@@ -16,7 +16,7 @@ namespace Eleflex.Lookups.Storage.SqlServer.Model
     {
         public Lookup()
         {
-            this.Children = new HashSet<Lookup>();
+            this.Child = new HashSet<Lookup>();
         }
     
         public System.Guid LookupKey { get; set; }
@@ -28,7 +28,7 @@ namespace Eleflex.Lookups.Storage.SqlServer.Model
         public string Description { get; set; }
         public string ExtraData { get; set; }
     
-        public virtual ICollection<Lookup> Children { get; set; }
+        public virtual ICollection<Lookup> Child { get; set; }
         public virtual Lookup Parent { get; set; }
     }
 }

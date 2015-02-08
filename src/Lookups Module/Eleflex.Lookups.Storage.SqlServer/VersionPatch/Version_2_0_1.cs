@@ -38,7 +38,7 @@ namespace Eleflex.Lookups.Storage.SqlServer
         /// Constructor.
         /// </summary>
         public Version_2_0_1()
-            : base(LookupsConstants.MODULE_KEY, LookupsConstants.MODULE_NAME)
+            : base(LookupsConstants.STORAGE_PROVIDER_MODULE_KEY, LookupsStorageConstants.MODULE_NAME)
         {
         }
 

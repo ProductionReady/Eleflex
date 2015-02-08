@@ -24,21 +24,27 @@ namespace Eleflex.Lookups
     /// Constants for use with the lookup module.
     /// </summary>
     public class LookupsConstants
-    {
-        /// <summary>
-        /// The name used to distinguish the lookups storage provider from others.
-        /// </summary>
-        public const string STORAGE_PROVIDER_NAME = "EleflexLookupsStorageProvider";
+    {        
 
         /// <summary>
         /// The module key for lookups.
         /// </summary>
-        public static Guid MODULE_KEY = Guid.Parse("C51F23A4-2BDC-4971-9D3D-DF7C1355B436");
+        public static Guid MODULE_KEY = Guid.Parse("E3E389AE-5CEF-40D8-B271-13EFCCD30425");
 
         /// <summary>
         /// The module name for lookups.
         /// </summary>
         public const string MODULE_NAME = "Eleflex Lookups Module";
+
+        /// <summary>
+        /// The module key for lookups.
+        /// </summary>
+        public static Guid STORAGE_PROVIDER_MODULE_KEY = Guid.Parse("C51F23A4-2BDC-4971-9D3D-DF7C1355B436");
+
+        /// <summary>
+        /// The name used to distinguish the lookups storage provider from others.
+        /// </summary>
+        public const string STORAGE_PROVIDER_NAME = "EleflexLookupsStorageProvider";
 
     }
 }

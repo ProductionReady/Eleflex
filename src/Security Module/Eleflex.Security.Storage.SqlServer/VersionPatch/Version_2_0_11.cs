@@ -40,7 +40,7 @@ namespace Eleflex.Security.Storage.SqlServer
         /// Constructor.
         /// </summary>
         public Version_2_0_11()
-            : base(SecurityModel.SecurityConstants.MODULE_KEY, SecurityModel.SecurityConstants.MODULE_NAME)
+            : base(SecurityConstants.STORAGE_PROVIDER_MODULE_KEY, SecurityStorageConstants.MODULE_NAME)
         {
         }
 
