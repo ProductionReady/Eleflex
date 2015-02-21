@@ -78,6 +78,7 @@
     <Compile Include="Model\Version.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VersionPatch\Version_2_0_26.cs" />
+    <Compile Include="VersionPatch\Version_2_0_28.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
