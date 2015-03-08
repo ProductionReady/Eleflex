@@ -19,6 +19,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using Eleflex.Services.Server;
 using Eleflex.Security;
 using Eleflex.Security.Message.UserLoginCommand;
@@ -49,6 +50,7 @@ namespace Eleflex.Security.Service.UserLoginCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public override void Execute(UserLoginQueryRequest request, UserLoginQueryResponse response)
         {            
             var items = _userLoginRepository.Query(request).ToList();

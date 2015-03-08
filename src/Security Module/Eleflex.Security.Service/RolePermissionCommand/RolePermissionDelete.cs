@@ -18,6 +18,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using Eleflex.Services.Server;
 using Eleflex.Security;
 using Eleflex.Security.Message.RolePermissionCommand;
@@ -48,6 +49,7 @@ namespace Eleflex.Security.Service.RolePermissionCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public override void Execute(RolePermissionDeleteRequest request, RolePermissionDeleteResponse response)
         {
             _rolePermissionRepository.Delete(request.Item);

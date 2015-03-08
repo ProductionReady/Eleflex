@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Model\IRolePermissionServiceClient.cs" />
     <Compile Include="Model\IRoleRoleServiceClient.cs" />
+    <Compile Include="Model\IServiceLoginCookieClient.cs" />
     <Compile Include="Model\IUserClaimServiceClient.cs" />
     <Compile Include="Model\IUserLoginServiceClient.cs" />
     <Compile Include="Model\IUserPermissionServiceClient.cs" />
@@ -141,6 +142,8 @@
     <Compile Include="RoleRoleCommand\RoleRoleQueryResponse.cs" />
     <Compile Include="RoleRoleCommand\RoleRoleUpdateRequest.cs" />
     <Compile Include="RoleRoleCommand\RoleRoleUpdateResponse.cs" />
+    <Compile Include="ServiceLoginCookieCommand\ServiceLoginCookieRequest.cs" />
+    <Compile Include="ServiceLoginCookieCommand\ServiceLoginCookieResponse.cs" />
     <Compile Include="UserClaimCommand\UserClaimCreateRequest.cs" />
     <Compile Include="UserClaimCommand\UserClaimCreateResponse.cs" />
     <Compile Include="UserClaimCommand\UserClaimDeleteRequest.cs" />

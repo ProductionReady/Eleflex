@@ -117,7 +117,10 @@ namespace Eleflex.Versioning
 
                 //Log result
                 if (success)
-                    log.Add(new PatchLog(Common.Logging.LogLevel.Info, SOURCE, "PatchManager update status: success", null));
+                {
+                    //Don't log success for now, clearer log...
+                    //log.Add(new PatchLog(Common.Logging.LogLevel.Info, SOURCE, "PatchManager update status: success", null));
+                }
                 else
                     log.Add(new PatchLog(Common.Logging.LogLevel.Info, SOURCE, "PatchManager update status: error", null));
 

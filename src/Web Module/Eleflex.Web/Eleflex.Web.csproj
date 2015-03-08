@@ -107,7 +107,9 @@
       <HintPath>..\..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.Net4.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -149,6 +151,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
+    <Compile Include="Logging\CommonLoggingAsyncServiceAdapter.cs" />
+    <Compile Include="Logging\CommonLoggingAsyncServiceLog.cs" />
     <Compile Include="Mvc\AjaxResult.cs" />
     <Compile Include="Mvc\ModelStateDictionaryWebExtensions.cs" />
     <Compile Include="Security\ApplicationRoleManager.cs" />
@@ -156,8 +160,12 @@
     <Compile Include="Security\ApplicationUserManager.cs" />
     <Compile Include="Mvc\StructureMapDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\CookieSecurityClientBehaviorExtension.cs" />
+    <Compile Include="Security\CookieSecurityClientMessageInspector.cs" />
     <Compile Include="Security\IdentityRoleStoreServiceClient.cs" />
     <Compile Include="Security\IdentityUserStoreServiceClient.cs" />
+    <Compile Include="Security\ImpersonateSystem.cs" />
+    <Compile Include="Security\ImpersonateUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -167,6 +175,10 @@
     <ProjectReference Include="..\..\Framework Module\Eleflex\Eleflex.csproj">
       <Project>{d57f1ba1-1554-4c4f-a084-c03b8617f595}</Project>
       <Name>Eleflex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logging Module\Eleflex.Logging.Message\Eleflex.Logging.Message.csproj">
+      <Project>{92273d9e-156f-4cb7-a446-64681659b2b5}</Project>
+      <Name>Eleflex.Logging.Message</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Security Module\Eleflex.Security.Message\Eleflex.Security.Message.csproj">
       <Project>{11084dac-7083-425c-870d-896b4beda994}</Project>

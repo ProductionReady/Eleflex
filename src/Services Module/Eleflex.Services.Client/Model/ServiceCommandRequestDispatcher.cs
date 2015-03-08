@@ -51,7 +51,21 @@ namespace Eleflex.Services.Client
         /// <returns></returns>
         public virtual ServiceCommandResponse SendServiceCommand(ServiceCommandRequest request)
         {
+            try
+            { 
             return Channel.SendServiceCommand(request);
+            }
+            catch (Exception ex)
+            {
+                ServiceCommandResponse resp = new ServiceCommandResponse();
+                resp.ResponseStatus = new ServiceCommandResponseStatus();
+                EleflexValidationMessage msg = new EleflexValidationMessage();
+                resp.ResponseStatus.Messages.Add(msg);
+                msg.IsError = true;
+                msg.Message = ex.InnerException == null ? ex.Message : ex.InnerException.Message;
+                msg.MessageCode = Eleflex.Services.ServicesConstants.ERROR_SERVICE_CALL_ERROR_CODE;
+                return resp;
+            }
         }
 
         /// <summary>
@@ -60,9 +74,23 @@ namespace Eleflex.Services.Client
         /// <typeparam name="T"></typeparam>
         /// <param name="request"></param>
         /// <returns></returns>
-        public virtual T SendServiceCommand<T>(ServiceCommandRequest request) where T : class, IServiceCommandResponse
+        public virtual T SendServiceCommand<T>(ServiceCommandRequest request) where T : class, IServiceCommandResponse, new()
         {
-            return Channel.SendServiceCommand(request) as T;
+            try
+            {
+                return Channel.SendServiceCommand(request) as T;
+            }
+            catch (Exception ex)
+            {
+                T resp = new T();
+                resp.ResponseStatus = new ServiceCommandResponseStatus();
+                EleflexValidationMessage msg = new EleflexValidationMessage();
+                resp.ResponseStatus.Messages.Add(msg);
+                msg.IsError = true;
+                msg.Message = ex.InnerException == null ? ex.Message : ex.InnerException.Message;
+                msg.MessageCode = Eleflex.Services.ServicesConstants.ERROR_SERVICE_CALL_ERROR_CODE;
+                return resp;
+            }
         }
     }
 }

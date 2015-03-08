@@ -18,6 +18,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using Eleflex.Services.Server;
 using Eleflex.Security;
 using Eleflex.Security.Message.UserRoleCommand;
@@ -48,6 +49,7 @@ namespace Eleflex.Security.Service.UserRoleCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public override void Execute(UserRoleUpdateRequest request, UserRoleUpdateResponse response)
         {
             DomainModel.UserRole item = _userRoleRepository.Get(request.Item.UserRoleKey);

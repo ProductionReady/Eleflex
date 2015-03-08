@@ -61,8 +61,11 @@ namespace Eleflex.Web
         {
             try
             {
-                IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
-                roleServiceClient.Insert(AutoMapper.Mapper.Map<Eleflex.Security.Message.Role>(role));
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                {
+                    IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
+                    roleServiceClient.Insert(AutoMapper.Mapper.Map<Eleflex.Security.Message.Role>(role));
+                }
             }
             catch (Exception ex)
             {
@@ -77,16 +80,19 @@ namespace Eleflex.Web
         {
             try
             {
-                IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
-
-                var resp = roleServiceClient.Get(role.RoleKey);
-                if (resp.Item != null)
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
                 {
-                    resp.Item.Inactive = true;
-                    roleServiceClient.Update(resp.Item);
-                }
+                    IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
 
-                return Task.FromResult<Object>(null);
+                    var resp = roleServiceClient.Get(role.RoleKey);
+                    if (resp.Item != null)
+                    {
+                        resp.Item.Inactive = true;
+                        roleServiceClient.Update(resp.Item);
+                    }
+
+                    return Task.FromResult<Object>(null);
+                }
             }
             catch (Exception ex)
             {
@@ -99,14 +105,17 @@ namespace Eleflex.Web
         {
             try
             {
-                Guid key;
-                if (!Guid.TryParse(roleId, out key))
-                    throw new FormatException("Argument not a Guid: " + roleId);
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                {
+                    Guid key;
+                    if (!Guid.TryParse(roleId, out key))
+                        throw new FormatException("Argument not a Guid: " + roleId);
 
-                IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
-                var resp = roleServiceClient.Get(key);
+                    IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
+                    var resp = roleServiceClient.Get(key);
 
-                return Task.FromResult<TRole>(AutoMapper.Mapper.Map<Eleflex.Security.Role>(resp.Item) as TRole);
+                    return Task.FromResult<TRole>(AutoMapper.Mapper.Map<Eleflex.Security.Role>(resp.Item) as TRole);
+                }
             }
             catch (Exception ex)
             {
@@ -119,31 +128,34 @@ namespace Eleflex.Web
         {
             try
             {
-                DateTimeOffset now = DateTimeOffset.UtcNow;
-                IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
-                Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
-                builder.BeginExpression()
-                    .IsEqual("Name", roleName)
-                    .And()
-                    .IsEqual("Inactive", false.ToString())
-                    .EndExpression()
-                    .And()
-                    .BeginExpression()
-                    .IsNull("EndDate")
-                    .Or()
-                    .IsGreaterThanOrEqual("EndDate", now.ToString())
-                    .EndExpression()
-                    .And()
-                    .BeginExpression()
-                    .IsNull("StartDate")
-                    .Or()
-                    .IsLessThanOrEqual("StartDate", now.ToString())
-                    .EndExpression();
-                var resp = roleServiceClient.Query(builder.GetStorageQuery());
-
-                if (resp.Items != null && resp.Items.Count > 0)
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
                 {
-                    return Task.FromResult<TRole>(AutoMapper.Mapper.Map<Eleflex.Security.Role>(resp.Items[0]) as TRole);
+                    DateTimeOffset now = DateTimeOffset.UtcNow;
+                    IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
+                    Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+                    builder.BeginExpression()
+                        .IsEqual("Name", roleName)
+                        .And()
+                        .IsEqual("Inactive", false.ToString())
+                        .EndExpression()
+                        .And()
+                        .BeginExpression()
+                        .IsNull("EndDate")
+                        .Or()
+                        .IsGreaterThanOrEqual("EndDate", now.ToString())
+                        .EndExpression()
+                        .And()
+                        .BeginExpression()
+                        .IsNull("StartDate")
+                        .Or()
+                        .IsLessThanOrEqual("StartDate", now.ToString())
+                        .EndExpression();
+                    var resp = roleServiceClient.Query(builder.GetStorageQuery());
+
+                    if (resp.Items != null && resp.Items.Count > 0)
+                    {
+                        return Task.FromResult<TRole>(AutoMapper.Mapper.Map<Eleflex.Security.Role>(resp.Items[0]) as TRole);
+                    }
                 }
 
             }
@@ -158,8 +170,11 @@ namespace Eleflex.Web
         {
             try
             {
-                IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
-                roleServiceClient.Update(AutoMapper.Mapper.Map<Eleflex.Security.Message.Role>(role));
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                {
+                    IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
+                    roleServiceClient.Update(AutoMapper.Mapper.Map<Eleflex.Security.Message.Role>(role));
+                }
             }
             catch (Exception ex)
             {

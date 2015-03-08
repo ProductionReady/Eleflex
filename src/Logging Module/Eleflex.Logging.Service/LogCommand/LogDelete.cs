@@ -18,6 +18,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using Eleflex.Services.Server;
 using Eleflex.Logging;
 using Eleflex.Logging.Message.LogCommand;
@@ -48,6 +49,7 @@ namespace Eleflex.Logging.Service.LogCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public override void Execute(LogDeleteRequest request, LogDeleteResponse response)
         {
             _logRepository.Delete(request.Item);

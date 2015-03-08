@@ -76,7 +76,7 @@ namespace Eleflex.Logging
         /// </summary>
         public override bool IsDebugEnabled
         {
-            get { return false; }
+            get { return true; }
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Eleflex.Logging
         /// </summary>
         public override bool IsTraceEnabled
         {
-            get { return false; }
+            get { return true; }
         }
 
         /// <summary>

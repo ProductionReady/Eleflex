@@ -48,11 +48,17 @@ namespace Eleflex.Services.Server
                 Execute((TRequest)request, (TResponse)response);
                 uow.Commit();
             }
+            catch(System.Security.SecurityException)
+            {
+                uow.Rollback();
+                if (response != null)
+                    response.ResponseStatus.AddError(ServicesConstants.ERROR_SYSTEM_SECURITY, ServicesConstants.ERROR_SYSTEM_SECURITY_CODE);
+            }
             catch (Exception ex)
             {
                 uow.Rollback();                
                 if (response != null)
-                    response.ResponseStatus.AddError(ex.Message, ServicesConstants.ERROR_SYSTEM_GENERAL);
+                    response.ResponseStatus.AddError(ex.Message, ServicesConstants.ERROR_SYSTEM_GENERAL_CODE);
 
                 //Log exceptions for non-business exceptions since they are not managed errors
                 if (!(ex is IEleflexException))

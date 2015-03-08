@@ -31,15 +31,31 @@ namespace Eleflex.Web
     {
         public static bool IsServiceError(this ModelStateDictionary modelStateDictionary, IServiceCommandResponse serviceResponse)
         {
+            if (serviceResponse == null)
+            {
+                modelStateDictionary.AddModelError(null,"Service Response Null");
+                return true;
+            }        
+            if(serviceResponse.ResponseStatus == null)
+            {
+                modelStateDictionary.AddModelError(null, "Service Response Status Null");
+                return true;
+            }
             if (serviceResponse.ResponseStatus.IsError)
             {
-                foreach(var message in serviceResponse.ResponseStatus.Messages)
+                if (serviceResponse.ResponseStatus.Messages != null)
                 {
-                    if(message.IsError)
-                        modelStateDictionary.AddModelError(message.Field, message.Message);
+                    foreach (var message in serviceResponse.ResponseStatus.Messages)
+                    {
+                        if (message != null)
+                        {
+                            if (message.IsError)
+                                modelStateDictionary.AddModelError(message.Field==null ? "" : message.Field, message.Message);
+                        }
+                    }
                 }
             }
-            return serviceResponse.ResponseStatus.IsError;
+            return serviceResponse.ResponseStatus.IsError;            
         }
     }
 }

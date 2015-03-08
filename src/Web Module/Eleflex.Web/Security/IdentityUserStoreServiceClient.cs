@@ -78,8 +78,11 @@ namespace Eleflex.Web
         {            
             try
             {
-                IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
-                userServiceClient.Insert(AutoMapper.Mapper.Map<Eleflex.Security.Message.User>(user));                
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                {
+                    IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
+                    userServiceClient.Insert(AutoMapper.Mapper.Map<Eleflex.Security.Message.User>(user));
+                }
             }
             catch (Exception ex)
             {
@@ -98,14 +101,17 @@ namespace Eleflex.Web
         {
             try
             {
-                Guid key;
-                if (!Guid.TryParse(userId, out key))
-                    throw new FormatException("Argument not a Guid:" + userId);
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                {
+                    Guid key;
+                    if (!Guid.TryParse(userId, out key))
+                        throw new FormatException("Argument not a Guid:" + userId);
 
-                IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
-                var respGet = userServiceClient.Get(key);
-                TUser item = AutoMapper.Mapper.Map<Eleflex.Security.User>(respGet.Item) as TUser;
-                return Task.FromResult<TUser>(item);
+                    IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
+                    var respGet = userServiceClient.Get(key);
+                    TUser item = AutoMapper.Mapper.Map<Eleflex.Security.User>(respGet.Item) as TUser;
+                    return Task.FromResult<TUser>(item);
+                }
             }
             catch (Exception ex)
             {
@@ -123,15 +129,17 @@ namespace Eleflex.Web
         {            
             try
             {
-                IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
-                Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
-                builder.IsEqual("Username", userName);
-                builder.IsEqual("Inactive", false.ToString());
-                var respUsers = userServiceClient.Query(builder.GetStorageQuery());
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                {
+                    IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
+                    Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+                    builder.IsEqual("Username", userName);
+                    builder.IsEqual("Inactive", false.ToString());
+                    var respUsers = userServiceClient.Query(builder.GetStorageQuery());
 
-                if (respUsers.Items != null && respUsers.Items.Count > 0)
-                    return Task.FromResult<TUser>(AutoMapper.Mapper.Map<Eleflex.Security.User>(respUsers.Items[0]) as TUser);
-
+                    if (respUsers.Items != null && respUsers.Items.Count > 0)
+                        return Task.FromResult<TUser>(AutoMapper.Mapper.Map<Eleflex.Security.User>(respUsers.Items[0]) as TUser);
+                }
             }
             catch (Exception ex)
             {
@@ -149,8 +157,11 @@ namespace Eleflex.Web
         {            
             try
             {
-                IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
-                userServiceClient.Update(AutoMapper.Mapper.Map<Eleflex.Security.Message.User>(user));
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                {
+                    IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
+                    userServiceClient.Update(AutoMapper.Mapper.Map<Eleflex.Security.Message.User>(user));
+                }
             }
             catch (Exception ex)
             {
@@ -171,13 +182,16 @@ namespace Eleflex.Web
         {
             try
             {
-                IUserClaimServiceClient userClaimServiceClient = ServiceLocator.Current.GetInstance<IUserClaimServiceClient>();
-                Eleflex.Security.Message.UserClaim newClaim = new Eleflex.Security.Message.UserClaim();
-                newClaim.ClaimType = claim.Type;
-                newClaim.ClaimValue = claim.Value;
-                newClaim.UserKey = user.UserKey;
-                newClaim.StartDate = DateTimeOffset.UtcNow;
-                userClaimServiceClient.Insert(newClaim);
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                {
+                    IUserClaimServiceClient userClaimServiceClient = ServiceLocator.Current.GetInstance<IUserClaimServiceClient>();
+                    Eleflex.Security.Message.UserClaim newClaim = new Eleflex.Security.Message.UserClaim();
+                    newClaim.ClaimType = claim.Type;
+                    newClaim.ClaimValue = claim.Value;
+                    newClaim.UserKey = user.UserKey;
+                    newClaim.StartDate = DateTimeOffset.UtcNow;
+                    userClaimServiceClient.Insert(newClaim);
+                }
             }
             catch (Exception ex)
             {
@@ -221,14 +235,17 @@ namespace Eleflex.Web
         {
             try
             {
-                IUserClaimServiceClient userClaimServiceClient = ServiceLocator.Current.GetInstance<IUserClaimServiceClient>();
-                Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
-                var list = userClaimServiceClient.Query(builder.GetStorageQuery());
-                List<Claim> claims = new List<Claim>();
-                foreach (var item in list.Items)
-                    claims.Add(new Claim(item.ClaimType, item.ClaimValue));
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                {
+                    IUserClaimServiceClient userClaimServiceClient = ServiceLocator.Current.GetInstance<IUserClaimServiceClient>();
+                    Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                    var list = userClaimServiceClient.Query(builder.GetStorageQuery());
+                    List<Claim> claims = new List<Claim>();
+                    foreach (var item in list.Items)
+                        claims.Add(new Claim(item.ClaimType, item.ClaimValue));
 
-                return Task.FromResult<IList<Claim>>(claims);
+                    return Task.FromResult<IList<Claim>>(claims);
+                }
             }
             catch (Exception ex)
             {
@@ -247,23 +264,26 @@ namespace Eleflex.Web
         {
             try
             {
-                IUserClaimServiceClient userClaimServiceClient = ServiceLocator.Current.GetInstance<IUserClaimServiceClient>();
-                Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
-                builder.And()
-                    .BeginExpression()
-                    .IsEqual("ClaimType", claim.Type)
-                    .And()
-                    .IsEqual("ClaimValue", claim.Value)
-                    .EndExpression();
-
-                var list = userClaimServiceClient.Query(builder.GetStorageQuery());
-                if (list.Items != null && list.Items.Count > 0)
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
                 {
-                    foreach (var item in list.Items)
-                        userClaimServiceClient.Delete(item.UserClaimKey);
-                }
+                    IUserClaimServiceClient userClaimServiceClient = ServiceLocator.Current.GetInstance<IUserClaimServiceClient>();
+                    Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                    builder.And()
+                        .BeginExpression()
+                        .IsEqual("ClaimType", claim.Type)
+                        .And()
+                        .IsEqual("ClaimValue", claim.Value)
+                        .EndExpression();
 
-                return Task.FromResult<object>(null);
+                    var list = userClaimServiceClient.Query(builder.GetStorageQuery());
+                    if (list.Items != null && list.Items.Count > 0)
+                    {
+                        foreach (var item in list.Items)
+                            userClaimServiceClient.Delete(item.UserClaimKey);
+                    }
+
+                    return Task.FromResult<object>(null);
+                }
             }
             catch (Exception ex)
             {
@@ -282,14 +302,17 @@ namespace Eleflex.Web
         {
             try
             {
-                IUserLoginServiceClient userLoginServiceClient = ServiceLocator.Current.GetInstance<IUserLoginServiceClient>();
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                {
+                    IUserLoginServiceClient userLoginServiceClient = ServiceLocator.Current.GetInstance<IUserLoginServiceClient>();
 
-                Eleflex.Security.Message.UserLogin newItem = new Eleflex.Security.Message.UserLogin();
-                newItem.LoginProvider = login.LoginProvider;
-                newItem.ProviderKey = login.ProviderKey;
-                newItem.UserKey = user.UserKey;
-                newItem.StartDate = DateTimeOffset.UtcNow;
-                userLoginServiceClient.Insert(newItem);
+                    Eleflex.Security.Message.UserLogin newItem = new Eleflex.Security.Message.UserLogin();
+                    newItem.LoginProvider = login.LoginProvider;
+                    newItem.ProviderKey = login.ProviderKey;
+                    newItem.UserKey = user.UserKey;
+                    newItem.StartDate = DateTimeOffset.UtcNow;
+                    userLoginServiceClient.Insert(newItem);
+                }
             }
             catch (Exception ex)
             {
@@ -307,41 +330,44 @@ namespace Eleflex.Web
         {
             try
             {
-                IUserLoginServiceClient userLoginServiceClient = ServiceLocator.Current.GetInstance<IUserLoginServiceClient>();
-
-                DateTimeOffset now = DateTimeOffset.UtcNow;
-                Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
-                builder.BeginExpression()
-                    .IsEqual("LoginProvider", login.LoginProvider)
-                    .And()
-                    .IsEqual("ProviderKey", login.ProviderKey)
-                    .And()
-                    .IsEqual("Inactive", false.ToString())
-                    .EndExpression()
-                    .And()
-                    .BeginExpression()
-                    .IsNull("EndDate")
-                    .Or()
-                    .IsGreaterThanOrEqual("EndDate", now.ToString())
-                    .EndExpression()
-                    .And()
-                    .BeginExpression()
-                    .IsNull("StartDate")
-                    .Or()
-                    .IsLessThanOrEqual("StartDate", now.ToString())
-                    .EndExpression();
-
-                var list = userLoginServiceClient.Query(builder.GetStorageQuery());
-
-                Eleflex.Security.Message.User user = null;
-                if (list.Items != null && list.Items.Count > 0)
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
                 {
-                    IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
-                    var respUser = userServiceClient.Get(list.Items[0].UserKey);
-                    user = respUser.Item;
-                }
+                    IUserLoginServiceClient userLoginServiceClient = ServiceLocator.Current.GetInstance<IUserLoginServiceClient>();
 
-                return Task.FromResult<TUser>(AutoMapper.Mapper.Map<Eleflex.Security.User>(user) as TUser);
+                    DateTimeOffset now = DateTimeOffset.UtcNow;
+                    Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+                    builder.BeginExpression()
+                        .IsEqual("LoginProvider", login.LoginProvider)
+                        .And()
+                        .IsEqual("ProviderKey", login.ProviderKey)
+                        .And()
+                        .IsEqual("Inactive", false.ToString())
+                        .EndExpression()
+                        .And()
+                        .BeginExpression()
+                        .IsNull("EndDate")
+                        .Or()
+                        .IsGreaterThanOrEqual("EndDate", now.ToString())
+                        .EndExpression()
+                        .And()
+                        .BeginExpression()
+                        .IsNull("StartDate")
+                        .Or()
+                        .IsLessThanOrEqual("StartDate", now.ToString())
+                        .EndExpression();
+
+                    var list = userLoginServiceClient.Query(builder.GetStorageQuery());
+
+                    Eleflex.Security.Message.User user = null;
+                    if (list.Items != null && list.Items.Count > 0)
+                    {
+                        IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
+                        var respUser = userServiceClient.Get(list.Items[0].UserKey);
+                        user = respUser.Item;
+                    }
+
+                    return Task.FromResult<TUser>(AutoMapper.Mapper.Map<Eleflex.Security.User>(user) as TUser);
+                }
             }
             catch (Exception ex)
             {
@@ -360,18 +386,21 @@ namespace Eleflex.Web
             List<UserLoginInfo> logins = new List<UserLoginInfo>();
             try
             {
-                IUserLoginServiceClient userLoginServiceClient = ServiceLocator.Current.GetInstance<IUserLoginServiceClient>();
-
-                List<UserLoginInfo> userLogins = new List<UserLoginInfo>();
-                Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
-                var list = userLoginServiceClient.Query(builder.GetStorageQuery());
-                if (list.Items != null && list.Items.Count > 0)
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
                 {
-                    foreach (var item in list.Items)
-                        logins.Add(new UserLoginInfo(item.LoginProvider, item.ProviderKey));
-                }
+                    IUserLoginServiceClient userLoginServiceClient = ServiceLocator.Current.GetInstance<IUserLoginServiceClient>();
 
-                return Task.FromResult<IList<UserLoginInfo>>(logins);
+                    List<UserLoginInfo> userLogins = new List<UserLoginInfo>();
+                    Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                    var list = userLoginServiceClient.Query(builder.GetStorageQuery());
+                    if (list.Items != null && list.Items.Count > 0)
+                    {
+                        foreach (var item in list.Items)
+                            logins.Add(new UserLoginInfo(item.LoginProvider, item.ProviderKey));
+                    }
+
+                    return Task.FromResult<IList<UserLoginInfo>>(logins);
+                }
             }
             catch (Exception ex)
             {
@@ -390,23 +419,26 @@ namespace Eleflex.Web
         {
             try
             {
-                IUserLoginServiceClient userLoginServiceClient = ServiceLocator.Current.GetInstance<IUserLoginServiceClient>();
-
-                Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
-                builder.And()
-                    .BeginExpression()
-                    .IsEqual("LoginProvider", login.LoginProvider)
-                    .And()
-                    .IsEqual("ProviderKey", login.ProviderKey)
-                    .EndExpression();
-                var list = userLoginServiceClient.Query(builder.GetStorageQuery());
-                if (list.Items != null && list.Items.Count > 0)
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
                 {
-                    foreach (var item in list.Items)
-                        userLoginServiceClient.Delete(item.UserLoginKey);
-                }
+                    IUserLoginServiceClient userLoginServiceClient = ServiceLocator.Current.GetInstance<IUserLoginServiceClient>();
 
-                return Task.FromResult<Object>(null);
+                    Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                    builder.And()
+                        .BeginExpression()
+                        .IsEqual("LoginProvider", login.LoginProvider)
+                        .And()
+                        .IsEqual("ProviderKey", login.ProviderKey)
+                        .EndExpression();
+                    var list = userLoginServiceClient.Query(builder.GetStorageQuery());
+                    if (list.Items != null && list.Items.Count > 0)
+                    {
+                        foreach (var item in list.Items)
+                            userLoginServiceClient.Delete(item.UserLoginKey);
+                    }
+
+                    return Task.FromResult<Object>(null);
+                }
             }
             catch (Exception ex)
             {
@@ -425,41 +457,44 @@ namespace Eleflex.Web
         {
             try
             {
-                IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
-
-                DateTimeOffset now = DateTimeOffset.UtcNow;
-                Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-                builder.BeginExpression()
-                    .IsEqual("Name", roleName)
-                    .And()
-                    .IsEqual("Inactive", false.ToString())
-                    .EndExpression()
-                    .And()
-                    .BeginExpression()
-                    .IsNull("EndDate")
-                    .Or()
-                    .IsGreaterThanOrEqual("EndDate", now.ToString())
-                    .EndExpression()
-                    .And()
-                    .BeginExpression()
-                    .IsNull("StartDate")
-                    .Or()
-                    .IsLessThanOrEqual("StartDate", now.ToString())
-                    .EndExpression();
-
-                var list = roleServiceClient.Query(builder.GetStorageQuery());
-                if (list.Items != null && list.Items.Count > 0)
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
                 {
-                    IUserRoleServiceClient userRoleServiceClient = ServiceLocator.Current.GetInstance<IUserRoleServiceClient>();
+                    IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
 
-                    Eleflex.Security.Message.UserRole newItem = new Eleflex.Security.Message.UserRole();
-                    newItem.RoleKey = list.Items[0].RoleKey;
-                    newItem.UserKey = user.UserKey;
-                    newItem.StartDate = DateTimeOffset.UtcNow;
-                    userRoleServiceClient.Insert(newItem);
+                    DateTimeOffset now = DateTimeOffset.UtcNow;
+                    Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
+                    builder.BeginExpression()
+                        .IsEqual("Name", roleName)
+                        .And()
+                        .IsEqual("Inactive", false.ToString())
+                        .EndExpression()
+                        .And()
+                        .BeginExpression()
+                        .IsNull("EndDate")
+                        .Or()
+                        .IsGreaterThanOrEqual("EndDate", now.ToString())
+                        .EndExpression()
+                        .And()
+                        .BeginExpression()
+                        .IsNull("StartDate")
+                        .Or()
+                        .IsLessThanOrEqual("StartDate", now.ToString())
+                        .EndExpression();
+
+                    var list = roleServiceClient.Query(builder.GetStorageQuery());
+                    if (list.Items != null && list.Items.Count > 0)
+                    {
+                        IUserRoleServiceClient userRoleServiceClient = ServiceLocator.Current.GetInstance<IUserRoleServiceClient>();
+
+                        Eleflex.Security.Message.UserRole newItem = new Eleflex.Security.Message.UserRole();
+                        newItem.RoleKey = list.Items[0].RoleKey;
+                        newItem.UserKey = user.UserKey;
+                        newItem.StartDate = DateTimeOffset.UtcNow;
+                        userRoleServiceClient.Insert(newItem);
+                    }
+
+                    return Task.FromResult<object>(null);
                 }
-
-                return Task.FromResult<object>(null);
             }
             catch (Exception ex)
             {
@@ -485,66 +520,69 @@ namespace Eleflex.Web
             List<string> assignedRoleNames = new List<string>();
             try
             {
-                IUserRoleServiceClient userRoleServiceClient = ServiceLocator.Current.GetInstance<IUserRoleServiceClient>();
-                IRoleRoleServiceClient roleRoleServiceClient = ServiceLocator.Current.GetInstance<IRoleRoleServiceClient>();
-                IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
-                IRolePermissionServiceClient rolePermissionServiceClient = ServiceLocator.Current.GetInstance<IRolePermissionServiceClient>();
-                IPermissionServiceClient permissionServiceClient = ServiceLocator.Current.GetInstance<IPermissionServiceClient>();
-                IUserPermissionServiceClient userPermissionServiceClient = ServiceLocator.Current.GetInstance<IUserPermissionServiceClient>();
-
-                //Get list of assigned user roles                
-                Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
-                var assignedUserRoles = userRoleServiceClient.Query(builder.GetStorageQuery());
-
-                //Find list of inherited roles   
-                List<string> permissionKeys = new List<string>();
-                List<string> assignedRoleKeys = new List<string>(assignedUserRoles.Items.Select(x => x.RoleKey.ToString()).ToArray());
-                if (assignedRoleKeys.Count > 0)
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
                 {
-                    //Recursively query to find all linked roles (this gets more expensive the more complex the structure)
-                    List<string> nextSet = new List<string>(assignedRoleKeys);
-                    while (nextSet.Count > 0)
+                    IUserRoleServiceClient userRoleServiceClient = ServiceLocator.Current.GetInstance<IUserRoleServiceClient>();
+                    IRoleRoleServiceClient roleRoleServiceClient = ServiceLocator.Current.GetInstance<IRoleRoleServiceClient>();
+                    IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
+                    IRolePermissionServiceClient rolePermissionServiceClient = ServiceLocator.Current.GetInstance<IRolePermissionServiceClient>();
+                    IPermissionServiceClient permissionServiceClient = ServiceLocator.Current.GetInstance<IPermissionServiceClient>();
+                    IUserPermissionServiceClient userPermissionServiceClient = ServiceLocator.Current.GetInstance<IUserPermissionServiceClient>();
+
+                    //Get list of assigned user roles                
+                    Eleflex.Storage.StorageQueryBuilder builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                    var assignedUserRoles = userRoleServiceClient.Query(builder.GetStorageQuery());
+
+                    //Find list of inherited roles   
+                    List<string> permissionKeys = new List<string>();
+                    List<string> assignedRoleKeys = new List<string>(assignedUserRoles.Items.Select(x => x.RoleKey.ToString()).ToArray());
+                    if (assignedRoleKeys.Count > 0)
                     {
-                        Eleflex.Storage.IStorageQuery roleRoleQuery = GetRoleRoleEffectiveDateQuery(nextSet.ToArray());
-                        var inheritedRoles = roleRoleServiceClient.Query(roleRoleQuery);
-                        nextSet = new List<string>();
-                        foreach (var irole in inheritedRoles.Items)
+                        //Recursively query to find all linked roles (this gets more expensive the more complex the structure)
+                        List<string> nextSet = new List<string>(assignedRoleKeys);
+                        while (nextSet.Count > 0)
                         {
-                            string newRoleKey = irole.ChildRoleKey.ToString();
-                            if (!assignedRoleKeys.Contains(newRoleKey))
+                            Eleflex.Storage.IStorageQuery roleRoleQuery = GetRoleRoleEffectiveDateQuery(nextSet.ToArray());
+                            var inheritedRoles = roleRoleServiceClient.Query(roleRoleQuery);
+                            nextSet = new List<string>();
+                            foreach (var irole in inheritedRoles.Items)
                             {
-                                //New inherited role found
-                                assignedRoleKeys.Add(newRoleKey);
-                                nextSet.Add(newRoleKey);
+                                string newRoleKey = irole.ChildRoleKey.ToString();
+                                if (!assignedRoleKeys.Contains(newRoleKey))
+                                {
+                                    //New inherited role found
+                                    assignedRoleKeys.Add(newRoleKey);
+                                    nextSet.Add(newRoleKey);
+                                }
                             }
                         }
+
+                        //Get the role names
+                        var roles = roleServiceClient.Query(GetRoleEffectiveDateQuery(assignedRoleKeys.ToArray()));
+                        assignedRoleNames.AddRange(roles.Items.Select(x => x.Name).ToArray());
+
+                        //Find all permissions for all assigned roles
+                        var rolePermissions = rolePermissionServiceClient.Query(GetRoleEffectiveDateQuery(assignedRoleKeys.ToArray()));
+                        permissionKeys.AddRange(rolePermissions.Items.Select(x => x.PermissionKey.ToString()).ToList());
                     }
 
-                    //Get the role names
-                    var roles = roleServiceClient.Query(GetRoleEffectiveDateQuery(assignedRoleKeys.ToArray()));
-                    assignedRoleNames.AddRange(roles.Items.Select(x => x.Name).ToArray());
+                    //Get user permissions
+                    builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                    var respUserPerm = userPermissionServiceClient.Query(builder.GetStorageQuery());
+                    permissionKeys.AddRange(respUserPerm.Items.Select(x => x.PermissionKey.ToString()).ToList());
 
-                    //Find all permissions for all assigned roles
-                    var rolePermissions = rolePermissionServiceClient.Query(GetRoleEffectiveDateQuery(assignedRoleKeys.ToArray()));
-                    permissionKeys.AddRange(rolePermissions.Items.Select(x => x.PermissionKey.ToString()).ToList());
+                    if (permissionKeys.Count > 0)
+                    {
+                        //Get permission names
+                        var permissions =
+                            permissionServiceClient.Query(GetPermissionEffectiveDateQuery(permissionKeys.Distinct().ToArray()));
+
+                        //Add permissions names
+                        assignedRoleNames.AddRange(permissions.Items.Select(x => x.Name).ToArray());
+                    }
+
+                    return assignedRoleNames.Distinct().ToList();
                 }
-
-                //Get user permissions
-                builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
-                var respUserPerm = userPermissionServiceClient.Query(builder.GetStorageQuery());
-                permissionKeys.AddRange(respUserPerm.Items.Select(x => x.PermissionKey.ToString()).ToList());
-
-                if (permissionKeys.Count > 0)
-                {
-                    //Get permission names
-                    var permissions =
-                        permissionServiceClient.Query(GetPermissionEffectiveDateQuery(permissionKeys.Distinct().ToArray()));
-
-                    //Add permissions names
-                    assignedRoleNames.AddRange(permissions.Items.Select(x => x.Name).ToArray());
-                }
-
-                return assignedRoleNames.Distinct().ToList();
             }
             catch (Exception ex)
             {
@@ -634,47 +672,50 @@ namespace Eleflex.Web
         {
             try
             {
-                IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
-                IUserRoleServiceClient userRoleServiceClient = ServiceLocator.Current.GetInstance<IUserRoleServiceClient>();
-
-                DateTimeOffset now = DateTimeOffset.UtcNow;
-                Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-                builder.BeginExpression()
-                    .IsEqual("Name", role)
-                    .And()
-                    .IsEqual("Inactive", false.ToString())
-                    .EndExpression()
-                    .And()
-                    .BeginExpression()
-                    .IsNull("EndDate")
-                    .Or()
-                    .IsGreaterThanOrEqual("EndDate", now.ToString())
-                    .EndExpression()
-                    .And()
-                    .BeginExpression()
-                    .IsNull("StartDate")
-                    .Or()
-                    .IsLessThanOrEqual("StartDate", now.ToString())
-                    .EndExpression();
-
-                var list = roleServiceClient.Query(builder.GetStorageQuery());
-                if (list.Items != null && list.Items.Count > 0)
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
                 {
-                    builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
-                    builder.And()
+                    IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
+                    IUserRoleServiceClient userRoleServiceClient = ServiceLocator.Current.GetInstance<IUserRoleServiceClient>();
+
+                    DateTimeOffset now = DateTimeOffset.UtcNow;
+                    Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
+                    builder.BeginExpression()
+                        .IsEqual("Name", role)
+                        .And()
+                        .IsEqual("Inactive", false.ToString())
+                        .EndExpression()
+                        .And()
                         .BeginExpression()
-                        .IsEqual("RoleKey", list.Items[0].RoleKey.ToString())
+                        .IsNull("EndDate")
+                        .Or()
+                        .IsGreaterThanOrEqual("EndDate", now.ToString())
+                        .EndExpression()
+                        .And()
+                        .BeginExpression()
+                        .IsNull("StartDate")
+                        .Or()
+                        .IsLessThanOrEqual("StartDate", now.ToString())
                         .EndExpression();
 
-                    var assignedUserRoles = userRoleServiceClient.Query(builder.GetStorageQuery());
-                    if (assignedUserRoles.Items != null && assignedUserRoles.Items.Count > 0)
+                    var list = roleServiceClient.Query(builder.GetStorageQuery());
+                    if (list.Items != null && list.Items.Count > 0)
                     {
-                        foreach (var userRole in assignedUserRoles.Items)
-                            userRoleServiceClient.Delete(userRole.UserRoleKey);
-                    }
-                }
+                        builder = GetUserEffectiveDateBuilder(user.UserKey.ToString());
+                        builder.And()
+                            .BeginExpression()
+                            .IsEqual("RoleKey", list.Items[0].RoleKey.ToString())
+                            .EndExpression();
 
-                return Task.FromResult<object>(null);
+                        var assignedUserRoles = userRoleServiceClient.Query(builder.GetStorageQuery());
+                        if (assignedUserRoles.Items != null && assignedUserRoles.Items.Count > 0)
+                        {
+                            foreach (var userRole in assignedUserRoles.Items)
+                                userRoleServiceClient.Delete(userRole.UserRoleKey);
+                        }
+                    }
+
+                    return Task.FromResult<object>(null);
+                }
             }
             catch (Exception ex)
             {
@@ -692,16 +733,19 @@ namespace Eleflex.Web
         {
             try
             {
-                IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
-
-                var respItem = userServiceClient.Get(user.UserKey);
-                if (respItem.Item != null)
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
                 {
-                    respItem.Item.Inactive = true;
-                    userServiceClient.Update(respItem.Item);
-                }
+                    IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
 
-                return Task.FromResult<Object>(null);
+                    var respItem = userServiceClient.Get(user.UserKey);
+                    if (respItem.Item != null)
+                    {
+                        respItem.Item.Inactive = true;
+                        userServiceClient.Update(respItem.Item);
+                    }
+
+                    return Task.FromResult<Object>(null);
+                }
             }
             catch (Exception ex)
             {
@@ -819,18 +863,21 @@ namespace Eleflex.Web
         {
             try
             {
-                IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
+                using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                {
+                    IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
 
-                Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
-                builder.IsEqual("Email", email);
-                builder.IsEqual("Inactive", false.ToString());
-                var users = userServiceClient.Query(builder.GetStorageQuery());
+                    Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
+                    builder.IsEqual("Email", email);
+                    builder.IsEqual("Inactive", false.ToString());
+                    var users = userServiceClient.Query(builder.GetStorageQuery());
 
-                Eleflex.Security.User user = null;
-                if (users.Items != null && users.Items.Count > 0)
-                    user = AutoMapper.Mapper.Map<Eleflex.Security.User>(users.Items[0]);
+                    Eleflex.Security.User user = null;
+                    if (users.Items != null && users.Items.Count > 0)
+                        user = AutoMapper.Mapper.Map<Eleflex.Security.User>(users.Items[0]);
 
-                return Task.FromResult<TUser>(user as TUser);
+                    return Task.FromResult<TUser>(user as TUser);
+                }
             }
             catch (Exception ex)
             {
@@ -940,7 +987,10 @@ namespace Eleflex.Web
         /// <returns></returns>
         public Task<int> IncrementAccessFailedCountAsync(TUser user)
         {
-            user.ChangeLoginFailedAttempts(user.LoginFailedAttempts + 1);
+            if (user.EnableLockout)
+            {
+                user.ChangeLoginFailedAttempts(user.LoginFailedAttempts + 1);
+            }
             return Task.FromResult(user.LoginFailedAttempts);
         }
 

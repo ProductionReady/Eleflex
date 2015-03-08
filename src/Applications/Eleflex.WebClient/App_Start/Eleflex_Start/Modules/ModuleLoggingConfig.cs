@@ -38,7 +38,7 @@ namespace Eleflex.WebClient.App_Start.Eleflex_Start
             properties.Add("Application", "ELEFLEX Client Application");
 
             //Setup adapter for async storage repository logging
-            Common.Logging.LogManager.Adapter = new Eleflex.Logging.Message.CommonLoggingAsyncServiceAdapter(properties);
+            Common.Logging.LogManager.Adapter = new Eleflex.Web.CommonLoggingAsyncServiceAdapter(properties);
             
             //Setup logging service endpoint (storage provider not needed)
             StructureMap.IContainer container = Bootstrap.Bootstrapper.Container as StructureMap.IContainer;

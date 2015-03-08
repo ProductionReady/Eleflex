@@ -31,6 +31,6 @@ namespace Eleflex.Services.Client
         /// <typeparam name="T"></typeparam>
         /// <param name="request"></param>
         /// <returns></returns>
-        T SendServiceCommand<T>(ServiceCommandRequest request) where T : class, IServiceCommandResponse;
+        T SendServiceCommand<T>(ServiceCommandRequest request) where T : class, IServiceCommandResponse, new();
     }
 }

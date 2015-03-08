@@ -18,6 +18,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using Eleflex.Services.Server;
 using Eleflex.Versioning;
 using Eleflex.Versioning.Message.ModuleVersionCommand;
@@ -48,6 +49,7 @@ namespace Eleflex.Versioning.Service.ModuleVersionCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public override void Execute(ModuleVersionGetRequest request, ModuleVersionGetResponse response)
         {
             DomainModel.ModuleVersion item = _moduleVersionRepository.Get(request.Item);

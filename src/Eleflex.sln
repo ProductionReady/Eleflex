@@ -129,6 +129,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.WebClient", "Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.AzureWebService", "Applications\Eleflex.AzureWebService\Eleflex.AzureWebService.csproj", "{ECC77A20-8FCE-4984-B1D4-FFEB36B7DEC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.WebServer", "Web Module\Eleflex.WebServer\Eleflex.WebServer.csproj", "{9C3278AE-6DEF-4F7D-9A6A-897DF9ADF98F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -283,6 +285,10 @@ Global
 		{ECC77A20-8FCE-4984-B1D4-FFEB36B7DEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECC77A20-8FCE-4984-B1D4-FFEB36B7DEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECC77A20-8FCE-4984-B1D4-FFEB36B7DEC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C3278AE-6DEF-4F7D-9A6A-897DF9ADF98F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C3278AE-6DEF-4F7D-9A6A-897DF9ADF98F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C3278AE-6DEF-4F7D-9A6A-897DF9ADF98F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C3278AE-6DEF-4F7D-9A6A-897DF9ADF98F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -325,5 +331,6 @@ Global
 		{D2A87828-68D0-4FFE-A273-55906DEFEB04} = {83F72E9C-A509-46DE-9E8F-88DB46460440}
 		{7D24F7BD-3EA1-4F0C-9F9A-5120BD7B73B1} = {DC250DAF-82F1-4B25-8710-47988BFC47BC}
 		{ECC77A20-8FCE-4984-B1D4-FFEB36B7DEC9} = {DC250DAF-82F1-4B25-8710-47988BFC47BC}
+		{9C3278AE-6DEF-4F7D-9A6A-897DF9ADF98F} = {B9BD8B7A-9C15-475C-A442-772A95E5AD50}
 	EndGlobalSection
 EndGlobal

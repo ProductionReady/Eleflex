@@ -998,7 +998,10 @@ namespace Eleflex.Security
         /// <returns></returns>
         public Task<int> IncrementAccessFailedCountAsync(TUser user)
         {
-            user.ChangeLoginFailedAttempts(user.LoginFailedAttempts + 1);
+            if (user.EnableLockout)
+            {
+                user.ChangeLoginFailedAttempts(user.LoginFailedAttempts + 1);
+            }
             return Task.FromResult(user.LoginFailedAttempts);
         }
 

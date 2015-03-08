@@ -18,6 +18,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using Eleflex.Services.Server;
 using Eleflex.Lookups;
 using Eleflex.Lookups.Message.LookupCommand;
@@ -48,6 +49,7 @@ namespace Eleflex.Lookups.Service.LookupCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public override void Execute(LookupUpdateRequest request, LookupUpdateResponse response)
         {
             DomainModel.Lookup item = _lookupRepository.Get(request.Item.Key);

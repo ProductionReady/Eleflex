@@ -69,6 +69,7 @@
     <Compile Include="Model\ILookupsRepository.cs" />
     <Compile Include="VersionPatch\Version_2_0_26.cs" />
     <Compile Include="VersionPatch\Version_2_0_28.cs" />
+    <Compile Include="VersionPatch\Version_2_0_32.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Framework Module\Eleflex\Eleflex.csproj">

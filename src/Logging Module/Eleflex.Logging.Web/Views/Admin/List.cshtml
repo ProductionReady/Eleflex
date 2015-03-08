@@ -3,10 +3,11 @@
     ViewBag.Title = "System Log";
 }
 <h1>System Log</h1>
+@Html.ValidationSummary(true)
 <fieldset>
     <legend class="sr-only sr-only-focusable">Search Logs</legend>
 @using (Html.BeginForm("List", "Admin", FormMethod.Post, new { id = "AdminLoggingListForm", @class = "form-inline" }))
-{
+{    
     @Html.AntiForgeryToken()
     <div id="CreateDateFromGroup" class="form-group date">
         @Html.LabelFor(x => x.DateFrom, "Date From:")

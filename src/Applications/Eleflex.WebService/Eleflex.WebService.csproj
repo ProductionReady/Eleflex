@@ -515,8 +515,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-3.2.0.debug.js" />
-    <Content Include="Scripts\knockout-3.2.0.js" />
+    <Content Include="Scripts\knockout-3.3.0.debug.js" />
+    <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -729,6 +729,10 @@
     <ProjectReference Include="..\..\Versioning Module\Eleflex.Versioning\Eleflex.Versioning.csproj">
       <Project>{ec89dded-2ed9-4e96-8185-303aa072178d}</Project>
       <Name>Eleflex.Versioning</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Web Module\Eleflex.WebServer\Eleflex.WebServer.csproj">
+      <Project>{9c3278ae-6def-4f7d-9a6a-897df9adf98f}</Project>
+      <Name>Eleflex.WebServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Web Module\Eleflex.Web\Eleflex.Web.csproj">
       <Project>{928c5285-fd3e-4f8c-bdfa-777e5295a122}</Project>

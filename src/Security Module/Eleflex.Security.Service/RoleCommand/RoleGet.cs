@@ -18,6 +18,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using Eleflex.Services.Server;
 using Eleflex.Security;
 using Eleflex.Security.Message.RoleCommand;
@@ -48,6 +49,7 @@ namespace Eleflex.Security.Service.RoleCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public override void Execute(RoleGetRequest request, RoleGetResponse response)
         {            
             DomainModel.Role item = _roleRepository.Get(request.Item);

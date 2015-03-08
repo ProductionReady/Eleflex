@@ -320,8 +320,7 @@ namespace Eleflex.Logging
                 Common.Logging.LogManager.GetLogger("CommonLoggingAsyncFactoryAdapter:ProcessMessage").Error(ex);
                 return false;
             }
-            //Don't call dispose on the unit of work as this is a long running thread. Calling Commit or Rollback on the unit of work 
-            //will cause it to clear storageproviders and reset internally, so next request will create new sessions if needed.
+            //Don't call dispose on the unit of work as this is a long running thread. Calling Commit or Rollback will reset work regardless.
         }
 
     }

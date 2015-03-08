@@ -168,10 +168,16 @@ namespace Eleflex.Security.Web.Account
                     Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
                     builder.Aggregate("UserKey", Storage.StorageQueryAggregateType.Count);
                     builder.IsEqual("Inactive", false.ToString());
-                    var resp = _userServiceClient.QueryAggregate(builder.GetStorageQuery());
-                    if (resp.Item == 0)
-                        addFirstUserAdmin = true;
-                    FirstUserCheck = true;
+                    using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                    {
+                        var resp = _userServiceClient.QueryAggregate(builder.GetStorageQuery());
+                        if (!ModelState.IsServiceError(resp))
+                        {
+                            if (resp.Item == 0)
+                                addFirstUserAdmin = true;
+                            FirstUserCheck = true;
+                        }
+                    }
                 }
 
                 var user = new Eleflex.Security.User { 

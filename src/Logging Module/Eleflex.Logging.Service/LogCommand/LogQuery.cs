@@ -19,6 +19,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using Eleflex.Services.Server;
 using Eleflex.Logging;
 using Eleflex.Logging.Message.LogCommand;
@@ -29,7 +30,7 @@ namespace Eleflex.Logging.Service.LogCommand
 {
     /// <summary>
     /// Service command to query logs.
-    /// </summary>
+    /// </summary>        
     [ServiceCommandHandlerAttribute(typeof(LogQueryRequest))]
     public class LogQuery : ServiceCommandHandler<LogQueryRequest, LogQueryResponse>
     {
@@ -49,6 +50,7 @@ namespace Eleflex.Logging.Service.LogCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public override void Execute(LogQueryRequest request, LogQueryResponse response)
         {           
             var items = _logRepository.Query(request).ToList();

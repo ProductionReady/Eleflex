@@ -62,6 +62,10 @@ namespace Eleflex.Security
         /// PermissionKey for a user.
         /// </summary>
         public static Guid PERMISSIONKEY_USER = new Guid("A9C7918B-653C-4BFA-BF36-3C2CE2DC9489");
+        /// <summary>
+        /// UserKey for the system admin account.
+        /// </summary>
+        public static Guid USERKEY_SYSTEM_ADMIN = new Guid("00000000-0000-0000-0000-000000000000");        
 
         /// <summary>
         /// Role for a user.

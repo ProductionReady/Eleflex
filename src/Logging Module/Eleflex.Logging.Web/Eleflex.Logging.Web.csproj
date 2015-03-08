@@ -190,6 +190,10 @@
       <Project>{18bb79dc-ae56-49d8-9972-2d30038c9603}</Project>
       <Name>Eleflex.Storage</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Web Module\Eleflex.Web\Eleflex.Web.csproj">
+      <Project>{928c5285-fd3e-4f8c-bdfa-777e5295a122}</Project>
+      <Name>Eleflex.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Eleflex.Logging.Message\Eleflex.Logging.Message.csproj">
       <Project>{92273d9e-156f-4cb7-a446-64681659b2b5}</Project>
       <Name>Eleflex.Logging.Message</Name>

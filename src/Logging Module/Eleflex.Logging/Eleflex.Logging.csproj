@@ -70,6 +70,7 @@
     <Compile Include="Model\ILogRepository.cs" />
     <Compile Include="VersionPatch\Version_2_0_26.cs" />
     <Compile Include="VersionPatch\Version_2_0_28.cs" />
+    <Compile Include="VersionPatch\Version_2_0_32.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

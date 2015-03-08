@@ -81,13 +81,10 @@ namespace Eleflex.Storage
             {
                 if (StorageProviders[i].StorageProviderKey == storageProviderKey)
                 {
-                    if(sessionKey != Guid.Empty)
+                    if(sessionKey == Guid.Empty)
+                        StorageProviders[i].Rollback();
+                    else
                         StorageProviders[i].Rollback(sessionKey);
-                    if (StorageProviders[i].Sessions.Count == 0)
-                    {
-                        StorageProviders[i].Dispose();
-                        StorageProviders.RemoveAt(i);
-                    }
                     break;
                 }
             }
@@ -101,9 +98,7 @@ namespace Eleflex.Storage
             foreach (IStorageProvider item in StorageProviders)
             {
                 item.Rollback();
-                item.Dispose();
             }
-            StorageProviders.Clear();
         }
 
         /// <summary>
@@ -117,13 +112,10 @@ namespace Eleflex.Storage
             {
                 if (StorageProviders[i].StorageProviderKey == storageProviderKey)
                 {
-                    if (sessionKey != Guid.Empty)
+                    if (sessionKey == Guid.Empty)
+                        StorageProviders[i].Commit();
+                    else
                         StorageProviders[i].Commit(sessionKey);
-                    if (StorageProviders[i].Sessions.Count == 0)
-                    {
-                        StorageProviders[i].Dispose();
-                        StorageProviders.RemoveAt(i);
-                    }
                     break;
                 }
             }
@@ -136,10 +128,8 @@ namespace Eleflex.Storage
         {
             foreach (IStorageProvider item in StorageProviders)
             {
-                item.Commit();
-                item.Dispose();
+                item.Commit();                
             }
-            StorageProviders.Clear();
         }
     }
 }

@@ -19,6 +19,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using Eleflex.Services.Server;
 using Eleflex.Lookups;
 using Eleflex.Lookups.Message.LookupCommand;
@@ -49,6 +50,7 @@ namespace Eleflex.Lookups.Service.LookupCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         public override void Execute(LookupQueryAggregateRequest request, LookupQueryAggregateResponse response)
         {
             response.Item = _lookupRepository.QueryAggregate(request);

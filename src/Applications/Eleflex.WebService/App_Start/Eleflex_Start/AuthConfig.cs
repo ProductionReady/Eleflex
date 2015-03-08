@@ -28,6 +28,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Eleflex.Security;
 using Eleflex.Web;
+using Microsoft.Owin.Extensions;
 
 [assembly: OwinStartupAttribute(typeof(Eleflex.WebService.App_Start.Eleflex_Start.AuthConfig))]
 namespace Eleflex.WebService.App_Start.Eleflex_Start
@@ -65,6 +66,11 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
                         regenerateIdentity: (manager, user) => manager.GenerateUserIdentityAsync(user))
                 }
             });
+
+            //Configure identity framework to run part of the IIS pipeline (used for WCF service authentication/authorization)
+            app.UseStageMarker(PipelineStage.Authenticate);
+
+            //Use external cookie
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.

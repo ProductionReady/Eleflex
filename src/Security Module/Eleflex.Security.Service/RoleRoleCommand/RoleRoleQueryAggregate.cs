@@ -19,6 +19,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using Eleflex.Services.Server;
 using Eleflex.Security;
 using Eleflex.Security.Message.RoleRoleCommand;
@@ -49,6 +50,7 @@ namespace Eleflex.Security.Service.RoleRoleCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public override void Execute(RoleRoleQueryAggregateRequest request, RoleRoleQueryAggregateResponse response)
         {
             response.Item = _roleRoleRepository.QueryAggregate(request);            

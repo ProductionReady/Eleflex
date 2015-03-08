@@ -73,7 +73,7 @@ namespace Eleflex.Security.Web.Security.Permissions
                 return View(model);
 
             model.Items = response.Items;
-            return View(model);
+            return View(model);            
         }
 
         /// <summary>
@@ -105,39 +105,5 @@ namespace Eleflex.Security.Web.Security.Permissions
             model.Items = response.Items;
             return View(model);
         }
-
-        //[ValidateAntiForgeryToken]
-        //[HttpPost]
-        //public ActionResult Deactivate(Guid permissionKey)
-        //{
-        //    var resp = _permissionServiceClient.Get(permissionKey);
-        //    if (resp.Item == null)
-        //        return Json(AjaxResult.Error("Service error."));
-
-        //    var item = resp.Item;
-        //    item.Inactive = true;
-        //    var respUpdate = _permissionServiceClient.Update(item);
-        //    if (ModelState.IsServiceError(respUpdate))
-        //        return Json(AjaxResult.Error("Service error."));
-
-        //    return Json(AjaxResult.SuccessReload("Permission deactivated."));
-        //}
-
-        //[ValidateAntiForgeryToken]
-        //[HttpPost]
-        //public ActionResult Reactivate(Guid permissionKey)
-        //{
-        //    var resp = _permissionServiceClient.Get(permissionKey);
-        //    if (resp.Item == null)
-        //        return Json(AjaxResult.Error("Service error."));
-
-        //    var item = resp.Item;
-        //    item.Inactive = false;
-        //    var respUpdate = _permissionServiceClient.Update(item);
-        //    if (ModelState.IsServiceError(respUpdate))
-        //        return Json(AjaxResult.Error("Service error."));
-
-        //    return Json(AjaxResult.SuccessReload("Permission deactivated."));
-        //}
     }
 }

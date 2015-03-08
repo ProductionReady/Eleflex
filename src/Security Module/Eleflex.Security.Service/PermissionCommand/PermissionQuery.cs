@@ -19,6 +19,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using Eleflex.Services.Server;
 using Eleflex.Security;
 using Eleflex.Security.Message.PermissionCommand;
@@ -49,6 +50,7 @@ namespace Eleflex.Security.Service.PermissionCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
         public override void Execute(PermissionQueryRequest request, PermissionQueryResponse response)
         {            
             var items = _permissionRepository.Query(request).ToList();

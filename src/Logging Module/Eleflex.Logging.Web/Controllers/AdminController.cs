@@ -23,6 +23,7 @@ using System.Web;
 using System.Web.Mvc;
 using Eleflex.Logging.Message;
 using Eleflex.Storage;
+using Eleflex.Web;
 
 namespace Eleflex.Logging.Web.Controllers
 {
@@ -105,7 +106,10 @@ namespace Eleflex.Logging.Web.Controllers
                 builder.Paging(1, StorageConstants.MAX_RETURNED_RECORDS_DEFAULT);
             
             builder.Sort("CreateDate", false);
-            var response = _logServiceClient.Query(builder.GetStorageQuery());            
+            var response = _logServiceClient.Query(builder.GetStorageQuery());
+            if(ModelState.IsServiceError(response))
+                return View(model);
+
             model.Items = response.Items;
             return View(model);
         }

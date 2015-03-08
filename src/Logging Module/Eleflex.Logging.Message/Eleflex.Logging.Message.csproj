@@ -75,8 +75,6 @@
     <Compile Include="LogCommand\LogQueryResponse.cs" />
     <Compile Include="LogCommand\LogUpdateRequest.cs" />
     <Compile Include="LogCommand\LogUpdateResponse.cs" />
-    <Compile Include="Model\CommonLoggingAsyncServiceAdapter.cs" />
-    <Compile Include="Model\CommonLoggingAsyncServiceLog.cs" />
     <Compile Include="Model\ILogServiceClient.cs" />
     <Compile Include="Model\Log.cs" />
     <Compile Include="Model\LoggingRequestDispatcher.cs" />

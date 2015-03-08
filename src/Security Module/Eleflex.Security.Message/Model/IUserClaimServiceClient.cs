@@ -26,7 +26,7 @@ using Microsoft.Practices.ServiceLocation;
 namespace Eleflex.Security.Message
 {
     /// <summary>
-    /// Service client for roles.
+    /// Service client for claims.
     /// </summary>
     public interface IUserClaimServiceClient : IServiceCommandRepository<UserClaim, long>
     {

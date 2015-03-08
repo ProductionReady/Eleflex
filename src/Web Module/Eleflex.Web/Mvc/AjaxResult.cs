@@ -24,7 +24,9 @@ using System.Threading.Tasks;
 
 namespace Eleflex.Web
 {
-
+    /// <summary>
+    /// Helper class used for common json responses for mvc requests.
+    /// </summary>
     public class AjaxResult
     {
 

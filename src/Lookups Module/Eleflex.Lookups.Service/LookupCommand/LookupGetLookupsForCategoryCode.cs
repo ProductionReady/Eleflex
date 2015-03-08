@@ -18,6 +18,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using System.Linq;
 using Eleflex.Services.Server;
 using Eleflex.Lookups;
@@ -49,6 +50,7 @@ namespace Eleflex.Lookups.Service.LookupCommand
         /// </summary>
         /// <param name="request"></param>
         /// <param name="response"></param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "User")]
         public override void Execute(LookupGetLookupsForCategoryCodeRequest request, LookupGetLookupsForCategoryCodeResponse response)
         {
             response.Items = AutoMapper.Mapper.Map<List<ServiceModel.Lookup>>(_lookupRepository.GetLookupsForCategoryKey(request.Item));

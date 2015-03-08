@@ -30,12 +30,13 @@ namespace Eleflex.WebService.Controllers
     /// </summary>
     public class EleflexHomeController : Controller
     {
+        
         /// <summary>
         /// Default.
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
-        {            
+        {
             return View();
         }
 
