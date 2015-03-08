@@ -168,6 +168,7 @@ namespace Eleflex.Security.Web.Account
                     Eleflex.Storage.StorageQueryBuilder builder = new Storage.StorageQueryBuilder();
                     builder.Aggregate("UserKey", Storage.StorageQueryAggregateType.Count);
                     builder.IsEqual("Inactive", false.ToString());
+                    builder.IsNotEqual("UserKey", Eleflex.Security.SecurityConstants.USERKEY_SYSTEM_ADMIN.ToString());
                     using (ImpersonateSystem impersonate = new ImpersonateSystem())
                     {
                         var resp = _userServiceClient.QueryAggregate(builder.GetStorageQuery());

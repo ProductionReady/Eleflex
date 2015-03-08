@@ -126,6 +126,7 @@
     <Compile Include="VersionPatch\Version_2_0_25.cs" />
     <Compile Include="VersionPatch\Version_2_0_26.cs" />
     <Compile Include="VersionPatch\Version_2_0_32.cs" />
+    <Compile Include="VersionPatch\Version_2_0_33.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
