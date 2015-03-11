@@ -45,6 +45,31 @@ namespace Eleflex.Web
         /// Source name.
         /// </summary>
         private string _source;
+        /// <summary>
+        /// Debug enabled.
+        /// </summary>
+        private bool _debug = false;
+        /// <summary>
+        /// Error enabled.
+        /// </summary>
+        private bool _error = true;
+        /// <summary>
+        /// Fatal enabled.
+        /// </summary>
+        private bool _fatal = true;
+        /// <summary>
+        /// Info enabled.
+        /// </summary>
+        private bool _info = true;
+        /// <summary>
+        /// Trace enabled.
+        /// </summary>
+        private bool _trace = false;
+        /// <summary>
+        /// Warn enabled.
+        /// </summary>
+        private bool _warn = true;
+
 
         /// <summary>
         /// Constructor.
@@ -70,6 +95,25 @@ namespace Eleflex.Web
             if (string.IsNullOrEmpty(_server))
                 _server = System.Net.Dns.GetHostName();
             _source = source;
+
+            string debug = properties.Get("Debug");
+            if (!string.IsNullOrEmpty(debug))
+                _debug = bool.Parse(debug);
+            string error = properties.Get("Error");
+            if (!string.IsNullOrEmpty(error))
+                _error = bool.Parse(error);
+            string fatal = properties.Get("Fatal");
+            if (!string.IsNullOrEmpty(fatal))
+                _fatal = bool.Parse(fatal);
+            string info = properties.Get("Info");
+            if (!string.IsNullOrEmpty(info))
+                _info = bool.Parse(info);
+            string trace = properties.Get("Trace");
+            if (!string.IsNullOrEmpty(trace))
+                _trace = bool.Parse(trace);
+            string warn = properties.Get("Warn");
+            if (!string.IsNullOrEmpty(warn))
+                _warn = bool.Parse(warn);
         }
 
         /// <summary>
@@ -77,7 +121,7 @@ namespace Eleflex.Web
         /// </summary>
         public override bool IsDebugEnabled
         {
-            get { return true; }
+            get { return _debug; }
         }
 
         /// <summary>
@@ -85,7 +129,7 @@ namespace Eleflex.Web
         /// </summary>
         public override bool IsErrorEnabled
         {
-            get { return true; }
+            get { return _error; }
         }
 
         /// <summary>
@@ -93,7 +137,7 @@ namespace Eleflex.Web
         /// </summary>
         public override bool IsFatalEnabled
         {
-            get { return true; }
+            get { return _fatal; }
         }
 
         /// <summary>
@@ -101,7 +145,7 @@ namespace Eleflex.Web
         /// </summary>
         public override bool IsInfoEnabled
         {
-            get { return true; }
+            get { return _info; }
         }
 
         /// <summary>
@@ -109,7 +153,7 @@ namespace Eleflex.Web
         /// </summary>
         public override bool IsTraceEnabled
         {
-            get { return true; }
+            get { return _trace; }
         }
 
         /// <summary>
@@ -117,7 +161,7 @@ namespace Eleflex.Web
         /// </summary>
         public override bool IsWarnEnabled
         {
-            get { return true; }
+            get { return _warn; }
         }
 
         /// <summary>
