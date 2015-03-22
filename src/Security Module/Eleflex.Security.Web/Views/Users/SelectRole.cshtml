@@ -21,7 +21,7 @@
             <th>Action</th>
             <th>Name</th>
             <th>Description</th>
-            <th>Inactive</th>
+            <th>Status</th>
             <th>Start Date</th>
             <th>End Date</th>
         </tr>
@@ -35,7 +35,7 @@
                     <td><button class="btn btn-sm btn-primary" type="button" data-dismiss="modal" onclick="SelectRole('@(Model.SearchRoles[i].RoleKey)', '@Model.SearchRoles[i].Name')">Select</button></td>
                     <td>@Model.SearchRoles[i].Name</td>                    
                     <td>@Model.SearchRoles[i].Description</td>
-                    <td>@Model.SearchRoles[i].Inactive</td>
+                    <td>@if(Model.SearchRoles[i].Inactive){<text>Inactive</text>}else{<text>Active</text>}</td>
                     <td>
                         @if (Model.SearchRoles[i].StartDate.HasValue)
                         { @Model.SearchRoles[i].StartDate.Value.ToLocalTime().DateTime}

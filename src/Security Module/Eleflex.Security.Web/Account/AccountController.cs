@@ -110,6 +110,9 @@ namespace Eleflex.Security.Web.Account
             var resultUser = await UserManager.FindByEmailAsync(model.Email);
             if (resultUser != null)
             {
+                if(!resultUser.EmailValid)
+                    return View("RegisterComplete");
+
                 var result = await SignInManager.PasswordSignInAsync(resultUser.Username, model.Password, model.RememberMe, shouldLockout: true);
                 switch (result)
                 {
@@ -192,21 +195,33 @@ namespace Eleflex.Security.Web.Account
                 if (result.Succeeded)
                 {
                     //Add the default user role
-                    await UserManager.AddToRoleAsync(user.UserKey.ToString(), Eleflex.Security.SecurityConstants.ROLE_USER);
-                    if(addFirstUserAdmin)
-                        await UserManager.AddToRoleAsync(user.UserKey.ToString(), Eleflex.Security.SecurityConstants.ROLE_ADMIN);
-                    
-                    //Signin with the user
-                    System.Threading.Thread.Sleep(1000); //Ensure underlying storage provider is committed
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    UserManager.AddToRole(user.UserKey.ToString(), Eleflex.Security.SecurityConstants.ROLE_USER);                                            
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>. Alternatively, copy and paste the following link in a web browser " + callbackUrl);
+                    
+                    //If this is the first user to register, make them the admin
+                    if (addFirstUserAdmin)
+                    {
+                        //Add to admin role
+                        UserManager.AddToRole(user.UserKey.ToString(), Eleflex.Security.SecurityConstants.ROLE_ADMIN);
 
-                    return Redirect(@"/");
+                        //Change email as automatically valid just in case smtp email configs aren't set
+                        user.ChangeEmailValid(true); 
+                        UserManager.Update(user);                        
+
+                        //Automatically signin with the admin user (just in case email isn't configured)
+                        System.Threading.Thread.Sleep(1000);
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        //Return home
+                        return Redirect(@"/");
+                    }
+
+                    return View("RegisterComplete");
                 }
                 AddErrors(result);
             }
@@ -214,6 +229,37 @@ namespace Eleflex.Security.Web.Account
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        [AllowAnonymous]
+        public ActionResult RegisterResendEmail()
+        {
+            return View("RegisterResend", new ForgotPasswordViewModel());
+        }
+
+        [AllowAnonymous]
+        public async Task<ActionResult> RegisterResend(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByEmailAsync(model.Email);
+                if (user == null)
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    return View("RegisterComplete");
+                }
+
+                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                // Send an email with this link
+                string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>. Alternatively, copy and paste the following link in a web browser " + callbackUrl);
+                return View("RegisterComplete");
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+            
 
         //
         // GET: /Account/ConfirmEmail
@@ -245,8 +291,8 @@ namespace Eleflex.Security.Web.Account
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                var user = await UserManager.FindByEmailAsync(model.Email);
+                if (user == null)
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
@@ -254,10 +300,10 @@ namespace Eleflex.Security.Web.Account
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Password Reset Request", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>. Alternatively, copy and paste the following link in a web browser " + callbackUrl);
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -291,7 +337,7 @@ namespace Eleflex.Security.Web.Account
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UserManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
@@ -300,6 +346,13 @@ namespace Eleflex.Security.Web.Account
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
+                //Since they received an email to reset, also confirm their email if not already valid
+                if (!user.EmailValid)
+                {
+                    user = UserManager.FindByEmail(model.Email);
+                    user.ChangeEmailValid(true);
+                    UserManager.Update(user);
+                }
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
             AddErrors(result);

@@ -29,6 +29,7 @@ namespace Eleflex.Lookups.Web
     /// <summary>
     /// Lookups admin controller.
     /// </summary>
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         /// <summary>
@@ -64,18 +65,6 @@ namespace Eleflex.Lookups.Web
             return View("Details", model);
         }
 
-        /// <summary>
-        /// Details.
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Details(DetailsModel model)
-        {
-            if(ModelState.IsValid)
-            {
-
-            }
-            return View(model);
-        }
 
         /// <summary>
         /// List.

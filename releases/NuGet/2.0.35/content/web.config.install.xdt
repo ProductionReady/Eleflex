@@ -7,6 +7,13 @@
     <add key="webpages:Version" value="3.0.0.0" xdt:Locator="Match(key)" xdt:Transform="SetAttributes(value)" />
 	<add key="EleflexImpersonateSystemToken" value="THIS IS A SECRET KEY THAT ALLOWS IMPERSONATING THE ELEFLEX SYSTEM ADMIN ACCOUNT FOR WCF SERVICE CALLS! CHANGE THIS VALUE BEFORE YOU DEPLOY YOUR WEB APPLICATION!" xdt:Locator="Match(key)" xdt:Transform="InsertIfMissing" />
   </appSettings>
+  <system.net xdt:Transform="InsertIfMissing">
+    <mailSettings xdt:Transform="InsertIfMissing">
+      <smtp from="Eleflex@Eleflex.com" xdt:Transform="InsertIfMissing">
+        <network host="localhost" userName="test" password="test" port="25" enableSsl="false" xdt:Transform="InsertIfMissing" />
+      </smtp>
+    </mailSettings>
+  </system.net>
   <system.serviceModel xdt:Transform="InsertIfMissing">
 	<extensions xdt:Transform="InsertIfMissing">
       <behaviorExtensions xdt:Transform="InsertIfMissing">

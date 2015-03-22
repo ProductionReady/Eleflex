@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Inactive</th>
+                <th>Status</th>
                 <th>Start</th>
                 <th>End</th>
                 <th>Comment</th>
@@ -28,7 +28,7 @@
                 {
                     <tr>
                         <td>@Model.UserRoles[i].RoleName</td>
-                        <td>@Model.UserRoles[i].Inactive</td>
+                        <td>@if(Model.UserRoles[i].Inactive){<text>Inactive</text>}else{<text>Active</text>}</td>
                         <td>
                             @if(@Model.UserRoles[i].StartDate.HasValue)
                             { @Model.UserRoles[i].StartDate.Value.ToLocalTime().DateTime}

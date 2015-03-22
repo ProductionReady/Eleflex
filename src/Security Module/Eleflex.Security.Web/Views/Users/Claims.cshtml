@@ -15,7 +15,7 @@
             <tr>
                 <th>Name</th>
                 <th>Value</th>
-                <th>Inactive</th>
+                <th>Status</th>
                 <th>Start</th>
                 <th>End</th>
                 <th>Comment</th>
@@ -30,7 +30,7 @@
                     <tr>
                         <td>@Model.UserClaims[i].ClaimType</td>
                         <td>@Model.UserClaims[i].ClaimValue</td>
-                        <td>@Model.UserClaims[i].Inactive</td>
+                        <td>@if(Model.UserClaims[i].Inactive){<text>Inactive</text>}else{<text>Active</text>}</td>
                         <td>
                             @if(@Model.UserClaims[i].StartDate.HasValue)
                             { @Model.UserClaims[i].StartDate.Value.ToLocalTime().DateTime}

@@ -64,7 +64,30 @@ namespace Eleflex.Security
         {
             get
             {
-                return new List<TUser>().AsQueryable();
+                Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+                List<TUser> output = new List<TUser>();
+                try
+                {
+                    IUserRepository userRepository = ServiceLocator.Current.GetInstance<IUserRepository>();
+                    Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+                    IList<User> users = userRepository.Query(builder.GetStorageQuery());
+
+                    uow.Commit();
+
+                    if (users != null && users.Count > 0)
+                    {
+                        foreach (var user in users)
+                            output.Add(user as TUser);
+                    }
+                    return output.AsQueryable();
+
+                }
+                catch (Exception ex)
+                {
+                    uow.Rollback();
+                    Common.Logging.LogManager.GetLogger<IdentityUserStore<TUser>>().Error(ex);
+                }
+                return output.AsQueryable();
             }
         }
 

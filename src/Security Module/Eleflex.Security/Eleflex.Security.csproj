@@ -102,6 +102,7 @@
     <Compile Include="VersionPatch\Version_2_0_28.cs" />
     <Compile Include="VersionPatch\Version_2_0_32.cs" />
     <Compile Include="VersionPatch\Version_2_0_33.cs" />
+    <Compile Include="VersionPatch\Version_2_0_35.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Framework Module\Eleflex\Eleflex.csproj">

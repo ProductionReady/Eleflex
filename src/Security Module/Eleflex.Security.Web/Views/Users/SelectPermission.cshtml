@@ -21,7 +21,7 @@
             <th>Action</th>
             <th>Name</th>
             <th>Description</th>
-            <th>Inactive</th>
+            <th>Status</th>
             <th>Start Date</th>
             <th>End Date</th>
         </tr>
@@ -35,7 +35,7 @@
                     <td><button class="btn btn-sm btn-primary" type="button" data-dismiss="modal" onclick="SelectPermission('@(Model.SearchPermissions[i].PermissionKey)', '@Model.SearchPermissions[i].Name')">Select</button></td>
                     <td>@Model.SearchPermissions[i].Name</td>                    
                     <td>@Model.SearchPermissions[i].Description</td>
-                    <td>@Model.SearchPermissions[i].Inactive</td>
+                    <td>@if(Model.SearchPermissions[i].Inactive){<text>Inactive</text>}else{<text>Active</text>}</td>
                 </tr>
             }
         }

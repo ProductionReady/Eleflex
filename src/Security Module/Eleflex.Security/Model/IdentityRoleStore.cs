@@ -52,7 +52,28 @@ namespace Eleflex.Security
         {
             get
             {
-                return new List<TRole>().AsQueryable();
+                Eleflex.Storage.IStorageProviderUnitOfWork uow = ServiceLocator.Current.GetInstance<Eleflex.Storage.IStorageProviderUnitOfWork>();
+                List<TRole> output = new List<TRole>();
+                try
+                {
+                    IRoleRepository roleRepository = ServiceLocator.Current.GetInstance<IRoleRepository>();
+                    Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+                    var roles = roleRepository.Query(builder.GetStorageQuery());
+
+                    uow.Commit();
+                    
+                    if (roles != null && roles.Count > 0)
+                    {
+                        foreach(var role in roles)
+                            output.Add(role as TRole);
+                    }
+                    return output.AsQueryable();
+                }
+                catch (Exception ex)
+                {
+                    Common.Logging.LogManager.GetLogger<IdentityRoleStore<TRole>>().Error(ex);
+                }
+                return output.AsQueryable();
             }
         }
 

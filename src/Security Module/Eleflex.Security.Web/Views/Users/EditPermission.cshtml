@@ -35,7 +35,7 @@
                         @Html.ValidationMessageFor(x => x.EndDateLocalTime)
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(x => x.Inactive, "Inactive:")
+                        @Html.LabelFor(x => x.Inactive, "Status:")
                         @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselectrequired", data_placeholder = "Select an Item...", Style = "width: 150px;" })
                         @Html.ValidationMessageFor(x => x.Inactive)
                     </div>

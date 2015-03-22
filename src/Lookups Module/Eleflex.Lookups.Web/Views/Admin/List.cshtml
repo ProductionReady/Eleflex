@@ -23,7 +23,7 @@
         @Html.ValidationMessageFor(x => x.Description)
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.Inactive, "Inactive:")
+        @Html.LabelFor(x => x.Inactive, "Status:")
         @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselect", data_placeholder = "Select an Item...", Style = "width: 150px;" })
         @Html.ValidationMessageFor(x => x.Inactive)
     </div>
@@ -46,7 +46,7 @@
             <th>Identifier</th>
             <th>Abbreviation</th>
             <th>Name</th>
-            <th>Inactive</th>
+            <th>Status</th>
             <th>Description</th>
             <th>Action</th>
         </tr>
@@ -60,7 +60,7 @@
                     <td>@Model.Items[i].Key.ToString()</td>
                     <td>@Model.Items[i].Abbreviation</td>
                     <td>@Model.Items[i].Name</td>
-                    <td>@Model.Items[i].Inactive</td>
+                    <td>@if(Model.Items[i].Inactive){<text>Inactive</text>}else{<text>Active</text>}</td>
                     <td>@Model.Items[i].Description</td>
                     <td></td>
                 </tr>

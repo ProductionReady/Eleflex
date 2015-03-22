@@ -271,7 +271,7 @@ namespace Eleflex.Security.Web.Security.Users
             else
             {
                 DateTimeOffset now = DateTimeOffset.UtcNow;
-                string tempPass = Guid.NewGuid().ToString() + "aaAA11!!";
+                string tempPass = Guid.NewGuid().ToString() + "aA!1";
                 Eleflex.Security.User item = new Eleflex.Security.User();
                 item.ChangeUserKey(Guid.NewGuid());
                 item.ChangeCreateDate(now);
@@ -314,6 +314,11 @@ namespace Eleflex.Security.Web.Security.Users
                 await UserManager.AddToRoleAsync(newModel.UserKey.ToString(), Eleflex.Security.SecurityConstants.ROLE_USER);
                 newModel.SuccessMessage = "User created.";
                 ModelState.Clear(); //update the hiddenfield
+
+                //Send an email to the user with the confirmation link and temporary password
+                string code = await UserManager.GenerateEmailConfirmationTokenAsync(newModel.UserKey.ToString());
+                var callbackUrl = Url.Action("ConfirmEmail", "~~Account.Account", new { userId = newModel.UserKey.ToString(), code = code}, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(newModel.UserKey.ToString(), "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>. Alternatively, copy and paste the following link in a web browser " + callbackUrl + " This account was created by an admin of the system and your temporary password is " + tempPass);
             }
             return View(newModel);
         }

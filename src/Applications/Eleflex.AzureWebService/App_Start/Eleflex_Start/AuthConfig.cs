@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.Owin;
@@ -160,7 +161,19 @@ namespace Eleflex.AzureWebService.App_Start.Eleflex_Start
         {
             public Task SendAsync(IdentityMessage message)
             {
-                // Plug in your email service here to send an email.
+                try
+                {
+                    SmtpClient client = new SmtpClient();
+                    MailMessage msg = new MailMessage();
+                    msg.To.Add(message.Destination);
+                    msg.Subject = message.Subject;
+                    msg.Body = message.Body;
+                    client.Send(msg);
+                }
+                catch (Exception ex)
+                {
+                    Common.Logging.LogManager.GetLogger<EmailService>().Error("Could not send email, confirm your web.config settings for system.net mailsettings", ex);
+                }
                 return Task.FromResult(0);
             }
         }

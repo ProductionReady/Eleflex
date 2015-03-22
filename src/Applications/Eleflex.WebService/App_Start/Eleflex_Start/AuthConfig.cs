@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.Owin;
@@ -131,7 +132,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             // Configure user lockout defaults
             manager.UserLockoutEnabledByDefault = true;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            manager.MaxFailedAccessAttemptsBeforeLockout = 5;
+            manager.MaxFailedAccessAttemptsBeforeLockout = 5;            
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
@@ -149,8 +150,10 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider =
-                    new DataProtectorTokenProvider<Eleflex.Security.User>(dataProtectionProvider.Create("ASP.NET Identity"));
+                manager.UserTokenProvider = new DataProtectorTokenProvider<Eleflex.Security.User>(dataProtectionProvider.Create("ASP.NET Identity"))
+                {
+                    TokenLifespan = TimeSpan.FromHours(3)
+                };
             }
             return manager;
         }
@@ -166,7 +169,19 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
         {
             public Task SendAsync(IdentityMessage message)
             {
-                // Plug in your email service here to send an email.
+                try
+                {
+                    SmtpClient client = new SmtpClient();
+                    MailMessage msg = new MailMessage();
+                    msg.To.Add(message.Destination);
+                    msg.Subject = message.Subject;
+                    msg.Body = message.Body;
+                    client.Send(msg);
+                }
+                catch(Exception ex)
+                {
+                    Common.Logging.LogManager.GetLogger<EmailService>().Error("Could not send email, confirm your web.config settings for system.net mailsettings", ex);
+                }
                 return Task.FromResult(0);
             }
         }

@@ -53,6 +53,21 @@ namespace Eleflex.Web
         {
             get
             {
+                try
+                {
+                    using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                    {
+                        IRoleServiceClient roleServiceClient = ServiceLocator.Current.GetInstance<IRoleServiceClient>();
+                        Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+                        var respRoles = roleServiceClient.Query(builder.GetStorageQuery());
+                        if (respRoles.Items != null)
+                            return AutoMapper.Mapper.Map<List<TRole>>(respRoles.Items).AsQueryable();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Common.Logging.LogManager.GetLogger<IdentityRoleStoreServiceClient<TRole>>().Error(ex);
+                }
                 return new List<TRole>().AsQueryable();
             }
         }

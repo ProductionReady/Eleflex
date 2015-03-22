@@ -1,3 +1,0 @@
-C:\GitHub\Eleflex\src\Web Module\Eleflex.Web\bin\Debug\Bootstrapper.dll
-C:\GitHub\Eleflex\src\Web Module\Eleflex.Web\bin\Debug\Newtonsoft.Json.xml
-C:\GitHub\Eleflex\src\Web Module\Eleflex.Web\obj\Debug\Eleflex.Web.dll

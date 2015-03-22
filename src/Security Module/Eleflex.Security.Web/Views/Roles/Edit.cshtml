@@ -57,7 +57,7 @@
                     @Model.IsSystemRole                    
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(x => x.Inactive, "Inactive:")
+                    @Html.LabelFor(x => x.Inactive, "Status:")
                     @if (Model.IsSystemRole)
                     {
                         @Model.InactiveSelectItems.Where(x=>x.Value == Model.Inactive.ToString().ToLower()).FirstOrDefault().Text

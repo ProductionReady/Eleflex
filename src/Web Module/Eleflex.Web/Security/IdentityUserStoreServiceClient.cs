@@ -30,7 +30,8 @@ namespace Eleflex.Web
     /// <summary>
     /// Class that implements the key ASP.NET Identity user store iterfaces and communicates via service clients.
     /// </summary>
-    public class IdentityUserStoreServiceClient<TUser> : IUserLoginStore<TUser>,
+    public class IdentityUserStoreServiceClient<TUser> : 
+        IUserLoginStore<TUser>,
         IUserClaimStore<TUser>,
         IUserRoleStore<TUser>,
         IUserPasswordStore<TUser>,
@@ -40,7 +41,7 @@ namespace Eleflex.Web
         IUserPhoneNumberStore<TUser>,
         IUserTwoFactorStore<TUser, string>,
         IUserLockoutStore<TUser, string>,
-        IUserStore<TUser>
+        IUserStore<TUser>        
         where TUser : Eleflex.Security.User
     {
 
@@ -65,6 +66,21 @@ namespace Eleflex.Web
         {
             get
             {
+                try
+                {
+                    using (ImpersonateSystem impersonate = new ImpersonateSystem())
+                    {
+                        IUserServiceClient userServiceClient = ServiceLocator.Current.GetInstance<IUserServiceClient>();
+                        Eleflex.Storage.StorageQueryBuilder builder = new Eleflex.Storage.StorageQueryBuilder();
+                        var respUsers = userServiceClient.Query(builder.GetStorageQuery());
+                        if (respUsers.Items != null)
+                            return AutoMapper.Mapper.Map<List<TUser>>(respUsers.Items).AsQueryable();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Common.Logging.LogManager.GetLogger<IdentityUserStoreServiceClient<TUser>>().Error(ex);                    
+                }
                 return new List<TUser>().AsQueryable();
             }
         }
@@ -1036,5 +1052,6 @@ namespace Eleflex.Web
             user.ChangeEnableLockout(enabled);
             return Task.FromResult(0);
         }
+
     }
 }
