@@ -59,11 +59,13 @@
     <Reference Include="Bootstrapper.StructureMap">
       <HintPath>..\..\packages\Bootstrapper.StructureMap.2.0.3.13\lib\Net40\Bootstrapper.StructureMap.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging">
-      <HintPath>..\..\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
+    <Reference Include="Common.Logging, Version=3.1.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Common.Logging.3.1.0\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging.Core">
-      <HintPath>..\..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
+    <Reference Include="Common.Logging.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Common.Logging.Core.3.1.0\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
     <Reference Include="CommonServiceLocator.StructureMapAdapter.Unofficial">
       <HintPath>..\..\packages\CommonServiceLocator.StructureMapAdapter.Unofficial.3.0.4.125\lib\Net40\CommonServiceLocator.StructureMapAdapter.Unofficial.dll</HintPath>
@@ -271,6 +273,9 @@
     <Compile Include="App_Start\Eleflex_Start\UnitOfWorkConfig.cs" />
     <Compile Include="App_Start\Eleflex_Start\WebMvcConfig.cs" />
     <Compile Include="Controllers\EleflexHomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -283,61 +288,61 @@
     <Content Include="Content\chosen-sprite%402x.png" />
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.autoFill.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.autoFill.min.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.bootstrap.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.colReorder.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.colReorder.min.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.colVis.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.colvis.jqueryui.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.colVis.min.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.fixedColumns.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.fixedColumns.min.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.fixedHeader.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.fixedHeader.min.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.foundation.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.jqueryui.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.keyTable.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.keyTable.min.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.responsive.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.scroller.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.scroller.min.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.tableTools.css" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.tableTools.min.css" />
-    <Content Include="Content\DataTables-1.10.4\css\jquery.dataTables.css" />
-    <Content Include="Content\DataTables-1.10.4\css\jquery.dataTables.min.css" />
-    <Content Include="Content\DataTables-1.10.4\css\jquery.dataTables_themeroller.css" />
-    <Content Include="Content\DataTables-1.10.4\images\background.png" />
-    <Content Include="Content\DataTables-1.10.4\images\back_disabled.png" />
-    <Content Include="Content\DataTables-1.10.4\images\back_enabled.png" />
-    <Content Include="Content\DataTables-1.10.4\images\back_enabled_hover.png" />
-    <Content Include="Content\DataTables-1.10.4\images\collection.png" />
-    <Content Include="Content\DataTables-1.10.4\images\collection_hover.png" />
-    <Content Include="Content\DataTables-1.10.4\images\copy.png" />
-    <Content Include="Content\DataTables-1.10.4\images\copy_hover.png" />
-    <Content Include="Content\DataTables-1.10.4\images\csv.png" />
-    <Content Include="Content\DataTables-1.10.4\images\csv_hover.png" />
-    <Content Include="Content\DataTables-1.10.4\images\details_close.png" />
-    <Content Include="Content\DataTables-1.10.4\images\details_open.png" />
-    <Content Include="Content\DataTables-1.10.4\images\filler.png" />
-    <Content Include="Content\DataTables-1.10.4\images\forward_disabled.png" />
-    <Content Include="Content\DataTables-1.10.4\images\forward_enabled.png" />
-    <Content Include="Content\DataTables-1.10.4\images\forward_enabled_hover.png" />
-    <Content Include="Content\DataTables-1.10.4\images\insert.png" />
-    <Content Include="Content\DataTables-1.10.4\images\loading-background.png" />
-    <Content Include="Content\DataTables-1.10.4\images\pdf.png" />
-    <Content Include="Content\DataTables-1.10.4\images\pdf_hover.png" />
-    <Content Include="Content\DataTables-1.10.4\images\print.png" />
-    <Content Include="Content\DataTables-1.10.4\images\print_hover.png" />
-    <Content Include="Content\DataTables-1.10.4\images\sort_asc.png" />
-    <Content Include="Content\DataTables-1.10.4\images\sort_asc_disabled.png" />
-    <Content Include="Content\DataTables-1.10.4\images\sort_both.png" />
-    <Content Include="Content\DataTables-1.10.4\images\sort_desc.png" />
-    <Content Include="Content\DataTables-1.10.4\images\sort_desc_disabled.png" />
-    <Content Include="Content\DataTables-1.10.4\images\xls.png" />
-    <Content Include="Content\DataTables-1.10.4\images\xls_hover.png" />
-    <Content Include="Content\DataTables-1.10.4\swf\copy_csv_xls.swf" />
-    <Content Include="Content\DataTables-1.10.4\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Content\DataTables\css\dataTables.autoFill.css" />
+    <Content Include="Content\DataTables\css\dataTables.autoFill.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\css\dataTables.colReorder.css" />
+    <Content Include="Content\DataTables\css\dataTables.colReorder.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.colVis.css" />
+    <Content Include="Content\DataTables\css\dataTables.colvis.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.colVis.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.fixedColumns.css" />
+    <Content Include="Content\DataTables\css\dataTables.fixedColumns.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.fixedHeader.css" />
+    <Content Include="Content\DataTables\css\dataTables.fixedHeader.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.keyTable.css" />
+    <Content Include="Content\DataTables\css\dataTables.keyTable.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.responsive.css" />
+    <Content Include="Content\DataTables\css\dataTables.scroller.css" />
+    <Content Include="Content\DataTables\css\dataTables.scroller.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.tableTools.css" />
+    <Content Include="Content\DataTables\css\dataTables.tableTools.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables\images\background.png" />
+    <Content Include="Content\DataTables\images\back_disabled.png" />
+    <Content Include="Content\DataTables\images\back_enabled.png" />
+    <Content Include="Content\DataTables\images\back_enabled_hover.png" />
+    <Content Include="Content\DataTables\images\collection.png" />
+    <Content Include="Content\DataTables\images\collection_hover.png" />
+    <Content Include="Content\DataTables\images\copy.png" />
+    <Content Include="Content\DataTables\images\copy_hover.png" />
+    <Content Include="Content\DataTables\images\csv.png" />
+    <Content Include="Content\DataTables\images\csv_hover.png" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\filler.png" />
+    <Content Include="Content\DataTables\images\forward_disabled.png" />
+    <Content Include="Content\DataTables\images\forward_enabled.png" />
+    <Content Include="Content\DataTables\images\forward_enabled_hover.png" />
+    <Content Include="Content\DataTables\images\insert.png" />
+    <Content Include="Content\DataTables\images\loading-background.png" />
+    <Content Include="Content\DataTables\images\pdf.png" />
+    <Content Include="Content\DataTables\images\pdf_hover.png" />
+    <Content Include="Content\DataTables\images\print.png" />
+    <Content Include="Content\DataTables\images\print_hover.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\images\xls.png" />
+    <Content Include="Content\DataTables\images\xls_hover.png" />
+    <Content Include="Content\DataTables\swf\copy_csv_xls.swf" />
+    <Content Include="Content\DataTables\swf\copy_csv_xls_pdf.swf" />
     <Content Include="Content\Eleflex.css" />
     <Content Include="Content\EleflexTheme.css" />
     <Content Include="Content\font-awesome.css" />
@@ -380,6 +385,8 @@
     <Content Include="EleflexService.svc" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Icon.png" />
     <Content Include="Images\ProductionReady\AGPLv3.png" />
     <Content Include="Images\ProductionReady\EleflexIcon.png" />
     <Content Include="Images\ProductionReady\EleflexIcon114x114.png" />
@@ -392,38 +399,38 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.responsive.scss" />
-    <Content Include="Content\DataTables-1.10.4\css\dataTables.jqueryui.scss" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\DataTables\css\dataTables.responsive.scss" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.scss" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.autoFill.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.autoFill.min.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.bootstrap.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.colReorder.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.colReorder.min.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.colVis.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.colVis.min.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.fixedColumns.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.fixedColumns.min.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.fixedHeader.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.fixedHeader.min.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.foundation.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.jqueryui.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.keyTable.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.keyTable.min.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.responsive.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.responsive.min.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.scroller.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.scroller.min.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.tableTools.js" />
-    <Content Include="Scripts\DataTables-1.10.4\dataTables.tableTools.min.js" />
-    <Content Include="Scripts\DataTables-1.10.4\jquery.dataTables.js" />
-    <Content Include="Scripts\DataTables-1.10.4\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colVis.js" />
+    <Content Include="Scripts\DataTables\dataTables.colVis.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.tableTools.js" />
+    <Content Include="Scripts\DataTables\dataTables.tableTools.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
     <Content Include="Scripts\Eleflex.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />

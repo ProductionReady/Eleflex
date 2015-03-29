@@ -32,11 +32,16 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
         /// </summary>
         public static void Stop() 
         {
+            //Log shutdown
+            Common.Logging.LogManager.GetLogger(typeof(Shutdown)).Info("Application Shutdown");
+
+            System.Threading.Thread.Sleep(1000);
+
             //Dispose the logger
             ((IDisposable)Common.Logging.LogManager.Adapter).Dispose();
 
             //Dispose container
-            ((IDisposable)Bootstrap.Bootstrapper.Container).Dispose();            
+            ((IDisposable)Bootstrap.Bootstrapper.Container).Dispose();     
         }
     }
 }

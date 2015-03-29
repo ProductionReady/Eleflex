@@ -50,7 +50,7 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
 
             //JQuery Data Tables Scripts (tables)
             bundles.Add(new ScriptBundle("~/bundles/datatablejsEleflex").Include(
-            "~/Scripts/DataTables-1.10.4/jquery.dataTables.js"));
+            "~/Scripts/DataTables/jquery.dataTables.js"));
 
             //JQuery Chosen Scripts (select choosers)
             bundles.Add(new ScriptBundle("~/bundles/chosenjsEleflex").Include(
@@ -83,8 +83,8 @@ namespace Eleflex.WebService.App_Start.Eleflex_Start
 
 
             //JQuery Data Tables CSS
-            bundles.Add(new StyleBundle("~/Content/DataTables-1.10.4/cssEleflex").Include(
-                        "~/Content/DataTables-1.10.4/css/jquery.dataTables.css"));
+            bundles.Add(new StyleBundle("~/Content/DataTables/cssEleflex").Include(
+                        "~/Content/DataTables/css/jquery.dataTables.css"));
 
             //JQuery Theme CSS
             bundles.Add(new StyleBundle("~/Content/themes/base/cssEleflex").Include(

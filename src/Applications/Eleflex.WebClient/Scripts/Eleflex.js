@@ -26,10 +26,13 @@
             $(this).datetimepicker('update', moment(curVal).toDate());
         }
     });
-    //.datetimepicker({ autoclose: true, forceParse: false, format: 'm/dd/yyyy HH:ii P', showMeridian: true, todayBtn: true, todayHighlight: true, viewSelect: 'decade' });
-    //$('.eleflexdatetime').datetimepicker('update');
-    $('.eleflexdatetimerequired').datetimepicker({ autoclose: true, forceParse: false, format: 'm/dd/yyyy HH:ii P', showMeridian: true, todayBtn: true, todayHighlight: true, viewSelect: 'decade' });
-    $('.eleflexdatetimerequired').datetimepicker('update');
+    $('.eleflexdatetimerequired').each(function () {
+        var curVal = $(this).val();
+        $(this).datetimepicker({ autoclose: true, forceParse: false, format: 'm/dd/yyyy HH:ii P', showMeridian: true, todayBtn: true, todayHighlight: true, viewSelect: 'decade' });
+        if (curVal) {
+            $(this).datetimepicker('update', moment(curVal).toDate());
+        }
+    });
 
 });
 

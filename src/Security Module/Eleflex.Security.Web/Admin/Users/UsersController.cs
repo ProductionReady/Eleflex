@@ -318,7 +318,7 @@ namespace Eleflex.Security.Web.Security.Users
                 //Send an email to the user with the confirmation link and temporary password
                 string code = await UserManager.GenerateEmailConfirmationTokenAsync(newModel.UserKey.ToString());
                 var callbackUrl = Url.Action("ConfirmEmail", "~~Account.Account", new { userId = newModel.UserKey.ToString(), code = code}, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(newModel.UserKey.ToString(), "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>. Alternatively, copy and paste the following link in a web browser " + callbackUrl + " This account was created by an admin of the system and your temporary password is " + tempPass);
+                await UserManager.SendEmailAsync(newModel.UserKey.ToString(), "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>. This account was created by an admin of the system and your temporary password is " + tempPass);
             }
             return View(newModel);
         }

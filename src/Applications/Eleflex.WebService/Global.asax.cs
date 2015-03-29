@@ -36,7 +36,17 @@ namespace Eleflex.WebService
         /// Application end.
         /// </summary>
         protected void Application_End()
-        {            
+        {
+            //Log shutdown
+            Common.Logging.LogManager.GetLogger(typeof(MvcApplication)).Info("Application Shutdown");
+
+            System.Threading.Thread.Sleep(1000);
+
+            //Dispose the logger
+            ((IDisposable)Common.Logging.LogManager.Adapter).Dispose();
+
+            //Dispose container
+            ((IDisposable)Bootstrap.Bootstrapper.Container).Dispose();    
         }
     }
 }
