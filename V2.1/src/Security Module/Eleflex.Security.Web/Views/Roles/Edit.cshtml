@@ -1,0 +1,122 @@
+﻿@model Eleflex.Security.Web.Security.Roles.EditViewModel
+@{
+    ViewBag.Title = "Role Detail";
+}
+<h1>Role Detail</h1>
+<div class="container">
+    <fieldset>
+    <legend class="sr-only sr-only-focusable">Role Form</legend>
+    @using (Html.BeginForm("Edit", "Roles", FormMethod.Post, new { id = "RolesDetailsForm", @class = "form-horizontal" }))
+        {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.RoleKey)
+        @Html.ValidationSummary(true)
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <h2>Basic Info</h2>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Name, "Name:")<span class="required">*</span>
+                    @if (Model.IsSystemRole)
+                    {
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @readonly="" })
+                    }
+                    else
+                    {
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Name)
+                    }
+                    </div>               
+                <div id="CreateDateFromGroup" class="form-group date">
+                    @Html.LabelFor(x => x.StartDateLocalTime, "Effective Date Begin:")
+                    @if (Model.IsSystemRole)
+                    {
+                        @Html.TextBoxFor(x => x.StartDateLocalTime, new { @class = "form-control", @readonly = "" })
+                    }
+                    else
+                    {
+                    @Html.TextBoxFor(x => x.StartDateLocalTime, new { @class = "form-control eleflexdatetime" })
+                    @Html.ValidationMessageFor(x => x.StartDateLocalTime)
+                    }
+                </div>
+                <div id="CreateDateToGroup" class="form-group date">
+                    @Html.LabelFor(x => x.EndDateLocalTime, "Effective Date End:")
+                    @if (Model.IsSystemRole)
+                    {
+                        @Html.TextBoxFor(x => x.EndDateLocalTime, new { @class = "form-control", @readonly = "" })
+                    }
+                    else
+                    {
+                    @Html.TextBoxFor(x => x.EndDateLocalTime, new { @class = "form-control eleflexdatetime" })
+                    @Html.ValidationMessageFor(x => x.EndDateLocalTime)
+                    }
+                </div> 
+                <div class="form-group">
+                    @Html.LabelFor(x => x.IsSystemRole, "Is System Role:")
+                    @Model.IsSystemRole                    
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Inactive, "Status:")
+                    @if (Model.IsSystemRole)
+                    {
+                        @Model.InactiveSelectItems.Where(x=>x.Value == Model.Inactive.ToString().ToLower()).FirstOrDefault().Text
+                    }
+                    else
+                    {
+                    @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselectrequired", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+                    @Html.ValidationMessageFor(x => x.Inactive)
+                    }
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Description, "Description:")
+                    @if (Model.IsSystemRole)
+                    {
+                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", rows = "3", @readonly="" })
+                    }
+                    else
+                    {
+                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control", rows = "3" })
+                    @Html.ValidationMessageFor(x => x.Description)
+                    }
+                </div>
+                <div class="form-group">
+                    @if (Model.IsSystemRole)
+                    {
+                        <div class="well well-sm">
+                            <strong>Note: You cannot modify basic information for system roles.</strong>
+                        </div>
+                    }
+                    <span>
+                        @if (Model.IsSystemRole)
+                        {
+                            <button class="btn btn-primary active" type="submit" disabled>Save</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary active" type="submit">Save</button>
+                        }
+                        <button class="btn btn-default active" type="button" onclick="window.location.href('@Url.Action("List","Roles")')">Cancel</button>
+                    </span>
+                    @if (Model.RoleKey.HasValue)
+                    {
+                        <span style="float:right;">
+                            @Html.ActionLink("Manage Roles", "Roles", new { roleKey = Model.RoleKey }, new { @class = "btn btn-primary", @type = "button" })
+                            @Html.ActionLink("Manage Permissions", "Permissions", new { roleKey = Model.RoleKey }, new { @class = "btn btn-primary", @type = "button" })
+                        </span>
+                    }
+                </div>
+            </div>
+        </div>
+                }
+    </fieldset>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        @if(!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <text>eleflexShowSuccessMessage("@(Model.SuccessMessage)");</text>
+        }
+    });
+</script>

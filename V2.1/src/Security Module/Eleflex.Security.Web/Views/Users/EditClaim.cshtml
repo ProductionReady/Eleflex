@@ -1,0 +1,67 @@
+﻿@model Eleflex.Security.Web.Security.Users.EditClaimViewModel
+@{
+    ViewBag.Title = "Edit Claim Assignment";
+}
+<h1>Claim Assignment</h1>
+<div class="container">
+    <fieldset>
+        <legend class="sr-only sr-only-focusable">Claim Form</legend>
+        @using (Html.BeginForm("EditClaim", "Users", FormMethod.Post, new { id = "AdminSecurityUsersEditClaimForm", @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.UserClaimKey)
+            @Html.HiddenFor(x => x.ClaimKey)
+            @Html.HiddenFor(x => x.UserKey)
+            @Html.ValidationSummary(true)
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Name, "Name:")<span class="required">*</span>
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.ClaimValue, "Value:")
+                        @Html.TextBoxFor(x => x.ClaimValue, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.ClaimValue)
+                    </div>
+                    <div id="CreateDateFromGroup" class="form-group date">
+                        @Html.LabelFor(x => x.StartDateLocalTime, "Effective Date Begin:")
+                        @Html.TextBoxFor(x => x.StartDateLocalTime, new { @class = "form-control eleflexdatetime" })
+                        @Html.ValidationMessageFor(x => x.StartDateLocalTime)
+                    </div>
+                    <div id="CreateDateToGroup" class="form-group date">
+                        @Html.LabelFor(x => x.EndDateLocalTime, "Effective Date End:")
+                        @Html.TextBoxFor(x => x.EndDateLocalTime, new { @class = "form-control eleflexdatetime" })
+                        @Html.ValidationMessageFor(x => x.EndDateLocalTime)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Inactive, "Status:")
+                        @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselectrequired", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+                        @Html.ValidationMessageFor(x => x.Inactive)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Comment, "Comment:")
+                        @Html.TextAreaFor(x => x.Comment, new { @class = "form-control", rows = "3" })
+                        @Html.ValidationMessageFor(x => x.Comment)
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary active" type="submit">Save</button>
+                        <button class="btn btn-default active" type="button" onclick="window.location.href('@Url.Action("Claims", "Users", new { userKey = Model.UserKey })')">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </fieldset>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        @if(!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <text>eleflexShowSuccessMessage("@(Model.SuccessMessage)");</text>
+        }
+        
+    });
+
+</script>

@@ -1,0 +1,99 @@
+﻿@model Eleflex.Security.Web.Security.Permissions.ListViewModel
+@{
+    ViewBag.Title = "System Permissions";
+}
+<h1>System Permissions</h1>
+<fieldset>
+    <legend class="sr-only sr-only-focusable">Search Permissions</legend>
+    @using (Html.BeginForm("List", "Permissions", FormMethod.Post, new { id = "AdminSecurityPermissionsListForm", @class = "form-inline" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(x => x.Name, "Name:")
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Name)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Description, "Description:")
+            @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Description)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Inactive, "Status:")
+            @Html.DropDownListFor(x => x.Inactive, Model.InactiveSelectItems, new { @class = "form-control eleflexselect", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+            @Html.ValidationMessageFor(x => x.Inactive)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.MaxRecords, "Max Records:")
+            @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.StorageConstants.MAX_RETURNED_RECORDS_DEFAULT })
+            @Html.ValidationMessageFor(x => x.MaxRecords)
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary active" type="submit">Search</button>
+            <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminSecurityPermissionsListForm');">Clear</button>            
+        </div>
+    }
+</fieldset>
+<hr />
+<table class="eleflexdatatable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Items != null)
+        {
+            for (int i = 0; i < Model.Items.Count; i++)
+            {
+                <tr>
+                    <td>@Model.Items[i].Name</td>
+                    <td>@if(Model.Items[i].Inactive){<text>Inactive</text>}else{<text>Active</text>}</td>
+                    <td>@Model.Items[i].Description</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+    function DeactivatePermission(permissionKey) {
+        var url = '@Url.Action("Deactivate", "Permissions")';
+
+        $.ajax({
+            url: url,
+            data: {
+                permissionKey: permissionKey,
+                __RequestVerificationToken: eleflexGetRequestVerificationToken(),
+            },
+            type: "POST",
+            dataType: "html",
+            success: function (result) {
+                var ajaxResult = eleflexHandleAjaxResult(result);
+            }
+        });
+    };
+
+    function ReactivatePermission(permissionKey) {
+        var url = '@Url.Action("Reactivate", "Permissions")';
+
+        $.ajax({
+            url: url,
+            data: {
+                permissionKey: permissionKey,
+                __RequestVerificationToken: eleflexGetRequestVerificationToken(),
+            },
+            type: "POST",
+            dataType: "html",
+            success: function (result) {
+                var ajaxResult = eleflexHandleAjaxResult(result);
+            }
+        });
+    };
+
+</script>

@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "System Security";
+}
+<style type="text/css">
+    .SecurityItem{font-size:1.7em;margin-top:3px;margin-bottom:3px;}
+</style>
+<h1>System Security</h1>
+<p>
+    Manage security for the application.
+</p>
+<div class="row">
+    <div class="col-md-3 SecurityItem">
+        <a href="@Url.Action("Index", "Users")" class="btn btn-primary btn-lg btn-block"><i class="fa fa-users"></i> Users</a>
+    </div>
+</div>
+<div class="row">    
+    <div class="col-md-3 SecurityItem">
+        <a href="@Url.Action("Index", "Roles")" class="btn btn-primary btn-lg btn-block"><i class="fa fa-sitemap"></i> Roles</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3 SecurityItem">
+        <a href="@Url.Action("Index", "Permissions")" class="btn btn-primary btn-lg btn-block"><i class="fa fa-ticket"></i> Permissions</a>
+    </div>
+</div>

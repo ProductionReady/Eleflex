@@ -1,0 +1,36 @@
+﻿<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="/Images/ProductionReady/EleflexIcon.png" style="display:inline-block;border:0;padding:0;margin:0;" title="Eleflex icon" />            
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="@Url.Action("Index","~~EleflexHome")">Home</a></li>
+                <li><a href="@Url.Action("About","~~EleflexHome")">About</a></li>
+                @if (!Request.IsAuthenticated)
+                {
+                <li><a href="@Url.Action("Login", "~~Account.Account")">Login</a></li>
+                } 
+                @if (Request.IsAuthenticated)
+                {
+                    <li><a href="@Url.Action("Index", "~~Account.Manage")">My Account</a></li>                 
+                    if (HttpContext.Current.User.IsInRole(Eleflex.Security.SecurityConstants.ROLE_ADMIN))
+                    {
+                        <li><a href="@Url.Action("Index", "~~Admin.Admin")">Admin</a></li>
+                    }
+
+                }
+                @if (Request.IsAuthenticated)
+                {
+                    <li><a href="@Url.Action("LogOff", "~~Account.Account")">Logout</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

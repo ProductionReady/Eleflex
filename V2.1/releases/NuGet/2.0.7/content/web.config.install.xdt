@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <connectionStrings xdt:Transform="InsertIfMissing">
+    <add name="EleflexDefault" connectionString="server=localhost;database=Eleflex;user id=test;password=test;" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" />
+  </connectionStrings>
+  <appSettings xdt:Transform="InsertIfMissing">
+    <add key="webpages:Version" value="3.0.0.0" xdt:Locator="Match(key)" xdt:Transform="SetAttributes(value)" />
+  </appSettings>
+  <system.serviceModel xdt:Transform="InsertIfMissing">
+    <behaviors xdt:Transform="InsertIfMissing">
+      <endpointBehaviors xdt:Transform="InsertIfMissing">
+        <behavior name="EleflexBehavior" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" >
+          <dataContractSerializer maxItemsInObjectGraph="2147483647" />
+        </behavior>
+      </endpointBehaviors>
+      <serviceBehaviors xdt:Transform="InsertIfMissing">
+        <behavior name="EleflexBehavior" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" >
+          <serviceMetadata httpGetEnabled="true" />
+          <serviceDebug includeExceptionDetailInFaults="true" />
+          <dataContractSerializer maxItemsInObjectGraph="2147483647" />
+          <serviceThrottling maxConcurrentCalls="500" maxConcurrentInstances="500" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <bindings xdt:Transform="InsertIfMissing">
+      <basicHttpBinding xdt:Transform="InsertIfMissing">
+        <binding name="EleflexBinding" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647" receiveTimeout="00:30:00" sendTimeout="00:30:00" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" >
+          <readerQuotas maxArrayLength="2147483647" maxBytesPerRead="2147483647" maxDepth="2147483647" maxNameTableCharCount="2147483647" maxStringContentLength="2147483647" />
+          <security mode="None" />
+        </binding>
+      </basicHttpBinding>
+    </bindings>
+    <client xdt:Transform="InsertIfMissing">
+      <endpoint address="http://localhost:16185/EleflexService.svc" name="EleflexDefault" behaviorConfiguration="EleflexBehavior" binding="basicHttpBinding" bindingConfiguration="EleflexBinding" contract="Eleflex.Services.IServiceCommandHandler" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing" />
+    </client>
+    <services xdt:Transform="InsertIfMissing">
+      <service name="Eleflex.Services.Server.ServiceCommandService" behaviorConfiguration="EleflexBehavior" xdt:Locator="Match(name)" xdt:Transform="InsertIfMissing">
+        <endpoint address="" behaviorConfiguration="EleflexBehavior" binding="basicHttpBinding" bindingConfiguration="EleflexBinding" contract="Eleflex.Services.IServiceCommandHandler" xdt:Locator="Match(contract)" xdt:Transform="InsertIfMissing" />
+      </service>
+    </services>
+    <serviceHostingEnvironment aspNetCompatibilityEnabled="true" multipleSiteBindingsEnabled="true" xdt:Transform="InsertIfMissing">
+    </serviceHostingEnvironment>
+  </system.serviceModel>
+</configuration>

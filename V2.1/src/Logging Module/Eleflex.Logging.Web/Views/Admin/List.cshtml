@@ -1,0 +1,124 @@
+﻿@model Eleflex.Logging.Web.Controllers.ListModel
+@{
+    ViewBag.Title = "System Log";
+}
+<h1>System Log</h1>
+@Html.ValidationSummary(true)
+<fieldset>
+    <legend class="sr-only sr-only-focusable">Search Logs</legend>
+@using (Html.BeginForm("List", "Admin", FormMethod.Post, new { id = "AdminLoggingListForm", @class = "form-inline" }))
+{    
+    @Html.AntiForgeryToken()
+    <div id="CreateDateFromGroup" class="form-group date">
+        @Html.LabelFor(x => x.DateFrom, "Date From:")
+        @Html.TextBoxFor(x => x.DateFrom, new { @class = "form-control eleflexdatetime" })
+        @Html.ValidationMessageFor(x => x.DateFrom)
+    </div>
+    <div id="CreateDateToGroup" class="form-group date">
+        @Html.LabelFor(x => x.DateTo, "Date To:")
+        @Html.TextBoxFor(x => x.DateTo, new { @class = "form-control eleflexdatetime" })
+        @Html.ValidationMessageFor(x => x.DateTo)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.IsError, "Error:")
+        @Html.DropDownListFor(x => x.IsError, Model.ErrorSelectItems, new { @class = "form-control eleflexselect", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+        @Html.ValidationMessageFor(x => x.IsError)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Severity, "Severity:")
+        @Html.ListBoxFor(x => x.Severity, Model.SeveritySelectItems, new { @class = "form-control eleflexselectmulti", data_placeholder = "Select Items...", multiple = "multiple", Style = "width: 150px;" })
+        @Html.ValidationMessageFor(x => x.Severity)
+    </div>    
+    <div class="form-group">
+        @Html.LabelFor(x => x.Source, "Source:")
+        @Html.TextBoxFor(x => x.Source, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Source)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Message, "Message:")
+        @Html.TextBoxFor(x => x.Message, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Message)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Exception, "Exception:")
+        @Html.TextBoxFor(x => x.Exception, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Exception)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.MaxRecords, "Max Records:")
+        @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.Storage.StorageConstants.MAX_RETURNED_RECORDS_DEFAULT })
+        @Html.ValidationMessageFor(x => x.MaxRecords)
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary active" type="submit">Search</button>
+        <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminLoggingListForm');">Clear</button>
+    </div>
+}
+</fieldset>
+<hr/>
+<table id="LogTable" class="datatable">
+    <thead>
+        <tr>
+            <th>Create Date</th>
+            <th>Server</th>
+            <th>Application</th>
+            <th>Error</th>
+            <th>Severity</th>
+            <th>Source</th>
+            <th>Message</th>            
+            <th>Exception</th>
+        </tr>
+    </thead>
+    <tbody>        
+        @if(Model.Items != null)
+        { 
+            for (int i = 0; i < Model.Items.Count; i++)
+            {
+        <tr>
+            <td>@Model.Items[i].CreateDate.DateTime.ToLocalTime()</td>
+            <td>@Model.Items[i].Server</td>
+            <td>@Model.Items[i].Application</td>
+            <td>@Model.Items[i].IsError</td>
+            <td>@Model.Items[i].Severity</td>
+            <td>
+            @{if(!string.IsNullOrEmpty(Model.Items[i].Source)){ //split up so message and exception get more space in list
+                    @(string.Join(". ", Model.Items[i].Source.Split('.')))
+                }}
+            </td>
+            <td>@Model.Items[i].Message</td>            
+            <td>
+                @if (!string.IsNullOrEmpty(@Model.Items[i].Exception))
+                {
+                    <button id="logpop@(i.ToString())" type="button" class="btn btn-danger" data-toggle="modal" data-target="#logpopmodal@(i.ToString())">View Exception</button>
+
+            <div class="modal fade " id="logpopmodal@(i.ToString())" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="width:800px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Exception Information</h4>
+                        </div>
+                        <div class="modal-body">
+                            @Model.Items[i].Exception
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                }
+</td>
+        </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {        
+        //Load table
+        $("#LogTable").DataTable({ "order": [[0, "desc"]] }); //sort by date desc by default
+
+});
+</script>

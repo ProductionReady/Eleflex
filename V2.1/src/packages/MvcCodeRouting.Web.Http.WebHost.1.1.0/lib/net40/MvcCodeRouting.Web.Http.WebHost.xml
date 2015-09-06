@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MvcCodeRouting.Web.Http.WebHost</name>
+    </assembly>
+    <members>
+        <member name="T:MvcCodeRouting.Web.Http.WebHost.PreApplicationStartCode">
+            <summary>
+            Executes the initialization code needed to use MvcCodeRouting with ASP.NET Web API on WebHost (System.Web).
+            </summary>
+        </member>
+        <member name="M:MvcCodeRouting.Web.Http.WebHost.PreApplicationStartCode.Start">
+            <summary>
+            Executes the initialization code.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,56 @@
+﻿@model Eleflex.Security.Web.Security.Users.RolesViewModel
+@{
+    ViewBag.Title = "Manage User Roles";
+}
+<h1>Manage User Roles</h1>
+<div class="container">
+    <div class="well">
+        @Html.ActionLink("Back to User", "Edit", new { userKey = Model.UserKey }, new { @class = "btn btn-sm btn-primary", @type = "button" })
+        <span> <label>Email:</label> @(Model.Email)</span> <span><label>Username:</label> @(Model.Username)</span>
+    </div>
+    <h2>Assigned Roles</h2>
+    @Html.ActionLink("Add New Role", "EditRole", new { userKey = Model.UserKey }, new { @class = "btn btn-primary", @type = "button" })
+    <table class="eleflexdatatable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Comment</th>
+                <th style="width:150px;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.UserRoles != null)
+            {
+                for (int i = 0; i < Model.UserRoles.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.UserRoles[i].RoleName</td>
+                        <td>@if(Model.UserRoles[i].Inactive){<text>Inactive</text>}else{<text>Active</text>}</td>
+                        <td>
+                            @if(@Model.UserRoles[i].StartDate.HasValue)
+                            { @Model.UserRoles[i].StartDate.Value.ToLocalTime().DateTime}
+                        </td>
+                        <td>
+                            @if (@Model.UserRoles[i].EndDate.HasValue)
+                            { @Model.UserRoles[i].EndDate.Value.ToLocalTime().DateTime}
+                        </td>
+                        <td>@Model.UserRoles[i].Comment</td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditRole", new { userKey = Model.UserKey, userRoleKey = Model.UserRoles[i].UserRoleKey }, new { @class = "btn btn-sm btn-primary", @type = "button" })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>

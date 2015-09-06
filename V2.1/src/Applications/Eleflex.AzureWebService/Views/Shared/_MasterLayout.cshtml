@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html id="html" lang="en">
+	<head>
+        <title>@ViewBag.Title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">                               
+	    @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")        
+        @Styles.Render("~/Content/DataTables-1.10.2/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/datatablejs")
+	</head>    
+	<body id="body">
+        <a class="sr-only sr-only-focusable" href="#LayoutBodyDiv">Skip to main content</a>
+        <div id="LayoutRootDiv" class="LayoutRoot">
+            <header id="LayoutHeaderTag" class="LayoutHeader">
+                @Html.Partial("_HeaderPartial")
+            </header>            
+            <div id="LayoutBodyDiv" class="LayoutBody">
+                @RenderBody()
+            </div>
+            <footer>
+                @Html.Partial("_FooterPartial")
+            </footer>
+        </div>
+	</body>
+</html>
