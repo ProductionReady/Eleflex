@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54AB3D4F-00F3-4DF5-9149-6504EF1D503E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eleflex</RootNamespace>
+    <AssemblyName>Eleflex</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessRules\BusinessRuleConstants.cs" />
+    <Compile Include="BusinessRules\BusinessRuleEvent.cs" />
+    <Compile Include="BusinessRules\BusinessRuleEventExtensions.cs" />
+    <Compile Include="BusinessRules\BusinessRuleExclusion.cs" />
+    <Compile Include="BusinessRules\BusinessRuleProcessAttribute.cs" />
+    <Compile Include="BusinessRules\BusinessRuleService.cs" />
+    <Compile Include="BusinessRules\BusinessRuleRegistrationTaskAttribute.cs" />
+    <Compile Include="BusinessRules\BusinessRuleRegistryService.cs" />
+    <Compile Include="BusinessRules\BusinessRuleRegistry.cs" />
+    <Compile Include="BusinessRules\BusinessRepository.cs" />
+    <Compile Include="BusinessRules\BusinessRuleSet.cs" />
+    <Compile Include="BusinessRules\BusinessRuleStartupTask.cs" />
+    <Compile Include="BusinessRules\IBusinessRuleEvent.cs" />
+    <Compile Include="BusinessRules\IBusinessRuleExclusion.cs" />
+    <Compile Include="BusinessRules\IBusinessRuleService.cs" />
+    <Compile Include="BusinessRules\IBusinessRuleRegistryService.cs" />
+    <Compile Include="BusinessRules\IBusinessRepository.cs" />
+    <Compile Include="BusinessRules\IBusinessRuleSet.cs" />
+    <Compile Include="Context\Context.cs" />
+    <Compile Include="Context\IContext.cs" />
+    <Compile Include="Context\IContextBuilder.cs" />
+    <Compile Include="Core\EleflexConstants.cs" />
+    <Compile Include="Logging\Eleflex_Logging_CodeGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Eleflex_Logging_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logging\ILogMessage.cs">
+      <DependentUpon>Eleflex_Logging_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logging\ILogMessageBusinessRepository.cs">
+      <DependentUpon>Eleflex_Logging_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logging\ILogMessageStorageRepository.cs">
+      <DependentUpon>Eleflex_Logging_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logging\LoggingConstantsCustom.cs" />
+    <Compile Include="Logging\LogMessage.cs">
+      <DependentUpon>Eleflex_Logging_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logging\LogMessageBusinessRepository.cs">
+      <DependentUpon>Eleflex_Logging_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logging\LogMessageCustom.cs" />
+    <Compile Include="Logging\MemoryLogService.cs" />
+    <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
+    <Compile Include="ObjectLocation\ActivatorObjectLocationService.cs" />
+    <Compile Include="Security\Eleflex_Security_CodeGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityClaim.cs" />
+    <Compile Include="Security\ISecurityCryptoKey.cs" />
+    <Compile Include="Security\ISecurityCryptoService.cs" />
+    <Compile Include="Security\ISecurityPermission.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityPermissionBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityPermissionStorageRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityRole.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityRolePermission.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityRolePermissionBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityRolePermissionStorageRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityRoleBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityRoleRole.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityRoleRoleBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityRoleRoleStorageRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityRoleStorageRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityStorageService.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserClaim.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserClaimBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserClaimRepository.cs" />
+    <Compile Include="Security\ISecurityUserClaimStorageRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserLogin.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserLoginBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserLoginRepository.cs" />
+    <Compile Include="Security\ISecurityUserLoginStorageRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserPermission.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserPermissionBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserPermissionStorageRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserRole.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserRoleBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserRoleStorageRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\ISecurityUserStorageRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityClaim.cs" />
+    <Compile Include="Security\SecurityConstants.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityConstantsCustom.cs" />
+    <Compile Include="Security\SecurityCryptoKey.cs" />
+    <Compile Include="Security\SecurityCryptoService.cs" />
+    <Compile Include="Security\SecurityPermission.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityPermissionBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityPermissionCustom.cs" />
+    <Compile Include="Security\SecurityRole.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityRoleCustom.cs" />
+    <Compile Include="Security\SecurityRolePermission.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityRoleBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityRolePermissionBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityRolePermissionCustom.cs" />
+    <Compile Include="Security\SecurityRoleRole.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityRoleRoleBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityUser.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityUserClaim.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityUserClaimBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityUserClaimCustom.cs" />
+    <Compile Include="Security\SecurityUserCustom.cs" />
+    <Compile Include="Security\SecurityUserLogin.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityUserLoginBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityUserPermission.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityUserPermissionBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityUserBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityUserRole.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityUserRoleBusinessRepository.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityUserRoleCustom.cs" />
+    <Compile Include="Services\IServiceRepository.cs" />
+    <Compile Include="Services\ServiceRepository.cs" />
+    <Compile Include="Services\ServicesConstants.cs" />
+    <Compile Include="Startup\IRegistrationTask.cs" />
+    <Compile Include="Exceptions\EleflexException.cs" />
+    <Compile Include="Exceptions\IEleflexException.cs" />
+    <Compile Include="Logging\ILoggingStorageService.cs">
+      <DependentUpon>Eleflex_Logging_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logging\ILogService.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\LoggingConstants.cs">
+      <DependentUpon>Eleflex_Logging_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mapping\MappingRegistrationTaskAttribute.cs" />
+    <Compile Include="Mapping\IMappingService.cs" />
+    <Compile Include="Mapping\MappingStartupTask.cs" />
+    <Compile Include="Messages\IValidationMessage.cs" />
+    <Compile Include="Messages\MessageConstants.cs" />
+    <Compile Include="Messages\ValidationMessage.cs" />
+    <Compile Include="Core\IItem.cs" />
+    <Compile Include="Core\IItems.cs" />
+    <Compile Include="Startup\IShutdownTask.cs" />
+    <Compile Include="Startup\ITaskOptions.cs" />
+    <Compile Include="Startup\RegistrationTask.cs" />
+    <Compile Include="Startup\StartupConstants.cs" />
+    <Compile Include="Startup\ShutdownTask.cs" />
+    <Compile Include="Startup\StartupTask.cs" />
+    <Compile Include="Startup\StartupTaskWithRegistration.cs" />
+    <Compile Include="Startup\TaskOptions.cs" />
+    <Compile Include="Storage\IPaging.cs" />
+    <Compile Include="RequestResponse\IRequest.cs" />
+    <Compile Include="RequestResponse\IRequestItem.cs" />
+    <Compile Include="RequestResponse\IRequestItems.cs" />
+    <Compile Include="RequestResponse\IResponse.cs" />
+    <Compile Include="RequestResponse\IResponseItem.cs" />
+    <Compile Include="RequestResponse\IResponseItems.cs" />
+    <Compile Include="RequestResponse\Request.cs" />
+    <Compile Include="RequestResponse\RequestItem.cs" />
+    <Compile Include="RequestResponse\RequestItems.cs" />
+    <Compile Include="RequestResponse\Response.cs" />
+    <Compile Include="RequestResponse\ResponseItem.cs" />
+    <Compile Include="RequestResponse\ResponseItems.cs" />
+    <Compile Include="Services\ISerializableData.cs" />
+    <Compile Include="Services\SerializableData.cs" />
+    <Compile Include="Mapping\IMappingRepository.cs" />
+    <Compile Include="Storage\IStorageExtensionData.cs" />
+    <Compile Include="Storage\IStorageQuery.cs" />
+    <Compile Include="Storage\IStorageQueryFilter.cs" />
+    <Compile Include="Storage\IStorageQueryResponse.cs" />
+    <Compile Include="Storage\IStorageQueryResponseItems.cs" />
+    <Compile Include="Storage\RepositoryDeleteEvent.cs" />
+    <Compile Include="Storage\RepositoryGetEvent.cs" />
+    <Compile Include="Storage\RepositoryInsertEvent.cs" />
+    <Compile Include="Mapping\MappingRepository.cs" />
+    <Compile Include="Storage\RepositoryQueryAggregateEvent.cs" />
+    <Compile Include="Storage\RepositoryQueryEvent.cs" />
+    <Compile Include="Storage\RepositoryUpdateEvent.cs" />
+    <Compile Include="Storage\StorageQuery.cs" />
+    <Compile Include="Storage\StorageQueryAggregateType.cs" />
+    <Compile Include="Storage\StorageQueryComparisonType.cs" />
+    <Compile Include="Storage\StorageQueryExpressionType.cs" />
+    <Compile Include="Storage\StorageQueryFilter.cs" />
+    <Compile Include="Storage\StorageQueryFilterType.cs" />
+    <Compile Include="Storage\StorageQueryInclusionType.cs" />
+    <Compile Include="Storage\StorageQueryResponseItems.cs" />
+    <Compile Include="Core\IRegistry.cs" />
+    <Compile Include="Core\IRegistryList.cs" />
+    <Compile Include="Core\IRegistryTwoKey.cs" />
+    <Compile Include="Core\Registry.cs" />
+    <Compile Include="Core\RegistryList.cs" />
+    <Compile Include="Core\RegistryTwoKey.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BusinessRules\BusinessRule.cs" />
+    <Compile Include="BusinessRules\IBusinessRule.cs" />
+    <Compile Include="Security\ISecurityAuthentication.cs" />
+    <Compile Include="Security\ISecurityAuthorization.cs" />
+    <Compile Include="Security\ISecurityCredential.cs" />
+    <Compile Include="Security\ISecurityResource.cs" />
+    <Compile Include="Security\ISecurityUser.cs">
+      <DependentUpon>Eleflex_Security_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SecurityResource.cs" />
+    <Compile Include="ObjectLocation\IObjectLocationService.cs" />
+    <Compile Include="ObjectLocation\ObjectLocationRegistrationTaskAttribute.cs" />
+    <Compile Include="ObjectLocation\ObjectLocator.cs" />
+    <Compile Include="Startup\IStartupTask.cs" />
+    <Compile Include="Startup\SystemStartupShutdown.cs" />
+    <Compile Include="Storage\IRepository.cs" />
+    <Compile Include="Storage\IStorageContextUnitOfWork.cs" />
+    <Compile Include="Storage\IStorageExtraData.cs" />
+    <Compile Include="Storage\IStorageService.cs" />
+    <Compile Include="Storage\IStorageServiceDatabase.cs" />
+    <Compile Include="Storage\IStorageServiceSession.cs" />
+    <Compile Include="Storage\IStorageServiceSessionManagement.cs" />
+    <Compile Include="Storage\IStorageQueryBuilder.cs" />
+    <Compile Include="Storage\IStorageRepository.cs" />
+    <Compile Include="Storage\IUnitOfWork.cs" />
+    <Compile Include="Storage\StorageConstants.cs" />
+    <Compile Include="Storage\StorageServiceDatabase.cs" />
+    <Compile Include="Storage\StorageServiceSession.cs" />
+    <Compile Include="Storage\StorageContextUnitOfWork.cs" />
+    <Compile Include="Storage\StorageQueryBuilder.cs" />
+    <Compile Include="Storage\StorageRepository.cs" />
+    <Compile Include="Versioning\Eleflex_Versioning_CodeGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Eleflex_Versioning_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Versioning\IModuleBusinessRepository.cs">
+      <DependentUpon>Eleflex_Versioning_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Versioning\IModulePatch.cs" />
+    <Compile Include="Versioning\IModuleStorageRepository.cs">
+      <DependentUpon>Eleflex_Versioning_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Versioning\IModuleCustom.cs" />
+    <Compile Include="Versioning\IModuleStorageRepositoryCustom.cs" />
+    <Compile Include="Versioning\ISystemPatchManager.cs" />
+    <Compile Include="Versioning\IVersion.cs" />
+    <Compile Include="Versioning\IVersioningStorageService.cs">
+      <DependentUpon>Eleflex_Versioning_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Versioning\ModuleBusinessRepository.cs">
+      <DependentUpon>Eleflex_Versioning_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Versioning\ModulePatch.cs" />
+    <Compile Include="Versioning\ModuleCustom.cs" />
+    <Compile Include="Versioning\SystemPatchManager.cs" />
+    <Compile Include="Versioning\PatchSystemSummary.cs" />
+    <Compile Include="Versioning\Version.cs" />
+    <Compile Include="Versioning\VersioningConstants.cs">
+      <DependentUpon>Eleflex_Versioning_CodeGenerator.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Copyright.txt" />
+    <Content Include="License.txt" />
+    <Content Include="Logging\Eleflex_Logging_CodeGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Eleflex_Logging_CodeGenerator.cs</LastGenOutput>
+    </Content>
+    <Content Include="Security\Eleflex_Security_CodeGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Eleflex_Security_CodeGenerator.cs</LastGenOutput>
+    </Content>
+    <Content Include="Versioning\Eleflex_Versioning_CodeGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Eleflex_Versioning_CodeGenerator.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8EA3AA47-C90E-4527-99C0-BC67595F9016}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eleflex.WebServer</RootNamespace>
+    <AssemblyName>Eleflex.WebServer</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.2.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\LINQKit.1.1.2\lib\net45\LinqKit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.server\Eleflex_Security_Services_WCF_Server_CodeGenerator.cs">
+      <Link>Eleflex.Logging.Services.WCF.Server\Eleflex_Security_Services_WCF_Server_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.server\LogMessageDelete.cs">
+      <Link>Eleflex.Logging.Services.WCF.Server\LogMessageDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.server\LogMessageGet.cs">
+      <Link>Eleflex.Logging.Services.WCF.Server\LogMessageGet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.server\LogMessageInsert.cs">
+      <Link>Eleflex.Logging.Services.WCF.Server\LogMessageInsert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.server\LogMessageQuery.cs">
+      <Link>Eleflex.Logging.Services.WCF.Server\LogMessageQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.server\LogMessageQueryAggregate.cs">
+      <Link>Eleflex.Logging.Services.WCF.Server\LogMessageQueryAggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.server\LogMessageUpdate.cs">
+      <Link>Eleflex.Logging.Services.WCF.Server\LogMessageUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef.automapper\Eleflex_Logging_Storage_EF_AutoMapper_CodeGenerator.cs">
+      <Link>Eleflex.Logging.Storage.EF.AutoMapper\Eleflex_Logging_Storage_EF_AutoMapper_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef.automapper\LogMessageAutoMapperRegistrationTask.cs">
+      <Link>Eleflex.Logging.Storage.EF.AutoMapper\LogMessageAutoMapperRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef.azure\LoggingAzureConstants.cs">
+      <Link>Eleflex.Logging.Storage.EF.Azure\LoggingAzureConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef.azure\Version_3_0_0_0.cs">
+      <Link>Eleflex.Logging.Storage.EF.Azure\Version_3_0_0_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef.sqlserver\LoggingSQLServerConstants.cs">
+      <Link>Eleflex.Logging.Storage.EF.SQLServer\LoggingSQLServerConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef.sqlserver\Version_3_0_0_0.cs">
+      <Link>Eleflex.Logging.Storage.EF.SQLServer\Version_3_0_0_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef\Eleflex_Logging_Storage_EF_CodeGenerator.cs">
+      <Link>Eleflex.Logging.Storage.EF\Eleflex_Logging_Storage_EF_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef\LoggingDB.Context.cs">
+      <Link>Eleflex.Logging.Storage.EF\LoggingDB.Context.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef\LoggingDB.cs">
+      <Link>Eleflex.Logging.Storage.EF\LoggingDB.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef\LoggingDB.designer.cs">
+      <Link>Eleflex.Logging.Storage.EF\LoggingDB.designer.cs</Link>
+      <DependentUpon>LoggingDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef\LoggingDB1.Designer.cs">
+      <Link>Eleflex.Logging.Storage.EF\LoggingDB1.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoggingDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef\LoggingDBCustom.cs">
+      <Link>Eleflex.Logging.Storage.EF\LoggingDBCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef\LogMessage.cs">
+      <Link>Eleflex.Logging.Storage.EF\LogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef\LogMessageStorageRepository.cs">
+      <Link>Eleflex.Logging.Storage.EF\LogMessageStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\Eleflex_Security_Services_WCF_Server_CodeGenerator.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\Eleflex_Security_Services_WCF_Server_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityPermissionDelete.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityPermissionDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityPermissionGet.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityPermissionGet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityPermissionInsert.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityPermissionInsert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityPermissionQuery.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityPermissionQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityPermissionQueryAggregate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityPermissionQueryAggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityPermissionUpdate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityPermissionUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleDelete.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleGet.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleGet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleInsert.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleInsert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRolePermissionDelete.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRolePermissionDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRolePermissionGet.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRolePermissionGet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRolePermissionInsert.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRolePermissionInsert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRolePermissionQuery.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRolePermissionQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRolePermissionQueryAggregate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRolePermissionQueryAggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRolePermissionUpdate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRolePermissionUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleQuery.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleQueryAggregate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleQueryAggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleRoleDelete.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleRoleDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleRoleGet.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleRoleGet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleRoleInsert.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleRoleInsert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleRoleQuery.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleRoleQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleRoleQueryAggregate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleRoleQueryAggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleRoleUpdate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleRoleUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityRoleUpdate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityRoleUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserClaimDelete.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserClaimDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserClaimGet.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserClaimGet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserClaimInsert.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserClaimInsert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserClaimQuery.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserClaimQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserClaimQueryAggregate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserClaimQueryAggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserClaimUpdate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserClaimUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserDelete.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserGet.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserGet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserInsert.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserInsert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserLoginDelete.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserLoginDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserLoginGet.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserLoginGet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserLoginInsert.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserLoginInsert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserLoginQuery.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserLoginQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserLoginQueryAggregate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserLoginQueryAggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserLoginUpdate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserLoginUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserPermissionDelete.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserPermissionDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserPermissionGet.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserPermissionGet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserPermissionInsert.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserPermissionInsert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserPermissionQuery.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserPermissionQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserPermissionQueryAggregate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserPermissionQueryAggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserPermissionUpdate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserPermissionUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserQuery.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserQueryAggregate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserQueryAggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserRoleDelete.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserRoleDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserRoleGet.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserRoleGet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserRoleInsert.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserRoleInsert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserRoleQuery.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserRoleQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserRoleQueryAggregate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserRoleQueryAggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserRoleUpdate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserRoleUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.server\SecurityUserUpdate.cs">
+      <Link>Eleflex.Security.Services.WCF.Server\SecurityUserUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.automapper\Eleflex_Security_Storage_EF_AutoMapper_CodeGenerator.cs">
+      <Link>Eleflex.Security.Storage.EF.AutoMapper\Eleflex_Security_Storage_EF_AutoMapper_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.automapper\SecurityPermissionAutoMapperRegistrationTask.cs">
+      <Link>Eleflex.Security.Storage.EF.AutoMapper\SecurityPermissionAutoMapperRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.automapper\SecurityRoleAutoMapperRegistrationTask.cs">
+      <Link>Eleflex.Security.Storage.EF.AutoMapper\SecurityRoleAutoMapperRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.automapper\SecurityRolePermissionAutoMapperRegistrationTask.cs">
+      <Link>Eleflex.Security.Storage.EF.AutoMapper\SecurityRolePermissionAutoMapperRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.automapper\SecurityRoleRoleAutoMapperRegistrationTask.cs">
+      <Link>Eleflex.Security.Storage.EF.AutoMapper\SecurityRoleRoleAutoMapperRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.automapper\SecurityUserAutoMapperRegistrationTask.cs">
+      <Link>Eleflex.Security.Storage.EF.AutoMapper\SecurityUserAutoMapperRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.automapper\SecurityUserClaimAutoMapperRegistrationTask.cs">
+      <Link>Eleflex.Security.Storage.EF.AutoMapper\SecurityUserClaimAutoMapperRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.automapper\SecurityUserLoginAutoMapperRegistrationTask.cs">
+      <Link>Eleflex.Security.Storage.EF.AutoMapper\SecurityUserLoginAutoMapperRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.automapper\SecurityUserPermissionAutoMapperRegistrationTask.cs">
+      <Link>Eleflex.Security.Storage.EF.AutoMapper\SecurityUserPermissionAutoMapperRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.automapper\SecurityUserRoleAutoMapperRegistrationTask.cs">
+      <Link>Eleflex.Security.Storage.EF.AutoMapper\SecurityUserRoleAutoMapperRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.azure\SecurityAzureConstants.cs">
+      <Link>Eleflex.Security.Storage.EF.Azure\SecurityAzureConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.azure\Version_3_0_0_0.cs">
+      <Link>Eleflex.Security.Storage.EF.Azure\Version_3_0_0_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.azure\Version_3_0_0_1.cs">
+      <Link>Eleflex.Security.Storage.EF.Azure\Version_3_0_0_1.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.sqlserver\SecuritySQLServerConstants.cs">
+      <Link>Eleflex.Security.Storage.EF.SQLServer\SecuritySQLServerConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.sqlserver\Version_3_0_0_0.cs">
+      <Link>Eleflex.Security.Storage.EF.SQLServer\Version_3_0_0_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef.sqlserver\Version_3_0_0_1.cs">
+      <Link>Eleflex.Security.Storage.EF.SQLServer\Version_3_0_0_1.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\Eleflex_Security_Storage_EF_CodeGenerator.cs">
+      <Link>Eleflex.Security.Storage.EF\Eleflex_Security_Storage_EF_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityDB.Context.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityDB.Context.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityDB.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityDB.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityDB.designer.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityDB.designer.cs</Link>
+      <DependentUpon>SecurityDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityDB1.Designer.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityDB1.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SecurityDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityDBCustom.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityDBCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityPermission.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityPermissionStorageRepository.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityPermissionStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityRole.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityRole.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityRolePermission.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityRolePermission.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityRolePermissionStorageRepository.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityRolePermissionStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityRoleRole.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityRoleRole.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityRoleRoleStorageRepository.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityRoleRoleStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityRoleStorageRepository.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityRoleStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityUser.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityUser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityUserClaim.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityUserClaim.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityUserClaimStorageRepository.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityUserClaimStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityUserLogin.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityUserLogin.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityUserLoginStorageRepository.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityUserLoginStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityUserPermission.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityUserPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityUserPermissionStorageRepository.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityUserPermissionStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityUserRole.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityUserRole.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityUserRoleStorageRepository.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityUserRoleStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityUserStorageRepository.cs">
+      <Link>Eleflex.Security.Storage.EF\SecurityUserStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\storage\eleflex.storage.ef\EntityMapStorageRepository.cs">
+      <Link>Eleflex.Storage.EF\EntityMapStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\storage\eleflex.storage.ef\EntityQueryBuilder.cs">
+      <Link>Eleflex.Storage.EF\EntityQueryBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\storage\eleflex.storage.ef\EntityStorageRepository.cs">
+      <Link>Eleflex.Storage.EF\EntityStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\storage\eleflex.storage.ef\EntityStorageService.cs">
+      <Link>Eleflex.Storage.EF\EntityStorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\storage\eleflex.storage.ef\EntityStorageSession.cs">
+      <Link>Eleflex.Storage.EF\EntityStorageSession.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\storage\eleflex.storage.ef\SqlStorageRepository.cs">
+      <Link>Eleflex.Storage.EF\SqlStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\storage\eleflex.storage.ef\SqlStorageService.cs">
+      <Link>Eleflex.Storage.EF\SqlStorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\storage\eleflex.storage.ef\SqlStorageSession.cs">
+      <Link>Eleflex.Storage.EF\SqlStorageSession.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.server\Eleflex_Versioning_Services_WCF_Server_CodeGenerator.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Server\Eleflex_Versioning_Services_WCF_Server_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.server\ModuleDelete.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Server\ModuleDelete.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.server\ModuleGet.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Server\ModuleGet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.server\ModuleInsert.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Server\ModuleInsert.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.server\ModuleQuery.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Server\ModuleQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.server\ModuleQueryAggregate.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Server\ModuleQueryAggregate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.server\ModuleUpdate.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Server\ModuleUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef.automapper\Eleflex_Versioning_Storage_EF_AutoMapper_CodeGenerator.cs">
+      <Link>Eleflex.Versioning.Storage.EF.AutoMapper\Eleflex_Versioning_Storage_EF_AutoMapper_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef.automapper\ModuleAutoMapperRegistrationTask.cs">
+      <Link>Eleflex.Versioning.Storage.EF.AutoMapper\ModuleAutoMapperRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef.automapper\ModuleAutoMapperRegistrationTaskCustom.cs">
+      <Link>Eleflex.Versioning.Storage.EF.AutoMapper\ModuleAutoMapperRegistrationTaskCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef.azure\VersioningAzureConstants.cs">
+      <Link>Eleflex.Versioning.Storage.EF.Azure\VersioningAzureConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef.azure\Version_3_0_0_0.cs">
+      <Link>Eleflex.Versioning.Storage.EF.Azure\Version_3_0_0_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef.sqlserver\VersioningSQLServerConstants.cs">
+      <Link>Eleflex.Versioning.Storage.EF.SQLServer\VersioningSQLServerConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef.sqlserver\Version_3_0_0_0.cs">
+      <Link>Eleflex.Versioning.Storage.EF.SQLServer\Version_3_0_0_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\Eleflex_Versioning_Storage_EF_CodeGenerator.cs">
+      <Link>Eleflex.Versioning.Storage.EF\Eleflex_Versioning_Storage_EF_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\Module.cs">
+      <Link>Eleflex.Versioning.Storage.EF\Module.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\ModuleStorageRepository.cs">
+      <Link>Eleflex.Versioning.Storage.EF\ModuleStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\ModuleStorageRepositoryCustom.cs">
+      <Link>Eleflex.Versioning.Storage.EF\ModuleStorageRepositoryCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\VersioningDB.Context.cs">
+      <Link>Eleflex.Versioning.Storage.EF\VersioningDB.Context.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\VersioningDB.cs">
+      <Link>Eleflex.Versioning.Storage.EF\VersioningDB.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\VersioningDB.designer.cs">
+      <Link>Eleflex.Versioning.Storage.EF\VersioningDB.designer.cs</Link>
+      <DependentUpon>VersioningDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\VersioningDB1.Designer.cs">
+      <Link>Eleflex.Versioning.Storage.EF\VersioningDB1.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VersioningDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\VersioningDBCustom.cs">
+      <Link>Eleflex.Versioning.Storage.EF\VersioningDBCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\VersioningStorageConstants.cs">
+      <Link>Eleflex.Versioning.Storage.EF\VersioningStorageConstants.cs</Link>
+    </Compile>
+    <Compile Include="Eleflex.Logging.Storage.EF\LoggingStorageServiceCustom.cs" />
+    <Compile Include="Eleflex.Security.Storage.EF\SecurityStorageServiceCustom.cs" />
+    <Compile Include="Eleflex.Versioning.Storage.EF\VersioningStorageServiceCustom.cs" />
+    <Compile Include="EleflexWebServerConstants.cs" />
+    <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef\LoggingDB.edmx">
+      <Link>Eleflex.Logging.Storage.EF\LoggingDB.edmx</Link>
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LoggingDB1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="..\..\..\..\modules\logging\eleflex.logging.storage.ef\LoggingDB.edmx.diagram">
+      <Link>Eleflex.Logging.Storage.EF\LoggingDB.edmx.diagram</Link>
+      <DependentUpon>LoggingDB.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityDB.edmx">
+      <Link>Eleflex.Security.Storage.EF\SecurityDB.edmx</Link>
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SecurityDB1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="..\..\..\..\modules\security\eleflex.security.storage.ef\SecurityDB.edmx.diagram">
+      <Link>Eleflex.Security.Storage.EF\SecurityDB.edmx.diagram</Link>
+      <DependentUpon>SecurityDB.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\VersioningDB.edmx">
+      <Link>Eleflex.Versioning.Storage.EF\VersioningDB.edmx</Link>
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VersioningDB1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="..\..\..\..\modules\versioning\eleflex.versioning.storage.ef\VersioningDB.edmx.diagram">
+      <Link>Eleflex.Versioning.Storage.EF\VersioningDB.edmx.diagram</Link>
+      <DependentUpon>VersioningDB.edmx</DependentUpon>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Eleflex.Messages\Eleflex.Messages\Eleflex.Messages.csproj">
+      <Project>{5a0163e4-05f0-443a-9090-556549aa6cbc}</Project>
+      <Name>Eleflex.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Eleflex.WebClient\Eleflex.WebClient\Eleflex.WebClient.csproj">
+      <Project>{7cc17ebf-2f9e-49a8-ba52-dcff650442e6}</Project>
+      <Name>Eleflex.WebClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Eleflex\Eleflex.Core\Eleflex.Core.csproj">
+      <Project>{4fe88fde-0f8d-4654-99a0-47bcb778b8e4}</Project>
+      <Name>Eleflex.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Copyright.txt" />
+    <Content Include="License.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

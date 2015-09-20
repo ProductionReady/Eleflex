@@ -1,0 +1,29 @@
+﻿@model Eleflex.IStorageQueryResponseItems<Eleflex.Module>
+@{
+    ViewBag.Title = "System Version Information";
+}
+<h1>System Version Information</h1>
+
+<table class="table">
+    <thead>
+        <tr>            
+            <th>Module</th>
+            <th>Version</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+@if(Model != null && Model.Items != null)
+{ 
+    for (int i = 0; i < Model.Items.Count; i++)
+    {
+        var versionNumber = Model.Items[i].Version.Major + "." + Model.Items[i].Version.Minor + "." + Model.Items[i].Version.Build + "." + Model.Items[i].Version.Revision;
+        <tr class="@((i+1)%2==0 ? "even" : "odd")">
+            <td>@Model.Items[i].Name</td>
+            <td>@versionNumber</td>
+            <td>@Model.Items[i].Description</td>
+        </tr>
+    }
+}
+    </tbody>
+</table>

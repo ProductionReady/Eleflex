@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "ELEFLEX HOME";
+}
+<div class="jumbotron jumbotron-ad">
+    <div class="container-fluid">
+        <h1>Welcome to ELEFLEX<sup>&reg;</sup></h1>
+        <p class="lead">
+            ELEFLEX<sup>&reg;</sup> is a platform for building modular, domain-driven, service-oriented web applications and services.
+            The platform utilizes several open source libraries in it's foundation to provide a common, integrated framework.
+            It's modular design enables teams of developers to create modules independently while easily integrating and publishing via NuGet to promote community collaboration.
+        </p>
+    </div>
+</div>
+<h2 class="homeh2">Common Services Infrastructure</h2>
+<p>
+    The ELEFLEX<sup>&reg;</sup> platform comes with several pre-loaded modules and services to help you create your next project quickly using the latest tools and open source projects.
+    <a href="https://github.com/ProductionReady/Eleflex">Download the complete source code online</a> to begin learning or to modify for your solution's needs.
+    The following modules are included with the default installation to help you begin building new applications quickly.
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <h3><i class="fa fa-database"></i> Storage</h3>
+        <p>The Storage Module provides the foundation for connecting to multiple data sources (databases, file systems, memory, etc) simultaneously with support for customizing new providers.</p>
+    </div>
+    <div class="col-md-6">
+        <h3><i class="fa fa-cubes"></i> Services</h3>
+        <p>The Services Module enables service communication for all integrated modules. A single WCF endpoint can exposes all domain service commands, messages, customization and integration with referenced ELEFLEX<sup>&reg;</sup> Modules.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h3><i class="fa fa-lock"></i> Security</h3>
+        <p>The Security Module provides a complex identity module that allows administration of users, roles, permissions and claims that can be customized with inheritance and effective date assignments for greater administration flexibility.</p>
+    </div>
+    <div class="col-md-6">
+        <h3><i class="fa fa-archive"></i> Logging</h3>
+        <p>The Logging Module stores system information messages about the execution of the website for auditing and debugging purposes for use with all referenced components.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h3><i class="fa fa-list-alt"></i> Lookups</h3>
+        <p>The Lookups Module exposes a generic lookup table provider for grouping metadata items into categories for use with all system modules and cross integration.</p>
+    </div>
+    <div class="col-md-6">
+        <h3><i class="fa fa-code-fork"></i> Versioning</h3>
+        <p>The Versioning Module provides developers creating modules a mechanism for auto-patching and upgrading exising ELEFLEX<sup>&reg;</sup> installations.</p>
+    </div>
+</div>
+<h2>Module Integration</h2>
+<p>
+    ELEFLEX<sup>&reg;</sup> Modules are intended to be packaged and deployed via <a href="http://NuGet.org">NuGet</a> to allow integration with existing installations easily.
+    Utilizing the platform's modular capabilities, developers can deploy service, storage, client, web components and perform other installation tasks with NuGet for the greatest customization and flexibility.
+    View our <a href="http://ProductionReady.com">Developer Documentation Online</a> to get started.
+</p>
+<h2>Storage Providers</h2>
+<p>
+    The platform provides generic interfaces that can be customized for your application needs. We have implemented Entity Framework as the default persistence layer and we support
+    Microsoft SQL Server (version 2005 or greater) and Microsoft Azure storage providers for all included modules. We plan to implement other persistence layers and storage providers to future releases
+    depending on customer demand.
+</p>
+<h2>Deployment Flexibility and Scalability</h2>
+<p>
+    You can deploy a complete application in one web application or you can partition your application and services across multiple servers while mixing and matching different service clients, persistence layers and storage providers on each.
+    Additionally, client applications can communicate with the deployed application service infrastructure completely using service-based interaction without the need for configuring and communicating directly with a managed, protected resource.
+</p>
+

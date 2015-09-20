@@ -1,0 +1,680 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4FE88FDE-0F8D-4654-99A0-47BCB778B8E4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eleflex.Core</RootNamespace>
+    <AssemblyName>Eleflex.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRepository.cs">
+      <Link>BusinessRules\BusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRule.cs">
+      <Link>BusinessRules\BusinessRule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleConstants.cs">
+      <Link>BusinessRules\BusinessRuleConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleEvent.cs">
+      <Link>BusinessRules\BusinessRuleEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleEventExtensions.cs">
+      <Link>BusinessRules\BusinessRuleEventExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleExclusion.cs">
+      <Link>BusinessRules\BusinessRuleExclusion.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleProcessAttribute.cs">
+      <Link>BusinessRules\BusinessRuleProcessAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleRegistrationTaskAttribute.cs">
+      <Link>BusinessRules\BusinessRuleRegistrationTaskAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleRegistry.cs">
+      <Link>BusinessRules\BusinessRuleRegistry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleRegistryService.cs">
+      <Link>BusinessRules\BusinessRuleRegistryService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleService.cs">
+      <Link>BusinessRules\BusinessRuleService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleSet.cs">
+      <Link>BusinessRules\BusinessRuleSet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleStartupTask.cs">
+      <Link>BusinessRules\BusinessRuleStartupTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\IBusinessRepository.cs">
+      <Link>BusinessRules\IBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\IBusinessRule.cs">
+      <Link>BusinessRules\IBusinessRule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\IBusinessRuleEvent.cs">
+      <Link>BusinessRules\IBusinessRuleEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\IBusinessRuleExclusion.cs">
+      <Link>BusinessRules\IBusinessRuleExclusion.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\IBusinessRuleRegistryService.cs">
+      <Link>BusinessRules\IBusinessRuleRegistryService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\IBusinessRuleService.cs">
+      <Link>BusinessRules\IBusinessRuleService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\IBusinessRuleSet.cs">
+      <Link>BusinessRules\IBusinessRuleSet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Context\Context.cs">
+      <Link>Context\Context.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Context\IContext.cs">
+      <Link>Context\IContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Context\IContextBuilder.cs">
+      <Link>Context\IContextBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Core\EleflexConstants.cs">
+      <Link>Core\EleflexConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Core\IItem.cs">
+      <Link>Core\IItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Core\IItems.cs">
+      <Link>Core\IItems.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Core\IRegistry.cs">
+      <Link>Core\IRegistry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Core\IRegistryList.cs">
+      <Link>Core\IRegistryList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Core\IRegistryTwoKey.cs">
+      <Link>Core\IRegistryTwoKey.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Core\Registry.cs">
+      <Link>Core\Registry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Core\RegistryList.cs">
+      <Link>Core\RegistryList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Core\RegistryTwoKey.cs">
+      <Link>Core\RegistryTwoKey.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Exceptions\EleflexException.cs">
+      <Link>Exceptions\EleflexException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Exceptions\IEleflexException.cs">
+      <Link>Exceptions\IEleflexException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\Eleflex_Logging_CodeGenerator.cs">
+      <Link>Logging\Eleflex_Logging_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\ILoggingStorageService.cs">
+      <Link>Logging\ILoggingStorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\ILogMessage.cs">
+      <Link>Logging\ILogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\ILogMessageBusinessRepository.cs">
+      <Link>Logging\ILogMessageBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\ILogMessageStorageRepository.cs">
+      <Link>Logging\ILogMessageStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\ILogService.cs">
+      <Link>Logging\ILogService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\Logger.cs">
+      <Link>Logging\Logger.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\LoggingConstants.cs">
+      <Link>Logging\LoggingConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\LoggingConstantsCustom.cs">
+      <Link>Logging\LoggingConstantsCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\LogMessage.cs">
+      <Link>Logging\LogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\LogMessageBusinessRepository.cs">
+      <Link>Logging\LogMessageBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\LogMessageCustom.cs">
+      <Link>Logging\LogMessageCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Logging\MemoryLogService.cs">
+      <Link>Logging\MemoryLogService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Mapping\IMappingRepository.cs">
+      <Link>Mapping\IMappingRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Mapping\IMappingService.cs">
+      <Link>Mapping\IMappingService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Mapping\MappingRegistrationTaskAttribute.cs">
+      <Link>Mapping\MappingRegistrationTaskAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Mapping\MappingRepository.cs">
+      <Link>Mapping\MappingRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Mapping\MappingStartupTask.cs">
+      <Link>Mapping\MappingStartupTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Messages\IValidationMessage.cs">
+      <Link>Messages\IValidationMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Messages\MessageConstants.cs">
+      <Link>Messages\MessageConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Messages\ValidationMessage.cs">
+      <Link>Messages\ValidationMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\ModulePatch\Version_3_0_0_0.cs">
+      <Link>ModulePatch\Version_3_0_0_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\ObjectLocation\ActivatorObjectLocationService.cs">
+      <Link>ObjectLocation\ActivatorObjectLocationService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\ObjectLocation\IObjectLocationService.cs">
+      <Link>ObjectLocation\IObjectLocationService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\ObjectLocation\ObjectLocationRegistrationTaskAttribute.cs">
+      <Link>ObjectLocation\ObjectLocationRegistrationTaskAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\ObjectLocation\ObjectLocator.cs">
+      <Link>ObjectLocation\ObjectLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\IRequest.cs">
+      <Link>RequestResponse\IRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\IRequestItem.cs">
+      <Link>RequestResponse\IRequestItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\IRequestItems.cs">
+      <Link>RequestResponse\IRequestItems.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\IResponse.cs">
+      <Link>RequestResponse\IResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\IResponseItem.cs">
+      <Link>RequestResponse\IResponseItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\IResponseItems.cs">
+      <Link>RequestResponse\IResponseItems.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\Request.cs">
+      <Link>RequestResponse\Request.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\RequestItem.cs">
+      <Link>RequestResponse\RequestItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\RequestItems.cs">
+      <Link>RequestResponse\RequestItems.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\Response.cs">
+      <Link>RequestResponse\Response.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\ResponseItem.cs">
+      <Link>RequestResponse\ResponseItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\RequestResponse\ResponseItems.cs">
+      <Link>RequestResponse\ResponseItems.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\Eleflex_Security_CodeGenerator.cs">
+      <Link>Security\Eleflex_Security_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityAuthentication.cs">
+      <Link>Security\ISecurityAuthentication.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityAuthorization.cs">
+      <Link>Security\ISecurityAuthorization.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityClaim.cs">
+      <Link>Security\ISecurityClaim.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityCredential.cs">
+      <Link>Security\ISecurityCredential.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityCryptoKey.cs">
+      <Link>Security\ISecurityCryptoKey.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityCryptoService.cs">
+      <Link>Security\ISecurityCryptoService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityPermission.cs">
+      <Link>Security\ISecurityPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityPermissionBusinessRepository.cs">
+      <Link>Security\ISecurityPermissionBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityPermissionStorageRepository.cs">
+      <Link>Security\ISecurityPermissionStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityResource.cs">
+      <Link>Security\ISecurityResource.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityRole.cs">
+      <Link>Security\ISecurityRole.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityRoleBusinessRepository.cs">
+      <Link>Security\ISecurityRoleBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityRolePermission.cs">
+      <Link>Security\ISecurityRolePermission.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityRolePermissionBusinessRepository.cs">
+      <Link>Security\ISecurityRolePermissionBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityRolePermissionStorageRepository.cs">
+      <Link>Security\ISecurityRolePermissionStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityRoleRole.cs">
+      <Link>Security\ISecurityRoleRole.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityRoleRoleBusinessRepository.cs">
+      <Link>Security\ISecurityRoleRoleBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityRoleRoleStorageRepository.cs">
+      <Link>Security\ISecurityRoleRoleStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityRoleStorageRepository.cs">
+      <Link>Security\ISecurityRoleStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityStorageService.cs">
+      <Link>Security\ISecurityStorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUser.cs">
+      <Link>Security\ISecurityUser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserBusinessRepository.cs">
+      <Link>Security\ISecurityUserBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserClaim.cs">
+      <Link>Security\ISecurityUserClaim.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserClaimBusinessRepository.cs">
+      <Link>Security\ISecurityUserClaimBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserClaimRepository.cs">
+      <Link>Security\ISecurityUserClaimRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserClaimStorageRepository.cs">
+      <Link>Security\ISecurityUserClaimStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserLogin.cs">
+      <Link>Security\ISecurityUserLogin.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserLoginBusinessRepository.cs">
+      <Link>Security\ISecurityUserLoginBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserLoginRepository.cs">
+      <Link>Security\ISecurityUserLoginRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserLoginStorageRepository.cs">
+      <Link>Security\ISecurityUserLoginStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserPermission.cs">
+      <Link>Security\ISecurityUserPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserPermissionBusinessRepository.cs">
+      <Link>Security\ISecurityUserPermissionBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserPermissionStorageRepository.cs">
+      <Link>Security\ISecurityUserPermissionStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserRole.cs">
+      <Link>Security\ISecurityUserRole.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserRoleBusinessRepository.cs">
+      <Link>Security\ISecurityUserRoleBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserRoleStorageRepository.cs">
+      <Link>Security\ISecurityUserRoleStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\ISecurityUserStorageRepository.cs">
+      <Link>Security\ISecurityUserStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityClaim.cs">
+      <Link>Security\SecurityClaim.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityConstants.cs">
+      <Link>Security\SecurityConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityConstantsCustom.cs">
+      <Link>Security\SecurityConstantsCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityCryptoKey.cs">
+      <Link>Security\SecurityCryptoKey.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityCryptoService.cs">
+      <Link>Security\SecurityCryptoService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityPermission.cs">
+      <Link>Security\SecurityPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityPermissionBusinessRepository.cs">
+      <Link>Security\SecurityPermissionBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityPermissionCustom.cs">
+      <Link>Security\SecurityPermissionCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityResource.cs">
+      <Link>Security\SecurityResource.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityRole.cs">
+      <Link>Security\SecurityRole.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityRoleBusinessRepository.cs">
+      <Link>Security\SecurityRoleBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityRoleCustom.cs">
+      <Link>Security\SecurityRoleCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityRolePermission.cs">
+      <Link>Security\SecurityRolePermission.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityRolePermissionBusinessRepository.cs">
+      <Link>Security\SecurityRolePermissionBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityRolePermissionCustom.cs">
+      <Link>Security\SecurityRolePermissionCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityRoleRole.cs">
+      <Link>Security\SecurityRoleRole.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityRoleRoleBusinessRepository.cs">
+      <Link>Security\SecurityRoleRoleBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUser.cs">
+      <Link>Security\SecurityUser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserBusinessRepository.cs">
+      <Link>Security\SecurityUserBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserClaim.cs">
+      <Link>Security\SecurityUserClaim.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserClaimBusinessRepository.cs">
+      <Link>Security\SecurityUserClaimBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserClaimCustom.cs">
+      <Link>Security\SecurityUserClaimCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserCustom.cs">
+      <Link>Security\SecurityUserCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserLogin.cs">
+      <Link>Security\SecurityUserLogin.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserLoginBusinessRepository.cs">
+      <Link>Security\SecurityUserLoginBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserPermission.cs">
+      <Link>Security\SecurityUserPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserPermissionBusinessRepository.cs">
+      <Link>Security\SecurityUserPermissionBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserRole.cs">
+      <Link>Security\SecurityUserRole.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserRoleBusinessRepository.cs">
+      <Link>Security\SecurityUserRoleBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Security\SecurityUserRoleCustom.cs">
+      <Link>Security\SecurityUserRoleCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Services\ISerializableData.cs">
+      <Link>Services\ISerializableData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Services\IServiceRepository.cs">
+      <Link>Services\IServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Services\SerializableData.cs">
+      <Link>Services\SerializableData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Services\ServiceRepository.cs">
+      <Link>Services\ServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Services\ServicesConstants.cs">
+      <Link>Services\ServicesConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\IRegistrationTask.cs">
+      <Link>Startup\IRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\IShutdownTask.cs">
+      <Link>Startup\IShutdownTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\IStartupTask.cs">
+      <Link>Startup\IStartupTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\ITaskOptions.cs">
+      <Link>Startup\ITaskOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\RegistrationTask.cs">
+      <Link>Startup\RegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\ShutdownTask.cs">
+      <Link>Startup\ShutdownTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\StartupConstants.cs">
+      <Link>Startup\StartupConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\StartupTask.cs">
+      <Link>Startup\StartupTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\StartupTaskWithRegistration.cs">
+      <Link>Startup\StartupTaskWithRegistration.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\SystemStartupShutdown.cs">
+      <Link>Startup\SystemStartupShutdown.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\TaskOptions.cs">
+      <Link>Startup\TaskOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IPaging.cs">
+      <Link>Storage\IPaging.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IRepository.cs">
+      <Link>Storage\IRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageContextUnitOfWork.cs">
+      <Link>Storage\IStorageContextUnitOfWork.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageExtensionData.cs">
+      <Link>Storage\IStorageExtensionData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageExtraData.cs">
+      <Link>Storage\IStorageExtraData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageQuery.cs">
+      <Link>Storage\IStorageQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageQueryBuilder.cs">
+      <Link>Storage\IStorageQueryBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageQueryFilter.cs">
+      <Link>Storage\IStorageQueryFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageQueryResponse.cs">
+      <Link>Storage\IStorageQueryResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageQueryResponseItems.cs">
+      <Link>Storage\IStorageQueryResponseItems.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageRepository.cs">
+      <Link>Storage\IStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageService.cs">
+      <Link>Storage\IStorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageServiceDatabase.cs">
+      <Link>Storage\IStorageServiceDatabase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageServiceSession.cs">
+      <Link>Storage\IStorageServiceSession.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IStorageServiceSessionManagement.cs">
+      <Link>Storage\IStorageServiceSessionManagement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\IUnitOfWork.cs">
+      <Link>Storage\IUnitOfWork.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\RepositoryDeleteEvent.cs">
+      <Link>Storage\RepositoryDeleteEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\RepositoryGetEvent.cs">
+      <Link>Storage\RepositoryGetEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\RepositoryInsertEvent.cs">
+      <Link>Storage\RepositoryInsertEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\RepositoryQueryAggregateEvent.cs">
+      <Link>Storage\RepositoryQueryAggregateEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\RepositoryQueryEvent.cs">
+      <Link>Storage\RepositoryQueryEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\RepositoryUpdateEvent.cs">
+      <Link>Storage\RepositoryUpdateEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageConstants.cs">
+      <Link>Storage\StorageConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageContextUnitOfWork.cs">
+      <Link>Storage\StorageContextUnitOfWork.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageQuery.cs">
+      <Link>Storage\StorageQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageQueryAggregateType.cs">
+      <Link>Storage\StorageQueryAggregateType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageQueryBuilder.cs">
+      <Link>Storage\StorageQueryBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageQueryComparisonType.cs">
+      <Link>Storage\StorageQueryComparisonType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageQueryExpressionType.cs">
+      <Link>Storage\StorageQueryExpressionType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageQueryFilter.cs">
+      <Link>Storage\StorageQueryFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageQueryFilterType.cs">
+      <Link>Storage\StorageQueryFilterType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageQueryInclusionType.cs">
+      <Link>Storage\StorageQueryInclusionType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageQueryResponseItems.cs">
+      <Link>Storage\StorageQueryResponseItems.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageRepository.cs">
+      <Link>Storage\StorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageServiceDatabase.cs">
+      <Link>Storage\StorageServiceDatabase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageServiceSession.cs">
+      <Link>Storage\StorageServiceSession.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\Eleflex_Versioning_CodeGenerator.cs">
+      <Link>Versioning\Eleflex_Versioning_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\IModuleBusinessRepository.cs">
+      <Link>Versioning\IModuleBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\IModuleCustom.cs">
+      <Link>Versioning\IModuleCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\IModulePatch.cs">
+      <Link>Versioning\IModulePatch.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\IModuleStorageRepository.cs">
+      <Link>Versioning\IModuleStorageRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\IModuleStorageRepositoryCustom.cs">
+      <Link>Versioning\IModuleStorageRepositoryCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\ISystemPatchManager.cs">
+      <Link>Versioning\ISystemPatchManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\IVersion.cs">
+      <Link>Versioning\IVersion.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\IVersioningStorageService.cs">
+      <Link>Versioning\IVersioningStorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\ModuleBusinessRepository.cs">
+      <Link>Versioning\ModuleBusinessRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\ModuleCustom.cs">
+      <Link>Versioning\ModuleCustom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\ModulePatch.cs">
+      <Link>Versioning\ModulePatch.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\PatchSystemSummary.cs">
+      <Link>Versioning\PatchSystemSummary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\SystemPatchManager.cs">
+      <Link>Versioning\SystemPatchManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\Version.cs">
+      <Link>Versioning\Version.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\VersioningConstants.cs">
+      <Link>Versioning\VersioningConstants.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Copyright.txt" />
+    <Content Include="License.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

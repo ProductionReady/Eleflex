@@ -1,0 +1,82 @@
+﻿@model Eleflex.Lookups.Web.Admin.Models.EditViewModel
+@{
+    ViewBag.Title = "Lookup Detail";
+}
+@section styles
+{
+    <style>
+        .viewsection{ padding-left:0px;margin-left:0px;}
+    </style>
+}
+<h1>User Detail</h1>
+<div class="container">
+    <fieldset>
+    <legend class="sr-only sr-only-focusable">Lookup Form</legend>
+    @using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { id = "LookupDetailsForm", @class = "form-horizontal" }))
+        {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="row">
+            <div class="col-md-6">
+                    <div class="form-group">
+                        <h2 class="viewsection">Basic Info</h2>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.LookupKey, "Lookup Key:")<span class="required">*</span>
+                        @Html.TextBoxFor(x => x.LookupKey, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.LookupKey)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.ParentLookupKey, "Parent Lookup Key:")
+                        @Html.TextBoxFor(x => x.ParentLookupKey, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.ParentLookupKey)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Name, "Name:")<span class="required">*</span>
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.SortOrder, "Sort Order:")
+                        @Html.TextBoxFor(x => x.SortOrder, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.SortOrder)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Active, "Status:")
+                        @Html.DropDownListFor(x => x.Active, Model.ActiveSelectItems, new { @class = "form-control eleflexselectrequired", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+                        @Html.ValidationMessageFor(x => x.Active)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Description, "Description:")
+                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", rows = "3" })
+                        @Html.ValidationMessageFor(x => x.Description)
+                    </div>
+                    <div class="form-group">
+                        <span>
+                            <button class="btn btn-primary active" type="submit">Save</button>
+                            <button class="btn btn-default active" type="button" onclick="window.location.href = '@Url.Action("List","Admin")'">Cancel</button>
+                        </span>
+                    </div>
+                </div>
+            <div class="col-md-4 col-md-offset-1">               
+            </div>                
+        </div>        
+        }
+    </fieldset>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        @if(!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <text>eleflexShowSuccessMessage("@(Model.SuccessMessage)");</text>
+        }
+
+    });
+
+
+</script>
+

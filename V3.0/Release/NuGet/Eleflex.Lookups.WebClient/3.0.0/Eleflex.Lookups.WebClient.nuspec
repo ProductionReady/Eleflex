@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.Lookups.WebClient</id>
+    <version>3.0.0</version>
+    <title>Generic Lookup Table ELEFLEX WebClient</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Lookups is a generic lookup table service to be used rather than creating multiple lookup tables in your own ELEFLEX Modules. This package is an ELEFLEX WebClient that allows service communication with an ELEFLEX WebServer and provides a web user interface for administration.</description>
+      <summary>Lookups is a generic lookup table service to be used rather than creating multiple lookup tables in your own ELEFLEX Modules. This package is an ELEFLEX WebClient that allows service communication with an ELEFLEX WebServer and provides a web user interface for administration.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at http://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex module lookup lookups webclient productionready</tags>
+    <dependencies>
+	<dependency id="Eleflex" version="3.0.0" />
+	<dependency id="Eleflex.Messages" version="3.0.0" />
+	<dependency id="Eleflex.WebClient" version="3.0.0" />
+	<dependency id="Eleflex.Lookups.Messages" version="3.0.0" />
+    </dependencies>
+  </metadata>
+</package>

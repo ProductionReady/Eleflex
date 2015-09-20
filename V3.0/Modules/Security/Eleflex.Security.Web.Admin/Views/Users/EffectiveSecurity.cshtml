@@ -1,0 +1,15 @@
+﻿@model Eleflex.Security.Web.Admin.Models.Users.EffectiveSecurityViewModel
+
+@if (Model.Roles != null && Model.Roles.Count > 0)
+{
+    <div class="row">
+        @for (int i = 0; i < Model.Roles.Count; i++)
+        {
+            <span class="col-md-3">@Model.Roles[i]</span>
+        }
+    </div>
+}
+else
+{
+    <p>No Security defined!</p>
+}

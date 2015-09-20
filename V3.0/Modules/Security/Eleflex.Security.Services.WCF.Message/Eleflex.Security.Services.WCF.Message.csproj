@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{331DAB3D-17C4-4977-9687-5281BFF4CD2F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eleflex.Security.Services.WCF.Message</RootNamespace>
+    <AssemblyName>Eleflex.Security.Services.WCF.Message</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Eleflex_Security_Services_WCF_Message_CodeGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISecurityPermissionServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISecurityRequestDispatcher.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISecurityRolePermissionServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISecurityRoleRoleServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISecurityRoleServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISecurityUserClaimServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISecurityUserLoginServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISecurityUserPermissionServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISecurityUserRoleServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISecurityUserServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecurityPermissionDeleteRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionDeleteResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionGetRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionGetResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionInsertRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionInsertResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionQueryAggregateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionQueryAggregateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionQueryReponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionQueryRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionServicesRegistrationTask.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionUpdateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityPermissionUpdateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRequestDispatcher.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleDeleteRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleDeleteResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleGetRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleGetResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleInsertRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleInsertResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionDeleteRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionDeleteResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionGetRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionGetResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionInsertRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionInsertResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionQueryAggregateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionQueryAggregateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionQueryReponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionQueryRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionServicesRegistrationTask.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionUpdateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRolePermissionUpdateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleQueryAggregateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleQueryAggregateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleQueryReponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleQueryRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleDeleteRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleDeleteResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleGetRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleGetResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleInsertRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleInsertResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleQueryAggregateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleQueryAggregateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleQueryReponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleQueryRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleServicesRegistrationTask.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleUpdateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleRoleUpdateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleServicesRegistrationTask.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleUpdateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityRoleUpdateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimDeleteRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimDeleteResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimGetRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimGetResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimInsertRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimInsertResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimQueryAggregateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimQueryAggregateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimQueryReponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimQueryRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimServicesRegistrationTask.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimUpdateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserClaimUpdateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserDeleteRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserDeleteResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserGetRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserGetResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserInsertRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserInsertResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginDeleteRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginDeleteResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginGetRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginGetResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginInsertRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginInsertResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginQueryAggregateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginQueryAggregateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginQueryReponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginQueryRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginServicesRegistrationTask.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginUpdateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserLoginUpdateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionDeleteRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionDeleteResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionGetRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionGetResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionInsertRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionInsertResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionQueryAggregateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionQueryAggregateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionQueryReponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionQueryRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionServicesRegistrationTask.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionUpdateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserPermissionUpdateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserQueryAggregateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserQueryAggregateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserQueryReponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserQueryRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleDeleteRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleDeleteResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleGetRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleGetResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleInsertRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleInsertResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleQueryAggregateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleQueryAggregateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleQueryReponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleQueryRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleServicesRegistrationTask.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleUpdateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserRoleUpdateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserServiceRepository.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserServicesRegistrationTask.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserUpdateRequest.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityUserUpdateResponse.cs">
+      <DependentUpon>Eleflex_Security_Services_WCF_Message_CodeGenerator.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Copyright.txt" />
+    <Content Include="Eleflex_Security_Services_WCF_Message_CodeGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Eleflex_Security_Services_WCF_Message_CodeGenerator.cs</LastGenOutput>
+    </Content>
+    <Content Include="License.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Eleflex\Eleflex.csproj">
+      <Project>{54ab3d4f-00f3-4df5-9149-6504ef1d503e}</Project>
+      <Name>Eleflex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Eleflex.Services.WCF\Eleflex.Services.WCF.csproj">
+      <Project>{01f16660-4068-412a-9112-2147e729b4e1}</Project>
+      <Name>Eleflex.Services.WCF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

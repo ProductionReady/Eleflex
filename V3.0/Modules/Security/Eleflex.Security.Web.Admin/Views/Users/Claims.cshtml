@@ -1,0 +1,58 @@
+﻿@model Eleflex.Security.Web.Admin.Models.Users.ClaimsViewModel
+@{
+    ViewBag.Title = "Manage User Claims";
+}
+<h1>Manage User Claims</h1>
+<div class="container">
+    <div class="well">
+        @Html.ActionLink("Back to User", "Edit", new { userKey = Model.SecurityUserKey }, new { @class = "btn btn-sm btn-primary", @type = "button" })
+        <span> <label>Email:</label> @(Model.Email)</span> <span><label>Username:</label> @(Model.Username)</span>
+    </div>
+    <h2>Assigned Claims</h2>
+    @Html.ActionLink("Add New Claim", "EditClaim", new { userKey = Model.SecurityUserKey }, new { @class = "btn btn-primary", @type = "button" })
+    <table class="eleflexdatatable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+                <th>Status</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Comment</th>
+                <th style="width:150px;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.UserClaims != null)
+            {
+                for (int i = 0; i < Model.UserClaims.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.UserClaims[i].ClaimType</td>
+                        <td>@Model.UserClaims[i].ClaimValue</td>
+                        <td>@if(Model.UserClaims[i].Active){<text>Active</text>}else{<text>Inactive</text>}</td>
+                        <td>
+                            @if(@Model.UserClaims[i].EffectiveStartDate.HasValue)
+                            { @Model.UserClaims[i].EffectiveStartDate.Value.ToLocalTime().DateTime}
+                        </td>
+                        <td>
+                            @if (@Model.UserClaims[i].EffectiveEndDate.HasValue)
+                            { @Model.UserClaims[i].EffectiveEndDate.Value.ToLocalTime().DateTime}
+                        </td>
+                        <td>@Model.UserClaims[i].Comment</td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditClaim", new { userKey = Model.SecurityUserKey, userClaimKey = Model.UserClaims[i].SecurityUserClaimKey }, new { @class = "btn btn-sm btn-primary", @type = "button" })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>

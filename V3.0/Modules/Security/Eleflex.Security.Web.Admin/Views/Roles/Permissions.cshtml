@@ -1,0 +1,56 @@
+﻿@model Eleflex.Security.Web.Admin.Models.Roles.PermissionsViewModel
+@{
+    ViewBag.Title = "Manage Role Permissions";
+}
+<h1>Manage Role Permissions</h1>
+<div class="container">
+    <div class="well">
+        @Html.ActionLink("Back to Role", "Edit", new { roleKey = Model.SecurityRoleKey }, new { @class = "btn btn-sm btn-primary", @type = "button" })
+        <span> <label>Name:</label> @(Model.Name)</span>
+    </div>
+    <h2>Assigned Permissions</h2>
+    @Html.ActionLink("Add New Permission", "EditPermission", new { roleKey = Model.SecurityRoleKey }, new { @class = "btn btn-primary", @type = "button" })
+    <table class="eleflexdatatable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Comment</th>
+                <th style="width:150px;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.SecurityRolePermissions != null)
+            {
+                for (int i = 0; i < Model.SecurityRolePermissions.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.SecurityRolePermissions[i].PermissionName</td>
+                        <td>@if(Model.SecurityRolePermissions[i].Active){<text>Active</text>}else{<text>Inactive</text>}</td>
+                        <td>
+                            @if(@Model.SecurityRolePermissions[i].EffectiveStartDate.HasValue)
+                            { @Model.SecurityRolePermissions[i].EffectiveStartDate.Value.ToLocalTime().DateTime}
+                        </td>
+                        <td>
+                            @if (@Model.SecurityRolePermissions[i].EffectiveEndDate.HasValue)
+                            { @Model.SecurityRolePermissions[i].EffectiveEndDate.Value.ToLocalTime().DateTime}
+                        </td>
+                        <td>@Model.SecurityRolePermissions[i].Comment</td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditPermission", new { roleKey = Model.SecurityRoleKey, rolePermissionKey = Model.SecurityRolePermissions[i].SecurityRolePermissionKey }, new { @class = "btn btn-sm btn-primary", @type = "button" })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>

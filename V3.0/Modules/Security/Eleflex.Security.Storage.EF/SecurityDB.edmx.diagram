@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7773ea23e4614eb7abb48dae7183cee1" Name="Diagram1">
+        <EntityTypeShape EntityType="SecurityModel.SecurityPermission" Width="1.5" PointX="3.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityModel.SecurityRole" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityModel.SecurityRolePermission" Width="1.5" PointX="9" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityModel.SecurityRoleRole" Width="1.5" PointX="6" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityModel.SecurityUser" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityModel.SecurityUserClaim" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityModel.SecurityUserLogin" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityModel.SecurityUserPermission" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityModel.SecurityUserRole" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="SecurityModel.FK_SecurityRolePermission_SecurityPermission" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityModel.FK_SecurityUserPermission_SecurityPermission" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityModel.FK_SecurityRolePermission_SecurityRole" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityModel.FK_SecurityRoleRole_SecurityRole" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityModel.FK_SecurityRoleRole_SecurityRole1" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityModel.FK_SecurityUserRole_SecurityRole" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityModel.FK_SecurityUserClaim_SecurityUser" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityModel.FK_SecurityUserLogin_SecurityUser" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityModel.FK_SecurityUserPermission_SecurityUser" ManuallyRouted="false" />
+        <AssociationConnector Association="SecurityModel.FK_SecurityUserRole_SecurityUser" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

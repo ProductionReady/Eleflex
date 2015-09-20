@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5A0163E4-05F0-443A-9090-556549AA6CBC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eleflex.Messages</RootNamespace>
+    <AssemblyName>Eleflex.Messages</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\Eleflex_Logging_Services_WCF_Message_CodeGenerator.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\Eleflex_Logging_Services_WCF_Message_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\ILoggingRequestDispatcher.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\ILoggingRequestDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\ILogMessageServiceRepository.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\ILogMessageServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LoggingRequestDispatcher.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LoggingRequestDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageDeleteRequest.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageDeleteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageDeleteResponse.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageDeleteResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageGetRequest.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageGetRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageGetResponse.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageGetResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageInsertRequest.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageInsertRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageInsertResponse.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageInsertResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageQueryAggregateRequest.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageQueryAggregateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageQueryAggregateResponse.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageQueryAggregateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageQueryReponse.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageQueryReponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageQueryRequest.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageServiceRepository.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageServicesRegistrationTask.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageUpdateRequest.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageUpdateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\logging\eleflex.logging.services.wcf.message\LogMessageUpdateResponse.cs">
+      <Link>Eleflex.Logging.Services.WCF.Message\LogMessageUpdateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\Eleflex_Security_Services_WCF_Message_CodeGenerator.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\Eleflex_Security_Services_WCF_Message_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\ISecurityPermissionServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\ISecurityPermissionServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\ISecurityRequestDispatcher.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\ISecurityRequestDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\ISecurityRolePermissionServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\ISecurityRolePermissionServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\ISecurityRoleRoleServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\ISecurityRoleRoleServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\ISecurityRoleServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\ISecurityRoleServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\ISecurityUserClaimServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\ISecurityUserClaimServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\ISecurityUserLoginServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\ISecurityUserLoginServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\ISecurityUserPermissionServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\ISecurityUserPermissionServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\ISecurityUserRoleServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\ISecurityUserRoleServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\ISecurityUserServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\ISecurityUserServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionDeleteRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionDeleteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionDeleteResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionDeleteResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionGetRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionGetRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionGetResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionGetResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionInsertRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionInsertRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionInsertResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionInsertResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionQueryAggregateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionQueryAggregateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionQueryAggregateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionQueryAggregateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionQueryReponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionQueryReponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionQueryRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionServicesRegistrationTask.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionUpdateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionUpdateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityPermissionUpdateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityPermissionUpdateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRequestDispatcher.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRequestDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleDeleteRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleDeleteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleDeleteResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleDeleteResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleGetRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleGetRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleGetResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleGetResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleInsertRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleInsertRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleInsertResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleInsertResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionDeleteRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionDeleteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionDeleteResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionDeleteResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionGetRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionGetRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionGetResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionGetResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionInsertRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionInsertRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionInsertResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionInsertResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionQueryAggregateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionQueryAggregateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionQueryAggregateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionQueryAggregateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionQueryReponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionQueryReponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionQueryRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionServicesRegistrationTask.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionUpdateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionUpdateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRolePermissionUpdateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRolePermissionUpdateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleQueryAggregateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleQueryAggregateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleQueryAggregateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleQueryAggregateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleQueryReponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleQueryReponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleQueryRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleDeleteRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleDeleteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleDeleteResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleDeleteResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleGetRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleGetRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleGetResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleGetResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleInsertRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleInsertRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleInsertResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleInsertResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleQueryAggregateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleQueryAggregateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleQueryAggregateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleQueryAggregateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleQueryReponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleQueryReponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleQueryRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleServicesRegistrationTask.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleUpdateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleUpdateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleRoleUpdateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleRoleUpdateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleServicesRegistrationTask.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleUpdateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleUpdateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityRoleUpdateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityRoleUpdateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimDeleteRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimDeleteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimDeleteResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimDeleteResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimGetRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimGetRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimGetResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimGetResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimInsertRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimInsertRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimInsertResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimInsertResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimQueryAggregateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimQueryAggregateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimQueryAggregateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimQueryAggregateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimQueryReponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimQueryReponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimQueryRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimServicesRegistrationTask.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimUpdateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimUpdateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserClaimUpdateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserClaimUpdateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserDeleteRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserDeleteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserDeleteResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserDeleteResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserGetRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserGetRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserGetResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserGetResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserInsertRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserInsertRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserInsertResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserInsertResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginDeleteRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginDeleteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginDeleteResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginDeleteResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginGetRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginGetRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginGetResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginGetResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginInsertRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginInsertRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginInsertResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginInsertResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginQueryAggregateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginQueryAggregateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginQueryAggregateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginQueryAggregateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginQueryReponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginQueryReponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginQueryRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginServicesRegistrationTask.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginUpdateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginUpdateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserLoginUpdateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserLoginUpdateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionDeleteRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionDeleteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionDeleteResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionDeleteResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionGetRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionGetRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionGetResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionGetResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionInsertRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionInsertRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionInsertResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionInsertResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionQueryAggregateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionQueryAggregateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionQueryAggregateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionQueryAggregateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionQueryReponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionQueryReponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionQueryRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionServicesRegistrationTask.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionUpdateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionUpdateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserPermissionUpdateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserPermissionUpdateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserQueryAggregateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserQueryAggregateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserQueryAggregateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserQueryAggregateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserQueryReponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserQueryReponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserQueryRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleDeleteRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleDeleteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleDeleteResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleDeleteResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleGetRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleGetRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleGetResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleGetResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleInsertRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleInsertRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleInsertResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleInsertResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleQueryAggregateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleQueryAggregateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleQueryAggregateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleQueryAggregateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleQueryReponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleQueryReponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleQueryRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleServicesRegistrationTask.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleUpdateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleUpdateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserRoleUpdateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserRoleUpdateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserServiceRepository.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserServicesRegistrationTask.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserUpdateRequest.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserUpdateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\security\eleflex.security.services.wcf.message\SecurityUserUpdateResponse.cs">
+      <Link>Eleflex.Security.Services.WCF.Message\SecurityUserUpdateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\IWCFCommand.cs">
+      <Link>Eleflex.Services.WCF\IWCFCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\IWCFCommandRegistryService.cs">
+      <Link>Eleflex.Services.WCF\IWCFCommandRegistryService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\IWCFCommandRequestDispatcher.cs">
+      <Link>Eleflex.Services.WCF\IWCFCommandRequestDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\WCFCommand.cs">
+      <Link>Eleflex.Services.WCF\WCFCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\WCFCommandRegistrationAttribute.cs">
+      <Link>Eleflex.Services.WCF\WCFCommandRegistrationAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\WCFCommandRegistry.cs">
+      <Link>Eleflex.Services.WCF\WCFCommandRegistry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\WCFCommandRegistryService.cs">
+      <Link>Eleflex.Services.WCF\WCFCommandRegistryService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\WCFCommandRequestDispatcher.cs">
+      <Link>Eleflex.Services.WCF\WCFCommandRequestDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\WCFCommandService.cs">
+      <Link>Eleflex.Services.WCF\WCFCommandService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\WCFConstants.cs">
+      <Link>Eleflex.Services.WCF\WCFConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\WCFServicesRegistrationTask.cs">
+      <Link>Eleflex.Services.WCF\WCFServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\WCFServicesRegistrationTaskAttribute.cs">
+      <Link>Eleflex.Services.WCF\WCFServicesRegistrationTaskAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\services\eleflex.services.wcf\WCFServicesStartupTask.cs">
+      <Link>Eleflex.Services.WCF\WCFServicesStartupTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\Eleflex_Versioning_Services_WCF_Message_CodeGenerator.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\Eleflex_Versioning_Services_WCF_Message_CodeGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\IModuleServiceRepository.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\IModuleServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\IVersioningRequestDispatcher.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\IVersioningRequestDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleDeleteRequest.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleDeleteRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleDeleteResponse.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleDeleteResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleGetRequest.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleGetRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleGetResponse.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleGetResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleInsertRequest.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleInsertRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleInsertResponse.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleInsertResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleQueryAggregateRequest.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleQueryAggregateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleQueryAggregateResponse.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleQueryAggregateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleQueryReponse.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleQueryReponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleQueryRequest.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleQueryRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleServiceRepository.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleServiceRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleServicesRegistrationTask.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleServicesRegistrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleUpdateRequest.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleUpdateRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\ModuleUpdateResponse.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\ModuleUpdateResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\modules\versioning\eleflex.versioning.services.wcf.message\VersioningRequestDispatcher.cs">
+      <Link>Eleflex.Versioning.Services.WCF.Message\VersioningRequestDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="EleflexMessagesConstants.cs" />
+    <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Eleflex\Eleflex.Core\Eleflex.Core.csproj">
+      <Project>{4fe88fde-0f8d-4654-99a0-47bcb778b8e4}</Project>
+      <Name>Eleflex.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

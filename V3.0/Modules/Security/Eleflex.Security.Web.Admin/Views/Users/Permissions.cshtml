@@ -1,0 +1,56 @@
+﻿@model Eleflex.Security.Web.Admin.Models.Users.PermissionsViewModel
+@{
+    ViewBag.Title = "Manage User Permissions";
+}
+<h1>Manage User Permissions</h1>
+<div class="container">
+    <div class="well">
+        @Html.ActionLink("Back to User", "Edit", new { userKey = Model.SecurityUserKey }, new { @class = "btn btn-sm btn-primary", @type = "button" })
+        <span> <label>Email:</label> @(Model.Email)</span> <span><label>Username:</label> @(Model.Username)</span>
+    </div>
+    <h2>Assigned Permissions</h2>
+    @Html.ActionLink("Add New Permission", "EditPermission", new { userKey = Model.SecurityUserKey }, new { @class = "btn btn-primary", @type = "button" })
+    <table class="eleflexdatatable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Comment</th>
+                <th style="width:150px;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.UserPermissions != null)
+            {
+                for (int i = 0; i < Model.UserPermissions.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.UserPermissions[i].PermissionName</td>
+                        <td>@if(Model.UserPermissions[i].Active){<text>Active</text>}else{<text>Inactive</text>}</td>
+                        <td>
+                            @if(@Model.UserPermissions[i].EffectiveStartDate.HasValue)
+                            { @Model.UserPermissions[i].EffectiveStartDate.Value.ToLocalTime().DateTime}
+                        </td>
+                        <td>
+                            @if (@Model.UserPermissions[i].EffectiveEndDate.HasValue)
+                            { @Model.UserPermissions[i].EffectiveEndDate.Value.ToLocalTime().DateTime}
+                        </td>
+                        <td>@Model.UserPermissions[i].Comment</td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditPermission", new { userKey = Model.SecurityUserKey, userPermissionKey = Model.UserPermissions[i].SecurityUserPermissionKey }, new { @class = "btn btn-sm btn-primary", @type = "button" })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>
