@@ -1,22 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Eleflex.Services.WCF
 {
     /// <summary>
     /// Represents a registry service that passthrough method calls to the WCFComanndRegistry.Current instance.
     /// </summary>
-    public partial class WCFCommandRegistryService : IWCFCommandRegistryService
+    public partial class WCFCommandRegistryService : Registry<Type, Type>, IWCFCommandRegistryService
     {
-
-        /// <summary>
-        /// Get the registry list.
-        /// </summary>
-        public virtual Dictionary<Type, Type> RegistryCache
-        {
-            get { return WCFCommandRegistry.Current.RegistryCache; }
-            set { WCFCommandRegistry.Current.RegistryCache = value; }
-        }
 
         /// <summary>
         /// Get a WCF command.
@@ -25,36 +17,21 @@ namespace Eleflex.Services.WCF
         /// <returns></returns>
         public virtual IWCFCommand GetCommand(Type requestType)
         {
-            return WCFCommandRegistry.Current.GetCommand(requestType);
-        }
+            if (requestType == null)
+                return null;
 
-        /// <summary>
-        /// Get an item.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public virtual Type GetRegistryItem(Type key)
-        {
-            return WCFCommandRegistry.Current.GetRegistryItem(key);
-        }
+            Type key = RegistryCache.Keys.Where(x => x.FullName == requestType.FullName).FirstOrDefault();
+            if (key == null)
+                return null;
 
-        /// <summary>
-        /// Register an item.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        public virtual void RegisterItem(Type key, Type value)
-        {
-            WCFCommandRegistry.Current.RegisterItem(key, value);
-        }
+            Type commandHandlerType = RegistryCache[key];
+            if (commandHandlerType == null)
+                return null;
 
-        /// <summary>
-        /// Unregister an item.
-        /// </summary>
-        /// <param name="key"></param>
-        public virtual void UnRegisterItem(Type key)
-        {
-            WCFCommandRegistry.Current.UnRegisterItem(key);
+            var handler = ObjectLocator.Current.GetInstance(commandHandlerType);
+            if (handler != null)
+                return handler as IWCFCommand;
+            return null;
         }
     }
 }

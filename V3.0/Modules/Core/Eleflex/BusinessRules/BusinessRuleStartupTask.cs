@@ -8,7 +8,7 @@ namespace Eleflex
     /// <summary>
     /// Startup task for business rules that additionally processes registration tasks.
     /// </summary>
-    public partial class BusinessRuleStartupTask : StartupTaskWithRegistration<BusinessRuleRegistrationTaskAttribute>
+    public partial class BusinessRuleStartupTask : StartupTask
     {
 
         /// <summary>
@@ -37,18 +37,32 @@ namespace Eleflex
 
             foreach (Assembly assembly in assemblies)
             {
-                //Find all IBusinessRule types
-                List<Type> rules = assembly.GetTypes().Where(x => businessRuleType.IsAssignableFrom(x) && x.IsClass && !x.IsAbstract).ToList();                
-                foreach (Type ruleType in rules)
+                try
                 {
-                    //Use attribute to denote the model object this rule applies to
-                    CustomAttributeData cad = ruleType.CustomAttributes.Where(x => x.AttributeType == businessRuleProcessType).FirstOrDefault();
-                    if (cad != null)
+                    //Find all IBusinessRule types
+                    //It must be done this way because of system restarts, mismatched types due to multiple app domains being loaded
+                    List<Type> rules = assembly.GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.GetInterfaces().Where(z => z.FullName == businessRuleType.FullName).Any()).ToList();
+                    foreach (Type ruleType in rules)
                     {
-                        loadedRules.Add(ruleType);
-                        BusinessRuleRegistry.Current.RegisterItem(cad.ConstructorArguments[0].Value as Type, ruleType);
+                        //Use attribute to denote the model object this rule applies to
+                        CustomAttributeData cad = ruleType.CustomAttributes.Where(x => x.AttributeType.FullName == businessRuleProcessType.FullName).FirstOrDefault();
+                        if (cad != null)
+                        {
+                            loadedRules.Add(ruleType);
+                            Type targetObject = cad.ConstructorArguments[0].Value as Type;
+                            if (BusinessRuleRegistry.Current.RegistryCache.ContainsKey(targetObject))
+                            {
+                                if(!BusinessRuleRegistry.Current.RegistryCache[targetObject].Where(x=> x.FullName == ruleType.FullName).Any())
+                                    BusinessRuleRegistry.Current.RegisterItem(targetObject, ruleType);
+                            }       
+                            else
+                            {
+                                BusinessRuleRegistry.Current.RegisterItem(targetObject, ruleType);
+                            }                                                     
+                        }
                     }
-                }
+                }//This may sometimes encounter ReflectionLoader errors for system references but these can be safely ignored
+                catch { }
             }
 
             //Log the list of rules loaded            

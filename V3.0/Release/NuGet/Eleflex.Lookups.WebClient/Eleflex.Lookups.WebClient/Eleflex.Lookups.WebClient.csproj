@@ -47,24 +47,13 @@
   <ItemGroup>
     <Compile Include="EleflexLookupsWebClientConstants.cs" />
     <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
+    <Compile Include="ModulePatch\Version_3_1_0_0.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages.csproj">
-      <Project>{f89c95f0-9be4-4a67-bb18-80817b842833}</Project>
-      <Name>Eleflex.Lookups.Messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Eleflex.Messages\Eleflex.Messages\Eleflex.Messages.csproj">
-      <Project>{5a0163e4-05f0-443a-9090-556549aa6cbc}</Project>
-      <Name>Eleflex.Messages</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Eleflex\Eleflex.Core\Eleflex.Core.csproj">
       <Project>{4fe88fde-0f8d-4654-99a0-47bcb778b8e4}</Project>
       <Name>Eleflex.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Eleflex.WebClient\Eleflex.WebClient\Eleflex.WebClient.csproj">
-      <Project>{7cc17ebf-2f9e-49a8-ba52-dcff650442e6}</Project>
-      <Name>Eleflex.WebClient</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

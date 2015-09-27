@@ -25,15 +25,21 @@ namespace WebClient.App_Start.Eleflex_Start
         /// <returns></returns>
         public override bool Stop(ITaskOptions taskOptions)
         {
-            //Shutdown logging
-            if (Common.Logging.LogManager.Adapter is IDisposable)
-                (Common.Logging.LogManager.Adapter as IDisposable).Dispose();
+            try
+            {
+                //Shutdown logging
+                if (Common.Logging.LogManager.Adapter is IDisposable)
+                    (Common.Logging.LogManager.Adapter as IDisposable).Dispose();
+                Logger.Current = null;
 
-            //Shutdown service locator
-            if (ObjectLocator.Container is IDisposable)
-                (ObjectLocator.Container as IDisposable).Dispose();
-
-            return true;
+                //Shutdown service locator
+                if (ObjectLocator.Container is IDisposable)
+                    (ObjectLocator.Container as IDisposable).Dispose();
+                ObjectLocator.Current = null;
+                return true;
+            }
+            catch { }
+            return false;
         }
     }
 }

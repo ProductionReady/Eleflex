@@ -208,7 +208,6 @@
     <Compile Include="Controllers\Admin\DeveloperTools\DeveloperToolsController.cs" />
     <Compile Include="Controllers\EleflexHomeController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -517,9 +516,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\EleflexHome\About.cshtml" />
     <Content Include="Views\EleflexHome\GPL.cshtml" />
@@ -529,6 +525,7 @@
     <Content Include="Views\Shared\_EleflexLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\DeveloperTools\Index.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -562,6 +559,14 @@
       <Project>{f89c95f0-9be4-4a67-bb18-80817b842833}</Project>
       <Name>Eleflex.Lookups.Messages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Lookups.Server\Eleflex.Lookups.Server\Eleflex.Lookups.Server.csproj">
+      <Project>{881bb211-30b6-468e-8fbf-0360807ff0b3}</Project>
+      <Name>Eleflex.Lookups.Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Lookups.WebClient\Eleflex.Lookups.WebClient\Eleflex.Lookups.WebClient.csproj">
+      <Project>{1d30e4a9-d311-4cde-a335-b78ea70e585c}</Project>
+      <Name>Eleflex.Lookups.WebClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Lookups.WebServer\Eleflex.Lookups.WebServer\Eleflex.Lookups.WebServer.csproj">
       <Project>{216301ac-778a-43f5-b239-28663743701e}</Project>
       <Name>Eleflex.Lookups.WebServer</Name>
@@ -569,6 +574,14 @@
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Messages\Eleflex.Messages\Eleflex.Messages.csproj">
       <Project>{5a0163e4-05f0-443a-9090-556549aa6cbc}</Project>
       <Name>Eleflex.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Server\Eleflex.Server\Eleflex.Server.csproj">
+      <Project>{63a99100-1ddd-42cc-8137-a0f01d1d93d6}</Project>
+      <Name>Eleflex.Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Storage.EntityFramework\Eleflex.Storage.EntityFramework\Eleflex.Storage.EntityFramework.csproj">
+      <Project>{c4abcf34-d028-4339-a71f-bfba7bba9fec}</Project>
+      <Name>Eleflex.Storage.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.WebClient\Eleflex.WebClient\Eleflex.WebClient.csproj">
       <Project>{7cc17ebf-2f9e-49a8-ba52-dcff650442e6}</Project>

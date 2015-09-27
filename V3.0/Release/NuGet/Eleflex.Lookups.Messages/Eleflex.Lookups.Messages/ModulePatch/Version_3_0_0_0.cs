@@ -13,7 +13,7 @@ namespace Eleflex.Lookups.Messages
         /// <summary>
         /// Information regarding the patch.
         /// </summary>
-        protected const string PATCH_INFO = "This patch installs Eleflex.Lookups.Messages component.";
+        protected const string PATCH_INFO = "This patch installs the Eleflex.Lookups.Messages component.";
 
         /// <summary>
         /// Constructor.

@@ -1,3 +1,4 @@
+using System.Linq;
 using Eleflex.Services.WCF;
 
 namespace Eleflex.Versioning.Services.WCF.Message
@@ -18,35 +19,35 @@ namespace Eleflex.Versioning.Services.WCF.Message
         }
 
         /// <summary>
-        /// Execute registration logic.
+        /// Execute the startup logic.
         /// </summary>
         /// <param name="taskOptions"></param>
         /// <returns></returns>
         public override bool Register(ITaskOptions taskOptions)
         {
-            if(!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleDeleteRequest)))
+            if(!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleDeleteRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(ModuleDeleteRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleDeleteResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleDeleteResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(ModuleDeleteResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleGetRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleGetRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(ModuleGetRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleGetResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleGetResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(ModuleGetResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleInsertRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleInsertRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(ModuleInsertRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleInsertResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleInsertResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(ModuleInsertResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleQueryAggregateRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleQueryAggregateRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(ModuleQueryAggregateRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleQueryAggregateResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleQueryAggregateResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(ModuleQueryAggregateResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleQueryRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleQueryRequest).FullName).Any())
 			    WCFCommandRegistry.Current.RegisterItem(typeof(ModuleQueryRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleQueryResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleQueryResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(ModuleQueryResponse), null);
-			if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleUpdateRequest)))
+			if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleUpdateRequest).FullName).Any())
 			    WCFCommandRegistry.Current.RegisterItem(typeof(ModuleUpdateRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(ModuleUpdateResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(ModuleUpdateResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(ModuleUpdateResponse), null);
 
             return base.Register(taskOptions);

@@ -27,26 +27,29 @@ namespace Eleflex.ObjectLocation.CSL.StructureMap
         /// <returns></returns>
         public override bool Start(ITaskOptions taskOptions)
         {
-            //Create a new container
-            IContainer container = new Container();
+            try
+            {
+                //Create a new container
+                IContainer container = new Container();
 
-            //Use default naming conventions for dynamic resolution
-            container.Configure(x =>
+                //Use default naming conventions for dynamic resolution
+                container.Configure(x =>
 
-                x.Scan(scan =>
-                {
-                    scan.AssembliesFromApplicationBaseDirectory();
-                    scan.WithDefaultConventions();
-                })
-            );
+                    x.Scan(scan =>
+                    {
+                        scan.AssembliesFromApplicationBaseDirectory();
+                        scan.WithDefaultConventions();
+                    })
+                );
 
-            //Can now use CommonServiceLocator in the rest of the application for IOC instance creation
-            ServiceLocator.SetLocatorProvider(() => new StructureMapServiceLocator(container));
+                //Can now use CommonServiceLocator in the rest of the application for IOC instance creation
+                ServiceLocator.SetLocatorProvider(() => new StructureMapServiceLocator(container));
 
-            //Set global container reference and setup CSL ObjectLocator instance
-            ObjectLocator.Container = container;
-            ObjectLocator.Current = new CommonServiceLocatorService();
-
+                //Set global container reference and setup CSL ObjectLocator instance
+                ObjectLocator.Container = container;
+                ObjectLocator.Current = new CommonServiceLocatorService();                
+            }
+            catch { }
             return base.Start(taskOptions);
         }
     }

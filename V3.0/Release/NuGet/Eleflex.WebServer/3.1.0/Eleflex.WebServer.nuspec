@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.WebServer</id>
+    <version>3.1.0</version>
+    <title>ELEFLEX WebServer</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>ELEFLEX is a platform for building modular, domain-driven, service-oriented web applications and services. This package is an ELEFLEX WebServer that allows processing business rules, service commands with data storage using Microsoft SQL Server or Azure. This is intended to be installed on an ASP.NET Web Application (Empty Template).</description>
+      <summary>ELEFLEX is a platform for building modular, domain-driven, service-oriented web applications and services. This package is an ELEFLEX WebServer that allows processing business rules, service commands with data storage using Microsoft SQL Server or Azure. This is intended to be installed on an ASP.NET Web Application (Empty Template).</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at http://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex webserver host WCF sqlserver azure productionready</tags>
+    <dependencies>
+	<dependency id="Eleflex" version="3.1.0" />
+	<dependency id="Eleflex.Messages" version="3.1.0" />
+	<dependency id="Eleflex.Storage.EntityFramework" version="3.1.0" />
+	<dependency id="Eleflex.Server" version="3.1.0" />
+	<dependency id="Eleflex.WebClient" version="3.1.0" />
+    </dependencies>
+  </metadata>
+</package>

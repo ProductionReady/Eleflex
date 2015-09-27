@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Eleflex.Services.WCF
 {
@@ -15,20 +16,36 @@ namespace Eleflex.Services.WCF
         /// <returns></returns>
         public virtual Response ExecuteServiceCommand(Request request)
         {
+            //Validate request
+            Response response = new Response();
             if (request == null)
-                return null;
+            {
+                response.AddMessage(true, MessageConstants.ERROR_SERVICES_CODE, "No command defined for request");
+                return response;
+            }
 
             //Find the service command handler by the request type
             IWCFCommand handler = WCFCommandRegistry.Current.GetCommand(request.GetType());
             if (handler != null)
-                return handler.ExecuteServiceCommand(request); //Process request
+            {
+                try//Added in case inheritors don't provide fault protection
+                { 
+                    return handler.ExecuteServiceCommand(request); //Process request
+                }
+                catch(Exception ex)
+                {
+                    Logger.Current.Error<WCFCommandService>("Error executing request " + request.GetType().ToString(), ex);
+                    response.AddMessage(true, MessageConstants.ERROR_SYSTEM_CODE, MessageConstants.ERROR_SYSTEM_TEXT);
+                    return response;
+                }
+            }
             else
             {
-                Logger.Current.Error<WCFCommandService>("No WCFCommand defined for: " + request != null ? request.GetType().ToString() : string.Empty);
-                Response resp = new Response();
-                resp.AddMessage(true, MessageConstants.ERROR_SERVICES_CODE, "No command defined for request");
-                return resp;
-            }
+                Logger.Current.Debug<WCFCommandService>("No WCFCommand defined for: " + request.GetType().ToString());                    
+            }            
+
+            response.AddMessage(true, MessageConstants.ERROR_SERVICES_CODE, "No command defined for request");
+            return response;
         }
     }
 }

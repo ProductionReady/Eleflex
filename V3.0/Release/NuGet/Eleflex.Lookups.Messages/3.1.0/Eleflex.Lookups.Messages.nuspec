@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.Lookups.Messages</id>
+    <version>3.1.0</version>
+    <title>Generic Lookup Table ELEFLEX Messages</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Lookups is a generic lookup table service to be used rather than creating multiple lookup tables in your own ELEFLEX Modules. This package is an Lookups Messages assembly that allows service communication.</description>
+      <summary>Lookups is a generic lookup table service to be used rather than creating multiple lookup tables in your own ELEFLEX Modules. This package is an Lookups Messages assembly that allows service communication.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at http://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex module lookup lookups messages productionready</tags>
+    <dependencies>
+	<dependency id="Eleflex" version="3.1.0" />
+	<dependency id="Eleflex.Messages" version="3.1.0" />
+    </dependencies>
+  </metadata>
+</package>

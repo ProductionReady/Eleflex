@@ -16,11 +16,11 @@ namespace Eleflex.Messages
         /// <summary>
         /// The module name.
         /// </summary>
-        public const string MODULE_NAME = "ELEFLEX Messages";
+        public const string MODULE_NAME = "Eleflex.Messages";
 
         /// <summary>
         /// The module description.
         /// </summary>
-        public const string MODULE_DESCRIPTION = "ELEFLEX Messages library used for service communication.";
+        public const string MODULE_DESCRIPTION = "ELEFLEX library providing service communication.";
     }
 }

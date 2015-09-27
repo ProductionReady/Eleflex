@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SecurityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="SecurityPermission">
+    <Key>
+      <PropertyRef Name="SecurityPermissionKey" />
+    </Key>
+    <Property Name="SecurityPermissionKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+    <Property Name="IsSystem" Type="bit" Nullable="false" />
+    <Property Name="ExtraData" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SecurityRole">
+    <Key>
+      <PropertyRef Name="SecurityRoleKey" />
+    </Key>
+    <Property Name="SecurityRoleKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+    <Property Name="IsSystem" Type="bit" Nullable="false" />
+    <Property Name="EffectiveStartDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="EffectiveEndDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="ExtraData" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SecurityRolePermission">
+    <Key>
+      <PropertyRef Name="SecurityRolePermissionKey" />
+    </Key>
+    <Property Name="SecurityRolePermissionKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SecurityRoleKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SecurityPermissionKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="EffectiveStartDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="EffectiveEndDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="IsSystem" Type="bit" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ExtraData" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SecurityRoleRole">
+    <Key>
+      <PropertyRef Name="SecurityRoleRoleKey" />
+    </Key>
+    <Property Name="SecurityRoleRoleKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentSecurityRoleKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ChildSecurityRoleKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="EffectiveStartDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="EffectiveEndDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="IsSystem" Type="bit" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ExtraData" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SecurityUser">
+    <Key>
+      <PropertyRef Name="SecurityUserKey" />
+    </Key>
+    <Property Name="SecurityUserKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Username" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="Password" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="PasswordLastChangeDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="SecurityStamp" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LoginFailedAttempts" Type="int" Nullable="false" />
+    <Property Name="EnableLockout" Type="bit" Nullable="false" />
+    <Property Name="LastLoginDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="LockoutReinstateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="EmailValid" Type="bit" Nullable="false" />
+    <Property Name="EmailValidCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneValid" Type="bit" Nullable="false" />
+    <Property Name="PhoneValidCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="TwoFactorAuth" Type="bit" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ExtraData" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SecurityUserClaim">
+    <Key>
+      <PropertyRef Name="SecurityUserClaimKey" />
+    </Key>
+    <Property Name="SecurityUserClaimKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SecurityUserKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="EffectiveStartDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="EffectiveEndDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ExtraData" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SecurityUserLogin">
+    <Key>
+      <PropertyRef Name="SecurityUserLoginKey" />
+    </Key>
+    <Property Name="SecurityUserLoginKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SecurityUserKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="250" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="250" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="EffectiveStartDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="EffectiveEndDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ExtraData" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SecurityUserPermission">
+    <Key>
+      <PropertyRef Name="SecurityUserPermissionKey" />
+    </Key>
+    <Property Name="SecurityUserPermissionKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SecurityUserKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SecurityPermissionKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="EffectiveStartDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="EffectiveEndDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ExtraData" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SecurityUserRole">
+    <Key>
+      <PropertyRef Name="SecurityUserRoleKey" />
+    </Key>
+    <Property Name="SecurityUserRoleKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SecurityUserKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SecurityRoleKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="EffectiveStartDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="EffectiveEndDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ExtraData" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_SecurityRolePermission_SecurityPermission">
+    <End Role="SecurityPermission" Type="Self.SecurityPermission" Multiplicity="1" />
+    <End Role="SecurityRolePermission" Type="Self.SecurityRolePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityPermission">
+        <PropertyRef Name="SecurityPermissionKey" />
+      </Principal>
+      <Dependent Role="SecurityRolePermission">
+        <PropertyRef Name="SecurityPermissionKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityRolePermission_SecurityRole">
+    <End Role="SecurityRole" Type="Self.SecurityRole" Multiplicity="1" />
+    <End Role="SecurityRolePermission" Type="Self.SecurityRolePermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityRole">
+        <PropertyRef Name="SecurityRoleKey" />
+      </Principal>
+      <Dependent Role="SecurityRolePermission">
+        <PropertyRef Name="SecurityRoleKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityRoleRole_SecurityRole">
+    <End Role="SecurityRole" Type="Self.SecurityRole" Multiplicity="1" />
+    <End Role="SecurityRoleRole" Type="Self.SecurityRoleRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityRole">
+        <PropertyRef Name="SecurityRoleKey" />
+      </Principal>
+      <Dependent Role="SecurityRoleRole">
+        <PropertyRef Name="ParentSecurityRoleKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityRoleRole_SecurityRole1">
+    <End Role="SecurityRole" Type="Self.SecurityRole" Multiplicity="1" />
+    <End Role="SecurityRoleRole" Type="Self.SecurityRoleRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityRole">
+        <PropertyRef Name="SecurityRoleKey" />
+      </Principal>
+      <Dependent Role="SecurityRoleRole">
+        <PropertyRef Name="ChildSecurityRoleKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityUserClaim_SecurityUser">
+    <End Role="SecurityUser" Type="Self.SecurityUser" Multiplicity="1" />
+    <End Role="SecurityUserClaim" Type="Self.SecurityUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityUser">
+        <PropertyRef Name="SecurityUserKey" />
+      </Principal>
+      <Dependent Role="SecurityUserClaim">
+        <PropertyRef Name="SecurityUserKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityUserLogin_SecurityUser">
+    <End Role="SecurityUser" Type="Self.SecurityUser" Multiplicity="1" />
+    <End Role="SecurityUserLogin" Type="Self.SecurityUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityUser">
+        <PropertyRef Name="SecurityUserKey" />
+      </Principal>
+      <Dependent Role="SecurityUserLogin">
+        <PropertyRef Name="SecurityUserKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityUserPermission_SecurityPermission">
+    <End Role="SecurityPermission" Type="Self.SecurityPermission" Multiplicity="1" />
+    <End Role="SecurityUserPermission" Type="Self.SecurityUserPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityPermission">
+        <PropertyRef Name="SecurityPermissionKey" />
+      </Principal>
+      <Dependent Role="SecurityUserPermission">
+        <PropertyRef Name="SecurityPermissionKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityUserPermission_SecurityUser">
+    <End Role="SecurityUser" Type="Self.SecurityUser" Multiplicity="1" />
+    <End Role="SecurityUserPermission" Type="Self.SecurityUserPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityUser">
+        <PropertyRef Name="SecurityUserKey" />
+      </Principal>
+      <Dependent Role="SecurityUserPermission">
+        <PropertyRef Name="SecurityUserKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityUserRole_SecurityRole">
+    <End Role="SecurityRole" Type="Self.SecurityRole" Multiplicity="1" />
+    <End Role="SecurityUserRole" Type="Self.SecurityUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityRole">
+        <PropertyRef Name="SecurityRoleKey" />
+      </Principal>
+      <Dependent Role="SecurityUserRole">
+        <PropertyRef Name="SecurityRoleKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityUserRole_SecurityUser">
+    <End Role="SecurityUser" Type="Self.SecurityUser" Multiplicity="1" />
+    <End Role="SecurityUserRole" Type="Self.SecurityUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityUser">
+        <PropertyRef Name="SecurityUserKey" />
+      </Principal>
+      <Dependent Role="SecurityUserRole">
+        <PropertyRef Name="SecurityUserKey" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SecurityModelStoreContainer">
+    <EntitySet Name="SecurityPermission" EntityType="Self.SecurityPermission" Schema="EleflexV3" store:Type="Tables" />
+    <EntitySet Name="SecurityRole" EntityType="Self.SecurityRole" Schema="EleflexV3" store:Type="Tables" />
+    <EntitySet Name="SecurityRolePermission" EntityType="Self.SecurityRolePermission" Schema="EleflexV3" store:Type="Tables" />
+    <EntitySet Name="SecurityRoleRole" EntityType="Self.SecurityRoleRole" Schema="EleflexV3" store:Type="Tables" />
+    <EntitySet Name="SecurityUser" EntityType="Self.SecurityUser" Schema="EleflexV3" store:Type="Tables" />
+    <EntitySet Name="SecurityUserClaim" EntityType="Self.SecurityUserClaim" Schema="EleflexV3" store:Type="Tables" />
+    <EntitySet Name="SecurityUserLogin" EntityType="Self.SecurityUserLogin" Schema="EleflexV3" store:Type="Tables" />
+    <EntitySet Name="SecurityUserPermission" EntityType="Self.SecurityUserPermission" Schema="EleflexV3" store:Type="Tables" />
+    <EntitySet Name="SecurityUserRole" EntityType="Self.SecurityUserRole" Schema="EleflexV3" store:Type="Tables" />
+    <AssociationSet Name="FK_SecurityRolePermission_SecurityPermission" Association="Self.FK_SecurityRolePermission_SecurityPermission">
+      <End Role="SecurityPermission" EntitySet="SecurityPermission" />
+      <End Role="SecurityRolePermission" EntitySet="SecurityRolePermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityRolePermission_SecurityRole" Association="Self.FK_SecurityRolePermission_SecurityRole">
+      <End Role="SecurityRole" EntitySet="SecurityRole" />
+      <End Role="SecurityRolePermission" EntitySet="SecurityRolePermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityRoleRole_SecurityRole" Association="Self.FK_SecurityRoleRole_SecurityRole">
+      <End Role="SecurityRole" EntitySet="SecurityRole" />
+      <End Role="SecurityRoleRole" EntitySet="SecurityRoleRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityRoleRole_SecurityRole1" Association="Self.FK_SecurityRoleRole_SecurityRole1">
+      <End Role="SecurityRole" EntitySet="SecurityRole" />
+      <End Role="SecurityRoleRole" EntitySet="SecurityRoleRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityUserClaim_SecurityUser" Association="Self.FK_SecurityUserClaim_SecurityUser">
+      <End Role="SecurityUser" EntitySet="SecurityUser" />
+      <End Role="SecurityUserClaim" EntitySet="SecurityUserClaim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityUserLogin_SecurityUser" Association="Self.FK_SecurityUserLogin_SecurityUser">
+      <End Role="SecurityUser" EntitySet="SecurityUser" />
+      <End Role="SecurityUserLogin" EntitySet="SecurityUserLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityUserPermission_SecurityPermission" Association="Self.FK_SecurityUserPermission_SecurityPermission">
+      <End Role="SecurityPermission" EntitySet="SecurityPermission" />
+      <End Role="SecurityUserPermission" EntitySet="SecurityUserPermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityUserPermission_SecurityUser" Association="Self.FK_SecurityUserPermission_SecurityUser">
+      <End Role="SecurityUser" EntitySet="SecurityUser" />
+      <End Role="SecurityUserPermission" EntitySet="SecurityUserPermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityUserRole_SecurityRole" Association="Self.FK_SecurityUserRole_SecurityRole">
+      <End Role="SecurityRole" EntitySet="SecurityRole" />
+      <End Role="SecurityUserRole" EntitySet="SecurityUserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityUserRole_SecurityUser" Association="Self.FK_SecurityUserRole_SecurityUser">
+      <End Role="SecurityUser" EntitySet="SecurityUser" />
+      <End Role="SecurityUserRole" EntitySet="SecurityUserRole" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -159,31 +159,31 @@
     <Compile Include="..\..\..\..\Modules\Logging\Eleflex.Logging.CommonLogging\CommonLoggingService.cs">
       <Link>Eleflex.Logging.CommonLogging\CommonLoggingService.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Modules\Mapping\Eleflex.Mapping.AutoMapper\AutoMapperMappingService.cs">
+    <Compile Include="..\..\..\..\modules\mapping\eleflex.mapping.automapper\AutoMapperMappingService.cs">
       <Link>Eleflex.Mapping.AutoMapper\AutoMapperMappingService.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Modules\Mapping\Eleflex.Mapping.AutoMapper\AutoMapperObjectLocationRegistration.cs">
+    <Compile Include="..\..\..\..\modules\mapping\eleflex.mapping.automapper\AutoMapperObjectLocationRegistration.cs">
       <Link>Eleflex.Mapping.AutoMapper\AutoMapperObjectLocationRegistration.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Modules\ObjectLocation\Eleflex.ObjectLocation.CSL.StructureMap.Web\DependencyResolverRegistrationTask.cs">
+    <Compile Include="..\..\..\..\modules\objectlocation\eleflex.objectlocation.csl.structuremap.web\DependencyResolverRegistrationTask.cs">
       <Link>Eleflex.ObjectLocation.CSL.StructureMap.Web\DependencyResolverRegistrationTask.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Modules\ObjectLocation\Eleflex.ObjectLocation.CSL.StructureMap.Web\ModelStateDictionaryExtensions.cs">
+    <Compile Include="..\..\..\..\modules\objectlocation\eleflex.objectlocation.csl.structuremap.web\ModelStateDictionaryExtensions.cs">
       <Link>Eleflex.ObjectLocation.CSL.StructureMap.Web\ModelStateDictionaryExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Modules\ObjectLocation\Eleflex.ObjectLocation.CSL.StructureMap.Web\StructureMapDependencyResolver.cs">
+    <Compile Include="..\..\..\..\modules\objectlocation\eleflex.objectlocation.csl.structuremap.web\StructureMapDependencyResolver.cs">
       <Link>Eleflex.ObjectLocation.CSL.StructureMap.Web\StructureMapDependencyResolver.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Modules\ObjectLocation\Eleflex.ObjectLocation.CSL.StructureMap.Web\UnitOfWorkRegistrationTask.cs">
+    <Compile Include="..\..\..\..\modules\objectlocation\eleflex.objectlocation.csl.structuremap.web\UnitOfWorkRegistrationTask.cs">
       <Link>Eleflex.ObjectLocation.CSL.StructureMap.Web\UnitOfWorkRegistrationTask.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Modules\ObjectLocation\Eleflex.ObjectLocation.CSL.StructureMap\BusinessRuleObjectLocationRegistrationTask.cs">
+    <Compile Include="..\..\..\..\modules\objectlocation\eleflex.objectlocation.csl.structuremap\BusinessRuleObjectLocationRegistrationTask.cs">
       <Link>Eleflex.ObjectLocation.CSL.StructureMap\BusinessRuleObjectLocationRegistrationTask.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Modules\ObjectLocation\Eleflex.ObjectLocation.CSL.StructureMap\ObjectLocationStartupTask.cs">
+    <Compile Include="..\..\..\..\modules\objectlocation\eleflex.objectlocation.csl.structuremap\ObjectLocationStartupTask.cs">
       <Link>Eleflex.ObjectLocation.CSL.StructureMap\ObjectLocationStartupTask.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Modules\ObjectLocation\Eleflex.ObjectLocation.CSL\CommonServiceLocatorService.cs">
+    <Compile Include="..\..\..\..\modules\objectlocation\eleflex.objectlocation.csl\CommonServiceLocatorService.cs">
       <Link>Eleflex.ObjectLocation.CSL\CommonServiceLocatorService.cs</Link>
     </Compile>
     <Compile Include="..\..\..\..\Modules\Security\Eleflex.Security.ASPNetIdentity.AutoMapper\AutoMapperRegistrationTask.cs">
@@ -304,6 +304,7 @@
       <Link>Eleflex.Web\ModelStateDictionaryExtensions.cs</Link>
     </Compile>
     <Compile Include="EleflexWebClientConstants.cs" />
+    <Compile Include="ModulePatch\Version_3_1_0_0.cs" />
     <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

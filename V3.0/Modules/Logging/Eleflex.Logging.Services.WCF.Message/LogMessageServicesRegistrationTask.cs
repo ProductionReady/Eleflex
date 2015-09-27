@@ -1,3 +1,4 @@
+using System.Linq;
 using Eleflex.Services.WCF;
 
 namespace Eleflex.Logging.Services.WCF.Message
@@ -18,35 +19,35 @@ namespace Eleflex.Logging.Services.WCF.Message
         }
 
         /// <summary>
-        /// Execute registration logic.
+        /// Execute the startup logic.
         /// </summary>
         /// <param name="taskOptions"></param>
         /// <returns></returns>
         public override bool Register(ITaskOptions taskOptions)
-        {
-            if(!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageDeleteRequest)))
+        {		
+            if(!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageDeleteRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageDeleteRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageDeleteResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageDeleteResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageDeleteResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageGetRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageGetRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageGetRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageGetResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageGetResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageGetResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageInsertRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageInsertRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageInsertRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageInsertResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageInsertResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageInsertResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageQueryAggregateRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageQueryAggregateRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageQueryAggregateRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageQueryAggregateResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageQueryAggregateResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageQueryAggregateResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageQueryRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageQueryRequest).FullName).Any())
 			    WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageQueryRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageQueryResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageQueryResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageQueryResponse), null);
-			if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageUpdateRequest)))
+			if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageUpdateRequest).FullName).Any())
 			    WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageUpdateRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(LogMessageUpdateResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(LogMessageUpdateResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(LogMessageUpdateResponse), null);
 
             return base.Register(taskOptions);

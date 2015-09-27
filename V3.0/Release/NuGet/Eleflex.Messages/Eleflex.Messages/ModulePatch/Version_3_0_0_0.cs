@@ -13,7 +13,7 @@ namespace Eleflex.Messages
         /// <summary>
         /// Information regarding the patch.
         /// </summary>
-        protected const string PATCH_INFO = "This patch installs Eleflex.Messages component.";
+        protected const string PATCH_INFO = "This patch installs the Eleflex.Messages component.";
 
         /// <summary>
         /// Constructor.

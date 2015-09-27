@@ -198,7 +198,6 @@
     <Compile Include="Controllers\Admin\DeveloperTools\DeveloperToolsController.cs" />
     <Compile Include="Controllers\EleflexHomeController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -506,9 +505,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\EleflexHome\About.cshtml" />
     <Content Include="Views\EleflexHome\GPL.cshtml" />
@@ -518,6 +514,7 @@
     <Content Include="Views\Shared\_EleflexLayout.cshtml" />
     <Content Include="Views\Admin\DeveloperTools\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -550,6 +547,10 @@
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages.csproj">
       <Project>{f89c95f0-9be4-4a67-bb18-80817b842833}</Project>
       <Name>Eleflex.Lookups.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Lookups.WebClient\Eleflex.Lookups.WebClient\Eleflex.Lookups.WebClient.csproj">
+      <Project>{1d30e4a9-d311-4cde-a335-b78ea70e585c}</Project>
+      <Name>Eleflex.Lookups.WebClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Messages\Eleflex.Messages\Eleflex.Messages.csproj">
       <Project>{5a0163e4-05f0-443a-9090-556549aa6cbc}</Project>

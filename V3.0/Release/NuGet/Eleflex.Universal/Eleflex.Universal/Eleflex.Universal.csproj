@@ -68,9 +68,6 @@
     <Compile Include="..\..\..\..\modules\core\eleflex\businessrules\BusinessRuleProcessAttribute.cs">
       <Link>BusinessRules\BusinessRuleProcessAttribute.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\modules\core\eleflex\businessrules\BusinessRuleRegistrationTaskAttribute.cs">
-      <Link>BusinessRules\BusinessRuleRegistrationTaskAttribute.cs</Link>
-    </Compile>
     <Compile Include="..\..\..\..\modules\core\eleflex\businessrules\BusinessRuleRegistry.cs">
       <Link>BusinessRules\BusinessRuleRegistry.cs</Link>
     </Compile>

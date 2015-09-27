@@ -17,5 +17,13 @@ namespace WebServer.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Error. Default page handling application errors.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Error()
+        {
+            return View();
+        }
     }
 }

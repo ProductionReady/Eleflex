@@ -20,9 +20,10 @@ namespace Eleflex
             {
                 return Activator.CreateInstance(type);
             }
-            catch(Exception ex)
+            catch//(Exception ex)
             {
-                Logger.Current.Error<ActivatorObjectLocationService>(ex);
+                //Don't fill up log with errors
+                //Logger.Current.Error<ActivatorObjectLocationService>(ex);
                 return null;
             }
         }
@@ -39,9 +40,10 @@ namespace Eleflex
                 var obj = Activator.CreateInstance(typeof(TServiceType));
                 return (TServiceType)obj;
             }
-            catch(Exception ex)
+            catch//(Exception ex)
             {
-                Logger.Current.Error<ActivatorObjectLocationService>(ex);
+                //Don't fill up log with errors
+                //Logger.Current.Error<ActivatorObjectLocationService>(ex);
                 return default(TServiceType);
             }
         }

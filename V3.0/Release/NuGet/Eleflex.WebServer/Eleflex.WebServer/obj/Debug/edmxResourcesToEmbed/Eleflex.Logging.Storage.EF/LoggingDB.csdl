@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LoggingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LogMessage">
+    <Key>
+      <PropertyRef Name="LogMessageKey" />
+    </Key>
+    <Property Name="LogMessageKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="Application" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Server" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsError" Type="Boolean" Nullable="false" />
+    <Property Name="Severity" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Exception" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="LoggingDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LogMessages" EntityType="Self.LogMessage" />
+  </EntityContainer>
+</Schema>

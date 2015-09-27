@@ -16,11 +16,11 @@ namespace Eleflex.Lookups.Messages
         /// <summary>
         /// The module name.
         /// </summary>
-        public const string MODULE_NAME = "ELEFLEX Lookups Messages";
+        public const string MODULE_NAME = "Eleflex.Lookups.Messages";
 
         /// <summary>
         /// The module description.
         /// </summary>
-        public const string MODULE_DESCRIPTION = "ELEFLEX Lookups Messages library used for service communication.";
+        public const string MODULE_DESCRIPTION = "ELEFLEX library providing service communication for Lookups.";
     }
 }

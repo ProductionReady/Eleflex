@@ -24,8 +24,15 @@ namespace Eleflex
         {
             PatchSystemSummary summary = new PatchSystemSummary();
             List<Assembly> assemblies = AppDomain.CurrentDomain.GetAssemblies().Distinct().ToList();
+
             foreach (Assembly assembly in assemblies)
-                LoadSummaryAssembly(assembly, summary);
+            {
+                try
+                {
+                    LoadSummaryAssembly(assembly, summary);
+                }//This may sometimes encounter ReflectionLoader errors for system references but these can be safely ignored
+                catch { }
+            }
             summary.InstalledModules = GetInstalledModules();
             return summary;
         }
@@ -399,7 +406,9 @@ namespace Eleflex
         {
             List<IModulePatch> list = new List<IModulePatch>();
             Type patchType = typeof(IModulePatch);
-            List<Type> types = assembly.GetTypes().Where(x => x.IsClass && !x.IsAbstract && patchType.IsAssignableFrom(x)).ToList();
+
+            //It must be done this way because of system restarts, mismatched types due to multiple app domains being loaded
+            List<Type> types = assembly.GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.GetInterfaces().Where(z => z.FullName == patchType.FullName).Any()).ToList();
             if (types == null || types.Count == 0)
                 return null;
             

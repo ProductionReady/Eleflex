@@ -26,33 +26,42 @@ namespace Eleflex.Services.WCF
         /// <param name="taskOptions"></param>
         /// <returns></returns>
         public override bool Start(ITaskOptions taskOptions)
-        {            
+        {
             //Get assemblies
             List<Assembly> assemblies = AppDomain.CurrentDomain.GetAssemblies().Distinct().ToList();
 
+            //Set command registry (needs to be reset for each run)
+            WCFCommandRegistry.Current = new WCFCommandRegistryService();
+
             //Load all WCFCommands to the registry
             Type wcfCommandHandlerType = typeof(IWCFCommand);
-            Type wcfCommandHandlerRegistrationType = typeof(WCFCommandRegistrationAttribute);                        
+            Type wcfCommandHandlerRegistrationType = typeof(WCFCommandRegistrationAttribute);
 
             foreach (Assembly assembly in assemblies)
             {
-                //Find all IWCFCommand types
-                List<Type> commands = assembly.GetTypes().Where(x => wcfCommandHandlerType.IsAssignableFrom(x) && x.IsClass && !x.IsAbstract).ToList();
-                foreach (Type command in commands)
+                try
                 {
-                    //Use attribute to denote this command is exposed by the service
-                    CustomAttributeData cad = command.CustomAttributes.Where(x => x.AttributeType == wcfCommandHandlerRegistrationType).FirstOrDefault();
-                    if (cad != null)
+                    //Find all IWCFCommand types
+                    //It must be done this way because of system restarts, mismatched types due to multiple app domains being loaded
+                    List<Type> commands = assembly.GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.GetInterfaces().Where(z => z.FullName == wcfCommandHandlerType.FullName).Any()).ToList();
+                    foreach (Type command in commands)
                     {
-                        WCFCommandRegistry.Current.RegisterItem(cad.ConstructorArguments[0].Value as Type, command);
-                        WCFCommandRegistry.Current.RegisterItem(cad.ConstructorArguments[1].Value as Type, null);
+                        //Use attribute to denote this command is exposed by the service
+                        CustomAttributeData cad = command.CustomAttributes.Where(x => x.AttributeType.FullName == wcfCommandHandlerRegistrationType.FullName).FirstOrDefault();
+                        if (cad != null)
+                        {
+                            WCFCommandRegistry.Current.RegisterItem(cad.ConstructorArguments[0].Value as Type, command);
+                            WCFCommandRegistry.Current.RegisterItem(cad.ConstructorArguments[1].Value as Type, null);
+                        }
                     }
-                }
+                }//This may sometimes encounter ReflectionLoader errors for system references but these can be safely ignored
+                catch { }
             }
 
             //Log the list of commands loaded
             Logger.Current.Debug<WCFServicesStartupTask>("[WCF COMMANDS LOADED] " + string.Join(" [,] ", WCFCommandRegistry.Current.RegistryCache.Keys.ToList().Select(x => x.FullName).ToList()));
             return base.Start(taskOptions);
         }
+
     }
 }

@@ -13,7 +13,7 @@ namespace Eleflex.Lookups.WebClient
         /// <summary>
         /// Information regarding the patch.
         /// </summary>
-        protected const string PATCH_INFO = "This patch installs Eleflex.Lookups.WebClient component.";
+        protected const string PATCH_INFO = "This patch installs the Eleflex.Lookups.WebClient component.";
 
         /// <summary>
         /// Constructor.

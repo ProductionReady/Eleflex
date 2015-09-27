@@ -13,7 +13,7 @@ namespace Eleflex
         /// <summary>
         /// Information regarding the patch.
         /// </summary>
-        protected const string PATCH_INFO = "This patch installs the core system library.";
+        protected const string PATCH_INFO = "This patch installs the Eleflex component.";
 
         /// <summary>
         /// Constructor.

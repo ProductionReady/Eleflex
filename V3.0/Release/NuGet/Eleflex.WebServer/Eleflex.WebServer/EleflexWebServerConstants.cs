@@ -16,11 +16,11 @@ namespace Eleflex.WebServer
         /// <summary>
         /// The module name.
         /// </summary>
-        public const string MODULE_NAME = "ELEFLEX WebServer";
+        public const string MODULE_NAME = "Eleflex.WebServer";
 
         /// <summary>
         /// The module description.
         /// </summary>
-        public const string MODULE_DESCRIPTION = "ELEFLEX WebServer library used for hosting a web server application.";
+        public const string MODULE_DESCRIPTION = "ELEFLEX library providing web server hosting.";
     }
 }

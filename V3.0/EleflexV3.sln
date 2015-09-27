@@ -133,14 +133,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Core", "Release\NuG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.WebClient", "Release\NuGet\Eleflex.WebClient\Eleflex.WebClient\Eleflex.WebClient.csproj", "{7CC17EBF-2F9E-49A8-BA52-DCFF650442E6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.WebServer", "Eleflex.WebServer", "{27AD031E-05E1-45D9-919E-8D8D47F459AB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Lookups.WebServer", "Eleflex.Lookups.WebServer", "{BDF88D20-0238-4AD5-B570-BDBA676368C5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Lookups.WebServer", "Release\NuGet\Eleflex.Lookups.WebServer\Eleflex.Lookups.WebServer\Eleflex.Lookups.WebServer.csproj", "{216301AC-778A-43F5-B239-28663743701E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.WebServer", "Release\NuGet\Eleflex.WebServer\Eleflex.WebServer\Eleflex.WebServer.csproj", "{8EA3AA47-C90E-4527-99C0-BC67595F9016}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UniversalClient", "UniversalClient", "{339EDA31-97ED-4BF3-8945-2E7D033E2BAC}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UniversalClient.Shared", "Applications\Standard\UniversalClient\UniversalClient.Shared\UniversalClient.Shared.shproj", "{99466F28-17F6-495E-AFB1-8B7291A6A323}"
@@ -157,13 +149,37 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Messages", "Eleflex
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Lookups.Messages", "Eleflex.Lookups.Messages", "{70C063CA-5D59-4D70-9889-3E35D068FFE4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Lookups.WebClient", "Eleflex.Lookups.WebClient", "{009B3A8B-D0F3-472E-B43C-4A96AD2DE6EC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Lookups.WebClient", "Release\NuGet\Eleflex.Lookups.WebClient\Eleflex.Lookups.WebClient\Eleflex.Lookups.WebClient.csproj", "{1D30E4A9-D311-4CDE-A335-B78EA70E585C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Lookups.Messages", "Release\NuGet\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages.csproj", "{F89C95F0-9BE4-4A67-BB18-80817B842833}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Messages", "Release\NuGet\Eleflex.Messages\Eleflex.Messages\Eleflex.Messages.csproj", "{5A0163E4-05F0-443A-9090-556549AA6CBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Storage.EntityFramework", "Eleflex.Storage.EntityFramework", "{B1C256D8-96BE-491E-9C8C-2C3933150827}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Storage.EntityFramework", "Release\NuGet\Eleflex.Storage.EntityFramework\Eleflex.Storage.EntityFramework\Eleflex.Storage.EntityFramework.csproj", "{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Server", "Eleflex.Server", "{A5883121-3598-4E49-8DD4-754B494872E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Server", "Release\NuGet\Eleflex.Server\Eleflex.Server\Eleflex.Server.csproj", "{63A99100-1DDD-42CC-8137-A0F01D1D93D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Lookups.Server", "Eleflex.Lookups.Server", "{7BA410A4-3E90-4208-B1D4-E73D4AE06969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Lookups.Server", "Release\NuGet\Eleflex.Lookups.Server\Eleflex.Lookups.Server\Eleflex.Lookups.Server.csproj", "{881BB211-30B6-468E-8FBF-0360807FF0B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.WebServer", "Eleflex.WebServer", "{F07F678C-6B84-4F77-8D17-0E6A0ADB5E8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.WebServer", "Release\NuGet\Eleflex.WebServer\Eleflex.WebServer\Eleflex.WebServer.csproj", "{8EA3AA47-C90E-4527-99C0-BC67595F9016}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Lookups.WebServer", "Eleflex.Lookups.WebServer", "{96707B70-D8D0-43E6-9B06-A67F61DFFB5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Lookups.WebServer", "Release\NuGet\Eleflex.Lookups.WebServer\Eleflex.Lookups.WebServer\Eleflex.Lookups.WebServer.csproj", "{216301AC-778A-43F5-B239-28663743701E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Lookups.WebClient", "Eleflex.Lookups.WebClient", "{EE285D10-8CE3-4864-87B6-AFF9D22B921F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Lookups.WebClient", "Release\NuGet\Eleflex.Lookups.WebClient\Eleflex.Lookups.WebClient\Eleflex.Lookups.WebClient.csproj", "{1D30E4A9-D311-4CDE-A335-B78EA70E585C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{4991ACF4-FFB2-4E3E-829F-76B5C4FAE739}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EleflexNuGetRelease", "Applications\Tools\EleflexNuGetRelease\EleflexNuGetRelease.csproj", "{9E61E950-B3E8-4524-B05B-E9B23975F61B}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -950,38 +966,6 @@ Global
 		{7CC17EBF-2F9E-49A8-BA52-DCFF650442E6}.Release|x64.Build.0 = Release|Any CPU
 		{7CC17EBF-2F9E-49A8-BA52-DCFF650442E6}.Release|x86.ActiveCfg = Release|Any CPU
 		{7CC17EBF-2F9E-49A8-BA52-DCFF650442E6}.Release|x86.Build.0 = Release|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Debug|ARM.Build.0 = Debug|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Debug|x64.Build.0 = Debug|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Debug|x86.Build.0 = Debug|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Release|ARM.ActiveCfg = Release|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Release|ARM.Build.0 = Release|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Release|x64.ActiveCfg = Release|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Release|x64.Build.0 = Release|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Release|x86.ActiveCfg = Release|Any CPU
-		{216301AC-778A-43F5-B239-28663743701E}.Release|x86.Build.0 = Release|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|ARM.Build.0 = Debug|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|x64.Build.0 = Debug|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|x86.Build.0 = Debug|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|ARM.ActiveCfg = Release|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|ARM.Build.0 = Release|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|x64.ActiveCfg = Release|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|x64.Build.0 = Release|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|x86.ActiveCfg = Release|Any CPU
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|x86.Build.0 = Release|Any CPU
 		{2B2ADE91-6B30-4CD3-A3C2-660171F781AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B2ADE91-6B30-4CD3-A3C2-660171F781AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B2ADE91-6B30-4CD3-A3C2-660171F781AD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -1046,22 +1030,6 @@ Global
 		{78556531-F00E-48D0-8D01-D5CD89413A99}.Release|x64.Build.0 = Release|Any CPU
 		{78556531-F00E-48D0-8D01-D5CD89413A99}.Release|x86.ActiveCfg = Release|Any CPU
 		{78556531-F00E-48D0-8D01-D5CD89413A99}.Release|x86.Build.0 = Release|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|ARM.Build.0 = Debug|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|x64.Build.0 = Debug|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|x86.Build.0 = Debug|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|ARM.ActiveCfg = Release|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|ARM.Build.0 = Release|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|x64.ActiveCfg = Release|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|x64.Build.0 = Release|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|x86.ActiveCfg = Release|Any CPU
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|x86.Build.0 = Release|Any CPU
 		{F89C95F0-9BE4-4A67-BB18-80817B842833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F89C95F0-9BE4-4A67-BB18-80817B842833}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F89C95F0-9BE4-4A67-BB18-80817B842833}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -1094,6 +1062,118 @@ Global
 		{5A0163E4-05F0-443A-9090-556549AA6CBC}.Release|x64.Build.0 = Release|Any CPU
 		{5A0163E4-05F0-443A-9090-556549AA6CBC}.Release|x86.ActiveCfg = Release|Any CPU
 		{5A0163E4-05F0-443A-9090-556549AA6CBC}.Release|x86.Build.0 = Release|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Debug|ARM.Build.0 = Debug|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Debug|x64.Build.0 = Debug|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Debug|x86.Build.0 = Debug|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Release|ARM.Build.0 = Release|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Release|x64.ActiveCfg = Release|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Release|x64.Build.0 = Release|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Release|x86.ActiveCfg = Release|Any CPU
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC}.Release|x86.Build.0 = Release|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Debug|ARM.Build.0 = Debug|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Debug|x64.Build.0 = Debug|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Debug|x86.Build.0 = Debug|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Release|ARM.ActiveCfg = Release|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Release|ARM.Build.0 = Release|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Release|x64.ActiveCfg = Release|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Release|x64.Build.0 = Release|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Release|x86.ActiveCfg = Release|Any CPU
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6}.Release|x86.Build.0 = Release|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Debug|ARM.Build.0 = Debug|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Debug|x64.Build.0 = Debug|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Debug|x86.Build.0 = Debug|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Release|ARM.ActiveCfg = Release|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Release|ARM.Build.0 = Release|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Release|x64.ActiveCfg = Release|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Release|x64.Build.0 = Release|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Release|x86.ActiveCfg = Release|Any CPU
+		{881BB211-30B6-468E-8FBF-0360807FF0B3}.Release|x86.Build.0 = Release|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|ARM.Build.0 = Debug|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|x64.Build.0 = Debug|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Debug|x86.Build.0 = Debug|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|ARM.ActiveCfg = Release|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|ARM.Build.0 = Release|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|x64.ActiveCfg = Release|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|x64.Build.0 = Release|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|x86.ActiveCfg = Release|Any CPU
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016}.Release|x86.Build.0 = Release|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Debug|x64.Build.0 = Debug|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Debug|x86.Build.0 = Debug|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Release|ARM.Build.0 = Release|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Release|x64.ActiveCfg = Release|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Release|x64.Build.0 = Release|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Release|x86.ActiveCfg = Release|Any CPU
+		{216301AC-778A-43F5-B239-28663743701E}.Release|x86.Build.0 = Release|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|ARM.Build.0 = Debug|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|x64.Build.0 = Debug|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Debug|x86.Build.0 = Debug|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|ARM.Build.0 = Release|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|x64.ActiveCfg = Release|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|x64.Build.0 = Release|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|x86.ActiveCfg = Release|Any CPU
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C}.Release|x86.Build.0 = Release|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Debug|ARM.Build.0 = Debug|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Debug|x64.Build.0 = Debug|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Debug|x86.Build.0 = Debug|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Release|ARM.Build.0 = Release|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Release|x64.ActiveCfg = Release|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Release|x64.Build.0 = Release|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Release|x86.ActiveCfg = Release|Any CPU
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1161,10 +1241,6 @@ Global
 		{35CCB71E-B0EE-4E89-936E-FECBDCCB103B} = {C48C1D7A-20D3-435A-84A4-C1A4F508E871}
 		{4FE88FDE-0F8D-4654-99A0-47BCB778B8E4} = {10609C18-2772-4C5E-8DBA-4EF81A55F0DF}
 		{7CC17EBF-2F9E-49A8-BA52-DCFF650442E6} = {B67F9C10-EFE8-4FD2-B35F-1DB9A447507A}
-		{27AD031E-05E1-45D9-919E-8D8D47F459AB} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
-		{BDF88D20-0238-4AD5-B570-BDBA676368C5} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
-		{216301AC-778A-43F5-B239-28663743701E} = {BDF88D20-0238-4AD5-B570-BDBA676368C5}
-		{8EA3AA47-C90E-4527-99C0-BC67595F9016} = {27AD031E-05E1-45D9-919E-8D8D47F459AB}
 		{339EDA31-97ED-4BF3-8945-2E7D033E2BAC} = {4942D4D9-3858-4E28-90E1-781438E73665}
 		{99466F28-17F6-495E-AFB1-8B7291A6A323} = {339EDA31-97ED-4BF3-8945-2E7D033E2BAC}
 		{2B2ADE91-6B30-4CD3-A3C2-660171F781AD} = {339EDA31-97ED-4BF3-8945-2E7D033E2BAC}
@@ -1173,13 +1249,25 @@ Global
 		{78556531-F00E-48D0-8D01-D5CD89413A99} = {6E0E9274-A83E-4D81-B9A2-B5DB1C3284DB}
 		{CC54DD28-10B9-45AA-ABBE-D601F964DF80} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
 		{70C063CA-5D59-4D70-9889-3E35D068FFE4} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
-		{009B3A8B-D0F3-472E-B43C-4A96AD2DE6EC} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
-		{1D30E4A9-D311-4CDE-A335-B78EA70E585C} = {009B3A8B-D0F3-472E-B43C-4A96AD2DE6EC}
 		{F89C95F0-9BE4-4A67-BB18-80817B842833} = {70C063CA-5D59-4D70-9889-3E35D068FFE4}
 		{5A0163E4-05F0-443A-9090-556549AA6CBC} = {CC54DD28-10B9-45AA-ABBE-D601F964DF80}
+		{B1C256D8-96BE-491E-9C8C-2C3933150827} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{C4ABCF34-D028-4339-A71F-BFBA7BBA9FEC} = {B1C256D8-96BE-491E-9C8C-2C3933150827}
+		{A5883121-3598-4E49-8DD4-754B494872E5} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{63A99100-1DDD-42CC-8137-A0F01D1D93D6} = {A5883121-3598-4E49-8DD4-754B494872E5}
+		{7BA410A4-3E90-4208-B1D4-E73D4AE06969} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{881BB211-30B6-468E-8FBF-0360807FF0B3} = {7BA410A4-3E90-4208-B1D4-E73D4AE06969}
+		{F07F678C-6B84-4F77-8D17-0E6A0ADB5E8F} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{8EA3AA47-C90E-4527-99C0-BC67595F9016} = {F07F678C-6B84-4F77-8D17-0E6A0ADB5E8F}
+		{96707B70-D8D0-43E6-9B06-A67F61DFFB5B} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{216301AC-778A-43F5-B239-28663743701E} = {96707B70-D8D0-43E6-9B06-A67F61DFFB5B}
+		{EE285D10-8CE3-4864-87B6-AFF9D22B921F} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{1D30E4A9-D311-4CDE-A335-B78EA70E585C} = {EE285D10-8CE3-4864-87B6-AFF9D22B921F}
+		{4991ACF4-FFB2-4E3E-829F-76B5C4FAE739} = {1DF9D9CF-F05C-4E71-B9C8-E79742175D5F}
+		{9E61E950-B3E8-4524-B05B-E9B23975F61B} = {4991ACF4-FFB2-4E3E-829F-76B5C4FAE739}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 59
+		SccNumberOfProjects = 63
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://productionready.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -1375,45 +1463,61 @@ Global
 		SccProjectTopLevelParentUniqueName48 = EleflexV3.sln
 		SccProjectName48 = Release/NuGet/Eleflex.WebClient/Eleflex.WebClient
 		SccLocalPath48 = Release\\NuGet\\Eleflex.WebClient\\Eleflex.WebClient
-		SccProjectUniqueName49 = Release\\NuGet\\Eleflex.Lookups.WebServer\\Eleflex.Lookups.WebServer\\Eleflex.Lookups.WebServer.csproj
+		SccProjectUniqueName49 = Applications\\Standard\\UniversalClient\\UniversalClient.Shared\\UniversalClient.Shared.shproj
 		SccProjectTopLevelParentUniqueName49 = EleflexV3.sln
-		SccProjectName49 = Release/NuGet/Eleflex.Lookups.WebServer/Eleflex.Lookups.WebServer
-		SccLocalPath49 = Release\\NuGet\\Eleflex.Lookups.WebServer\\Eleflex.Lookups.WebServer
-		SccProjectUniqueName50 = Release\\NuGet\\Eleflex.WebServer\\Eleflex.WebServer\\Eleflex.WebServer.csproj
+		SccProjectName49 = Applications/Standard/UniversalClient/UniversalClient.Shared
+		SccLocalPath49 = Applications\\Standard\\UniversalClient\\UniversalClient.Shared
+		SccProjectUniqueName50 = Applications\\Standard\\UniversalClient\\UniversalClient.Windows\\UniversalClient.Windows.csproj
 		SccProjectTopLevelParentUniqueName50 = EleflexV3.sln
-		SccProjectName50 = Release/NuGet/Eleflex.WebServer/Eleflex.WebServer
-		SccLocalPath50 = Release\\NuGet\\Eleflex.WebServer\\Eleflex.WebServer
-		SccProjectUniqueName51 = Applications\\Standard\\UniversalClient\\UniversalClient.Shared\\UniversalClient.Shared.shproj
+		SccProjectName50 = Applications/Standard/UniversalClient/UniversalClient.Windows
+		SccLocalPath50 = Applications\\Standard\\UniversalClient\\UniversalClient.Windows
+		SccProjectUniqueName51 = Applications\\Standard\\UniversalClient\\UniversalClient.WindowsPhone\\UniversalClient.WindowsPhone.csproj
 		SccProjectTopLevelParentUniqueName51 = EleflexV3.sln
-		SccProjectName51 = Applications/Standard/UniversalClient/UniversalClient.Shared
-		SccLocalPath51 = Applications\\Standard\\UniversalClient\\UniversalClient.Shared
-		SccProjectUniqueName52 = Applications\\Standard\\UniversalClient\\UniversalClient.Windows\\UniversalClient.Windows.csproj
+		SccProjectName51 = Applications/Standard/UniversalClient/UniversalClient.WindowsPhone
+		SccLocalPath51 = Applications\\Standard\\UniversalClient\\UniversalClient.WindowsPhone
+		SccProjectUniqueName52 = Applications\\Standard\\UniversalClient\\UniversalClient.Shared\\UniversalClient.Shared.projitems
 		SccProjectTopLevelParentUniqueName52 = EleflexV3.sln
-		SccProjectName52 = Applications/Standard/UniversalClient/UniversalClient.Windows
-		SccLocalPath52 = Applications\\Standard\\UniversalClient\\UniversalClient.Windows
-		SccProjectUniqueName53 = Applications\\Standard\\UniversalClient\\UniversalClient.WindowsPhone\\UniversalClient.WindowsPhone.csproj
+		SccProjectName52 = Applications/Standard/UniversalClient/UniversalClient.Shared
+		SccLocalPath52 = Applications\\Standard\\UniversalClient\\UniversalClient.Shared
+		SccProjectUniqueName53 = Release\\NuGet\\Eleflex.Universal\\Eleflex.Universal\\Eleflex.Universal.csproj
 		SccProjectTopLevelParentUniqueName53 = EleflexV3.sln
-		SccProjectName53 = Applications/Standard/UniversalClient/UniversalClient.WindowsPhone
-		SccLocalPath53 = Applications\\Standard\\UniversalClient\\UniversalClient.WindowsPhone
-		SccProjectUniqueName54 = Applications\\Standard\\UniversalClient\\UniversalClient.Shared\\UniversalClient.Shared.projitems
+		SccProjectName53 = Release/NuGet/Eleflex.Universal/Eleflex.Universal
+		SccLocalPath53 = Release\\NuGet\\Eleflex.Universal\\Eleflex.Universal
+		SccProjectUniqueName54 = Release\\NuGet\\Eleflex.Lookups.Messages\\Eleflex.Lookups.Messages\\Eleflex.Lookups.Messages.csproj
 		SccProjectTopLevelParentUniqueName54 = EleflexV3.sln
-		SccProjectName54 = Applications/Standard/UniversalClient/UniversalClient.Shared
-		SccLocalPath54 = Applications\\Standard\\UniversalClient\\UniversalClient.Shared
-		SccProjectUniqueName55 = Release\\NuGet\\Eleflex.Universal\\Eleflex.Universal\\Eleflex.Universal.csproj
+		SccProjectName54 = Release/NuGet/Eleflex.Lookups.Messages/Eleflex.Lookups.Messages
+		SccLocalPath54 = Release\\NuGet\\Eleflex.Lookups.Messages\\Eleflex.Lookups.Messages
+		SccProjectUniqueName55 = Release\\NuGet\\Eleflex.Messages\\Eleflex.Messages\\Eleflex.Messages.csproj
 		SccProjectTopLevelParentUniqueName55 = EleflexV3.sln
-		SccProjectName55 = Release/NuGet/Eleflex.Universal/Eleflex.Universal
-		SccLocalPath55 = Release\\NuGet\\Eleflex.Universal\\Eleflex.Universal
-		SccProjectUniqueName56 = Release\\NuGet\\Eleflex.Lookups.WebClient\\Eleflex.Lookups.WebClient\\Eleflex.Lookups.WebClient.csproj
+		SccProjectName55 = Release/NuGet/Eleflex.Messages/Eleflex.Messages
+		SccLocalPath55 = Release\\NuGet\\Eleflex.Messages\\Eleflex.Messages
+		SccProjectUniqueName56 = Release\\NuGet\\Eleflex.Storage.EntityFramework\\Eleflex.Storage.EntityFramework\\Eleflex.Storage.EntityFramework.csproj
 		SccProjectTopLevelParentUniqueName56 = EleflexV3.sln
-		SccProjectName56 = Release/NuGet/Eleflex.Lookups.WebClient/Eleflex.Lookups.WebClient
-		SccLocalPath56 = Release\\NuGet\\Eleflex.Lookups.WebClient\\Eleflex.Lookups.WebClient
-		SccProjectUniqueName57 = Release\\NuGet\\Eleflex.Lookups.Messages\\Eleflex.Lookups.Messages\\Eleflex.Lookups.Messages.csproj
+		SccProjectName56 = Release/NuGet/Eleflex.Storage.EntityFramework/Eleflex.Storage.EntityFramework
+		SccLocalPath56 = Release\\NuGet\\Eleflex.Storage.EntityFramework\\Eleflex.Storage.EntityFramework
+		SccProjectUniqueName57 = Release\\NuGet\\Eleflex.Server\\Eleflex.Server\\Eleflex.Server.csproj
 		SccProjectTopLevelParentUniqueName57 = EleflexV3.sln
-		SccProjectName57 = Release/NuGet/Eleflex.Lookups.Messages/Eleflex.Lookups.Messages
-		SccLocalPath57 = Release\\NuGet\\Eleflex.Lookups.Messages\\Eleflex.Lookups.Messages
-		SccProjectUniqueName58 = Release\\NuGet\\Eleflex.Messages\\Eleflex.Messages\\Eleflex.Messages.csproj
+		SccProjectName57 = Release/NuGet/Eleflex.Server/Eleflex.Server
+		SccLocalPath57 = Release\\NuGet\\Eleflex.Server\\Eleflex.Server
+		SccProjectUniqueName58 = Release\\NuGet\\Eleflex.Lookups.Server\\Eleflex.Lookups.Server\\Eleflex.Lookups.Server.csproj
 		SccProjectTopLevelParentUniqueName58 = EleflexV3.sln
-		SccProjectName58 = Release/NuGet/Eleflex.Messages/Eleflex.Messages
-		SccLocalPath58 = Release\\NuGet\\Eleflex.Messages\\Eleflex.Messages
+		SccProjectName58 = Release/NuGet/Eleflex.Lookups.Server/Eleflex.Lookups.Server
+		SccLocalPath58 = Release\\NuGet\\Eleflex.Lookups.Server\\Eleflex.Lookups.Server
+		SccProjectUniqueName59 = Release\\NuGet\\Eleflex.WebServer\\Eleflex.WebServer\\Eleflex.WebServer.csproj
+		SccProjectTopLevelParentUniqueName59 = EleflexV3.sln
+		SccProjectName59 = Release/NuGet/Eleflex.WebServer/Eleflex.WebServer
+		SccLocalPath59 = Release\\NuGet\\Eleflex.WebServer\\Eleflex.WebServer
+		SccProjectUniqueName60 = Release\\NuGet\\Eleflex.Lookups.WebServer\\Eleflex.Lookups.WebServer\\Eleflex.Lookups.WebServer.csproj
+		SccProjectTopLevelParentUniqueName60 = EleflexV3.sln
+		SccProjectName60 = Release/NuGet/Eleflex.Lookups.WebServer/Eleflex.Lookups.WebServer
+		SccLocalPath60 = Release\\NuGet\\Eleflex.Lookups.WebServer\\Eleflex.Lookups.WebServer
+		SccProjectUniqueName61 = Release\\NuGet\\Eleflex.Lookups.WebClient\\Eleflex.Lookups.WebClient\\Eleflex.Lookups.WebClient.csproj
+		SccProjectTopLevelParentUniqueName61 = EleflexV3.sln
+		SccProjectName61 = Release/NuGet/Eleflex.Lookups.WebClient/Eleflex.Lookups.WebClient
+		SccLocalPath61 = Release\\NuGet\\Eleflex.Lookups.WebClient\\Eleflex.Lookups.WebClient
+		SccProjectUniqueName62 = Applications\\Tools\\EleflexNuGetRelease\\EleflexNuGetRelease.csproj
+		SccProjectTopLevelParentUniqueName62 = EleflexV3.sln
+		SccProjectName62 = Applications/Tools/EleflexNuGetRelease
+		SccLocalPath62 = Applications\\Tools\\EleflexNuGetRelease
 	EndGlobalSection
 EndGlobal

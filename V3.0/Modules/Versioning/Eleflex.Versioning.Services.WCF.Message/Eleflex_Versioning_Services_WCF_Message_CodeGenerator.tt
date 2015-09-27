@@ -323,6 +323,7 @@ namespace <#=customNamespace#>
 <#
 fileManager.StartNewFile(customEntityName + "ServicesRegistrationTask.cs");
 #>
+using System.Linq;
 using Eleflex.Services.WCF;
 
 namespace <#=customNamespace#>
@@ -343,35 +344,35 @@ namespace <#=customNamespace#>
         }
 
         /// <summary>
-        /// Execute registration logic.
+        /// Execute the startup logic.
         /// </summary>
         /// <param name="taskOptions"></param>
         /// <returns></returns>
         public override bool Register(ITaskOptions taskOptions)
         {
-            if(!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>DeleteRequest)))
+            if(!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>DeleteRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>DeleteRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>DeleteResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>DeleteResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>DeleteResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>GetRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>GetRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>GetRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>GetResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>GetResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>GetResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>InsertRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>InsertRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>InsertRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>InsertResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>InsertResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>InsertResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>QueryAggregateRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>QueryAggregateRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>QueryAggregateRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>QueryAggregateResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>QueryAggregateResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>QueryAggregateResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>QueryRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>QueryRequest).FullName).Any())
 			    WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>QueryRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>QueryResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>QueryResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>QueryResponse), null);
-			if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>UpdateRequest)))
+			if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>UpdateRequest).FullName).Any())
 			    WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>UpdateRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(<#=customEntityName#>UpdateResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(<#=customEntityName#>UpdateResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(<#=customEntityName#>UpdateResponse), null);
 
             return base.Register(taskOptions);

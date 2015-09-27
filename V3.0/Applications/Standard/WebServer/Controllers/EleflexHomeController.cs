@@ -7,7 +7,7 @@ namespace WebServer.Controllers
     /// </summary>
     public class EleflexHomeController : Controller
     {
-
+        
         /// <summary>
         /// Default.
         /// </summary>
@@ -22,7 +22,7 @@ namespace WebServer.Controllers
         /// </summary>
         /// <returns></returns>        
         public ActionResult About()
-        {
+        {            
             return View();
         }
 

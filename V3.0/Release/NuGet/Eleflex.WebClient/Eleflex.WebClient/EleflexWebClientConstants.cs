@@ -16,11 +16,11 @@ namespace Eleflex.WebClient
         /// <summary>
         /// The module name.
         /// </summary>
-        public const string MODULE_NAME = "ELEFLEX WebClient";
+        public const string MODULE_NAME = "Eleflex.WebClient";
 
         /// <summary>
         /// The module description.
         /// </summary>
-        public const string MODULE_DESCRIPTION = "ELEFLEX WebClient library used for hosting a web client application.";
+        public const string MODULE_DESCRIPTION = "ELEFLEX library providing web client hosting.";
     }
 }

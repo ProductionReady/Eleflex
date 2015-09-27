@@ -1,3 +1,4 @@
+using System.Linq;
 using Eleflex.Services.WCF;
 
 namespace Eleflex.Security.Services.WCF.Message
@@ -18,35 +19,35 @@ namespace Eleflex.Security.Services.WCF.Message
         }
 
         /// <summary>
-        /// Execute registration logic.
+        /// Execute the startup logic.
         /// </summary>
         /// <param name="taskOptions"></param>
         /// <returns></returns>
         public override bool Register(ITaskOptions taskOptions)
         {
-            if(!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginDeleteRequest)))
+            if(!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginDeleteRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginDeleteRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginDeleteResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginDeleteResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginDeleteResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginGetRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginGetRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginGetRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginGetResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginGetResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginGetResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginInsertRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginInsertRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginInsertRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginInsertResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginInsertResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginInsertResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginQueryAggregateRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginQueryAggregateRequest).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginQueryAggregateRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginQueryAggregateResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginQueryAggregateResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginQueryAggregateResponse), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginQueryRequest)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginQueryRequest).FullName).Any())
 			    WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginQueryRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginQueryResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginQueryResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginQueryResponse), null);
-			if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginUpdateRequest)))
+			if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginUpdateRequest).FullName).Any())
 			    WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginUpdateRequest), null);
-            if (!WCFCommandRegistry.Current.RegistryCache.ContainsKey(typeof(SecurityUserLoginUpdateResponse)))
+            if (!WCFCommandRegistry.Current.RegistryCache.Keys.Where(x=> x.FullName == typeof(SecurityUserLoginUpdateResponse).FullName).Any())
                 WCFCommandRegistry.Current.RegisterItem(typeof(SecurityUserLoginUpdateResponse), null);
 
             return base.Register(taskOptions);

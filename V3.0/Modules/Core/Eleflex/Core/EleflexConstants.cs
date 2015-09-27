@@ -16,11 +16,11 @@ namespace Eleflex
         /// <summary>
         /// The module name.
         /// </summary>
-        public const string MODULE_NAME = "ELEFLEX Core";
+        public const string MODULE_NAME = "Eleflex";
 
         /// <summary>
         /// The module description.
         /// </summary>
-        public const string MODULE_DESCRIPTION = "ELEFLEX core library used by all ELEFLEX Modules.";
+        public const string MODULE_DESCRIPTION = "ELEFLEX library providing core objects.";
     }
 }

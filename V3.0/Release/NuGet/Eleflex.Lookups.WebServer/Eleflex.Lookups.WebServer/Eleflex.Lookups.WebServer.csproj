@@ -34,18 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -59,114 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.services.wcf.automapper\Eleflex_Lookups_Services_WCF_AutoMapper_CodeGenerator.cs">
-      <Link>Eleflex.Lookups.Services.WCF.AutoMapper\Eleflex_Lookups_Services_WCF_AutoMapper_CodeGenerator.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.services.wcf.automapper\LookupAutoMapperRegistrationTask.cs">
-      <Link>Eleflex.Lookups.Services.WCF.AutoMapper\LookupAutoMapperRegistrationTask.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.services.wcf.server\Eleflex_Lookups_Services_WCF_Server_CodeGenerator.cs">
-      <Link>Eleflex.Lookups.Services.WCF.Server\Eleflex_Lookups_Services_WCF_Server_CodeGenerator.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.services.wcf.server\LookupDelete.cs">
-      <Link>Eleflex.Lookups.Services.WCF.Server\LookupDelete.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.services.wcf.server\LookupGet.cs">
-      <Link>Eleflex.Lookups.Services.WCF.Server\LookupGet.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.services.wcf.server\LookupInsert.cs">
-      <Link>Eleflex.Lookups.Services.WCF.Server\LookupInsert.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.services.wcf.server\LookupQuery.cs">
-      <Link>Eleflex.Lookups.Services.WCF.Server\LookupQuery.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.services.wcf.server\LookupQueryAggregate.cs">
-      <Link>Eleflex.Lookups.Services.WCF.Server\LookupQueryAggregate.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.services.wcf.server\LookupUpdate.cs">
-      <Link>Eleflex.Lookups.Services.WCF.Server\LookupUpdate.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef.automapper\Eleflex_Lookups_Storage_EF_AutoMapper_CodeGenerator.cs">
-      <Link>Eleflex.Lookups.Storage.EF.AutoMapper\Eleflex_Lookups_Storage_EF_AutoMapper_CodeGenerator.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef.automapper\LookupAutoMapperRegistrationTask.cs">
-      <Link>Eleflex.Lookups.Storage.EF.AutoMapper\LookupAutoMapperRegistrationTask.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef.azure\LookupsAzureConstants.cs">
-      <Link>Eleflex.Lookups.Storage.EF.Azure\LookupsAzureConstants.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef.azure\Version_3_0_0_0.cs">
-      <Link>Eleflex.Lookups.Storage.EF.Azure\Version_3_0_0_0.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef.sqlserver\LookupsSQLServerConstants.cs">
-      <Link>Eleflex.Lookups.Storage.EF.SQLServer\LookupsSQLServerConstants.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef.sqlserver\Version_3_0_0_0.cs">
-      <Link>Eleflex.Lookups.Storage.EF.SQLServer\Version_3_0_0_0.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef\Eleflex_Lookups_Storage_EF_CodeGenerator.cs">
-      <Link>Eleflex.Lookups.Storage.EF\Eleflex_Lookups_Storage_EF_CodeGenerator.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef\Lookup.cs">
-      <Link>Eleflex.Lookups.Storage.EF\Lookup.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef\LookupsDB.Context.cs">
-      <Link>Eleflex.Lookups.Storage.EF\LookupsDB.Context.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef\LookupsDB.cs">
-      <Link>Eleflex.Lookups.Storage.EF\LookupsDB.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef\LookupsDB.designer.cs">
-      <Link>Eleflex.Lookups.Storage.EF\LookupsDB.designer.cs</Link>
-      <DependentUpon>LookupsDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef\LookupsDB1.Designer.cs">
-      <Link>Eleflex.Lookups.Storage.EF\LookupsDB1.Designer.cs</Link>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LookupsDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef\LookupsDBCustom.cs">
-      <Link>Eleflex.Lookups.Storage.EF\LookupsDBCustom.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef\LookupStorageRepository.cs">
-      <Link>Eleflex.Lookups.Storage.EF\LookupStorageRepository.cs</Link>
-    </Compile>
-    <Compile Include="Eleflex.Lookups.Storage.EF\LookupsStorageServiceCustom.cs" />
     <Compile Include="EleflexLookupsWebServerConstants.cs" />
+    <Compile Include="ModulePatch\Version_3_1_0_0.cs" />
     <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef\LookupsDB.edmx">
-      <Link>Eleflex.Lookups.Storage.EF\LookupsDB.edmx</Link>
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LookupsDB1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="..\..\..\..\modules\lookups\eleflex.lookups.storage.ef\LookupsDB.edmx.diagram">
-      <Link>Eleflex.Lookups.Storage.EF\LookupsDB.edmx.diagram</Link>
-      <DependentUpon>LookupsDB.edmx</DependentUpon>
-    </None>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages.csproj">
-      <Project>{f89c95f0-9be4-4a67-bb18-80817b842833}</Project>
-      <Name>Eleflex.Lookups.Messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Eleflex.Messages\Eleflex.Messages\Eleflex.Messages.csproj">
-      <Project>{5a0163e4-05f0-443a-9090-556549aa6cbc}</Project>
-      <Name>Eleflex.Messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Eleflex.WebClient\Eleflex.WebClient\Eleflex.WebClient.csproj">
-      <Project>{7cc17ebf-2f9e-49a8-ba52-dcff650442e6}</Project>
-      <Name>Eleflex.WebClient</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Eleflex.WebServer\Eleflex.WebServer\Eleflex.WebServer.csproj">
-      <Project>{8ea3aa47-c90e-4527-99c0-bc67595f9016}</Project>
-      <Name>Eleflex.WebServer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Eleflex\Eleflex.Core\Eleflex.Core.csproj">
       <Project>{4fe88fde-0f8d-4654-99a0-47bcb778b8e4}</Project>
       <Name>Eleflex.Core</Name>

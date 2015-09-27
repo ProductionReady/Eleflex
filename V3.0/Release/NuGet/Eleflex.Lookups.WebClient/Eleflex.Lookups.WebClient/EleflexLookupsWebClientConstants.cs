@@ -16,11 +16,11 @@ namespace Eleflex.Lookups.WebClient
         /// <summary>
         /// The module name.
         /// </summary>
-        public const string MODULE_NAME = "ELEFLEX Lookups WebClient";
+        public const string MODULE_NAME = "Eleflex.Lookups.WebClient";
 
         /// <summary>
         /// The module description.
         /// </summary>
-        public const string MODULE_DESCRIPTION = "ELEFLEX Lookups WebClient library used for hosting a lookups web client application.";
+        public const string MODULE_DESCRIPTION = "ELEFLEX library providing web client hosting for Lookups.";
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.Lookups.Server</id>
+    <version>3.1.0-a</version>
+    <title>Generic Lookup Table ELEFLEX Server</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Lookups is a generic lookup table service to be used rather than creating multiple lookup tables in your own ELEFLEX Modules. This package installs the Server assembly that is used for processing business rules, service commands and data storage for Lookups.</description>
+      <summary>Lookups is a generic lookup table service to be used rather than creating multiple lookup tables in your own ELEFLEX Modules. This package installs the Server assembly that is used for processing business rules, service commands and data storage for Lookups.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at http://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex lookups lookup server productionready</tags>
+	<frameworkAssemblies>
+	</frameworkAssemblies>
+    <dependencies>
+	<dependency id="AutoMapper" version="4.0.4" />
+	<dependency id="Eleflex" version="3.1.0-a" />
+	<dependency id="Eleflex.Messages" version="3.1.0-a" />
+	<dependency id="Eleflex.Storage.EntityFramework" version="3.1.0-a" />
+	<dependency id="Eleflex.Lookups.Messages" version="3.1.0-a" />
+    </dependencies>
+  </metadata>
+</package>

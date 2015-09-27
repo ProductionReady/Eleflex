@@ -59,18 +59,24 @@ namespace Eleflex
             
             foreach (Assembly assembly in assemblies)
             {
-                //Find all IRegistration types
-                List<Type> registrationTasks = assembly.GetTypes().Where(x => registrationTaskType.IsAssignableFrom(x) && x.IsClass && !x.IsAbstract).ToList();
-                foreach (Type taskType in registrationTasks)
-                {                    
-                    if(TypeShouldBeRegistered(taskType, registrationAttributeType))                    
+                try
+                {
+                    //Find all IRegistration types
+                    //It must be done this way because of system restarts, mismatched types due to multiple app domains being loaded
+                    List<Type> registrationTasks = assembly.GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.GetInterfaces().Where(z => z.FullName == registrationTaskType.FullName).Any()).ToList();
+                    foreach (Type taskType in registrationTasks)
                     {
-                        //Create instance and add to list to be run
-                        IRegistrationTask regTask = ObjectLocator.Current.GetInstance(taskType) as IRegistrationTask;
-                        if (regTask != null)
-                            tasksToRun.Add(regTask);
+                        CustomAttributeData cad = taskType.CustomAttributes.Where(x => x.AttributeType.FullName == registrationAttributeType.FullName).FirstOrDefault();                        
+                        if (cad != null)
+                        {
+                            //Create instance and add to list to be run
+                            IRegistrationTask regTask = ObjectLocator.Current.GetInstance(taskType) as IRegistrationTask;
+                            if (regTask != null)
+                                tasksToRun.Add(regTask);
+                        }
                     }
-                }
+                }//This may sometimes encounter ReflectionLoader errors for system references but these can be safely ignored
+                catch { }
             }
 
             //Order tasks by priority
@@ -110,19 +116,6 @@ namespace Eleflex
 
             //Return overall success
             return overallSuccess;
-        }
-
-        /// <summary>
-        /// Determine if a type should be registered.
-        /// </summary>
-        /// <param name="objectType"></param>
-        /// <param name="attributeType"></param>
-        /// <returns></returns>
-        protected virtual bool TypeShouldBeRegistered(Type objectType, Type attributeType)
-        {
-            //Use attribute to denote that object should be loaded
-            CustomAttributeData cad = objectType.CustomAttributes.Where(x => x.AttributeType == attributeType).FirstOrDefault();
-            return cad != null;
         }
 
     }

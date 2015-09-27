@@ -45,7 +45,6 @@
     <Compile Include="BusinessRules\BusinessRuleExclusion.cs" />
     <Compile Include="BusinessRules\BusinessRuleProcessAttribute.cs" />
     <Compile Include="BusinessRules\BusinessRuleService.cs" />
-    <Compile Include="BusinessRules\BusinessRuleRegistrationTaskAttribute.cs" />
     <Compile Include="BusinessRules\BusinessRuleRegistryService.cs" />
     <Compile Include="BusinessRules\BusinessRuleRegistry.cs" />
     <Compile Include="BusinessRules\BusinessRepository.cs" />
@@ -85,6 +84,7 @@
     <Compile Include="Logging\LogMessageCustom.cs" />
     <Compile Include="Logging\MemoryLogService.cs" />
     <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
+    <Compile Include="ModulePatch\Version_3_1_0_0.cs" />
     <Compile Include="ObjectLocation\ActivatorObjectLocationService.cs" />
     <Compile Include="Security\Eleflex_Security_CodeGenerator.cs">
       <AutoGen>True</AutoGen>
@@ -267,6 +267,7 @@
     <Compile Include="Core\IItem.cs" />
     <Compile Include="Core\IItems.cs" />
     <Compile Include="Startup\IShutdownTask.cs" />
+    <Compile Include="Startup\ISystemStartupShutdown.cs" />
     <Compile Include="Startup\ITaskOptions.cs" />
     <Compile Include="Startup\RegistrationTask.cs" />
     <Compile Include="Startup\StartupConstants.cs" />

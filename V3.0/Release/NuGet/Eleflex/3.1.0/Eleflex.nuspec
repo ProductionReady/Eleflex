@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex</id>
+    <version>3.1.0</version>
+    <title>ELEFLEX Core</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>ELEFLEX is a platform for building modular, domain-driven, service-oriented applications and services. This package installs the core ELEFLEX assembly.</description>
+      <summary>ELEFLEX is a platform for building modular, domain-driven, service-oriented applications and services. This package installs the core ELEFLEX assembly.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at http://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex mvc soa domain driven modular web sql entity service integration module architecture productionready</tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+</package>

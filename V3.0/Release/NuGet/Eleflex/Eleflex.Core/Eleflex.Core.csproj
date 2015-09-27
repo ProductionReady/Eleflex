@@ -60,9 +60,6 @@
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleProcessAttribute.cs">
       <Link>BusinessRules\BusinessRuleProcessAttribute.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleRegistrationTaskAttribute.cs">
-      <Link>BusinessRules\BusinessRuleRegistrationTaskAttribute.cs</Link>
-    </Compile>
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\BusinessRules\BusinessRuleRegistry.cs">
       <Link>BusinessRules\BusinessRuleRegistry.cs</Link>
     </Compile>
@@ -206,6 +203,9 @@
     </Compile>
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\ModulePatch\Version_3_0_0_0.cs">
       <Link>ModulePatch\Version_3_0_0_0.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\ModulePatch\Version_3_1_0_0.cs">
+      <Link>ModulePatch\Version_3_1_0_0.cs</Link>
     </Compile>
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\ObjectLocation\ActivatorObjectLocationService.cs">
       <Link>ObjectLocation\ActivatorObjectLocationService.cs</Link>
@@ -482,6 +482,9 @@
     </Compile>
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\IStartupTask.cs">
       <Link>Startup\IStartupTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\ISystemStartupShutdown.cs">
+      <Link>Startup\ISystemStartupShutdown.cs</Link>
     </Compile>
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\Startup\ITaskOptions.cs">
       <Link>Startup\ITaskOptions.cs</Link>

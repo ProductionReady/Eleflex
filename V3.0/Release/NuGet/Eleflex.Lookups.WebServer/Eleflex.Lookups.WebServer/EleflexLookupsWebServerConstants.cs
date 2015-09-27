@@ -16,11 +16,11 @@ namespace Eleflex.Lookups.WebServer
         /// <summary>
         /// The module name.
         /// </summary>
-        public const string MODULE_NAME = "ELEFLEX Lookups WebServer";
+        public const string MODULE_NAME = "Eleflex.Lookups.WebServer";
 
         /// <summary>
         /// The module description.
         /// </summary>
-        public const string MODULE_DESCRIPTION = "ELEFLEX Lookups WebServer library used for hosting a lookups web server application.";
+        public const string MODULE_DESCRIPTION = "ELEFLEX library providing web server hosting for Lookups.";
     }
 }
