@@ -23,6 +23,9 @@ namespace Eleflex.Storage.EF
         /// <returns></returns>
         public static IOrderedQueryable<T> Query<T>(IQueryable<T> query, IStorageQuery storageQuery, Dictionary<string, string> propertyNameMappings = null)
         {
+            if (storageQuery == null)
+                return query as IOrderedQueryable<T>;
+
             //Get the filters back in grouped sets           
             FilterSet filterSet = GetFilterSet(storageQuery);
 

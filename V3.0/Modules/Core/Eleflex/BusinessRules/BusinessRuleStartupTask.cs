@@ -20,6 +20,7 @@ namespace Eleflex
             Priority = StartupConstants.STARTUP_PRIORITY_BUSINESSRULES;
         }
 
+
         /// <summary>
         /// Start the task logic.
         /// </summary>

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="EleflexLookupsWebClientConstants.cs" />
     <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
+    <Compile Include="ModulePatch\Version_3_2_0_0.cs" />
     <Compile Include="ModulePatch\Version_3_1_0_0.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.Lookups.WebClient</id>
+    <version>3.2.0-c</version>
+    <title>Lookups Module ELEFLEX WebClient</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package installs the Eleflex.Lookups.WebClient component. It hosts an ELELEX web client application that communicates with an ELEFLEX web server application using services for the Lookup module and provides a web user interface for administration. This package is intended to be installed on an ASP.NET Web Application (Empty Template) project. The Lookups Module is a generic lookup table service to be used rather than creating multiple lookup tables in your own ELEFLEX Modules.</description>
+      <summary>This package installs the Eleflex.Lookups.WebClient component. It hosts an ELELEX web client application that communicates with an ELEFLEX web server application using services for the Lookup module and provides a web user interface for administration. This package is intended to be installed on an ASP.NET Web Application (Empty Template) project. The Lookups Module is a generic lookup table service to be used rather than creating multiple lookup tables in your own ELEFLEX Modules.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at https://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex module lookup lookups webclient productionready</tags>
+    <dependencies>
+	<dependency id="Eleflex" version="3.2.0-c" />
+	<dependency id="Eleflex.Messages" version="3.2.0-c" />
+	<dependency id="Eleflex.Web" version="3.2.0-c" />
+	<dependency id="Eleflex.WebClient" version="3.2.0-c" />
+	<dependency id="Eleflex.Lookups.Messages" version="3.2.0-c" />
+    </dependencies>
+  </metadata>
+</package>

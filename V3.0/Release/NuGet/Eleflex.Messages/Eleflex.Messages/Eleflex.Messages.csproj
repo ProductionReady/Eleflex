@@ -607,6 +607,7 @@
       <Link>Eleflex.Versioning.Services.WCF.Message\VersioningRequestDispatcher.cs</Link>
     </Compile>
     <Compile Include="EleflexMessagesConstants.cs" />
+    <Compile Include="ModulePatch\Version_3_2_0_0.cs" />
     <Compile Include="ModulePatch\Version_3_1_0_0.cs" />
     <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -616,6 +617,10 @@
       <Project>{4fe88fde-0f8d-4654-99a0-47bcb778b8e4}</Project>
       <Name>Eleflex.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Copyright.txt" />
+    <Content Include="License.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eleflex.Email.Messages</RootNamespace>
+    <AssemblyName>Eleflex.Email.Messages</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\Attachment.cs" />
+    <Compile Include="Eleflex.Email.Services.WCF.Message\Eleflex_Email_Services_WCF_Message_CodeGen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailMessage.cs" />
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcess.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachment.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentDeleteRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentDeleteResponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentGetRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentGetResponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentInsertRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentInsertResponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentQueryAggregateRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentQueryAggregateResponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentQueryReponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentQueryRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentServiceRepository.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentServicesRegistrationTask.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentUpdateRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessAttachmentUpdateResponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessDeleteRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessDeleteResponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessGetRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessGetResponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessInsertRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessInsertResponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessQueryAggregateRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessQueryAggregateResponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessQueryReponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessQueryRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessServiceRepository.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessServicesRegistrationTask.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessUpdateRequest.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailProcessUpdateResponse.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailRequestDispatcher.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\EmailServiceRepository.cs" />
+    <Compile Include="Eleflex.Email.Services.WCF.Message\IEmailProcessAttachmentServiceRepository.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\IEmailProcessServiceRepository.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\IEmailRequestDispatcher.cs">
+      <DependentUpon>Eleflex_Email_Services_WCF_Message_CodeGen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eleflex.Email.Services.WCF.Message\IEmailServiceRepository.cs" />
+    <Compile Include="Eleflex.Email.Services.WCF.Message\SendEmailRequest.cs" />
+    <Compile Include="EleflexEmailMessagesConstants.cs" />
+    <Compile Include="ModulePatch\Version_3_2_0_0.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Copyright.txt" />
+    <Content Include="Eleflex.Email.Services.WCF.Message\Eleflex_Email_Services_WCF_Message_CodeGen.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Eleflex_Email_Services_WCF_Message_CodeGen.cs</LastGenOutput>
+    </Content>
+    <Content Include="License.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Eleflex.Messages\Eleflex.Messages\Eleflex.Messages.csproj">
+      <Project>{5a0163e4-05f0-443a-9090-556549aa6cbc}</Project>
+      <Name>Eleflex.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Eleflex\Eleflex.Core\Eleflex.Core.csproj">
+      <Project>{4fe88fde-0f8d-4654-99a0-47bcb778b8e4}</Project>
+      <Name>Eleflex.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

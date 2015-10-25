@@ -30,6 +30,15 @@
         /// </summary>
         public virtual int Priority { get; set; }
 
+
+        /// <summary>
+        /// This signals the task to load resources it needs into the AppDomain.
+        /// </summary>
+        /// <returns></returns>
+        public virtual void LoadResources()
+        {
+        }
+
         /// <summary>
         /// Perform start logic.
         /// </summary>

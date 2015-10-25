@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.Server</id>
+    <version>3.2.0</version>
+    <title>ELEFLEX Server</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package installs the Eleflex.Server component. It contains processing business rules, service commands and data storage classes for core ELFLEX components using Microsoft SQL Server or Microsoft Azure database engines. ELEFLEX is a platform for building modular, domain-driven, service-oriented applications and services.</description>
+      <summary>This package installs the Eleflex.Server component. It contains processing business rules, service commands and data storage classes for core ELFLEX components using Microsoft SQL Server or Microsoft Azure database engines. ELEFLEX is a platform for building modular, domain-driven, service-oriented applications and services.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at https://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex server sqlserver azure productionready</tags>
+	<frameworkAssemblies>
+	</frameworkAssemblies>
+    <dependencies>
+	<dependency id="AutoMapper" version="4.1.0" />
+	<dependency id="Eleflex" version="3.2.0" />
+	<dependency id="Eleflex.Messages" version="3.2.0" />
+	<dependency id="Eleflex.Storage.EntityFramework" version="3.2.0" />
+    </dependencies>
+  </metadata>
+</package>

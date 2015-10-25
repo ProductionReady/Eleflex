@@ -181,6 +181,41 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{4991ACF4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EleflexNuGetRelease", "Applications\Tools\EleflexNuGetRelease\EleflexNuGetRelease.csproj", "{9E61E950-B3E8-4524-B05B-E9B23975F61B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B34D0AF9-7090-4DE9-99EC-D2C3CDCFB015}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Email.Messages", "Eleflex.Email.Messages", "{6E372355-624B-48DB-9C95-C269DAF4A19D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Email.Server", "Eleflex.Email.Server", "{7D295D53-49D7-44D6-804D-7FAFEE58E9D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Email.WebClient", "Eleflex.Email.WebClient", "{C0602E0F-375E-47DD-BAA4-76422EB5D773}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Email.WebServer", "Eleflex.Email.WebServer", "{B0C1A738-3171-493E-B728-8C212782766F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Email.Messages", "Release\NuGet\Eleflex.Email.Messages\Eleflex.Email.Messages\Eleflex.Email.Messages.csproj", "{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Email.Server", "Release\NuGet\Eleflex.Email.Server\Eleflex.Email.Server\Eleflex.Email.Server.csproj", "{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Email.WebClient", "Release\NuGet\Eleflex.Email.WebClient\Eleflex.Email.WebClient\Eleflex.Email.WebClient.csproj", "{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Email.WebServer", "Release\NuGet\Eleflex.Email.WebServer\Eleflex.Email.WebServer\Eleflex.Email.WebServer.csproj", "{E937764C-6148-451D-9D11-9ABCA62F1E1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Email.Web.Admin", "Release\NuGet\Eleflex.Email.WebClient\Eleflex.Email.Web.Admin\Eleflex.Email.Web.Admin.csproj", "{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Email", "Release\NuGet\Eleflex.Email.Server\Eleflex.Email\Eleflex.Email.csproj", "{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Lookups", "Release\NuGet\Eleflex.Lookups.Server\Eleflex.Lookups\Eleflex.Lookups.csproj", "{799380DF-05A0-4F24-A42E-5B3C6274B40D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.Web", "Eleflex.Web", "{F594ABA8-C269-497D-B469-26A7850F8734}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.Web", "Release\NuGet\Eleflex.Web\Eleflex.Web\Eleflex.Web.csproj", "{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eleflex.ModuleGenerator", "Eleflex.ModuleGenerator", "{019821A7-EFD0-43F0-B1B7-D5A73D8206D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleflex.ModuleGenerator.Web.Admin", "Release\NuGet\Eleflex.ModuleGenerator\Eleflex.ModuleGenerator.Web.Admin\Eleflex.ModuleGenerator.Web.Admin.csproj", "{B069C284-3BA9-4810-A53F-8F4C1155CCDF}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Applications\Standard\UniversalClient\UniversalClient.Shared\UniversalClient.Shared.projitems*{e54b1771-47fc-48a9-8046-3048bb0b5be1}*SharedItemsImports = 4
@@ -1174,6 +1209,150 @@ Global
 		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Release|x64.Build.0 = Release|Any CPU
 		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Release|x86.ActiveCfg = Release|Any CPU
 		{9E61E950-B3E8-4524-B05B-E9B23975F61B}.Release|x86.Build.0 = Release|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Debug|ARM.Build.0 = Debug|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Debug|x64.Build.0 = Debug|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Debug|x86.Build.0 = Debug|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Release|ARM.Build.0 = Release|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Release|x64.ActiveCfg = Release|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Release|x64.Build.0 = Release|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Release|x86.ActiveCfg = Release|Any CPU
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229}.Release|x86.Build.0 = Release|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Debug|ARM.Build.0 = Debug|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Debug|x64.Build.0 = Debug|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Debug|x86.Build.0 = Debug|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Release|ARM.ActiveCfg = Release|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Release|ARM.Build.0 = Release|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Release|x64.ActiveCfg = Release|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Release|x64.Build.0 = Release|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Release|x86.ActiveCfg = Release|Any CPU
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0}.Release|x86.Build.0 = Release|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Debug|ARM.Build.0 = Debug|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Debug|x64.Build.0 = Debug|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Debug|x86.Build.0 = Debug|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Release|ARM.Build.0 = Release|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Release|x64.ActiveCfg = Release|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Release|x64.Build.0 = Release|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Release|x86.ActiveCfg = Release|Any CPU
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58}.Release|x86.Build.0 = Release|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Debug|ARM.Build.0 = Debug|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Debug|x64.Build.0 = Debug|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Debug|x86.Build.0 = Debug|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Release|ARM.Build.0 = Release|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Release|x64.ActiveCfg = Release|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Release|x64.Build.0 = Release|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Release|x86.ActiveCfg = Release|Any CPU
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F}.Release|x86.Build.0 = Release|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Debug|ARM.Build.0 = Debug|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Debug|x64.Build.0 = Debug|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Debug|x86.Build.0 = Debug|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Release|ARM.ActiveCfg = Release|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Release|ARM.Build.0 = Release|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Release|x64.ActiveCfg = Release|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Release|x64.Build.0 = Release|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Release|x86.ActiveCfg = Release|Any CPU
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45}.Release|x86.Build.0 = Release|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Debug|ARM.Build.0 = Debug|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Debug|x64.Build.0 = Debug|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Debug|x86.Build.0 = Debug|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Release|ARM.Build.0 = Release|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Release|x64.ActiveCfg = Release|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Release|x64.Build.0 = Release|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Release|x86.ActiveCfg = Release|Any CPU
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49}.Release|x86.Build.0 = Release|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Debug|ARM.Build.0 = Debug|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Debug|x64.Build.0 = Debug|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Debug|x86.Build.0 = Debug|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Release|ARM.ActiveCfg = Release|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Release|ARM.Build.0 = Release|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Release|x64.ActiveCfg = Release|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Release|x64.Build.0 = Release|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Release|x86.ActiveCfg = Release|Any CPU
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D}.Release|x86.Build.0 = Release|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Debug|ARM.Build.0 = Debug|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Debug|x64.Build.0 = Debug|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Debug|x86.Build.0 = Debug|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Release|ARM.ActiveCfg = Release|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Release|ARM.Build.0 = Release|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Release|x64.ActiveCfg = Release|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Release|x64.Build.0 = Release|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Release|x86.ActiveCfg = Release|Any CPU
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC}.Release|x86.Build.0 = Release|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Debug|ARM.Build.0 = Debug|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Debug|x64.Build.0 = Debug|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Debug|x86.Build.0 = Debug|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Release|ARM.Build.0 = Release|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Release|x64.ActiveCfg = Release|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Release|x64.Build.0 = Release|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Release|x86.ActiveCfg = Release|Any CPU
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1265,9 +1444,24 @@ Global
 		{1D30E4A9-D311-4CDE-A335-B78EA70E585C} = {EE285D10-8CE3-4864-87B6-AFF9D22B921F}
 		{4991ACF4-FFB2-4E3E-829F-76B5C4FAE739} = {1DF9D9CF-F05C-4E71-B9C8-E79742175D5F}
 		{9E61E950-B3E8-4524-B05B-E9B23975F61B} = {4991ACF4-FFB2-4E3E-829F-76B5C4FAE739}
+		{6E372355-624B-48DB-9C95-C269DAF4A19D} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{7D295D53-49D7-44D6-804D-7FAFEE58E9D0} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{C0602E0F-375E-47DD-BAA4-76422EB5D773} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{B0C1A738-3171-493E-B728-8C212782766F} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{1F9B45A6-6110-4A57-B20F-A3C5E28BB229} = {6E372355-624B-48DB-9C95-C269DAF4A19D}
+		{5829E749-FFEE-46CB-BCAC-6AFF0C35AED0} = {7D295D53-49D7-44D6-804D-7FAFEE58E9D0}
+		{E35160D2-0D83-4FA2-B599-3EEDE1A2FC58} = {C0602E0F-375E-47DD-BAA4-76422EB5D773}
+		{E937764C-6148-451D-9D11-9ABCA62F1E1F} = {B0C1A738-3171-493E-B728-8C212782766F}
+		{0570ECD7-D981-48E3-91CD-82BC8A3C8F45} = {C0602E0F-375E-47DD-BAA4-76422EB5D773}
+		{A3B75F85-BD95-4FFA-96C8-0B20FF982D49} = {7D295D53-49D7-44D6-804D-7FAFEE58E9D0}
+		{799380DF-05A0-4F24-A42E-5B3C6274B40D} = {7BA410A4-3E90-4208-B1D4-E73D4AE06969}
+		{F594ABA8-C269-497D-B469-26A7850F8734} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{0C7ADE23-F7F3-423E-AC76-07B607CFECBC} = {F594ABA8-C269-497D-B469-26A7850F8734}
+		{019821A7-EFD0-43F0-B1B7-D5A73D8206D5} = {35CCB71E-B0EE-4E89-936E-FECBDCCB103B}
+		{B069C284-3BA9-4810-A53F-8F4C1155CCDF} = {019821A7-EFD0-43F0-B1B7-D5A73D8206D5}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 63
+		SccNumberOfProjects = 72
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://productionready.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -1519,5 +1713,41 @@ Global
 		SccProjectTopLevelParentUniqueName62 = EleflexV3.sln
 		SccProjectName62 = Applications/Tools/EleflexNuGetRelease
 		SccLocalPath62 = Applications\\Tools\\EleflexNuGetRelease
+		SccProjectUniqueName63 = Release\\NuGet\\Eleflex.Email.Messages\\Eleflex.Email.Messages\\Eleflex.Email.Messages.csproj
+		SccProjectTopLevelParentUniqueName63 = EleflexV3.sln
+		SccProjectName63 = Release/NuGet/Eleflex.Email.Messages/Eleflex.Email.Messages
+		SccLocalPath63 = Release\\NuGet\\Eleflex.Email.Messages\\Eleflex.Email.Messages
+		SccProjectUniqueName64 = Release\\NuGet\\Eleflex.Email.Server\\Eleflex.Email.Server\\Eleflex.Email.Server.csproj
+		SccProjectTopLevelParentUniqueName64 = EleflexV3.sln
+		SccProjectName64 = Release/NuGet/Eleflex.Email.Server/Eleflex.Email.Server
+		SccLocalPath64 = Release\\NuGet\\Eleflex.Email.Server\\Eleflex.Email.Server
+		SccProjectUniqueName65 = Release\\NuGet\\Eleflex.Email.WebClient\\Eleflex.Email.WebClient\\Eleflex.Email.WebClient.csproj
+		SccProjectTopLevelParentUniqueName65 = EleflexV3.sln
+		SccProjectName65 = Release/NuGet/Eleflex.Email.WebClient/Eleflex.Email.WebClient
+		SccLocalPath65 = Release\\NuGet\\Eleflex.Email.WebClient\\Eleflex.Email.WebClient
+		SccProjectUniqueName66 = Release\\NuGet\\Eleflex.Email.WebServer\\Eleflex.Email.WebServer\\Eleflex.Email.WebServer.csproj
+		SccProjectTopLevelParentUniqueName66 = EleflexV3.sln
+		SccProjectName66 = Release/NuGet/Eleflex.Email.WebServer/Eleflex.Email.WebServer
+		SccLocalPath66 = Release\\NuGet\\Eleflex.Email.WebServer\\Eleflex.Email.WebServer
+		SccProjectUniqueName67 = Release\\NuGet\\Eleflex.Email.WebClient\\Eleflex.Email.Web.Admin\\Eleflex.Email.Web.Admin.csproj
+		SccProjectTopLevelParentUniqueName67 = EleflexV3.sln
+		SccProjectName67 = Release/NuGet/Eleflex.Email.WebClient/Eleflex.Email.Web.Admin
+		SccLocalPath67 = Release\\NuGet\\Eleflex.Email.WebClient\\Eleflex.Email.Web.Admin
+		SccProjectUniqueName68 = Release\\NuGet\\Eleflex.Email.Server\\Eleflex.Email\\Eleflex.Email.csproj
+		SccProjectTopLevelParentUniqueName68 = EleflexV3.sln
+		SccProjectName68 = Release/NuGet/Eleflex.Email.Server/Eleflex.Email
+		SccLocalPath68 = Release\\NuGet\\Eleflex.Email.Server\\Eleflex.Email
+		SccProjectUniqueName69 = Release\\NuGet\\Eleflex.Lookups.Server\\Eleflex.Lookups\\Eleflex.Lookups.csproj
+		SccProjectTopLevelParentUniqueName69 = EleflexV3.sln
+		SccProjectName69 = Release/NuGet/Eleflex.Lookups.Server/Eleflex.Lookups
+		SccLocalPath69 = Release\\NuGet\\Eleflex.Lookups.Server\\Eleflex.Lookups
+		SccProjectUniqueName70 = Release\\NuGet\\Eleflex.Web\\Eleflex.Web\\Eleflex.Web.csproj
+		SccProjectTopLevelParentUniqueName70 = EleflexV3.sln
+		SccProjectName70 = Release/NuGet/Eleflex.Web/Eleflex.Web
+		SccLocalPath70 = Release\\NuGet\\Eleflex.Web\\Eleflex.Web
+		SccProjectUniqueName71 = Release\\NuGet\\Eleflex.ModuleGenerator\\Eleflex.ModuleGenerator.Web.Admin\\Eleflex.ModuleGenerator.Web.Admin.csproj
+		SccProjectTopLevelParentUniqueName71 = EleflexV3.sln
+		SccProjectName71 = Release/NuGet/Eleflex.ModuleGenerator/Eleflex.ModuleGenerator.Web.Admin
+		SccLocalPath71 = Release\\NuGet\\Eleflex.ModuleGenerator\\Eleflex.ModuleGenerator.Web.Admin
 	EndGlobalSection
 EndGlobal

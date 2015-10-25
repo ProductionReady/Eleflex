@@ -52,8 +52,8 @@
       <HintPath>..\..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Common.Logging, Version=3.3.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
@@ -185,8 +185,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Eleflex_Start\EleflexEmail\WebClientObjectLocationRegistrationTask.cs" />
+    <Compile Include="App_Start\Eleflex_Start\EleflexEmail\WebClientRoutesStartupTask.cs" />
     <Compile Include="App_Start\Eleflex_Start\EleflexLookups\WebClientObjectLocationRegistrationTask.cs" />
     <Compile Include="App_Start\Eleflex_Start\EleflexLookups\WebClientRoutesStartupTask.cs" />
+    <Compile Include="App_Start\Eleflex_Start\EleflexModuleGenerator\WebClientRoutesStartupTask.cs" />
     <Compile Include="App_Start\Eleflex_Start\SystemLoggingStartupTask.cs" />
     <Compile Include="App_Start\Eleflex_Start\OWINStartup.cs" />
     <Compile Include="App_Start\Eleflex_Start\SystemObjectLocationRegistrationTask.cs" />
@@ -495,7 +498,9 @@
     <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="Scripts\smalot-datetimepicker\locales\bootstrap-datetimepicker.zh-TW.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -544,6 +549,18 @@
       <Project>{1630bb19-5792-4e50-b196-7f3e25a4d46e}</Project>
       <Name>Eleflex.Versioning.Web.Admin</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Email.Messages\Eleflex.Email.Messages\Eleflex.Email.Messages.csproj">
+      <Project>{1f9b45a6-6110-4a57-b20f-a3c5e28bb229}</Project>
+      <Name>Eleflex.Email.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Email.WebClient\Eleflex.Email.Web.Admin\Eleflex.Email.Web.Admin.csproj">
+      <Project>{0570ecd7-d981-48e3-91cd-82bc8a3c8f45}</Project>
+      <Name>Eleflex.Email.Web.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Email.WebClient\Eleflex.Email.WebClient\Eleflex.Email.WebClient.csproj">
+      <Project>{e35160d2-0d83-4fa2-b599-3eede1a2fc58}</Project>
+      <Name>Eleflex.Email.WebClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages.csproj">
       <Project>{f89c95f0-9be4-4a67-bb18-80817b842833}</Project>
       <Name>Eleflex.Lookups.Messages</Name>
@@ -556,9 +573,17 @@
       <Project>{5a0163e4-05f0-443a-9090-556549aa6cbc}</Project>
       <Name>Eleflex.Messages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.ModuleGenerator\Eleflex.ModuleGenerator.Web.Admin\Eleflex.ModuleGenerator.Web.Admin.csproj">
+      <Project>{b069c284-3ba9-4810-a53f-8f4c1155ccdf}</Project>
+      <Name>Eleflex.ModuleGenerator.Web.Admin</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.WebClient\Eleflex.WebClient\Eleflex.WebClient.csproj">
       <Project>{7cc17ebf-2f9e-49a8-ba52-dcff650442e6}</Project>
       <Name>Eleflex.WebClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Web\Eleflex.Web\Eleflex.Web.csproj">
+      <Project>{0c7ade23-f7f3-423e-ac76-07b607cfecbc}</Project>
+      <Name>Eleflex.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex\Eleflex.Core\Eleflex.Core.csproj">
       <Project>{4fe88fde-0f8d-4654-99a0-47bcb778b8e4}</Project>

@@ -11,7 +11,9 @@ namespace Eleflex
     /// <typeparam name="TRegistrationAttribute"></typeparam>
     public abstract partial class StartupTaskWithRegistration<TRegistrationAttribute> : IStartupTask
         where TRegistrationAttribute : Attribute
-    {        
+    {
+
+        private List<IRegistrationTask> _tasksToRun = new List<IRegistrationTask>();
 
         /// <summary>
         /// Constructor.
@@ -38,25 +40,19 @@ namespace Eleflex
         public virtual int Priority { get; set; }
 
         /// <summary>
-        /// Perform startup logic.
+        /// This signals the task to load resources it needs into the AppDomain.
         /// </summary>
-        /// <param name="taskOptions"></param>
         /// <returns></returns>
-        public virtual bool Start(ITaskOptions taskOptions)
+        public virtual void LoadResources()
         {
-            //Get list of disabled task names
-            List<string> disabledTaskNames = new List<string>();
-            if (taskOptions != null && taskOptions.DisabledTaskNames != null)
-                disabledTaskNames.AddRange(taskOptions.DisabledTaskNames);
-
-            //Get assemblies
-            List<Assembly> assemblies = AppDomain.CurrentDomain.GetAssemblies().Distinct().ToList();
+            _tasksToRun = new List<IRegistrationTask>();
 
             //Get RegistrationTasks to register and initialize
             Type registrationTaskType = typeof(IRegistrationTask);
             Type registrationAttributeType = typeof(TRegistrationAttribute);
-            List<IRegistrationTask> tasksToRun = new List<IRegistrationTask>();
-            
+
+            //Get assemblies
+            List<Assembly> assemblies = AppDomain.CurrentDomain.GetAssemblies().Distinct().ToList();
             foreach (Assembly assembly in assemblies)
             {
                 try
@@ -66,21 +62,37 @@ namespace Eleflex
                     List<Type> registrationTasks = assembly.GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.GetInterfaces().Where(z => z.FullName == registrationTaskType.FullName).Any()).ToList();
                     foreach (Type taskType in registrationTasks)
                     {
-                        CustomAttributeData cad = taskType.CustomAttributes.Where(x => x.AttributeType.FullName == registrationAttributeType.FullName).FirstOrDefault();                        
+                        CustomAttributeData cad = taskType.CustomAttributes.Where(x => x.AttributeType.FullName == registrationAttributeType.FullName).FirstOrDefault();
                         if (cad != null)
                         {
                             //Create instance and add to list to be run
                             IRegistrationTask regTask = ObjectLocator.Current.GetInstance(taskType) as IRegistrationTask;
                             if (regTask != null)
-                                tasksToRun.Add(regTask);
+                                _tasksToRun.Add(regTask);
                         }
                     }
                 }//This may sometimes encounter ReflectionLoader errors for system references but these can be safely ignored
                 catch { }
             }
+        }
+
+        /// <summary>
+        /// Perform startup logic.
+        /// </summary>
+        /// <param name="taskOptions"></param>
+        /// <returns></returns>
+        public virtual bool Start(ITaskOptions taskOptions)
+        {
+            //Reload the resources
+            LoadResources();
+
+            //Get list of disabled task names
+            List<string> disabledTaskNames = new List<string>();
+            if (taskOptions != null && taskOptions.DisabledTaskNames != null)
+                disabledTaskNames.AddRange(taskOptions.DisabledTaskNames);                              
 
             //Order tasks by priority
-            tasksToRun = tasksToRun.OrderBy(x => x.Priority).ToList();
+            List<IRegistrationTask> tasksToRun = _tasksToRun.OrderBy(x => x.Priority).ToList();
             Logger.Current.Debug<StartupTaskWithRegistration<TRegistrationAttribute>>("[REGISTRATION TASKS LOADED] " + string.Join(" [,] ", tasksToRun.Select(x => x.Name).ToList()));
 
             //Register each task

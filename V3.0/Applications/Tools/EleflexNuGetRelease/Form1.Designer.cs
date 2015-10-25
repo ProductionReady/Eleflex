@@ -35,6 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNewVersion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.ckbPackage = new System.Windows.Forms.CheckBox();
+            this.ckbPublish = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -51,7 +53,7 @@
             this.txtFolder.Location = new System.Drawing.Point(107, 12);
             this.txtFolder.Name = "txtFolder";
             this.txtFolder.Size = new System.Drawing.Size(376, 20);
-            this.txtFolder.TabIndex = 1;
+            this.txtFolder.TabIndex = 0;
             this.txtFolder.Text = "C:\\Work\\TFS\\Source\\EleflexV3\\SourceCode\\Managed\\Release\\NuGet";
             // 
             // btnRelease
@@ -59,7 +61,7 @@
             this.btnRelease.Location = new System.Drawing.Point(408, 90);
             this.btnRelease.Name = "btnRelease";
             this.btnRelease.Size = new System.Drawing.Size(75, 23);
-            this.btnRelease.TabIndex = 3;
+            this.btnRelease.TabIndex = 5;
             this.btnRelease.Text = "Release";
             this.btnRelease.UseVisualStyleBackColor = true;
             this.btnRelease.Click += new System.EventHandler(this.btnRelease_Click);
@@ -69,8 +71,8 @@
             this.txtPreviousVersion.Location = new System.Drawing.Point(107, 38);
             this.txtPreviousVersion.Name = "txtPreviousVersion";
             this.txtPreviousVersion.Size = new System.Drawing.Size(376, 20);
-            this.txtPreviousVersion.TabIndex = 5;
-            this.txtPreviousVersion.Text = "3.1.0-a";
+            this.txtPreviousVersion.TabIndex = 1;
+            this.txtPreviousVersion.Text = "3.2.0";
             // 
             // label2
             // 
@@ -86,8 +88,8 @@
             this.txtNewVersion.Location = new System.Drawing.Point(107, 64);
             this.txtNewVersion.Name = "txtNewVersion";
             this.txtNewVersion.Size = new System.Drawing.Size(376, 20);
-            this.txtNewVersion.TabIndex = 7;
-            this.txtNewVersion.Text = "3.1.0";
+            this.txtNewVersion.TabIndex = 2;
+            this.txtNewVersion.Text = "3.2.1";
             // 
             // label3
             // 
@@ -98,11 +100,33 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "New Version";
             // 
+            // ckbPackage
+            // 
+            this.ckbPackage.AutoSize = true;
+            this.ckbPackage.Location = new System.Drawing.Point(12, 94);
+            this.ckbPackage.Name = "ckbPackage";
+            this.ckbPackage.Size = new System.Drawing.Size(75, 17);
+            this.ckbPackage.TabIndex = 3;
+            this.ckbPackage.Text = "Package?";
+            this.ckbPackage.UseVisualStyleBackColor = true;
+            // 
+            // ckbPublish
+            // 
+            this.ckbPublish.AutoSize = true;
+            this.ckbPublish.Location = new System.Drawing.Point(107, 94);
+            this.ckbPublish.Name = "ckbPublish";
+            this.ckbPublish.Size = new System.Drawing.Size(66, 17);
+            this.ckbPublish.TabIndex = 4;
+            this.ckbPublish.Text = "Publish?";
+            this.ckbPublish.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 123);
+            this.Controls.Add(this.ckbPublish);
+            this.Controls.Add(this.ckbPackage);
             this.Controls.Add(this.txtNewVersion);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPreviousVersion);
@@ -129,6 +153,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNewVersion;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox ckbPackage;
+        private System.Windows.Forms.CheckBox ckbPublish;
     }
 }
 

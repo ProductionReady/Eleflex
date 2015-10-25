@@ -207,6 +207,9 @@
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\ModulePatch\Version_3_1_0_0.cs">
       <Link>ModulePatch\Version_3_1_0_0.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\ModulePatch\Version_3_2_0_0.cs">
+      <Link>ModulePatch\Version_3_2_0_0.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\ObjectLocation\ActivatorObjectLocationService.cs">
       <Link>ObjectLocation\ActivatorObjectLocationService.cs</Link>
     </Compile>
@@ -617,6 +620,9 @@
     </Compile>
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\StorageServiceSession.cs">
       <Link>Storage\StorageServiceSession.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Modules\Core\Eleflex\Storage\TransactionIsolationLevel.cs">
+      <Link>Storage\TransactionIsolationLevel.cs</Link>
     </Compile>
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\Eleflex_Versioning_CodeGenerator.cs">
       <Link>Versioning\Eleflex_Versioning_CodeGenerator.cs</Link>

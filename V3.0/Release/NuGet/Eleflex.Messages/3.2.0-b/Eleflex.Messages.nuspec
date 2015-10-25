@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.Messages</id>
+    <version>3.2.0-b</version>
+    <title>ELEFLEX Messages</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package installs the Eleflex.Messages component. It contains classes used for WCF service communication. ELEFLEX is a platform for building modular, domain-driven, service-oriented applications and services.</description>
+      <summary>This package installs the Eleflex.Messages component. It contains classes used for WCF service communication. ELEFLEX is a platform for building modular, domain-driven, service-oriented applications and services.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at https://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex messages productionready</tags>
+	<frameworkAssemblies>
+		<frameworkAssembly assemblyName="System.ServiceModel" />
+	</frameworkAssemblies>
+    <dependencies>
+	<dependency id="Eleflex" version="3.2.0-b" />
+    </dependencies>
+  </metadata>
+</package>

@@ -10,6 +10,22 @@ namespace Eleflex
     {
 
         /// <summary>
+        /// Constructor.
+        /// </summary>
+        public RequestItems()
+        {
+        }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="items"></param>
+        public RequestItems(IList<T> items)
+        {
+            Items = items;
+        }
+
+        /// <summary>
         /// The collection of request typed object items.
         /// </summary>
         public virtual IList<T> Items { get; set; }

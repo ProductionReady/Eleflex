@@ -84,6 +84,7 @@
     <Compile Include="Logging\LogMessageCustom.cs" />
     <Compile Include="Logging\MemoryLogService.cs" />
     <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
+    <Compile Include="ModulePatch\Version_3_2_0_0.cs" />
     <Compile Include="ModulePatch\Version_3_1_0_0.cs" />
     <Compile Include="ObjectLocation\ActivatorObjectLocationService.cs" />
     <Compile Include="Security\Eleflex_Security_CodeGenerator.cs">
@@ -349,6 +350,7 @@
     <Compile Include="Storage\StorageContextUnitOfWork.cs" />
     <Compile Include="Storage\StorageQueryBuilder.cs" />
     <Compile Include="Storage\StorageRepository.cs" />
+    <Compile Include="Storage\TransactionIsolationLevel.cs" />
     <Compile Include="Versioning\Eleflex_Versioning_CodeGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

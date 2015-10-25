@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EmailModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EmailProcess">
+          <Key>
+            <PropertyRef Name="EmailProcessKey" />
+          </Key>
+          <Property Name="EmailProcessKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ToAddress" Type="nvarchar(max)" />
+          <Property Name="CcAddress" Type="nvarchar(max)" />
+          <Property Name="BccAddress" Type="nvarchar(max)" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="IsHtml" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="FutureSendDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="SentDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="IsError" Type="bit" Nullable="false" />
+          <Property Name="ErrorDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ErrorMessage" Type="nvarchar(max)" />
+          <Property Name="IsProcessing" Type="bit" Nullable="false" />
+          <Property Name="ProcessingDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="EmailProcessAttachment">
+          <Key>
+            <PropertyRef Name="EmailProcessAttachmentKey" />
+          </Key>
+          <Property Name="EmailProcessAttachmentKey" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailProcessKey" Type="bigint" Nullable="false" />
+          <Property Name="Filename" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FileData" Type="varbinary(max)" />
+          <Property Name="ContentType" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_EmailProcessAttachment_EmailProcess">
+          <End Role="EmailProcess" Type="Self.EmailProcess" Multiplicity="1" />
+          <End Role="EmailProcessAttachment" Type="Self.EmailProcessAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailProcess">
+              <PropertyRef Name="EmailProcessKey" />
+            </Principal>
+            <Dependent Role="EmailProcessAttachment">
+              <PropertyRef Name="EmailProcessKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmailModelStoreContainer">
+          <EntitySet Name="EmailProcess" EntityType="Self.EmailProcess" Schema="EleflexV3" store:Type="Tables" />
+          <EntitySet Name="EmailProcessAttachment" EntityType="Self.EmailProcessAttachment" Schema="EleflexV3" store:Type="Tables" />
+          <AssociationSet Name="FK_EmailProcessAttachment_EmailProcess" Association="Self.FK_EmailProcessAttachment_EmailProcess">
+            <End Role="EmailProcess" EntitySet="EmailProcess" />
+            <End Role="EmailProcessAttachment" EntitySet="EmailProcessAttachment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmailModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EmailProcess">
+          <Key>
+            <PropertyRef Name="EmailProcessKey" />
+          </Key>
+          <Property Name="EmailProcessKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ToAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CcAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BccAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsHtml" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="FutureSendDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="SentDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="IsError" Type="Boolean" Nullable="false" />
+          <Property Name="ErrorDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsProcessing" Type="Boolean" Nullable="false" />
+          <Property Name="ProcessingDate" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="EmailProcessAttachments" Relationship="Self.FK_EmailProcessAttachment_EmailProcess" FromRole="EmailProcess" ToRole="EmailProcessAttachment" />
+        </EntityType>
+        <EntityType Name="EmailProcessAttachment">
+          <Key>
+            <PropertyRef Name="EmailProcessAttachmentKey" />
+          </Key>
+          <Property Name="EmailProcessAttachmentKey" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailProcessKey" Type="Int64" Nullable="false" />
+          <Property Name="Filename" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmailProcess" Relationship="Self.FK_EmailProcessAttachment_EmailProcess" FromRole="EmailProcessAttachment" ToRole="EmailProcess" />
+        </EntityType>
+        <Association Name="FK_EmailProcessAttachment_EmailProcess">
+          <End Role="EmailProcess" Type="Self.EmailProcess" Multiplicity="1" />
+          <End Role="EmailProcessAttachment" Type="Self.EmailProcessAttachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmailProcess">
+              <PropertyRef Name="EmailProcessKey" />
+            </Principal>
+            <Dependent Role="EmailProcessAttachment">
+              <PropertyRef Name="EmailProcessKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmailDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmailProcesses" EntityType="Self.EmailProcess" />
+          <EntitySet Name="EmailProcessAttachments" EntityType="Self.EmailProcessAttachment" />
+          <AssociationSet Name="FK_EmailProcessAttachment_EmailProcess" Association="Self.FK_EmailProcessAttachment_EmailProcess">
+            <End Role="EmailProcess" EntitySet="EmailProcesses" />
+            <End Role="EmailProcessAttachment" EntitySet="EmailProcessAttachments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmailModelStoreContainer" CdmEntityContainer="EmailDB">
+          <EntitySetMapping Name="EmailProcesses">
+            <EntityTypeMapping TypeName="EmailModel.EmailProcess">
+              <MappingFragment StoreEntitySet="EmailProcess">
+                <ScalarProperty Name="EmailProcessKey" ColumnName="EmailProcessKey" />
+                <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+                <ScalarProperty Name="ToAddress" ColumnName="ToAddress" />
+                <ScalarProperty Name="CcAddress" ColumnName="CcAddress" />
+                <ScalarProperty Name="BccAddress" ColumnName="BccAddress" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="IsHtml" ColumnName="IsHtml" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="FutureSendDate" ColumnName="FutureSendDate" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="IsError" ColumnName="IsError" />
+                <ScalarProperty Name="ErrorDate" ColumnName="ErrorDate" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="IsProcessing" ColumnName="IsProcessing" />
+                <ScalarProperty Name="ProcessingDate" ColumnName="ProcessingDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailProcessAttachments">
+            <EntityTypeMapping TypeName="EmailModel.EmailProcessAttachment">
+              <MappingFragment StoreEntitySet="EmailProcessAttachment">
+                <ScalarProperty Name="EmailProcessAttachmentKey" ColumnName="EmailProcessAttachmentKey" />
+                <ScalarProperty Name="EmailProcessKey" ColumnName="EmailProcessKey" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+                <ScalarProperty Name="FileData" ColumnName="FileData" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

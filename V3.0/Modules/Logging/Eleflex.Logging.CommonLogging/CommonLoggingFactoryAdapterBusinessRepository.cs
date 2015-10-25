@@ -35,9 +35,10 @@ namespace Eleflex.Logging.CommonLogging
         public override bool ProcessMessage(Eleflex.LogMessage message)
         {
             //THIS METHOD IS EXECUTING ON A BACKGROUD THREAD!
-            //We want to process logging on a different thread from the current request thread as to not slow down processing for persisting log messages.
-            //Additionally messages created on the context of the request thread would be rolledback should the unit of work be rolledback/disposed.
-            //Using object locator will create a new instance for each log method, filling up uow list as processes ages, so only get one repository instance.
+            //We want to process logging on a different thread from the current request thread as to not slow down processing for persisting log messages and also because
+            //messages created on the context of the request thread would be rolledback should the unit of work be rolledback/disposed.
+
+            //Using object locator will create a new instance for each business repository in the uow created, filling up uow list as processes ages, so only get one repository instance.
             if(_uow == null)
                 _uow = ObjectLocator.Current.GetInstance<IStorageContextUnitOfWork>();
             try

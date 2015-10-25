@@ -6,6 +6,23 @@
     /// <typeparam name="T"></typeparam>
     public partial class ResponseItem<T> : Response, IResponseItem<T>
     {
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public ResponseItem()
+        {
+        }
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="item"></param>
+        public ResponseItem(T item)
+        {
+            Item = item;
+        }
+
         /// <summary>
         /// The response typed object item.
         /// </summary>

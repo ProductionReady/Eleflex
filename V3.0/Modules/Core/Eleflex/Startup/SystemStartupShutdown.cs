@@ -44,9 +44,9 @@ namespace Eleflex
                 Logger.Current.Debug(LOGGING_NAME, "[DISABLED TASK NAMES LOADED] " + string.Join(" [,] ", disabledTaskNames));
 
                 //Start first process. Because there are multiple app domains loaded, this should cause all other assemblies to be loaded in AppDomain
-                Logger.Current.Debug(LOGGING_NAME, "[STARTING FIRST PROCESS TO LOAD ALL ASSEMBLIES IN APPDOMAIN]");
-                StartupProcedure(taskOptions, disabledTaskNames);
-                Logger.Current.Debug(LOGGING_NAME, "[STARTING SECOND PROCESS WITH ALL ASSEMBLIES LOADED]");
+                Logger.Current.Debug(LOGGING_NAME, "[STARTING PROCESS TO LOAD ALL RESOURCES IN APPDOMAIN]");
+                LoadAllResources();
+                Logger.Current.Debug(LOGGING_NAME, "[STARTING PROCESS TO STARTUP TASKS]");
                 //Start second process. We should have all assemblies loaded in the AppDomain now, re-run all
                 StartupProcedure(taskOptions, disabledTaskNames);
 
@@ -58,6 +58,40 @@ namespace Eleflex
                 Logger.Current.Fatal(LOGGING_NAME, "[SYSTEM STARTUP ERROR]", ex);
             }
         }
+
+        protected virtual void LoadAllResources()
+        {
+            //Get assemblies
+            List<Assembly> assemblies = AppDomain.CurrentDomain.GetAssemblies().Distinct().ToList();
+
+            Logger.Current.Debug(LOGGING_NAME, "[ASSEMBLIES LOADED] " + string.Join(" [,] ", assemblies.Select(x => x.FullName).ToList()));
+
+            //Load all startup task types
+            List<IStartupTask> startupList = new List<IStartupTask>();
+            Type startupTaskType = typeof(IStartupTask);
+            foreach (Assembly assembly in assemblies)
+            {
+                try
+                {
+                    //Find all IStartupTask types
+                    //It must be done this way because of system restarts, mismatched types due to multiple app domains being loaded
+                    List<Type> tasks = assembly.GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.GetInterfaces().Where(z => z.FullName == startupTaskType.FullName).Any()).ToList();
+                    foreach (Type taskType in tasks)
+                    {
+                        //Create instance and add to list to be run
+                        IStartupTask startTask = ObjectLocator.Current.GetInstance(taskType) as IStartupTask;
+                        if (startTask != null)
+                            startupList.Add(startTask);
+                    }
+                }//This may sometimes encounter ReflectionLoader errors for system references but these can be safely ignored
+                catch { }
+            }
+            foreach (IStartupTask task in startupList)
+            {
+                task.LoadResources();
+            }
+        }
+
 
         protected virtual void StartupProcedure(ITaskOptions taskOptions, List<string> disabledTaskNames)
         {

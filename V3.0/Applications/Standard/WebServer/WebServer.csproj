@@ -52,8 +52,8 @@
       <HintPath>..\..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Common.Logging, Version=3.3.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
@@ -143,6 +143,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -168,9 +172,6 @@
       <Private>True</Private>
       <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
@@ -193,9 +194,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Eleflex_Start\EleflexEmail\WebClientObjectLocationRegistrationTask.cs" />
+    <Compile Include="App_Start\Eleflex_Start\EleflexEmail\WebClientRoutesStartupTask.cs" />
+    <Compile Include="App_Start\Eleflex_Start\EleflexEmail\WebServerObjectLocationRegistrationTask.cs" />
+    <Compile Include="App_Start\Eleflex_Start\EleflexEmail\WebServerProcessStartupTask.cs" />
     <Compile Include="App_Start\Eleflex_Start\EleflexLookups\WebServerObjectLocationRegistrationTask.cs" />
     <Compile Include="App_Start\Eleflex_Start\EleflexLookups\WebClientObjectLocationRegistrationTask.cs" />
     <Compile Include="App_Start\Eleflex_Start\EleflexLookups\WebClientRoutesStartupTask.cs" />
+    <Compile Include="App_Start\Eleflex_Start\EleflexModuleGenerator\WebClientRoutesStartupTask.cs" />
     <Compile Include="App_Start\Eleflex_Start\SystemLoggingStartupTask.cs" />
     <Compile Include="App_Start\Eleflex_Start\OWINStartup.cs" />
     <Compile Include="App_Start\Eleflex_Start\SystemObjectLocationRegistrationTask.cs" />
@@ -555,6 +561,30 @@
       <Project>{1630bb19-5792-4e50-b196-7f3e25a4d46e}</Project>
       <Name>Eleflex.Versioning.Web.Admin</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Email.Messages\Eleflex.Email.Messages\Eleflex.Email.Messages.csproj">
+      <Project>{1f9b45a6-6110-4a57-b20f-a3c5e28bb229}</Project>
+      <Name>Eleflex.Email.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Email.Server\Eleflex.Email.Server\Eleflex.Email.Server.csproj">
+      <Project>{5829e749-ffee-46cb-bcac-6aff0c35aed0}</Project>
+      <Name>Eleflex.Email.Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Email.Server\Eleflex.Email\Eleflex.Email.csproj">
+      <Project>{a3b75f85-bd95-4ffa-96c8-0b20ff982d49}</Project>
+      <Name>Eleflex.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Email.WebClient\Eleflex.Email.Web.Admin\Eleflex.Email.Web.Admin.csproj">
+      <Project>{0570ecd7-d981-48e3-91cd-82bc8a3c8f45}</Project>
+      <Name>Eleflex.Email.Web.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Email.WebClient\Eleflex.Email.WebClient\Eleflex.Email.WebClient.csproj">
+      <Project>{e35160d2-0d83-4fa2-b599-3eede1a2fc58}</Project>
+      <Name>Eleflex.Email.WebClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Email.WebServer\Eleflex.Email.WebServer\Eleflex.Email.WebServer.csproj">
+      <Project>{e937764c-6148-451d-9d11-9abca62f1e1f}</Project>
+      <Name>Eleflex.Email.WebServer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages\Eleflex.Lookups.Messages.csproj">
       <Project>{f89c95f0-9be4-4a67-bb18-80817b842833}</Project>
       <Name>Eleflex.Lookups.Messages</Name>
@@ -562,6 +592,10 @@
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Lookups.Server\Eleflex.Lookups.Server\Eleflex.Lookups.Server.csproj">
       <Project>{881bb211-30b6-468e-8fbf-0360807ff0b3}</Project>
       <Name>Eleflex.Lookups.Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Lookups.Server\Eleflex.Lookups\Eleflex.Lookups.csproj">
+      <Project>{799380df-05a0-4f24-a42e-5b3c6274b40d}</Project>
+      <Name>Eleflex.Lookups</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Lookups.WebClient\Eleflex.Lookups.WebClient\Eleflex.Lookups.WebClient.csproj">
       <Project>{1d30e4a9-d311-4cde-a335-b78ea70e585c}</Project>
@@ -574,6 +608,10 @@
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Messages\Eleflex.Messages\Eleflex.Messages.csproj">
       <Project>{5a0163e4-05f0-443a-9090-556549aa6cbc}</Project>
       <Name>Eleflex.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.ModuleGenerator\Eleflex.ModuleGenerator.Web.Admin\Eleflex.ModuleGenerator.Web.Admin.csproj">
+      <Project>{b069c284-3ba9-4810-a53f-8f4c1155ccdf}</Project>
+      <Name>Eleflex.ModuleGenerator.Web.Admin</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Server\Eleflex.Server\Eleflex.Server.csproj">
       <Project>{63a99100-1ddd-42cc-8137-a0f01d1d93d6}</Project>
@@ -590,6 +628,10 @@
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.WebServer\Eleflex.WebServer\Eleflex.WebServer.csproj">
       <Project>{8ea3aa47-c90e-4527-99c0-bc67595f9016}</Project>
       <Name>Eleflex.WebServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Web\Eleflex.Web\Eleflex.Web.csproj">
+      <Project>{0c7ade23-f7f3-423e-ac76-07b607cfecbc}</Project>
+      <Name>Eleflex.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex\Eleflex.Core\Eleflex.Core.csproj">
       <Project>{4fe88fde-0f8d-4654-99a0-47bcb778b8e4}</Project>

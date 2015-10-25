@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LinqKit</name>
+    </assembly>
+    <members>
+        <member name="T:LinqKit.ExpandableQuery`1">
+            <summary>
+            An IQueryable wrapper that allows us to visit the query's expression tree just before LINQ to SQL gets to it.
+            This is based on the excellent work of Tomas Petricek: http://tomasp.net/blog/linq-expand.aspx
+            </summary>
+        </member>
+        <member name="M:LinqKit.ExpandableQuery`1.GetEnumerator">
+            <summary> IQueryable enumeration </summary>
+        </member>
+        <member name="M:LinqKit.ExpandableQuery`1.ToString">
+            <summary> IQueryable string presentation.  </summary>
+        </member>
+        <member name="T:LinqKit.ExpressionExpander">
+            <summary>
+            Custom expresssion visitor for ExpandableQuery. This expands calls to Expression.Compile() and
+            collapses captured lambda references in subqueries which LINQ to SQL can't otherwise handle.
+            </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionExpander.VisitInvocation(System.Linq.Expressions.InvocationExpression)">
+            <summary>
+            Flatten calls to Invoke so that Entity Framework can understand it. Calls to Invoke are generated
+            by PredicateBuilder.
+            </summary>
+        </member>
+        <member name="T:LinqKit.ExpressionVisitor">
+            <summary>
+            This comes from Matt Warren's sample:
+            http://blogs.msdn.com/mattwar/archive/2007/07/31/linq-building-an-iqueryable-provider-part-ii.aspx
+            </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.Visit(System.Linq.Expressions.Expression)">
+            <summary> Visit expression tree </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitBinding(System.Linq.Expressions.MemberBinding)">
+            <summary> Visit member binding </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitElementInitializer(System.Linq.Expressions.ElementInit)">
+            <summary> Visit element initializer </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitUnary(System.Linq.Expressions.UnaryExpression)">
+            <summary> Visit one-parameter expression </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitBinary(System.Linq.Expressions.BinaryExpression)">
+            <summary> Visit two-parameter expression </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitTypeIs(System.Linq.Expressions.TypeBinaryExpression)">
+            <summary> Visit type-is expression </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitConstant(System.Linq.Expressions.ConstantExpression)">
+            <summary> Return constant expression </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitConditional(System.Linq.Expressions.ConditionalExpression)">
+            <summary> Simplify conditional expression </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary> Return parameter expression </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitMemberAccess(System.Linq.Expressions.MemberExpression)">
+            <summary> Visit member access </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitMethodCall(System.Linq.Expressions.MethodCallExpression)">
+            <summary> Visit method call </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitExpressionList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.Expression})">
+            <summary> Visit list of expressions </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitMemberAssignment(System.Linq.Expressions.MemberAssignment)">
+            <summary> Visit member assignment </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitMemberMemberBinding(System.Linq.Expressions.MemberMemberBinding)">
+            <summary> Visit member binding </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitMemberListBinding(System.Linq.Expressions.MemberListBinding)">
+            <summary> Visit member list binding </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitBindingList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.MemberBinding})">
+            <summary> Visit list of bindings </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitElementInitializerList(System.Collections.ObjectModel.ReadOnlyCollection{System.Linq.Expressions.ElementInit})">
+            <summary> Visit list of element-initializers </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitLambda(System.Linq.Expressions.LambdaExpression)">
+            <summary> Visit lambda expression </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitNew(System.Linq.Expressions.NewExpression)">
+            <summary> Visit new-expression </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitMemberInit(System.Linq.Expressions.MemberInitExpression)">
+            <summary> Visit member init expression </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitListInit(System.Linq.Expressions.ListInitExpression)">
+            <summary> Visit list init expression </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitNewArray(System.Linq.Expressions.NewArrayExpression)">
+            <summary> Visit array expression </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionVisitor.VisitInvocation(System.Linq.Expressions.InvocationExpression)">
+            <summary> Visit invocation expression </summary>
+        </member>
+        <member name="T:LinqKit.Extensions">
+            <summary>Refer to http://www.albahari.com/nutshell/linqkit.html and
+            http://tomasp.net/blog/linq-expand.aspx for more information.</summary>
+        </member>
+        <member name="M:LinqKit.Extensions.AsExpandable``1(System.Linq.IQueryable{``0})">
+            <summary> LinqKit: Returns wrapper that automatically expands expressions </summary>
+        </member>
+        <member name="M:LinqKit.Extensions.Expand``1(System.Linq.Expressions.Expression{``0})">
+            <summary> LinqKit: Expands expression </summary>
+        </member>
+        <member name="M:LinqKit.Extensions.Expand(System.Linq.Expressions.Expression)">
+            <summary> LinqKit: Expands expression </summary>
+        </member>
+        <member name="M:LinqKit.Extensions.Invoke``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary> LinqKit: Compile and invoke </summary>
+        </member>
+        <member name="M:LinqKit.Extensions.Invoke``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``0)">
+            <summary> LinqKit: Compile and invoke </summary>
+        </member>
+        <member name="M:LinqKit.Extensions.Invoke``3(System.Linq.Expressions.Expression{System.Func{``0,``1,``2}},``0,``1)">
+            <summary> LinqKit: Compile and invoke </summary>
+        </member>
+        <member name="M:LinqKit.Extensions.Invoke``4(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3}},``0,``1,``2)">
+            <summary> LinqKit: Compile and invoke </summary>
+        </member>
+        <member name="M:LinqKit.Extensions.Invoke``5(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4}},``0,``1,``2,``3)">
+            <summary> LinqKit: Compile and invoke </summary>
+        </member>
+        <member name="T:LinqKit.Linq">
+            <summary>
+            Another good idea by Tomas Petricek.
+            See http://tomasp.net/blog/dynamic-linq-queries.aspx for information on how it's used.
+            </summary>
+        </member>
+        <member name="M:LinqKit.Linq.Expr``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Returns the given anonymous method as a lambda expression
+            </summary>
+        </member>
+        <member name="M:LinqKit.Linq.Expr``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Returns the given anonymous method as a lambda expression
+            </summary>
+        </member>
+        <member name="M:LinqKit.Linq.Expr``3(System.Linq.Expressions.Expression{System.Func{``0,``1,``2}})">
+            <summary>
+            Returns the given anonymous method as a lambda expression
+            </summary>
+        </member>
+        <member name="M:LinqKit.Linq.Func``1(System.Func{``0})">
+            <summary>
+            Returns the given anonymous function as a Func delegate
+            </summary>
+        </member>
+        <member name="M:LinqKit.Linq.Func``2(System.Func{``0,``1})">
+            <summary>
+            Returns the given anonymous function as a Func delegate
+            </summary>
+        </member>
+        <member name="M:LinqKit.Linq.Func``3(System.Func{``0,``1,``2})">
+            <summary>
+            Returns the given anonymous function as a Func delegate
+            </summary>
+        </member>
+        <member name="T:LinqKit.PredicateBuilder">
+            <summary>
+            See http://www.albahari.com/expressions for information and examples.
+            </summary>
+        </member>
+        <member name="M:LinqKit.PredicateBuilder.True``1">
+            <summary> Always true </summary>
+        </member>
+        <member name="M:LinqKit.PredicateBuilder.False``1">
+            <summary> Always false </summary>
+        </member>
+        <member name="M:LinqKit.PredicateBuilder.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary> OR </summary>
+        </member>
+        <member name="M:LinqKit.PredicateBuilder.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary> AND </summary>
+        </member>
+    </members>
+</doc>

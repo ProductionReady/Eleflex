@@ -246,7 +246,10 @@ namespace Eleflex.Storage.EF
             {
                 //Process specific repository events. We don't raise the event because we don't want it to throw exceptions.
                 bizRequest.Item = _contextBuilder.GetContext();
-                bizRequest.Item.Item = new RepositoryQueryEvent<TObject>() { Item = request.Item };
+                IStorageQuery sq = request.Item;
+                if (sq == null)
+                    sq = new StorageQuery();
+                bizRequest.Item.Item = new RepositoryQueryEvent<TObject>() { Item = sq };
                 var repoResp = _businessRuleService.ExecuteBusinessRules(bizRequest);
                 response.CopyResponse(repoResp);
                 if (!response.ResponseSuccess)
@@ -254,19 +257,19 @@ namespace Eleflex.Storage.EF
 
                 //Process storage.
                 var session = _storageService.GetSession().Session as DbContext;                
-                IOrderedQueryable<TStorageObject> query = EntityQueryBuilder.Query<TStorageObject>(session.Set<TStorageObject>() as IQueryable<TStorageObject>, request.Item);
-                IList<TStorageObject> pagingList = new List<TStorageObject>();
-                if (request.Item.PagingNumberPerPage > 0 && request.Item.PagingNumberPerPage < int.MaxValue)
+                IOrderedQueryable<TStorageObject> query = EntityQueryBuilder.Query<TStorageObject>(session.Set<TStorageObject>() as IQueryable<TStorageObject>, sq);
+                IList<TStorageObject> pagingList = new List<TStorageObject>();                
+                if (sq.PagingNumberPerPage > 0 && sq.PagingNumberPerPage < int.MaxValue)
                 {
-                    if (request.Item.PagingStartPage > 0)
+                    if (sq.PagingStartPage > 0)
                     {
-                        int skip = ((request.Item.PagingStartPage - 1) * request.Item.PagingNumberPerPage);
+                        int skip = ((sq.PagingStartPage - 1) * sq.PagingNumberPerPage);
                         if (skip > 0)
                             query = query.Skip(skip) as IOrderedQueryable<TStorageObject>;
                         int rowCount = 1;
                         foreach (var pageItem in query)
                         {
-                            if (rowCount > request.Item.PagingNumberPerPage)
+                            if (rowCount > sq.PagingNumberPerPage)
                                 break;
                             pagingList.Add(pageItem);
                             rowCount++;
@@ -275,7 +278,7 @@ namespace Eleflex.Storage.EF
                         response.PagingTotalCount = query.Count();
                         return response;
                     }
-                    response.Items = _mappingService.Map<TObject, TStorageObject>(query.Take(request.Item.PagingNumberPerPage).ToList());
+                    response.Items = _mappingService.Map<TObject, TStorageObject>(query.Take(sq.PagingNumberPerPage).ToList());
                     response.PagingTotalCount = query.Count();
                     return response;
                 }

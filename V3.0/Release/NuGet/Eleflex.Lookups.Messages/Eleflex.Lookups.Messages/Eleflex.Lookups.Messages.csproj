@@ -102,32 +102,9 @@
     <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups.services.wcf.message\LookupUpdateResponse.cs">
       <Link>Eleflex.Lookups.Services.WCF.Message\LookupUpdateResponse.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups\Eleflex_Lookups_CodeGenerator.cs">
-      <Link>Eleflex.Lookups\Eleflex_Lookups_CodeGenerator.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups\ILookup.cs">
-      <Link>Eleflex.Lookups\ILookup.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups\ILookupBusinessRepository.cs">
-      <Link>Eleflex.Lookups\ILookupBusinessRepository.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups\ILookupsStorageService.cs">
-      <Link>Eleflex.Lookups\ILookupsStorageService.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups\ILookupStorageRepository.cs">
-      <Link>Eleflex.Lookups\ILookupStorageRepository.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups\Lookup.cs">
-      <Link>Eleflex.Lookups\Lookup.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups\LookupBusinessRepository.cs">
-      <Link>Eleflex.Lookups\LookupBusinessRepository.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\modules\lookups\eleflex.lookups\LookupsConstants.cs">
-      <Link>Eleflex.Lookups\LookupsConstants.cs</Link>
-    </Compile>
     <Compile Include="EleflexLookupsMessagesConstants.cs" />
     <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
+    <Compile Include="ModulePatch\Version_3_2_0_0.cs" />
     <Compile Include="ModulePatch\Version_3_1_0_0.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -140,6 +117,10 @@
       <Project>{4fe88fde-0f8d-4654-99a0-47bcb778b8e4}</Project>
       <Name>Eleflex.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Copyright.txt" />
+    <Content Include="License.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

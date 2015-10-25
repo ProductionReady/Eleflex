@@ -1,0 +1,155 @@
+﻿@model Eleflex.Email.Web.Admin.Models.ListModel
+@{
+    ViewBag.Title = "System Email";
+}
+<h1>System Email</h1>
+<fieldset>
+    <legend class="sr-only sr-only-focusable">Search Email</legend>
+@using (Html.BeginForm("List", "Admin", FormMethod.Post, new { id = "AdminEmailListForm", @class = "form-inline" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(x => x.IsError, "Error:")
+        @Html.DropDownListFor(x => x.IsError, Model.ErrorSelectItems, new { @class = "form-control eleflexselect", data_placeholder = "Select an Item...", Style = "width: 150px;" })
+        @Html.ValidationMessageFor(x => x.IsError)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.FromAddress, "From Address:")
+        @Html.TextBoxFor(x => x.FromAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.FromAddress)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.ToAddress, "To Address:")
+        @Html.TextBoxFor(x => x.ToAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ToAddress)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.CcAddress, "CC Address:")
+        @Html.TextBoxFor(x => x.CcAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CcAddress)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.BccAddress, "BCC Address:")
+        @Html.TextBoxFor(x => x.BccAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.BccAddress)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Subject, "Subject:")
+        @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Subject)
+    </div>    
+    <div class="form-group">
+        @Html.LabelFor(x => x.Body, "Body:")
+        @Html.TextBoxFor(x => x.Body, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Body)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.MaxRecords, "Max Records:")
+        @Html.TextBoxFor(x => x.MaxRecords, new { @class = "form-control", placeholder = "Default: " + Eleflex.StorageConstants.MAX_RETURNED_RECORDS_DEFAULT })
+        @Html.ValidationMessageFor(x => x.MaxRecords)
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary active" type="submit">Search</button>
+        <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#AdminEmailListForm');">Clear</button>
+        <button class="btn btn-primary active" type="button" onclick="window.location.href = '@Url.Action("Create","Admin")'">New Email</button>
+    </div>
+}
+</fieldset>
+<hr/>
+<table class="eleflexdatatable">
+    <thead>
+        <tr>
+            <th>Create Date</th>
+            <th>To Address</th>
+            <th>Subject</th>            
+            <th>IsError</th>
+            <th>Sent Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Items != null)
+        {
+            for (int i = 0; i < Model.Items.Count; i++)
+            {
+                <tr>
+                    <td>@Model.Items[i].CreateDate.ToLocalTime().ToString()</td>
+                    <td>@Model.Items[i].ToAddress.ToString()</td>
+                    <td>@Model.Items[i].Subject</td>
+                    <td>@Model.Items[i].IsError</td>
+                    <td>@if (Model.Items[i].SentDate.HasValue) { @Model.Items[i].SentDate.Value.ToLocalTime().ToString() }</td>
+                    <td>
+                        @if (Model.Items[i].IsError)
+                        {
+                            <button id="logpop@(i.ToString())" type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#logpopmodal@(i.ToString())">View Exception</button>
+
+                            <div class="modal fade " id="logpopmodal@(i.ToString())" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" style="width:800px;">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Exception Information</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @Model.Items[i].ErrorMessage
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        }
+                        @if (Model.Items[i].IsError || Model.Items[i].SentDate.HasValue)
+                        {
+                        <button class="btn btn-sm btn-default active" type="button" onclick="if(confirm('Are you sure you want to resend this email?')){ resendEmail(@Model.Items[i].EmailProcessKey); }">Resend</button>
+                        }
+                        <button class="btn btn-sm btn-default active" type="button" onclick="if(confirm('Are you sure you want to delete this email?')){ deleteEmail(@Model.Items[i].EmailProcessKey); }">Delete</button>                        
+                        @Html.ActionLink("Edit", "Edit", new { emailProcessKey = Model.Items[i].EmailProcessKey }, new { @class = "btn btn-sm btn-primary", @type = "button" })
+                        
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {        
+
+    });
+
+
+    function resendEmail(emailProcessKey) {
+        var url = '@Url.Action("ResendEmail", "Admin")';
+
+        $.ajax({
+            url: url,
+            data: {
+                emailProcessKey: emailProcessKey,
+                __RequestVerificationToken: eleflexGetRequestVerificationToken(),
+            },
+            type: "POST",
+            dataType: "html",
+            success: function (result) {
+                var ajaxResult = eleflexHandleAjaxResponse(result);
+            }
+        });
+    }
+
+    function deleteEmail(emailProcessKey) {
+        var url = '@Url.Action("Delete", "Admin")';
+
+        $.ajax({
+            url: url,
+            data: {
+                emailProcessKey: emailProcessKey,
+                __RequestVerificationToken: eleflexGetRequestVerificationToken(),
+            },
+            type: "POST",
+            dataType: "html",
+            success: function (result) {
+                var ajaxResult = eleflexHandleAjaxResponse(result);
+            }
+        });
+    }
+</script>

@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -135,6 +135,7 @@
     <Compile Include="Eleflex.Lookups.Storage.EF\LookupsStorageServiceCustom.cs" />
     <Compile Include="EleflexLookupsServerConstants.cs" />
     <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
+    <Compile Include="ModulePatch\Version_3_2_0_0.cs" />
     <Compile Include="ModulePatch\Version_3_1_0_0.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -171,6 +172,10 @@
     <ProjectReference Include="..\..\Eleflex\Eleflex.Core\Eleflex.Core.csproj">
       <Project>{4fe88fde-0f8d-4654-99a0-47bcb778b8e4}</Project>
       <Name>Eleflex.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Eleflex.Lookups\Eleflex.Lookups.csproj">
+      <Project>{799380df-05a0-4f24-a42e-5b3c6274b40d}</Project>
+      <Name>Eleflex.Lookups</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

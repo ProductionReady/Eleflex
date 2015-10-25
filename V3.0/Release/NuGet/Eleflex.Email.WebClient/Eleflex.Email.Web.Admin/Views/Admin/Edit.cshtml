@@ -1,0 +1,87 @@
+﻿@model Eleflex.Email.Web.Admin.Models.EditViewModel
+@{
+    ViewBag.Title = "Email Detail";
+}
+@section styles
+{
+    <style>
+        .viewsection{ padding-left:0px;margin-left:0px;}
+    </style>
+}
+<h1>Email Detail</h1>
+<div class="container">
+    <fieldset>
+    <legend class="sr-only sr-only-focusable">Email Form</legend>
+    @using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { id = "EmailDetailsForm", @class = "form-horizontal" }))
+        {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(x=> x.EmailProcessKey)
+        <div class="row">
+            <div class="col-md-10">
+                    <div class="form-group">
+                        <h2 class="viewsection">Email Form</h2>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.FromAddress, "From Email:")<span class="required">*</span>
+                        @Html.TextBoxFor(x => x.FromAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.FromAddress)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.ToAddress, "To Email:")<span class="required">*</span>
+                        @Html.TextBoxFor(x => x.ToAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.ToAddress)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.CcAddress, "CC Email:")<span class="required">*</span>
+                        @Html.TextBoxFor(x => x.CcAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.CcAddress)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.BccAddress, "BCC Email:")<span class="required">*</span>
+                        @Html.TextBoxFor(x => x.BccAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.BccAddress)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Subject, "Subject:")
+                        @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Subject)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Body, "Body:")
+                        @Html.TextAreaFor(x => x.Body, new { @class = "form-control", rows = "6" })
+                        @Html.ValidationMessageFor(x => x.Body)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.IsHtml, "Is HTML?:")
+                        @Html.CheckBoxFor(x => x.IsHtml, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.IsHtml)
+                    </div>
+                    <div class="form-group">
+                        <span>
+                            <button class="btn btn-primary active" type="submit">Save</button>
+                            <button class="btn btn-default active" type="button" onclick="window.location.href = '@Url.Action("List","Admin")'">Cancel</button>
+                        </span>
+                    </div>
+                </div>
+            <div class="col-md-4 col-md-offset-1">               
+            </div>                
+        </div>        
+        }
+    </fieldset>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+    @if(!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <text>eleflexShowSuccessMessage("@(Model.SuccessMessage)");</text>
+    }
+
+    });
+
+</script>
+

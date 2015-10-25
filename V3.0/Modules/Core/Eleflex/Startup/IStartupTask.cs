@@ -22,6 +22,12 @@
         int Priority { get; set; }
 
         /// <summary>
+        /// This signals the task to load resources it needs into the AppDomain.
+        /// </summary>
+        /// <returns></returns>
+        void LoadResources();
+
+        /// <summary>
         /// Perform startup logic.
         /// </summary>
         /// <param name="taskOptions"></param>

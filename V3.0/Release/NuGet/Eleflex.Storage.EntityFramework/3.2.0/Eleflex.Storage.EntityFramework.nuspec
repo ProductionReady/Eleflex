@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.Storage.EntityFramework</id>
+    <version>3.2.0</version>
+    <title>ELEFLEX Storage Entity Framework</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package installs the Eleflex.Storage.EntityFramework component. It contains data access classes used to expose information from databases using Microsoft Entity Framework. ELEFLEX is a platform for building modular, domain-driven, service-oriented applications and services.</description>
+      <summary>This package installs the Eleflex.Storage.EntityFramework component. It contains data access classes used to expose information from databases using Microsoft Entity Framework. ELEFLEX is a platform for building modular, domain-driven, service-oriented applications and services.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at https://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex storage entity entityframework database sqlserver azure productionready</tags>
+    <dependencies>
+	<dependency id="Eleflex" version="3.2.0" />
+	<dependency id="EntityFramework" version="6.1.3" />
+	<dependency id="LINQKit" version="1.1.3.1" />
+    </dependencies>
+  </metadata>
+</package>

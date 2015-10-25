@@ -47,8 +47,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -214,9 +214,9 @@
       <Project>{5a0163e4-05f0-443a-9090-556549aa6cbc}</Project>
       <Name>Eleflex.Messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.WebClient\Eleflex.WebClient\Eleflex.WebClient.csproj">
-      <Project>{7cc17ebf-2f9e-49a8-ba52-dcff650442e6}</Project>
-      <Name>Eleflex.WebClient</Name>
+    <ProjectReference Include="..\..\..\Release\NuGet\Eleflex.Web\Eleflex.Web\Eleflex.Web.csproj">
+      <Project>{0c7ade23-f7f3-423e-ac76-07b607cfecbc}</Project>
+      <Name>Eleflex.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Release\NuGet\Eleflex\Eleflex.Core\Eleflex.Core.csproj">
       <Project>{4fe88fde-0f8d-4654-99a0-47bcb778b8e4}</Project>

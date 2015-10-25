@@ -1,11 +1,4 @@
-﻿using AutoMapper;
-using AutoMapper.Configuration;
-using AutoMapper.Impl;
-using AutoMapper.Internal;
-using AutoMapper.Mappers;
-using AutoMapper.QueryableExtensions;
-using AutoMapper.QueryableExtensions.Impl;
-
+﻿
 namespace Eleflex.Mapping.AutoMapper
 {
     /// <summary>
