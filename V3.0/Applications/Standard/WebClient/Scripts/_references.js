@@ -1,5 +1,5 @@
 ﻿/// <autosync enabled="true" />
-/// <reference path="bootstrap.js" />
+/// <reference path="bootstrap.min.js" />
 /// <reference path="chosen.jquery.js" />
 /// <reference path="datatables/autofill.bootstrap.min.js" />
 /// <reference path="datatables/autofill.foundation.min.js" />

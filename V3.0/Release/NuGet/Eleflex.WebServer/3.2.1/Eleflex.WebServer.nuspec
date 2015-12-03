@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.WebServer</id>
+    <version>3.2.1</version>
+    <title>ELEFLEX WebServer</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package installs the Eleflex.WebServer component. This is the main web application host for an ELEFLEX solution and hosts all service commands and processes. This package is intended to be installed on an ASP.NET Web Application (Empty Template) project. ELEFLEX is a platform for building modular, domain-driven, service-oriented applications and services.</description>
+      <summary>This package installs the Eleflex.WebServer component. This is the main web application host for an ELEFLEX solution and hosts all service commands and processes. This package is intended to be installed on an ASP.NET Web Application (Empty Template) project. ELEFLEX is a platform for building modular, domain-driven, service-oriented applications and services.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at https://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex webserver host productionready</tags>
+    <dependencies>
+	<dependency id="Eleflex" version="3.2.1" />
+	<dependency id="Eleflex.Messages" version="3.2.1" />
+	<dependency id="Eleflex.Storage.EntityFramework" version="3.2.1" />
+	<dependency id="Eleflex.Server" version="3.2.1" />
+	<dependency id="Eleflex.Web" version="3.2.1" />
+	<dependency id="Eleflex.WebClient" version="3.2.1" />
+    </dependencies>
+  </metadata>
+</package>

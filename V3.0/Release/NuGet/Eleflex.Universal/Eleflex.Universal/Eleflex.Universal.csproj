@@ -203,9 +203,6 @@
     <Compile Include="..\..\..\..\modules\core\eleflex\messages\ValidationMessage.cs">
       <Link>Messages\ValidationMessage.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\modules\core\eleflex\modulepatch\Version_3_0_0_0.cs">
-      <Link>ModulePatch\Version_3_0_0_0.cs</Link>
-    </Compile>
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\ObjectLocation\ActivatorObjectLocationService.cs">
       <Link>ObjectLocation\ActivatorObjectLocationService.cs</Link>
     </Compile>
@@ -651,6 +648,9 @@
       <Link>Versioning\VersioningConstants.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ModulePatch\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.Email.Server</id>
+    <version>3.2.1-a</version>
+    <title>Email Module ELEFLEX Server</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package installs the Eleflex.Email.Server component. It is used for processing business rules, service commands and data storage for the Email Module using Microsoft SQL Server or Microsoft Azure database engines. The Email Module provides distributed storage and sending of emails.</description>
+      <summary>This package installs the Eleflex.Email.Server component. It is used for processing business rules, service commands and data storage for the Email Module using Microsoft SQL Server or Microsoft Azure database engines. The Email Module provides distributed storage and sending of emails.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at https://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex module email server productionready</tags>
+	<frameworkAssemblies>
+	</frameworkAssemblies>
+    <dependencies>
+	<dependency id="AutoMapper" version="4.1.1" />
+	<dependency id="Eleflex" version="3.2.1-a" />
+	<dependency id="Eleflex.Messages" version="3.2.1-a" />
+	<dependency id="Eleflex.Storage.EntityFramework" version="3.2.1-a" />
+	<dependency id="Eleflex.Email.Messages" version="3.2.1-a" />
+    </dependencies>
+  </metadata>
+</package>

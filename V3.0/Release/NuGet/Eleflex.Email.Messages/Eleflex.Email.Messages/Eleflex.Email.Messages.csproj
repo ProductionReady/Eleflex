@@ -158,6 +158,7 @@
     <Compile Include="Eleflex.Email.Services.WCF.Message\IEmailServiceRepository.cs" />
     <Compile Include="Eleflex.Email.Services.WCF.Message\SendEmailRequest.cs" />
     <Compile Include="EleflexEmailMessagesConstants.cs" />
+    <Compile Include="ModulePatch\Version_3_2_1_0.cs" />
     <Compile Include="ModulePatch\Version_3_2_0_0.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

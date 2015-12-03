@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.Email.Messages</id>
+    <version>3.2.1</version>
+    <title>Email Module ELEFLEX Messages</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package installs the Eleflex.Email.Messages component. It allows service communication for Email Module service commands. The Email Module provides distributed storage and sending of emails.</description>
+      <summary>This package installs the Eleflex.Email.Messages component. It allows service communication for Email Module service commands. The Email Module provides distributed storage and sending of emails.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at https://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex module email messages productionready</tags>
+    <dependencies>
+	<dependency id="Eleflex" version="3.2.1" />
+	<dependency id="Eleflex.Messages" version="3.2.1" />
+    </dependencies>
+  </metadata>
+</package>

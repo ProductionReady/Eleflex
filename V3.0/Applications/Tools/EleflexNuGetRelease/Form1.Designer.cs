@@ -37,6 +37,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.ckbPackage = new System.Windows.Forms.CheckBox();
             this.ckbPublish = new System.Windows.Forms.CheckBox();
+            this.ckbCopyPackage = new System.Windows.Forms.CheckBox();
+            this.ckbCopyDlls = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -103,7 +105,7 @@
             // ckbPackage
             // 
             this.ckbPackage.AutoSize = true;
-            this.ckbPackage.Location = new System.Drawing.Point(12, 94);
+            this.ckbPackage.Location = new System.Drawing.Point(164, 117);
             this.ckbPackage.Name = "ckbPackage";
             this.ckbPackage.Size = new System.Drawing.Size(75, 17);
             this.ckbPackage.TabIndex = 3;
@@ -113,18 +115,41 @@
             // ckbPublish
             // 
             this.ckbPublish.AutoSize = true;
-            this.ckbPublish.Location = new System.Drawing.Point(107, 94);
+            this.ckbPublish.Location = new System.Drawing.Point(262, 117);
             this.ckbPublish.Name = "ckbPublish";
             this.ckbPublish.Size = new System.Drawing.Size(66, 17);
             this.ckbPublish.TabIndex = 4;
             this.ckbPublish.Text = "Publish?";
             this.ckbPublish.UseVisualStyleBackColor = true;
+            this.ckbPublish.CheckedChanged += new System.EventHandler(this.ckbPublish_CheckedChanged);
+            // 
+            // ckbCopyPackage
+            // 
+            this.ckbCopyPackage.AutoSize = true;
+            this.ckbCopyPackage.Location = new System.Drawing.Point(12, 94);
+            this.ckbCopyPackage.Name = "ckbCopyPackage";
+            this.ckbCopyPackage.Size = new System.Drawing.Size(257, 17);
+            this.ckbCopyPackage.TabIndex = 7;
+            this.ckbCopyPackage.Text = "Copy Old Package to New and Update Nuspec?";
+            this.ckbCopyPackage.UseVisualStyleBackColor = true;
+            // 
+            // ckbCopyDlls
+            // 
+            this.ckbCopyDlls.AutoSize = true;
+            this.ckbCopyDlls.Location = new System.Drawing.Point(12, 117);
+            this.ckbCopyDlls.Name = "ckbCopyDlls";
+            this.ckbCopyDlls.Size = new System.Drawing.Size(109, 17);
+            this.ckbCopyDlls.TabIndex = 8;
+            this.ckbCopyDlls.Text = "Copy New DLLs?";
+            this.ckbCopyDlls.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 123);
+            this.ClientSize = new System.Drawing.Size(501, 141);
+            this.Controls.Add(this.ckbCopyDlls);
+            this.Controls.Add(this.ckbCopyPackage);
             this.Controls.Add(this.ckbPublish);
             this.Controls.Add(this.ckbPackage);
             this.Controls.Add(this.txtNewVersion);
@@ -155,6 +180,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox ckbPackage;
         private System.Windows.Forms.CheckBox ckbPublish;
+        private System.Windows.Forms.CheckBox ckbCopyPackage;
+        private System.Windows.Forms.CheckBox ckbCopyDlls;
     }
 }
 

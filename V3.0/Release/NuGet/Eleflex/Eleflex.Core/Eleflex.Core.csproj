@@ -201,15 +201,6 @@
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\Messages\ValidationMessage.cs">
       <Link>Messages\ValidationMessage.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Modules\Core\Eleflex\ModulePatch\Version_3_0_0_0.cs">
-      <Link>ModulePatch\Version_3_0_0_0.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\Modules\Core\Eleflex\ModulePatch\Version_3_1_0_0.cs">
-      <Link>ModulePatch\Version_3_1_0_0.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\Modules\Core\Eleflex\ModulePatch\Version_3_2_0_0.cs">
-      <Link>ModulePatch\Version_3_2_0_0.cs</Link>
-    </Compile>
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\ObjectLocation\ActivatorObjectLocationService.cs">
       <Link>ObjectLocation\ActivatorObjectLocationService.cs</Link>
     </Compile>
@@ -672,6 +663,10 @@
     <Compile Include="..\..\..\..\Modules\Core\Eleflex\Versioning\VersioningConstants.cs">
       <Link>Versioning\VersioningConstants.cs</Link>
     </Compile>
+    <Compile Include="ModulePatch\Version_3_0_0_0.cs" />
+    <Compile Include="ModulePatch\Version_3_1_0_0.cs" />
+    <Compile Include="ModulePatch\Version_3_2_1_0.cs" />
+    <Compile Include="ModulePatch\Version_3_2_0_0.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

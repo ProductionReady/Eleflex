@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EleflexWebServerConstants.cs" />
+    <Compile Include="ModulePatch\Version_3_2_1_0.cs" />
     <Compile Include="ModulePatch\Version_3_2_0_0.cs" />
     <Compile Include="ModulePatch\Version_3_1_0_0.cs" />
     <Compile Include="ModulePatch\Version_3_0_0_0.cs" />

@@ -130,9 +130,6 @@ namespace Eleflex
             {
                 item.Commit();                
             }
-
-            if (StorageServices.Count > 100)
-                Logger.Current.Warn<StorageContextUnitOfWork>("The number of managed storage services exceeds 100 on this thread. A process is probably not cleaning up references.");
         }
 
     }
