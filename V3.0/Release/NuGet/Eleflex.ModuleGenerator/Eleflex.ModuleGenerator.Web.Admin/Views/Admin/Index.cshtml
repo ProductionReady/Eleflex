@@ -1,7 +1,85 @@
-﻿
+﻿@model Eleflex.ModuleGenerator.Web.Admin.Models.ModuleInfoModel
 @{
-    ViewBag.Title = "Module Generator";
+    ViewBag.Title = "ELEFLEX Module Generator";
 }
 
-<h2>Coming Soon!</h2>
-
+<h2>ELEFLEX Module Generator</h2>
+<p>
+    This application will generate an ELEFLEX Module solution to help speed development. Enter the required information below to download your solution.
+</p>
+<hr/>
+@Html.ValidationSummary(true)
+<fieldset>
+    <legend class="sr-only sr-only-focusable">Form</legend>
+    @using (Html.BeginForm("Index", "ModuleGen", FormMethod.Post, new { id = "ModuleGenForm", @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(x => x.ModuleName, "Module Name:")<span class="required">*</span>
+            @Html.TextBoxFor(x => x.ModuleName, new { @class = "form-control", @onchange = "moduleNameChange();" })
+            @Html.ValidationMessageFor(x => x.ModuleName)
+            <p>The name of the module. This is usually a single word or compound word describing the module functionality or product name.  An example would be: A module that does employee clock in/outs might be called TimeClock.</p>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.NamespacePrefix, "Namespace Prefix:")<span class="required">*</span>
+            @Html.TextBoxFor(x => x.NamespacePrefix, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.NamespacePrefix)
+            <p>This is will be the namespace prefix for all code files and projects generated, usually a company name or project name. The result namespace is then "[NamespacePrefix].[ModuleName]".</p>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="override" onchange="overrideChange(this);" /> <label for="override">Override Entity Model Name</label>
+            <p>The default Entity Model name is [ModuleName]DB, as in TimeClockDB or LoggingDB. Click this to override the name and specify the name you plan on using.</p>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.EntityModelName, "Entity Model Name:")<span class="required">*</span>
+            @Html.TextBoxFor(x => x.EntityModelName, new { @class = "form-control", @readonly= "readonly" })
+            @Html.ValidationMessageFor(x => x.EntityModelName)            
+        </div>
+        @*
+    <div class="form-group">
+        @Html.CheckBoxFor(x => x.NuGetSingleRelease, new { })
+        @Html.LabelFor(x => x.NuGetSingleRelease, "NuGet Single Package Release?")
+        @Html.ValidationMessageFor(x => x.NuGetSingleRelease)
+        <p>If yes, create a single NuGet webserver package to release the module. If no, create the more complex multi-package template.</p>
+    </div>
+        *@
+        <div class="form-group">
+            <button class="btn btn-default active" type="button" onclick="eleflexClearInput('#ModuleGenForm');">Clear</button>
+            <button class="btn btn-primary active" type="submit">Generate</button>            
+        </div>
+    }
+</fieldset>
+<hr />
+<h2>Completing Module Setup</h2>
+<p>
+    View up-to-date documentation for completing setup of your module online at <a href="http://www.ProductionReady.com/Products/Eleflex/Developer/v3/">http://www.ProductionReady.com/Products/Eleflex/Developer/v3/</a>
+</p>
+<h3>Module Setup Quickstart</h3>
+<ol>
+    <li>Extract the zip file to a directory and open the solution in Visual Studio 2015. Rebuild the solution to download missing NuGet packages and confirm the build is successful</li>    
+    <li>In the root of the Server project, create a new ADO.NET Entity Data Model with the name from above, as in: [Entity Model Name].edmx</li>
+    <li>Right click and run all T4 text templates (*.tt) in the Business, Messages, and Server projects.</li>
+    <li>In the WebServer project, uncomment the WebServerObjectLocationRegistrationTask.cs. Rebuild the entire solution to confirm the build is successful</li>
+    <li>Create a new web application in your solution, right click the project, select "Manage NuGet Packages" and install the Eleflex.WebServer package. Complete setup of Eleflex.WebServer application and verify working</li>
+    <li>In the new Eleflex.WebServer application, click "References" and "Add a Reference" to all module projects in the solution</li>
+    <li>Rebuild and run the new web application. If the module is installed correctly, a default webpage should be available at the URL "/Admin/[Module Name]".</li>
+</ol>
+<script type="text/javascript">
+    function overrideChange(chk)
+    {
+        if(chk.checked)
+        { $("#EntityModelName").removeAttr("readonly"); }
+        else
+        {
+            $("#EntityModelName").attr("readonly", "readonly");
+            if ($("#ModuleName").val().length > 0) {
+                $("#EntityModelName").val($("#ModuleName").val() + "DB");
+            }
+        }
+    }
+    function moduleNameChange() {
+        if (!$("#override").prop("checked")) {
+            $("#EntityModelName").val($("#ModuleName").val() + "DB");
+        }
+    }
+</script>

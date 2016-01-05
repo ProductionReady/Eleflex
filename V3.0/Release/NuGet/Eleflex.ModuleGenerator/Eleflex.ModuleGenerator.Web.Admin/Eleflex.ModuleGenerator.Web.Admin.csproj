@@ -64,6 +64,7 @@
       <HintPath>..\..\..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -123,7 +124,58 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Models\Generation\v3_1\MessagesProject.cs" />
+    <Compile Include="Models\Generation\v3_2\MessagesFileRequestDispatcher.cs" />
+    <Compile Include="Models\Generation\v3_2\MessagesFileIRequestDispatcher.cs" />
+    <Compile Include="Models\Generation\v3_2\WebAdminFileControllerAdmin.cs" />
+    <Compile Include="Models\Generation\v3_2\WebAdminFileViewsAdminIndex.cs" />
+    <Compile Include="Models\Generation\v3_2\WebAdminFileViewWebConfig.cs" />
+    <Compile Include="Models\Generation\v3_2\WebAdminFileWebConfigDebug.cs" />
+    <Compile Include="Models\Generation\v3_2\WebAdminFileWebConfigRelease.cs" />
+    <Compile Include="Models\Generation\v3_2\WebAdminFileWebConfig.cs" />
+    <Compile Include="ModuleGeneratorConstants.cs" />
+    <Compile Include="Models\Generation\Common\Archive.cs" />
+    <Compile Include="Models\Generation\Common\ArchiveItem.cs" />
+    <Compile Include="Models\Generation\Common\GenerationConstants.cs" />
+    <Compile Include="Models\Generation\Common\IGenerate.cs" />
+    <Compile Include="Models\Generation\Common\Project.cs" />
+    <Compile Include="Models\Generation\v3_2\BusinessFileCodeGenTT.cs" />
+    <Compile Include="Models\Generation\v3_2\BusinessFileConstants.cs" />
+    <Compile Include="Models\Generation\v3_2\BusinessFilePackagesConfig.cs" />
+    <Compile Include="Models\Generation\v3_2\BusinessFileStorageService.cs" />
+    <Compile Include="Models\Generation\v3_2\BusinessProject.cs" />
+    <Compile Include="Models\Generation\v3_2\FileAssemblyInfoCS.cs" />
+    <Compile Include="Models\Generation\v3_2\FileModulePatch.cs" />
+    <Compile Include="Models\Generation\v3_2\Generator.cs" />
+    <Compile Include="Models\Generation\v3_2\MessagesFileConstants.cs" />
+    <Compile Include="Models\Generation\v3_2\MessagesFilePackagesConfig.cs" />
+    <Compile Include="Models\Generation\v3_2\MessagesFileServicesCodeGenTT.cs" />
+    <Compile Include="Models\Generation\v3_2\MessagesProject.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerFileAppConfig.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerFileAzureConstants.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerFileAzurePatch.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerFileConstants.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerFileEFAutoMapperCodeGenTT.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerFileEFCodeGenTT.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerFilePackagesConfig.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerFileServicesAutomapperCodeGenTT.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerFileServicesServerCodeGenTT.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerFileSQLServerConstants.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerFileSQLServerPatch.cs" />
+    <Compile Include="Models\Generation\v3_2\ServerProject.cs" />
+    <Compile Include="Models\Generation\v3_2\Solution.cs" />
+    <Compile Include="Models\Generation\v3_2\WebClientFileConstants.cs" />
+    <Compile Include="Models\Generation\v3_2\WebClientFileObjLocRegTask.cs" />
+    <Compile Include="Models\Generation\v3_2\WebClientFilePackagesConfig.cs" />
+    <Compile Include="Models\Generation\v3_2\WebClientFileRouteRegTask.cs" />
+    <Compile Include="Models\Generation\v3_2\WebClientProject.cs" />
+    <Compile Include="Models\Generation\v3_2\WebServerFileConstants.cs" />
+    <Compile Include="Models\Generation\v3_2\WebServerFileObjLocRegTask.cs" />
+    <Compile Include="Models\Generation\v3_2\WebAdminFilePackagesConfig.cs" />
+    <Compile Include="Models\Generation\v3_2\WebServerFilePackagesConfig.cs" />
+    <Compile Include="Models\Generation\v3_2\WebAdminProject.cs" />
+    <Compile Include="Models\Generation\v3_2\WebServerProject.cs" />
+    <Compile Include="Models\ModuleInfoModel.cs" />
+    <Compile Include="ModulePatch\Version_3_2_1_0.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

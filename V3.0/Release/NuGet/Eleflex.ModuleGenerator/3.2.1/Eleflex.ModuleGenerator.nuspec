@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eleflex.ModuleGenerator</id>
+    <version>3.2.1</version>
+    <title>ELEFLEX Module Generator</title>
+    <authors>Production Ready LLC</authors>
+    <owners>ProductionReady</owners>
+    <licenseUrl>https://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/ProductionReady/Eleflex</projectUrl>
+    <iconUrl>https://www.productionready.com/images/productionready/eleflexicon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package installs the Eleflex.ModuleGenerator. It will generate a complete template-based Visual Studio 2015 solution, including projects and code files needed to quickly create an ELEFLEX module.</description>
+      <summary>This package installs the Eleflex.ModuleGenerator. It will generate a complete template-based Visual Studio 2015 solution, including projects and code files needed to quickly create an ELEFLEX module.</summary>
+    <copyright>Copyright 2015 Production Ready, LLC. All Rights Reserved.</copyright>
+    <releaseNotes>		
+    Visit our website at https://www.ProductionReady.com for the latest news, documentation, resources and more!	
+    </releaseNotes>	
+    <tags>eleflex module code generator productionready</tags>
+	<frameworkAssemblies>
+		<frameworkAssembly assemblyName="System.IO.Compression" />
+	</frameworkAssemblies>
+    <dependencies>
+	<dependency id="Eleflex.WebServer" version="3.2.1" />
+    </dependencies>
+  </metadata>
+</package>
